@@ -1,4 +1,5 @@
 import React from 'react';
+import Navbar from './components/Navbar';
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 import Matching from './pages/Matching';
 
@@ -12,6 +13,7 @@ function App() {
     <ApolloProvider client={client}>
         {/* this needs to wrap around everything else so the data can be accessed by all parts */}
         {/* <Matching />  */}
+        <Navbar />
     </ApolloProvider>
   );
 }
