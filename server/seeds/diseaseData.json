@@ -1,0 +1,58 @@
+[
+    {
+      "name": "Influenza 🤒",
+      "ageGroup": "Mainly children under 5 years",
+      "symptoms": "Fever, chills, muscle aches, dry persistent cough, shortness of breath, sore throat",
+      "prevention": "Flu vaccine",
+      "link": "https://www.mayoclinic.org/diseases-conditions/flu/symptoms-causes/syc-20351719" 
+    },
+
+    {
+        "name": "Acute Otitis Media (Ear Infection) 👂",
+        "ageGroup": "Most common between 6 months and 2 years",
+        "symptoms": "Ear pain, tugging or pulling at an ear, difficulty hearing, loss of balance, fluid drainage from ear",
+        "prevention": "Hand washing, coughing or sneezing into the elbow",
+        "link": "https://www.mayoclinic.org/diseases-conditions/ear-infections/symptoms-causes/syc-20351616" 
+      },
+
+      {
+        "name": "Bronchiolitis 🫁",
+        "ageGroup": "Most common under 2 years",
+        "symptoms": "Runny nose, cough, difficulty breathing, wheezing",
+        "prevention": "Hand washing, disinfect surfaces, avoid sharing drinking glasses",
+        "link": "https://www.mayoclinic.org/diseases-conditions/bronchiolitis/symptoms-causes/syc-20351565" 
+      },
+
+      {
+        "name": "Respiratory syncytial virus (RSV) 🦠",
+        "ageGroup": "Mainly under 5 years",
+        "symptoms": "Runny nose, dry cough, low-grade fever, sore throat, wheezing, rapid breathing or difficulty breathing",
+        "prevention": "Hand washing, disinfecting surfaces, avoid sharing drinking glasses, protective medication available to high risk children",
+        "link": "https://www.mayoclinic.org/diseases-conditions/respiratory-syncytial-virus/symptoms-causes/syc-20353098" 
+      },
+
+      {
+        "name": "Conjunctivitis (Pink Eye) 👁️",
+        "ageGroup": "Most common in infants and toddlers",
+        "symptoms": "Redness in one or both eyes, itchiness in one or both eyes, discharge in one or both eyes",
+        "prevention": "Hand washing, avoid touching eyes, change pillowcases often, avoid sharing personal eye care items",
+        "link": "https://www.mayoclinic.org/diseases-conditions/pink-eye/symptoms-causes/syc-20376355" 
+      },
+
+      {
+        "name": "Acute sinusitis 👃",
+        "ageGroup": "Most common in less than 5 years old",
+        "symptoms": "Thick mucus from the nose, postnasal drainage, tenderness or pressure around sinuses, ear pressure",
+        "prevention": "Hand washing, humidifier use",
+        "link": "https://www.mayoclinic.org/diseases-conditions/acute-sinusitis/symptoms-causes/syc-20351671" 
+      },
+
+      {
+        "name": "Strep Throat 👅",
+        "ageGroup":"Most common in ages 5-15",
+        "symptoms":"Throat pain, painful swallowing, red and swollen tonsils, swollen tender lymph nodes in the neck",
+        "prevention":"Hand washing, cover mouth when coughing or sneezing, avoid sharing drinking glasses",
+        "link":"https://www.mayoclinic.org/diseases-conditions/strep-throat/symptoms-causes/syc-20350338"
+
+      }
+  ]
