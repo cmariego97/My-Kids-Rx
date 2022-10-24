@@ -11,7 +11,7 @@ function App() {
   return (
     <ApolloProvider client={client}>
         {/* this needs to wrap around everything else so the data can be accessed by all parts */}
-        <Matching /> 
+        {/* <Matching />  */}
     </ApolloProvider>
   );
 }
