@@ -3,6 +3,7 @@ import Navbar from './components/Navbar';
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 //import all pages
 import Matching from './pages/Matching';
+import Jeopardy from './pages/Jeopardy';
 
 const client = new ApolloClient({
   uri: '/graphql',
@@ -22,7 +23,7 @@ function App() {
         {/* this needs to wrap around everything else so the data can be accessed by all parts */}
         <Navbar />
             {/* call fxn to render page */}
-        <Matching /> 
+        <Jeopardy /> 
     </ApolloProvider>
   );
 }
