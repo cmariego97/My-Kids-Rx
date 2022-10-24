@@ -18,7 +18,7 @@ const Matching = () => {
 
     return (
         <div> 
-            <Card variant="outlined">
+            <Card variant="outlined" onClick={() => changeVisable(!visable)}>
             <CardMedia
         component="img"
         height="194"

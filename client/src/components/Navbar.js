@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {
   AppBar,
   Toolbar,
@@ -31,27 +31,31 @@ const useStyles = makeStyles((theme) => ({
 
 function Navbar() {
   const classes = useStyles();
+  const [page, changePage] = useState('Home');
+  //to change page to about --> onClick={() => changePage('About')}
 
   return (
+
     <AppBar position="static">
-      <CssBaseline />
+      {/* <CssBaseline /> */}
       <Toolbar>
         <Typography variant="h4" className={classes.logo}>
           Navbar
         </Typography>
           <div className={classes.navlinks}>
-            <Link to="/" className={classes.link}>
+            {/* <Link className={classes.link}>
               Home
             </Link>
-            <Link to="/about" className={classes.link}>
+            <Link className={classes.link}>
               About
             </Link>
-            <Link to="/contact" className={classes.link}>
+            <Link className={classes.link}>
               Contact
             </Link>
-            <Link to="/faq" className={classes.link}>
+            <Link className={classes.link}>
               FAQ
-            </Link>
+            </Link> */}
+            <p> Home</p>
           </div>
       </Toolbar>
     </AppBar>
