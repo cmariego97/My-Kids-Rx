@@ -1,0 +1,23 @@
+[
+    {
+        "firstName": "olivia",
+        "lastName": "smith",
+        "provider": "Joseph Smith MD",
+        "email": "asmith@test.com",
+        "password": "password12345"
+    },
+    {
+        "firstName": "john",
+        "lastName": "green",
+        "provider": "Joseph Smith MD",
+        "email": "mgreen@test.com",
+        "password": "password12345"
+    },
+    {
+        "firstName": "jane",
+        "lastName": "doe",
+        "provider": "Joseph Smith MD",
+        "email": "jdoe@test.com",
+        "password": "password12345"
+    }
+]
