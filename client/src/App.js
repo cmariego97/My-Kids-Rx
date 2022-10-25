@@ -10,6 +10,7 @@ import Homepage from './pages/Homepage';
 import Matching from './pages/Matching';
 import Jeopardy from './pages/Jeopardy';
 import TTT from './pages/TTT';
+import Game from './pages/Game';
 
 // import components
 import Navbar from './components/Navbar'
@@ -175,7 +176,8 @@ function App() {
       {/* <Matching/> */}
       {/* call fxn to render page */}
         {/* <Jeopardy />  */}
-      <TTT />
+      {/* <TTT /> */}
+      <Game />
     </ApolloProvider>
 //something like this in app function (inside apollo provider)
   //navbar
