@@ -125,6 +125,24 @@ function App() {
         <Matching />
       )
     }
+    if (page === 'Jeopardy') {
+      return (
+        <Jeopardy />
+      )
+    }
+    if (page === 'TTT') {
+      return (
+        <TTT />
+      )
+    }
+
+    // Other future pages go here to check if rendering them
+
+    else {
+      return (
+        <Homepage />
+      )
+    }
   }
   //fxn change value of page state variabe
   const changePage = (newPage) => setPage(newPage);
