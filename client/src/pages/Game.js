@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import Button from '@mui/material/Button';
 //import all game pages
 import Matching from './Matching';
 import TTT from './TTT';
@@ -17,9 +18,15 @@ const Game = () => {
             )
         }
     //if not a specific game then render game homepage
-    // return (
-
-    // )
+    return (
+        <div>
+            <h1>Choose a game to play!</h1>
+            <Button variant="outlined" onClick={() => setGame('Matching')}>Matching
+            </Button>
+            <Button variant="outlined">Tic Tac Toe
+            </Button>
+        </div>
+    )
 
 }
 
