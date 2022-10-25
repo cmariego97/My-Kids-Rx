@@ -136,6 +136,9 @@ const TTT = () => {
         setClick9(!click9);
       }
 
+    var btnDisplay;
+    btnDisplay = {display: 'none'};
+
       const chooseWinner = () => {
         if(
             (player1 === 'X' && click1 && player2 === 'X' && click2 && player3 === 'X' && click3) ||
@@ -157,6 +160,11 @@ const TTT = () => {
             )
             {
             document.querySelector('#test').textContent = `Game over! The winner is player ${turn}`;
+            btnDisplay = {display: 'block'};
+        }
+      }
+
+      const resetGame = () => {
             setClick1(false);
             setClick2(false);
             setClick3(false);
@@ -166,7 +174,8 @@ const TTT = () => {
             setClick7(false);
             setClick8(false);
             setClick9(false);
-        }
+            btnDisplay = {display: 'none'};
+            document.querySelector('#test').textContent = '';
       }
 
       return (
@@ -176,7 +185,9 @@ const TTT = () => {
             <Button variant="outlined" onClick={() => changeTurn()}>Change Player
             </Button>
             <h2>{`It is player ${turn}'s turn`}</h2>
-            <p id={'test'}>Testing</p>
+            <p id={'test'}></p>
+            <Button variant="outlined" sx={btnDisplay} onClick={() => resetGame()}>Play Again
+            </Button>
 
             <Grid container spacing={2}>
                 {/* column 1 */}
