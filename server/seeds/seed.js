@@ -2,7 +2,6 @@ const connection = require('../config/connection');
 
 const { Disease, Fact, User, Patient } = require('../models');
 
-const apptSeeds = require('./apptData.json');
 const diseaseSeeds = require('./diseaseData.json');
 const factSeeds = require('./factData.json');
 const patientSeeds = require('./patientData.json');
