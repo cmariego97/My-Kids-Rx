@@ -1,5 +1,4 @@
 import React from 'react';
-import Navbar from './components/Navbar';
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 
 // import from MUI
@@ -152,12 +151,11 @@ function App() {
         </ThemeProvider>
       </div>
 
-      <Homepage/>
+      {/* <Homepage/> */}
 
-      <Matching/>
+      {/* <Matching/> */}
       {/* call fxn to render page */}
         {/* <Jeopardy />  */}
-        {/* <Matching /> */}
       <TTT />
     </ApolloProvider>
 //something like this in app function (inside apollo provider)
