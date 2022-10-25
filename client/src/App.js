@@ -196,9 +196,9 @@ function App() {
       {/* call fxn to render page */}
         {/* <Jeopardy />  */}
       {/* <TTT /> */}
-      <Game />
+      {/* <Game /> */}
 
-      {/* <Resources/> */}
+      <Resources/>
     </ApolloProvider>
 //something like this in app function (inside apollo provider)
   //navbar
