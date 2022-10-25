@@ -7,11 +7,9 @@ import { Typography } from '@material-ui/core';
 
 // import pages
 import Homepage from './pages/Homepage';
-import Matching from './pages/Matching';
-import Jeopardy from './pages/Jeopardy';
-import TTT from './pages/TTT';
 import Game from './pages/Game';
 import Resources from './pages/Resources';
+import Profile from './pages/Profile';
 
 // import components
 import Navbar from './components/Navbar'
@@ -124,17 +122,7 @@ function App() {
     }
     if (page === 'Matching') {
       return (
-        <Matching />
-      )
-    }
-    if (page === 'Jeopardy') {
-      return (
-        <Jeopardy />
-      )
-    }
-    if (page === 'TTT') {
-      return (
-        <TTT />
+        <Profile />
       )
     }
 
@@ -191,14 +179,9 @@ function App() {
       </div>
 
       {/* <Homepage/> */}
-
-      {/* <Matching/> */}
       {/* call fxn to render page */}
-        {/* <Jeopardy />  */}
-      {/* <TTT /> */}
-      {/* <Game /> */}
 
-      <Resources/>
+      <Profile />
     </ApolloProvider>
 //something like this in app function (inside apollo provider)
   //navbar
