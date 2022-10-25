@@ -23,7 +23,7 @@ const Game = () => {
             <h1>Choose a game to play!</h1>
             <Button variant="outlined" onClick={() => setGame('Matching')}>Matching
             </Button>
-            <Button variant="outlined">Tic Tac Toe
+            <Button variant="outlined" onClick={() => setGame('TTT')}>Tic Tac Toe
             </Button>
         </div>
     )
