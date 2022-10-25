@@ -1,20 +1,18 @@
-import React from "react"; 
+import React, {useState} from "react"; 
+import { ExternalLink } from 'react-external-link';
 import { useQuery } from '@apollo/client';
-import { QUERY_FACTS, QUERY_DISEASES } from '../utils/queries';
-import data from "../utils/jeopardyData";
-
-
-
-
-
+import { QUERY_RESOURCES } from '../utils/queries';
 
 const Resources = () => {
-const { loading, data } = useQuery(QUERY_DISEASES);
+const { loading, data } = useQuery(QUERY_RESOURCES);
 // const disease =  data.diseases[Math.floor(Math.random()* data.diseases.length)];
 if (!loading) {
   var randomNum = Math.floor(Math.random()* data.diseases.length);
+  var randomNum2 = Math.floor(Math.random()* data.facts.length);
   var disease = data.diseases[randomNum]
+  var fact = data.facts[randomNum2]
   console.log(disease)
+  console.log(fact)
 }
 
  return (
@@ -31,7 +29,11 @@ if (!loading) {
                       <li>{`Symptoms include: ${disease.symptoms}`}</li>
                       <li>{`Prevention methods: ${disease.prevention}`}</li>
                       {/* TODO: make link functional */}
-                      <li>For more information, <a href={disease.link}>click here!</a></li>
+                        <li>
+                        <ExternalLink href={disease.link}>
+                          <span>Click here for more information!</span>
+                        </ExternalLink>
+                      </li> 
                     </div>
                   </div>
                 </div>
@@ -41,7 +43,9 @@ if (!loading) {
                   <div >
                     <h5 >Medical Fun Facts:</h5>
                     <p>We won't bore you with a long boring story about how the body works...but check out these fun facts!</p>
-                    <div id="fact-container"><div>
+                    <div id="fact-container">
+                      <p>{fact.fact}</p>
+                      <div>
                   </div>
                 </div>
             </div>
