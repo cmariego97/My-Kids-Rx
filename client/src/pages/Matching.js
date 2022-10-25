@@ -7,6 +7,7 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
+import Button from '@mui/material/Button';
 // import all images
 import Brain from '../assets/images/brain.jpg'
 import Ear from '../assets/images/ear.jpg'
@@ -42,14 +43,21 @@ const Matching = () => {
    const cardBack = {display:'none'};
    const cardFront = {display:'block'};
    const unmatched = {display:'none'};
-   const matched = {display:'block', color: 'red'};
+   //color code each matched set
+   //TODO: make the colors better for the eyes
+   const matched1 = {display:'block', color: 'black'}
+   const matched2 = {display:'block', color: 'red'};
+   const matched3 = {display:'block', color: 'blue'}
+   const matched4 = {display:'block', color: 'orange'}
+   const matched5 = {display:'block', color: 'green'}
+   const matched6 = {display:'block', color: 'pink'}
    
    const matches = () => {
     if(visable1 === 'matched' && visable2 === 'matched' && visable3 === 'matched' && visable4 === 'matched' && visable5 === 'matched' && visable6 === 'matched' && visable7 === 'matched' && visable8 === 'matched' && visable9 === 'matched' && visable10 === 'matched' && visable11 === 'matched' && visable12 === 'matched') {
       //TODO: make this better than a window popup
-      alert('All matches found!')
+      document.querySelector('#message').textContent = 'All matches found!';
       //TODO: may have to reload in a different way
-      window.location.reload();
+      // window.location.reload();
     }
     if (visable1 === 'visible' && visable2 === 'visible') {
       changeVisable1('matched');
@@ -76,11 +84,31 @@ const Matching = () => {
       changeVisable12('matched');
     }
    }
+   //resets game
+   const resetGame = () => {
+    changeVisable1('invisible');
+    changeVisable2('invisible');
+    changeVisable3('invisible');
+    changeVisable4('invisible');
+    changeVisable5('invisible');
+    changeVisable6('invisible');
+    changeVisable7('invisible');
+    changeVisable8('invisible');
+    changeVisable9('invisible');
+    changeVisable10('invisible');
+    changeVisable11('invisible');
+    changeVisable12('invisible');
+    document.querySelector('#message').textContent = '';
+   }
+
     //TODO: make this look like a card grid
     return (
       <Box sx={{ flexGrow: 1 }}>
          {matches()}
         <h1 style={{textAlign: 'center'}}>Matching Game</h1>
+        <Button variant="outlined" onClick={() => resetGame()}>Play Again
+            </Button>
+        <p id={'message'}></p>
         <Grid container spacing={2}>
           {/* card 1 */}
           <Grid item xs={4}>
@@ -97,7 +125,7 @@ const Matching = () => {
               Matching Game!
               </Typography>
             </CardContent>
-            <p style={visable1 === 'matched' ? matched : unmatched}>Matched</p>
+            <p style={visable1 === 'matched' ? matched1 : unmatched}>Matched</p>
             </Item>
           </Grid>
           {/* card 2 */}
@@ -111,7 +139,7 @@ const Matching = () => {
           Matching Game!
             </Typography>
           </CardContent>
-          <p style={visable2 === 'matched' ? matched : unmatched}>Matched</p>
+          <p style={visable2 === 'matched' ? matched1 : unmatched}>Matched</p>
             </Item>
           </Grid>
         {/* card 3 */}
@@ -129,7 +157,7 @@ const Matching = () => {
               Matching Game!
               </Typography>
             </CardContent>
-            <p style={visable3 === 'matched' ? matched : unmatched}>Matched</p>
+            <p style={visable3 === 'matched' ? matched2 : unmatched}>Matched</p>
             </Item>
           </Grid>
           {/* card 4 */}
@@ -143,7 +171,7 @@ const Matching = () => {
           Matching Game!
             </Typography>
           </CardContent>
-          <p style={visable4 === 'matched' ? matched : unmatched}>Matched</p>
+          <p style={visable4 === 'matched' ? matched2 : unmatched}>Matched</p>
             </Item>
           </Grid>
           {/* card 5 */}
@@ -161,7 +189,7 @@ const Matching = () => {
             Matching Game!
             </Typography>
           </CardContent>
-          <p style={visable5 === 'matched' ? matched : unmatched}>Matched</p>
+          <p style={visable5 === 'matched' ? matched3 : unmatched}>Matched</p>
             </Item>
           </Grid>
           {/* card 6 */}
@@ -175,7 +203,7 @@ const Matching = () => {
           Matching Game!
             </Typography>
           </CardContent>
-          <p style={visable6 === 'matched' ? matched : unmatched}>Matched</p>
+          <p style={visable6 === 'matched' ? matched3 : unmatched}>Matched</p>
             </Item>
           </Grid>
           {/* card 7 */}
@@ -193,7 +221,7 @@ const Matching = () => {
             Matching Game!
             </Typography>
           </CardContent>
-          <p style={visable7 === 'matched' ? matched : unmatched}>Matched</p>
+          <p style={visable7 === 'matched' ? matched4 : unmatched}>Matched</p>
             </Item>
           </Grid>
           {/* card 8 */}
@@ -207,7 +235,7 @@ const Matching = () => {
           Matching Game!
             </Typography>
           </CardContent>
-          <p style={visable8 === 'matched' ? matched : unmatched}>Matched</p>
+          <p style={visable8 === 'matched' ? matched4 : unmatched}>Matched</p>
             </Item>
           </Grid>
           {/* card 9 */}
@@ -225,7 +253,7 @@ const Matching = () => {
             Matching Game!
             </Typography>
           </CardContent>
-          <p style={visable9 === 'matched' ? matched : unmatched}>Matched</p>
+          <p style={visable9 === 'matched' ? matched5 : unmatched}>Matched</p>
             </Item>
           </Grid>
           {/* card 10 */}
@@ -239,7 +267,7 @@ const Matching = () => {
           Matching Game!
             </Typography>
           </CardContent>
-          <p style={visable10 === 'matched' ? matched : unmatched}>Matched</p>
+          <p style={visable10 === 'matched' ? matched5 : unmatched}>Matched</p>
             </Item>
           </Grid>
           {/* card 11 */}
@@ -257,7 +285,7 @@ const Matching = () => {
             Matching Game!
             </Typography>
           </CardContent>
-          <p style={visable11 === 'matched' ? matched : unmatched}>Matched</p>
+          <p style={visable11 === 'matched' ? matched6 : unmatched}>Matched</p>
             </Item>
           </Grid>
           {/* card 12 */}
@@ -271,7 +299,7 @@ const Matching = () => {
           Matching Game!
             </Typography>
           </CardContent>
-          <p style={visable12 === 'matched' ? matched : unmatched}>Matched</p>
+          <p style={visable12 === 'matched' ? matched6 : unmatched}>Matched</p>
             </Item>
           </Grid>
         </Grid>

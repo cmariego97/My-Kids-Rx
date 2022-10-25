@@ -123,22 +123,21 @@ export const QUERY_MESSAGES = gql`
 `
 
 //for resources
-export const QUERY_FACTS = gql`
-    query Facts {
-        facts {
-        fact
-        }
-    }
-`
-
 export const QUERY_DISEASES = gql`
     query Diseases {
         diseases {
-        name
-        ageGroup
-        symptoms
-        prevention
-        link
-        }
+            name
+            ageGroup
+            symptoms
+            prevention
+            link
+            }
+    }
+`
+export const QUERY_FACTS = gql`
+    query Facts {
+        facts {
+            fact
+            }
     }
 `
