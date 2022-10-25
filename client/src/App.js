@@ -9,6 +9,7 @@ import { Typography } from '@material-ui/core';
 // import pages
 import Homepage from './pages/Homepage';
 import Matching from './pages/Matching';
+import Homepage from './pages/Homepage';
 
 // import components
 import Navbar from './components/Navbar'
