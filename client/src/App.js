@@ -10,6 +10,7 @@ import Homepage from './pages/Homepage';
 import Matching from './pages/Matching';
 import Jeopardy from './pages/Jeopardy';
 import TTT from './pages/TTT';
+import Resources from './pages/Resources';
 
 // import components
 import Navbar from './components/Navbar'
@@ -133,20 +134,20 @@ function App() {
     <ApolloProvider client={client}>
       {/* this needs to wrap around everything else so the data can be accessed by all parts */}
       <div className="App">
-        <ThemeProvider theme={theme}>
-          <div>
+        {/* <ThemeProvider theme={theme}>
+          <div> */}
             {/* Navigation bar */}
             {/* function call */}
-            <Navbar page={page} changePage={changePage}/>
-          </div>
+            {/* <Navbar page={page} changePage={changePage}/>
+          </div> */}
 
           {/* Site Wrap */}
-          <div className={classes.wrapper}>
+          {/* <div className={classes.wrapper}> */}
             {/* Header */}
-            <Header/>
+            {/* <Header/> */}
 
             {/* Testing Testing */}
-            <Typography variant="h4" className={classes.bigSpace} color="primary">
+            {/* <Typography variant="h4" className={classes.bigSpace} color="primary">
               Claire, why are you awake at 4am?
             </Typography>
             <Typography variant="h5" className={classes.littleSpace} color="secondary">
@@ -157,17 +158,17 @@ function App() {
               Will you wear wigs? <em>maybe!</em>
               <br></br>
               When will you wear wigs? <em>X_X</em>
-            </Typography>
-          </div>
+            </Typography> */}
+          {/* </div> */}
 
           {/*renderPage()*/}
 
           {/* Footer */}
-          <div className={classes.bigSpace}>
+          {/* <div className={classes.bigSpace}>
             <Footer/>
-          </div>
+          </div> */}
 
-        </ThemeProvider>
+        {/* </ThemeProvider> */}
       </div>
 
       {/* <Homepage/> */}
@@ -175,7 +176,9 @@ function App() {
       {/* <Matching/> */}
       {/* call fxn to render page */}
         {/* <Jeopardy />  */}
-      <TTT />
+      {/* <TTT /> */}
+
+      <Resources/>
     </ApolloProvider>
 //something like this in app function (inside apollo provider)
   //navbar
