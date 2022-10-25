@@ -1,10 +1,10 @@
 import React from 'react';
 import { ExternalLink } from 'react-external-link';
 import { useQuery } from '@apollo/client';
-import { QUERY_RESOURCES } from '../utils/queries';
+import { QUERY_DISEASES } from '../utils/queries';
 
 const Disease = () => {
-    const { loading, data } = useQuery(QUERY_RESOURCES);
+    const { loading, data } = useQuery(QUERY_DISEASES);
 
     if(loading) {
         return (

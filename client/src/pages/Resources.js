@@ -9,7 +9,7 @@ const Resources = () => {
     <main>
         <div>
               <div>
-                  <div><h1 >Disease of the Day</h1><button type="button" id="disease-btn" >Retrieve A Disease</button></div>
+                  <div><h1 >Disease of the Day</h1></div>
                   <div >
                     <h5>Illnesss in Children:</h5>
                     <p >With so many little ones running around, it is important to stay informed on childhood illnesses!</p>
@@ -18,10 +18,10 @@ const Resources = () => {
                 </div>
                 <div>
                   <div><h1 >Fun Fact of the Day</h1>
-                      <button type="button" id="fact-btn">Retrieve A Fact</button></div>
+                      </div>
                   <div >
                     <h5 >Medical Fun Facts:</h5>
-                    <p>We won't bore you with a long boring story about how the body works...but check out these fun facts!</p>
+                    <p>We won't bore you with a long boring story about how the body works...but check out this fun fact!</p>
                     <div>
                       <Fact />
                       <div>

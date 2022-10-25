@@ -1,9 +1,9 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
-import { QUERY_RESOURCES } from '../utils/queries';
+import { QUERY_FACTS } from '../utils/queries';
 
 const Fact = () => {
-    const { loading, data } = useQuery(QUERY_RESOURCES);
+    const { loading, data } = useQuery(QUERY_FACTS);
 
     if(loading) {
         return (
