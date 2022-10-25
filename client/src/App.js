@@ -1,7 +1,10 @@
 import React from 'react';
 import Navbar from './components/Navbar';
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
+//import all pages
 import Matching from './pages/Matching';
+import Jeopardy from './pages/Jeopardy';
+import TTT from './pages/TTT';
 
 const client = new ApolloClient({
   uri: '/graphql',
@@ -20,7 +23,11 @@ function App() {
     <ApolloProvider client={client}>
         {/* this needs to wrap around everything else so the data can be accessed by all parts */}
         <Navbar />
-        <Matching /> 
+            {/* call fxn to render page */}
+        {/* <Jeopardy />  */}
+        {/* <Matching /> */}
+        <TTT />
+
     </ApolloProvider>
   );
 }
