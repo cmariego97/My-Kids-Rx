@@ -1,4 +1,5 @@
 import React from 'react';
+import Navbar from './components/Navbar';
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 
 // import from MUI
@@ -107,6 +108,8 @@ const styles = makeStyles({
 })
 
 function App() {
+  //define function to render specific page
+  //if page === 'Home' return (<Home />)
   const classes = styles();
 
   return (
@@ -150,8 +153,12 @@ function App() {
       <Homepage/>
 
       <Matching/>
-
     </ApolloProvider>
+//something like this in app function (inside apollo provider)
+  //navbar
+  //call function
+  //footer
+    
   );
 }
 
