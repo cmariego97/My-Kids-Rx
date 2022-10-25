@@ -53,31 +53,148 @@ const TTT = () => {
       //hide or show image
       const hidden = {display:'none'};
       const visible = {display: 'inline'};
+      //render x or o when each square is clicked on depending on whose turn it is
+      const square1 = () => {
+        if (turn === 'X') {
+            setPlayer1('X')
+        }
+        if (turn === 'O') {
+            setPlayer1('O')
+        }
+        setClick1(!click1);
+      }
+      const square2 = () => {
+        if (turn === 'X') {
+            setPlayer2('X')
+        }
+        if (turn === 'O') {
+            setPlayer2('O')
+        }
+        setClick2(!click2);
+      }
+      const square3 = () => {
+        if (turn === 'X') {
+            setPlayer3('X')
+        }
+        if (turn === 'O') {
+            setPlayer3('O')
+        }
+        setClick3(!click3);
+      }
+      const square4 = () => {
+        if (turn === 'X') {
+            setPlayer4('X')
+        }
+        if (turn === 'O') {
+            setPlayer4('O')
+        }
+        setClick4(!click4);
+      }
+      const square5 = () => {
+        if (turn === 'X') {
+            setPlayer5('X')
+        }
+        if (turn === 'O') {
+            setPlayer5('O')
+        }
+        setClick5(!click5);
+      }
+      const square6 = () => {
+        if (turn === 'X') {
+            setPlayer6('X')
+        }
+        if (turn === 'O') {
+            setPlayer6('O')
+        }
+        setClick6(!click6);
+      }
+      const square7 = () => {
+        if (turn === 'X') {
+            setPlayer7('X')
+        }
+        if (turn === 'O') {
+            setPlayer7('O')
+        }
+        setClick7(!click7);
+      }
+      const square8 = () => {
+        if (turn === 'X') {
+            setPlayer8('X')
+        }
+        if (turn === 'O') {
+            setPlayer8('O')
+        }
+        setClick8(!click8);
+      }
+      const square9 = () => {
+        if (turn === 'X') {
+            setPlayer9('X')
+        }
+        if (turn === 'O') {
+            setPlayer9('O')
+        }
+        setClick9(!click9);
+      }
+
+      const chooseWinner = () => {
+        if(
+            (player1 === 'X' && click1 && player2 === 'X' && click2 && player3 === 'X' && click3) ||
+            (player4 === 'X' && click4 && player5 === 'X' && click5 && player6 === 'X' && click6) ||
+            (player7 === 'X' && click7 && player8 === 'X' && click8 && player9 === 'X' && click9) ||
+            (player1 === 'X' && click1 && player4 === 'X' && click4 && player7 === 'X' && click7) ||
+            (player2 === 'X' && click2 && player5 === 'X' && click5 && player8 === 'X' && click8) ||
+            (player3 === 'X' && click3 && player6 === 'X' && click6 && player9 === 'X' && click9) ||
+            (player1 === 'X' && click1 && player5 === 'X' && click5 && player9 === 'X' && click9) ||
+            (player7 === 'X' && click7 && player5 === 'X' && click5 && player3 === 'X' && click3) ||
+            (player1 === 'O' && click1 && player2 === 'O' && click2 && player3 === 'O' && click3) ||
+            (player4 === 'O' && click4 && player5 === 'O' && click5 && player6 === 'O' && click6) ||
+            (player7 === 'O' && click7 && player8 === 'O' && click8 && player9 === 'O' && click9) ||
+            (player1 === 'O' && click1 && player4 === 'O' && click4 && player7 === 'O' && click7) ||
+            (player2 === 'O' && click2 && player5 === 'O' && click5 && player8 === 'O' && click8) ||
+            (player3 === 'O' && click3 && player6 === 'O' && click6 && player9 === 'O' && click9) ||
+            (player1 === 'O' && click1 && player5 === 'O' && click5 && player9 === 'O' && click9) ||
+            (player7 === 'O' && click7 && player5 === 'O' && click5 && player3 === 'O' && click3)
+            )
+            {
+            document.querySelector('#test').textContent = `Game over! The winner is player ${turn}`;
+            setClick1(false);
+            setClick2(false);
+            setClick3(false);
+            setClick4(false);
+            setClick5(false);
+            setClick6(false);
+            setClick7(false);
+            setClick8(false);
+            setClick9(false);
+        }
+      }
 
       return (
         <Box sx={{ flexGrow: 1 }}>
+            {chooseWinner()}
             <h1 style={{textAlign: 'center'}}>Tic Tac Toe</h1>
             <Button variant="outlined" onClick={() => changeTurn()}>Change Player
             </Button>
             <h2>{`It is player ${turn}'s turn`}</h2>
+            <p id={'test'}>Testing</p>
 
             <Grid container spacing={2}>
                 {/* column 1 */}
                 <Grid item xs={4}>
-                    <Item onClick={() => setClick1(!click1)}>
+                    <Item onClick={() => square1()}>
                         <img 
                             alt='game piece' 
                             style={!click1 ? hidden : visible}
                             src={player1 === 'X' ? X : O}
                             ></img>
                     </Item>
-                    <Item onClick={() => setClick2(!click2)}>
+                    <Item onClick={() => square2()}>
                         <img 
                             alt='game piece' src={player2 === 'X' ? X : O}
                             style={!click2 ? hidden : visible}
                             ></img>
                     </Item>
-                    <Item onClick={() => setClick3(!click3)}>
+                    <Item onClick={() => square3()}>
                         <img alt='game piece' src={player3 === 'X' ? X : O}
                         style={!click3 ? hidden : visible}
                         ></img>
@@ -85,17 +202,17 @@ const TTT = () => {
                 </Grid>
                 {/* column 2 */}
                 <Grid item xs={4}>
-                    <Item onClick={() => setClick4(!click4)}>
+                    <Item onClick={() => square4()}>
                         <img alt='game piece' src={player4 === 'X' ? X : O}
                         style={!click4 ? hidden : visible}
                         ></img>
                     </Item>
-                    <Item onClick={() => setClick5(!click5)}>
+                    <Item onClick={() => square5()}>
                         <img alt='game piece' src={player5 === 'X' ? X : O}
                         style={!click5 ? hidden : visible}
                         ></img>
                     </Item>
-                    <Item onClick={() => setClick6(!click6)}>
+                    <Item onClick={() => square6()}>
                         <img alt='game piece' src={player6 === 'X' ? X : O}
                         style={!click6 ? hidden : visible}
                         ></img>
@@ -103,17 +220,17 @@ const TTT = () => {
                 </Grid>
                 {/* column 3 */}
                 <Grid item xs={4}>
-                    <Item onClick={() => setClick7(!click7)}>
+                    <Item onClick={() => square7()}>
                         <img alt='game piece' src={player7 === 'X' ? X : O}
                         style={!click7 ? hidden : visible}
                         ></img>
                     </Item>
-                    <Item onClick={() => setClick8(!click8)}>
+                    <Item onClick={() => square8()}>
                         <img alt='game piece' src={player8 === 'X' ? X : O}
                         style={!click8 ? hidden : visible}
                         ></img>
                     </Item>
-                    <Item onClick={() => setClick9(!click9)}>
+                    <Item onClick={() => square9()}>
                         <img alt='game piece' src={player9 === 'X' ? X : O}
                         style={!click9 ? hidden : visible}
                         ></img>
