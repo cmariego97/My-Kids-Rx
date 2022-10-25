@@ -24,8 +24,8 @@ function App() {
         {/* this needs to wrap around everything else so the data can be accessed by all parts */}
         <Navbar />
             {/* call fxn to render page */}
-        {/* <Jeopardy />  */}
-        <Matching />
+        <Jeopardy /> 
+        {/* <Matching /> */}
         {/* <TTT /> */}
 
     </ApolloProvider>
