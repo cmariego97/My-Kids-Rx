@@ -128,7 +128,7 @@ function App() {
       )
     }
   }
-  //fxn change value of page state variabe
+  //fxn change value of page state variable
   const changePage = (newPage) => setPage(newPage);
 
   return (
