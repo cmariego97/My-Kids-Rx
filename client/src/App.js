@@ -2,6 +2,7 @@ import React from 'react';
 import Navbar from './components/Navbar';
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 import Matching from './pages/Matching';
+import Homepage from './pages/Homepage';
 
 const client = new ApolloClient({
   uri: '/graphql',
@@ -20,6 +21,7 @@ function App() {
     <ApolloProvider client={client}>
         {/* this needs to wrap around everything else so the data can be accessed by all parts */}
         <Navbar />
+        <Homepage />
         <Matching /> 
     </ApolloProvider>
   );
