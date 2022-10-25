@@ -29,9 +29,16 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Navbar() {
+//changing page
+/* <nav style={styles.nav}>
+                <a className="navbar-brand" href="#about" onClick={() => changePage('About')} style={page === 'About' ? styles.selected : styles.default}>About</a>
+                <a className="navbar-brand" href="#work" onClick={() => changePage('Work')} style={page === 'Work' ? styles.selected : styles.default}>Work Samples</a>
+                <a className="navbar-brand" href="#resume" onClick={() => changePage('Resume')} style={page === 'Resume' ? styles.selected : styles.default}>Resume</a>
+                <a className="navbar-brand" href="#contact" onClick={() => changePage('Contact')} style={page === 'Contact' ? styles.selected : styles.default}>Contact</a>
+        </nav> */
+
+function Navbar({ page, changePage}) {
   const classes = useStyles();
-  const [page, changePage] = useState('Home');
   //to change page to about --> onClick={() => changePage('About')}
 
   return (
@@ -43,19 +50,8 @@ function Navbar() {
           Navbar
         </Typography>
           <div className={classes.navlinks}>
-            {/* <Link className={classes.link}>
-              Home
-            </Link>
-            <Link className={classes.link}>
-              About
-            </Link>
-            <Link className={classes.link}>
-              Contact
-            </Link>
-            <Link className={classes.link}>
-              FAQ
-            </Link> */}
-            <p> Home</p>
+            <p onClick={() => changePage('Home')}> Home</p>
+            <p onClick={() => changePage('Games')}> Games </p>
           </div>
       </Toolbar>
     </AppBar>

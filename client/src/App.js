@@ -1,5 +1,4 @@
-import React from 'react';
-import Navbar from './components/Navbar';
+import React, {useState} from 'react';
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 
 // import from MUI
@@ -113,6 +112,22 @@ function App() {
   //define function to render specific page
   //if page === 'Home' return (<Home />)
   const classes = styles();
+  const [page, setPage] = useState('Home')
+  //do this for all pages
+  const renderPage = () => {
+    if (page === 'Home') {
+      return(
+        <Homepage />
+      )
+    }
+    if (page === 'Matching') {
+      return (
+        <Matching />
+      )
+    }
+  }
+  //fxn change value of page state variabe
+  const changePage = (newPage) => setPage(newPage);
 
   return (
     <ApolloProvider client={client}>
@@ -121,7 +136,8 @@ function App() {
         <ThemeProvider theme={theme}>
           <div>
             {/* Navigation bar */}
-            <Navbar/>
+            {/* function call */}
+            <Navbar page={page} changePage={changePage}/>
           </div>
 
           {/* Site Wrap */}
@@ -144,6 +160,8 @@ function App() {
             </Typography>
           </div>
 
+          {/*renderPage()*/}
+
           {/* Footer */}
           <div className={classes.bigSpace}>
             <Footer/>
@@ -152,12 +170,11 @@ function App() {
         </ThemeProvider>
       </div>
 
-      <Homepage/>
+      {/* <Homepage/> */}
 
-      <Matching/>
+      {/* <Matching/> */}
       {/* call fxn to render page */}
         {/* <Jeopardy />  */}
-        {/* <Matching /> */}
       <TTT />
     </ApolloProvider>
 //something like this in app function (inside apollo provider)

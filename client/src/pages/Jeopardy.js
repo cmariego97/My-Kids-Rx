@@ -21,6 +21,7 @@ const Jeopardy = () => {
 
     return(
     <Box sx={{ flexGrow: 1 }}>
+    <h1 style={{textAlign: 'center'}}>Jeopardy</h1>
       <Grid container spacing={2}>
       {data.map((category) => (
         <Grid item xs={3}>

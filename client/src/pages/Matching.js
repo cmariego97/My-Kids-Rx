@@ -22,7 +22,8 @@ const Matching = () => {
     padding: theme.spacing(1),
     textAlign: 'center',
     color: theme.palette.text.secondary,
-    height: '250px'
+    height: '250px',
+    border: '1px solid black'
   }));
     //control visibility of individual cards
    const [visable1,changeVisable1] = useState('invisible')
@@ -79,6 +80,7 @@ const Matching = () => {
     return (
       <Box sx={{ flexGrow: 1 }}>
          {matches()}
+        <h1 style={{textAlign: 'center'}}>Matching Game</h1>
         <Grid container spacing={2}>
           {/* card 1 */}
           <Grid item xs={4}>
