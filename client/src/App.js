@@ -9,7 +9,8 @@ import { Typography } from '@material-ui/core';
 // import pages
 import Homepage from './pages/Homepage';
 import Matching from './pages/Matching';
-import Homepage from './pages/Homepage';
+import Jeopardy from './pages/Jeopardy';
+import TTT from './pages/TTT';
 
 // import components
 import Navbar from './components/Navbar'
@@ -154,6 +155,10 @@ function App() {
       <Homepage/>
 
       <Matching/>
+      {/* call fxn to render page */}
+        {/* <Jeopardy />  */}
+        {/* <Matching /> */}
+      <TTT />
     </ApolloProvider>
 //something like this in app function (inside apollo provider)
   //navbar
