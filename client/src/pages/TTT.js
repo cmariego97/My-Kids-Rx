@@ -33,22 +33,31 @@ const TTT = () => {
         <Box sx={{ flexGrow: 1 }}>
             <h1 style={{textAlign: 'center'}}>Tic Tac Toe</h1>
             <Grid container spacing={2}>
+                {/* column 1 */}
                 <Grid item xs={4}>
                     <Item>
-                        <img alt='x' src={player1 === 'X' ? X : O}></img>
+                        <img alt='game piece' src={player1 === 'X' ? X : O}></img>
                     </Item>
                     <Item>
-                        <img alt='x' src={player2 === 'X' ? X : O}></img>
+                        <img alt='game piece' src={player2 === 'X' ? X : O}></img>
                     </Item>
                     <Item>
-                        <img alt='x' src={player3 === 'X' ? X : O}></img>
+                        <img alt='game piece' src={player3 === 'X' ? X : O}></img>
                     </Item>
                 </Grid>
+                {/* column 2 */}
                 <Grid item xs={4}>
-                    <Item></Item>
-                    <Item></Item>
-                    <Item></Item>
+                    <Item>
+                        <img alt='game piece' src={player4 === 'X' ? X : O}></img>
+                    </Item>
+                    <Item>
+                        <img alt='game piece' src={player5 === 'X' ? X : O}></img>
+                    </Item>
+                    <Item>
+                        <img alt='game piece' src={player6 === 'X' ? X : O}></img>
+                    </Item>
                 </Grid>
+                {/* column 3 */}
                 <Grid item xs={4}>
                     <Item></Item>
                     <Item></Item>

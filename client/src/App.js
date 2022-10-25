@@ -25,8 +25,8 @@ function App() {
         <Navbar />
             {/* call fxn to render page */}
         {/* <Jeopardy />  */}
-        {/* <Matching /> */}
-        <TTT />
+        <Matching />
+        {/* <TTT /> */}
 
     </ApolloProvider>
   );
