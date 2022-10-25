@@ -22,6 +22,7 @@ const Matching = () => {
     padding: theme.spacing(1),
     textAlign: 'center',
     color: theme.palette.text.secondary,
+    height: '250px'
   }));
     //control visibility of individual cards
    const [visable1,changeVisable1] = useState('invisible')
@@ -40,8 +41,8 @@ const Matching = () => {
    const cardBack = {display:'none'};
    const cardFront = {display:'block'};
    const unmatched = {display:'none'};
-   const matched = {display:'block'};
-    //TODO: make this a prettier message
+   const matched = {display:'block', color: 'red'};
+   
    const matches = () => {
     if(visable1 === 'matched' && visable2 === 'matched' && visable3 === 'matched' && visable4 === 'matched' && visable5 === 'matched' && visable6 === 'matched' && visable7 === 'matched' && visable8 === 'matched' && visable9 === 'matched' && visable10 === 'matched' && visable11 === 'matched' && visable12 === 'matched') {
       //TODO: make this better than a window popup

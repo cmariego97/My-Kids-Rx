@@ -4,6 +4,7 @@ import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 //import all pages
 import Matching from './pages/Matching';
 import Jeopardy from './pages/Jeopardy';
+import TTT from './pages/TTT';
 
 const client = new ApolloClient({
   uri: '/graphql',
@@ -24,7 +25,9 @@ function App() {
         <Navbar />
             {/* call fxn to render page */}
         {/* <Jeopardy />  */}
-        <Matching />
+        {/* <Matching /> */}
+        <TTT />
+
     </ApolloProvider>
   );
 }
