@@ -16,7 +16,7 @@ import Lungs from '../assets/images/lungs.jpg'
 import Stomach from '../assets/images/stomach.jpg'
 import Toes from '../assets/images/toes.jpg'
 
-const Matching = () => {
+const Matching = ({changeGame}) => {
   const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
     ...theme.typography.body2,
@@ -106,6 +106,8 @@ const Matching = () => {
       <Box sx={{ flexGrow: 1 }}>
          {matches()}
         <h1 style={{textAlign: 'center'}}>Matching Game</h1>
+        <Button variant="outlined" onClick={() => changeGame('Home')}>Back to gaming homepage
+            </Button>
         <Button variant="outlined" onClick={() => resetGame()}>Play Again
             </Button>
         <p id={'message'}></p>

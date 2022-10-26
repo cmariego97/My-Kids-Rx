@@ -9,6 +9,17 @@ const Medical = () => {
         variables: { email }
     });
 
+    var titleCase = function(str) {
+        var result = [];
+        var words = str.split(" ");
+        for (var i = 0; i < words.length; i++) {
+          var word = words[i].split("");
+          word[0] = word[0].toUpperCase();
+          result.push(word.join(""));
+        }
+        return result.join(" ");
+      };
+
     if(loading) {
         return (
             <h1>Loading profile...</h1>
@@ -17,17 +28,18 @@ const Medical = () => {
     else {
         console.log(data);
         const info = data.onePatient
+        const index= info.vitals.length-1
+        const fullName = titleCase(`${info.firstName} ${info.middleName} ${info.lastName}`);
         return (
             <div>
-                <h1>Info For {info.firstName} {info.middleName} {info.lastName}</h1>
-                <p>Allergies:{info.allergies}</p>
-                <p>Medical History:{info.medicalHistory}</p>
+                <h1>{`Info For ${fullName}`}</h1>
+                <p>{`Allergies: ${info.allergies}`}</p>
+                <p>{`Medical History: ${info.medicalHistory}`}</p>
                 <p>Vaccines:</p>
                 {info.vaccines.map((vaccine) => 
                 (<li>
 
-                    {vaccine.name} given on 
-                    {vaccine.date}
+                    {`${vaccine.name} given on ${vaccine.date}`}
 
                 </li>)
                 
@@ -35,23 +47,23 @@ const Medical = () => {
 
                <p>Lastest Vitals:</p>
                <li>
-                    Date:{info.vitals[0].date}
+                   {` Date: ${info.vitals[index].date}`}
                 </li>
                 <li>
-                    Height:{info.vitals[0].height}inches
+                   {` Height: ${info.vitals[index].height} inches`}
                 </li>
                 <li>
-                    Weight:{info.vitals[0].weight}pounds
+                   { `Weight: ${info.vitals[index].weight} pounds`}
                 </li>
                 <li>
-                    {`Blood Pressure:${info.vitals[0].systolicBP}/${info.vitals[0].diastolicBP}`}
+                    {`Blood Pressure: ${info.vitals[index].systolicBP}/${info.vitals[index].diastolicBP}`}
                 </li>
                 
                 <li>
-                    Heart Rate:{info.vitals[0].hr} bpm
+                    {`Heart Rate: ${info.vitals[index].hr} bpm`}
                 </li>
                 <li>
-                    SpO2:{info.vitals[0].o2} percent
+                    {`SpO2: ${info.vitals[index].o2} percent`}
                 </li>
             </div>
         )

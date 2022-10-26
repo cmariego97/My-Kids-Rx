@@ -6,24 +6,25 @@ import TTT from './TTT';
 
 const Game = () => {
     const [game, setGame] = useState('Home');
+    const changeGame = (newGame) => setGame(newGame);
     //for each specific game
     if (game === 'Matching') {
             return (
-                <Matching />
+                <Matching changeGame={changeGame} />
             )
         }
     if (game === 'TTT') {
             return (
-                <TTT />
+                <TTT changeGame={changeGame} />
             )
         }
     //if not a specific game then render game homepage
     return (
         <div>
             <h1>Choose a game to play!</h1>
-            <Button variant="outlined" onClick={() => setGame('Matching')}>Matching
+            <Button variant="outlined" onClick={() => changeGame('Matching')}>Matching
             </Button>
-            <Button variant="outlined" onClick={() => setGame('TTT')}>Tic Tac Toe
+            <Button variant="outlined" onClick={() => changeGame('TTT')}>Tic Tac Toe
             </Button>
         </div>
     )
