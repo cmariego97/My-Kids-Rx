@@ -76,7 +76,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function HeaderAppBar() {
+export default function HeaderAppBar({page, changePage}) {
     const classes = useStyles();
 
     return (
@@ -89,7 +89,7 @@ export default function HeaderAppBar() {
                         My Kids-Rx
                         {/* <img src={`${KidsRxLogo}`} className={classes.icon}/> */}
                     </h1>
-                    <NavBurger />
+                    <NavBurger page={page} changePage={changePage}/>
                     {/* <IconButton>
                         <SortIcon className={classes.icon} />
                     </IconButton> */}

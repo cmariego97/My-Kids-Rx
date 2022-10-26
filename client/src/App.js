@@ -193,7 +193,7 @@ function App() {
         {/* <AccountCreate /> */}
 
       <HeaderAppBar page={page} changePage={changePage}/>
-        {renderPage}
+        {renderPage()}
         <Footer />
       </ApolloProvider> 
 //something like this in app function (inside apollo provider)
