@@ -31,3 +31,12 @@ export const ADD_MESSAGE = gql`
         }
   }
   `
+  //delete user
+  export const DEL_USER = gql`
+    mutation ($email: String!) {
+        deleteUser(email: $email){
+        email
+        password
+        }
+    }
+  `

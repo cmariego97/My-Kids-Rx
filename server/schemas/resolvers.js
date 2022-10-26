@@ -32,6 +32,9 @@ const resolvers = {
                 {password},
                 { runValidators: true, new: true}
             )
+        },
+        deleteUser: async(parent, {email}) => {
+            return await User.findOneAndDelete({email})
         }
     }
 }

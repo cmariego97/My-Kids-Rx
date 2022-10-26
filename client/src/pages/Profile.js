@@ -1,7 +1,7 @@
 import React,{useState} from 'react';
 import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_PROFILE } from '../utils/queries';
-import { UPDATE_PASS } from '../utils/mutations';
+import { UPDATE_PASS, DEL_USER } from '../utils/mutations';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
@@ -31,6 +31,7 @@ const Profile = () => {
     });
     //for mutation
     const [updatePass, {error}] = useMutation(UPDATE_PASS);
+    const [delUser, {errorDel}] = useMutation(DEL_USER);
 
     var titleCase = function(str) {
         var result = [];
@@ -105,6 +106,22 @@ const Profile = () => {
             document.querySelector('#conf-delete').textContent = '';
             setVisible(false);
         }
+        const confDelete = async(e) => {
+            e.preventDefault();
+            try {
+                const {data} = await delUser({
+                    variables: {email: user.email}
+                })
+                console.log(data);
+                document.querySelector('#user-del').textContent = 'User account deleted!'
+                //TODO: logout of acct
+            }
+            catch(err) {
+                console.error(err);
+                document.querySelector('#user-del').textContent = 'Error deleting account'
+            }
+        }
+
         return (
             <div>
                 <h1>{`Hello, ${fullName}`}</h1>
@@ -116,8 +133,9 @@ const Profile = () => {
             <Button variant="outlined" onClick={initDelete}>Delete Account
             </Button>
             <p id='conf-delete'></p>
-            <button style={visible ? show : hidden}>Yes, delete account</button>
+            <button style={visible ? show : hidden} onClick={confDelete}>Yes, delete account</button>
             <button style={visible ? show : hidden} onClick={cxDelete}>Cancel</button>
+            <p id='user-del'></p>
             <Modal
                 open={open}
                 onClose={handleClose}
