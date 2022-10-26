@@ -19,12 +19,8 @@ import Appointment from './pages/Appointment';
 import Messaging from './pages/Messaging';
 
 // import components
-// import Navbar from './components/Navbar'
-import Header from './components/Header'; 
-import Footer from './components/Footer'; 
-
-//temp components
 import HeaderAppBar from './components/HeaderAppBar';
+import Footer from './components/Footer'; 
 
 // Apollo Client
 const client = new ApolloClient({
@@ -123,24 +119,63 @@ function App() {
   //if page === 'Home' return (<Home />)
   const classes = styles();
   const [page, setPage] = useState('Home')
-  //do this for all pages
+  //TODO: eventually need to separate into pages that can be accessed vs logged in vs not logged in
   const renderPage = () => {
-    if (page === 'Home') {
+    //can be accessed when logged in
+    if (page === 'Profile') {
       return(
-        <Homepage />
-      )
-    }
-    if (page === 'Matching') {
-      return (
         <Profile />
       )
     }
-
-    // Other future pages go here to check if rendering them
-
-    else {
+    if (page === 'Appt') {
+      return (
+        <Appointment />
+      )
+    }
+    if (page === 'Game') {
+      return (
+        <Game />
+      )
+    }
+    if (page === 'Imaging') {
+      return (
+        <Imaging />
+      )
+    }
+    if (page === 'Lab') {
+      return (
+        <Lab />
+      )
+    }
+    if (page === 'Medical') {
+      return (
+        <Medical />
+      )
+    }
+    if (page === 'Messaging') {
+      return (
+        <Messaging />
+      )
+    }
+    if (page === 'Resources') {
+      return (
+        <Resources />
+      )
+    }
+    //when not logged in
+    if (page === 'Home') {
       return (
         <Homepage />
+      )
+    }
+    if (page === 'Login') {
+      return (
+        <AccountLoginPatient />
+      )
+    }
+    if (page === 'Create') {
+      return (
+        <AccountCreate />
       )
     }
   }
@@ -152,25 +187,14 @@ function App() {
       {/* this needs to wrap around everything else so the data can be accessed by all parts */}
 
       {/* Homepage is complete with its own NavBar = "NavBurger" */}
-      {/* <Homepage/> */}
 
       {/* NavBurger Content - render pages to view for now */}
-        <AccountLoginPatient />
+        {/* <AccountLoginPatient /> */}
         {/* <AccountCreate /> */}
 
-      {/* Navigation bar */}
-            {/* function call */}
-            {/* <Navbar page={page} changePage={changePage}/> */}
-
-        
-        {/* call fxn to render page */}
-
-        {/* <Profile /> */}
-        {/* <Medical/> */}
-        {/* <Lab/> */}
-        {/* <Imaging/> */}
-        {/* <Appointment/>*/}
-        <Messaging />
+      <HeaderAppBar page={page} changePage={changePage}/>
+        {renderPage}
+        <Footer />
       </ApolloProvider> 
 //something like this in app function (inside apollo provider)
   //navbar
