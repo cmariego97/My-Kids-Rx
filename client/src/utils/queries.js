@@ -91,7 +91,7 @@ export const QUERY_IMAGING = gql`
     }
 `
 
-//for appts/notes
+//for appts
 export const QUERY_APPTS = gql`
     query Appointments($email: String!) {
         onePatient(email: $email) {
@@ -100,6 +100,15 @@ export const QUERY_APPTS = gql`
             time
             reason
         }
+       
+        }
+    }
+`
+//for notes
+export const QUERY_NOTES = gql`
+    query Appointments($email: String!) {
+        onePatient(email: $email) {
+            
         notes {
             date
             notes
