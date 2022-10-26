@@ -21,10 +21,10 @@ const FadeMenu = ({page, changePage})  => {
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
     };
-    // const handleClose = (newPage) => {
-    //     setAnchorEl(null);
-    //     changePage(newPage);
-    // };
+    const handleClose = (newPage) => {
+        setAnchorEl(null);
+        changePage(newPage);
+    };
 
     return (
         <div>
@@ -44,24 +44,23 @@ const FadeMenu = ({page, changePage})  => {
             }}
             anchorEl={anchorEl}
             open={open}
-            // onClose={handleClose}
             TransitionComponent={Fade}
         >
-            <MenuItem onClick={() => changePage('Home')}>Home</MenuItem>
+            <MenuItem onClick={() => handleClose('Home')}>Home</MenuItem>
             <hr></hr>
-            {/* <MenuItem onClick={handleClose('Create')}>Create Account</MenuItem>
-            <MenuItem onClick={handleClose('Login')}>Patient Login</MenuItem> */}
+            <MenuItem onClick={() => handleClose('Create')}>Create Account</MenuItem>
+            <MenuItem onClick={() => handleClose('Login')}>Patient Login</MenuItem>
             <hr></hr>
-            <MenuItem onClick={() => changePage('Profile')}>My Profile</MenuItem>
-            <MenuItem onClick={() => changePage('Medical')}>Medical Info</MenuItem>
+            <MenuItem onClick={() => handleClose('Profile')}>My Profile</MenuItem>
+            <MenuItem onClick={() => handleClose('Medical')}>Medical Info</MenuItem>
             <hr></hr>
-            {/* <MenuItem onClick={handleClose('Appt')}>Appointments</MenuItem>
-            <MenuItem onClick={handleClose('Imaging')}>Imaging Results</MenuItem>
-            <MenuItem onClick={handleClose('Lab')}>Lab Results</MenuItem>
+            <MenuItem onClick={() => handleClose('Appt')}>Appointments</MenuItem>
+            <MenuItem onClick={() => handleClose('Imaging')}>Imaging Results</MenuItem>
+            <MenuItem onClick={() => handleClose('Lab')}>Lab Results</MenuItem>
             <hr></hr>
-            <MenuItem onClick={handleClose('Game')}>Play Games</MenuItem>
-            <MenuItem onClick={handleClose('Resources')}>Resources</MenuItem>
-            <MenuItem onClick={handleClose('Messaging')}>Messaging</MenuItem> */}
+            <MenuItem onClick={() => handleClose('Game')}>Play Games</MenuItem>
+            <MenuItem onClick={() => handleClose('Resources')}>Resources</MenuItem>
+            <MenuItem onClick={() => handleClose('Messaging')}>Messaging</MenuItem>
         </Menu>
         </div>
     );
