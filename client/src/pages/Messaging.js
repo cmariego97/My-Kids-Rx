@@ -12,8 +12,8 @@ import {useQuery} from '@apollo/client';
 import { QUERY_MESSAGES } from '../utils/queries'
 //mutation
 import { useMutation } from '@apollo/client';
-import { ADD_MESSAGE } from '@apollo/client';
-
+import { ADD_MESSAGE } from '../utils/mutations';
+//TODO: have messages update after sending message
 const Messaging = () => {
     const email = 'mgreen@test.com';
     //for query
@@ -21,6 +21,7 @@ const Messaging = () => {
         variables: { email }
     });
     var messages;
+    var to;
     const renderMessage = () => {
         if (loading) {
             return (
@@ -32,6 +33,7 @@ const Messaging = () => {
         else {
             console.log(data)
             messages = data.onePatient.messages;
+            to = messages[0].to
             return (
                 <Typography variant="body2" color="text.secondary">
                     {messages.map((message)=> (
@@ -50,18 +52,21 @@ const Messaging = () => {
     const date = moment().format('YYYY-DD-MM');
     const time = moment().format('mm:ss:SS A');
     const [content, setContent] = useState('');
-    const to = messages[0].to
 
     const [addMessage, {error}] = useMutation(ADD_MESSAGE);
-    const handleFormSubmmit = async(e) => {
+    const handleFormSubmit = async(e) => {
         e.preventDefault();
         try {
             const { data } = await addMessage({
                 variables: {email, to, date, time, content}
             })
+            console.log(data);
+            setContent('');
+            document.querySelector('#conf-message').textContent = `Message sent to ${to}`
         }
         catch (err) {
             console.error(err);
+            document.querySelector('#conf-message').textContent = `Message unable to be sent to ${to}`
         }
     }
 
@@ -92,7 +97,7 @@ const Messaging = () => {
                 <Autocomplete
                     disablePortal
                     id="combo-box-demo"
-                    options={{label: to}}
+                    options={[{label: to}]}
                     sx={{ width: 300 }}
                     renderInput={(params) => <TextField {...params} label="To" />}
                     />
@@ -108,8 +113,9 @@ const Messaging = () => {
                 </Typography>
             </CardContent>
             <CardActions>
-                <Button variant="outlined">Outlined</Button>
+                <Button variant="outlined" onClick={handleFormSubmit}>Send</Button>
             </CardActions>
+            <p id="conf-message"></p>
         </Card>
     </div>
     )
