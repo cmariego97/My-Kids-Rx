@@ -9,7 +9,7 @@ import Button from '@mui/material/Button';
 import X from '../assets/images/x.png';
 import O from '../assets/images/o.png';
 
-const TTT = () => {
+const TTT = ({changeGame}) => {
     const Item = styled(Paper)(({ theme }) => ({
         backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
         ...theme.typography.body2,
@@ -182,6 +182,8 @@ const TTT = () => {
         <Box sx={{ flexGrow: 1 }}>
             {chooseWinner()}
             <h1 style={{textAlign: 'center'}}>Tic Tac Toe</h1>
+            <Button variant="outlined" onClick={() => changeGame('Home')}>Back to gaming homepage
+            </Button>
             <Button variant="outlined" onClick={() => changeTurn()}>Change Player
             </Button>
             <h2>{`It is player ${turn}'s turn`}</h2>
