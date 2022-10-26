@@ -182,15 +182,15 @@ function App() {
         {/* </ThemeProvider> */}
       </div>
 
-      {/* <Homepage/> */}
-      {/* call fxn to render page */}
+        <Homepage/>
+        {/* call fxn to render page */}
 
-      {/* <Profile /> */}
-      {/* <Medical/> */}
-      {/* <Lab/> */}
-      {/* <Imaging/> */}
-      <Appointment/>
-    </ApolloProvider>
+        {/* <Profile /> */}
+        {/* <Medical/> */}
+        {/* <Lab/> */}
+        {/* <Imaging/> */}
+        {/* <Appointment/>*/}
+      </ApolloProvider> 
 //something like this in app function (inside apollo provider)
   //navbar
   //call function

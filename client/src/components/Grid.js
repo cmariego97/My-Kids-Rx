@@ -12,12 +12,13 @@ const styles = makeStyles({
     },
     item: {
         paddingTop: "1rem"
-    }
+    },
 })
 
 function Grid(props) {
     const {icon, title, btnTitle} = props;
     const classes = styles();
+    
     return (
         <div className={classes.wrapper}>
             <div className={classes.item}>
