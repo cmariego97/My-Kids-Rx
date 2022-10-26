@@ -76,26 +76,35 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function HeaderAppBar() {
+const HeaderAppBar = (props) => {
     const classes = useStyles();
-
-    return (
-        <ThemeProvider theme={theme}>
-            <div className={classes.root}>
-                <CssBaseline />
-                <AppBar className={classes.appbar} elevation={0}>
-                <Toolbar className={classes.appbarWrapper}>
-                    <h1 className={classes.appbarTitle}>
-                        My Kids-Rx
-                        {/* <img src={`${KidsRxLogo}`} className={classes.icon}/> */}
-                    </h1>
-                    <NavBurger />
-                    {/* <IconButton>
-                        <SortIcon className={classes.icon} />
-                    </IconButton> */}
-                </Toolbar>
-                </AppBar>
-            </div>
-        </ThemeProvider>
-    )
+    if (!props.changePage) {
+        return (
+            <h1></h1>
+        )
+    }
+    else {
+        console.log(props);
+        return (
+            <ThemeProvider theme={theme}>
+                <div className={classes.root}>
+                    <CssBaseline />
+                    <AppBar className={classes.appbar} elevation={0}>
+                    <Toolbar className={classes.appbarWrapper}>
+                        <h1 className={classes.appbarTitle}>
+                            My Kids-Rx
+                            {/* <img src={`${KidsRxLogo}`} className={classes.icon}/> */}
+                        </h1>
+                        <NavBurger page={props.page} changePage={props.changePage}/>
+                        {/* <IconButton>
+                            <SortIcon className={classes.icon} />
+                        </IconButton> */}
+                    </Toolbar>
+                    </AppBar>
+                </div>
+            </ThemeProvider>
+        )
+    }
 }
+
+export default HeaderAppBar;

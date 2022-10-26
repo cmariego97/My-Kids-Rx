@@ -15,9 +15,6 @@ export const ADD_USER = gql`
 export const ADD_MESSAGE = gql`
     mutation ($email: String!, $to: String!, $date: String!, $time: String!, $content: String!) {
         addMessage (email: $email, to: $to, date: $date, time: $time, content: $content) {
-        firstName
-        middleName
-        lastName
         messages {
             to
             content

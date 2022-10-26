@@ -14,15 +14,16 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function FadeMenu() {
+const FadeMenu = ({page, changePage})  => {
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
     };
-    const handleClose = () => {
+    const handleClose = (newPage) => {
         setAnchorEl(null);
+        changePage(newPage);
     };
 
     return (
@@ -43,21 +44,26 @@ export default function FadeMenu() {
             }}
             anchorEl={anchorEl}
             open={open}
-            onClose={handleClose}
             TransitionComponent={Fade}
         >
-            <MenuItem onClick={handleClose}>Home</MenuItem>
-            <MenuItem onClick={handleClose}>Our Services</MenuItem>
-            <MenuItem onClick={handleClose}>About Us</MenuItem>
-            <MenuItem onClick={handleClose}>Contact Us</MenuItem>
+            <MenuItem onClick={() => handleClose('Home')}>Home</MenuItem>
             <hr></hr>
-            <MenuItem onClick={handleClose}>Create Account</MenuItem>
-            <MenuItem onClick={handleClose}>Staff Login</MenuItem>
-            <MenuItem onClick={handleClose}>Patient Login</MenuItem>
+            <MenuItem onClick={() => handleClose('Create')}>Create Account</MenuItem>
+            <MenuItem onClick={() => handleClose('Login')}>Patient Login</MenuItem>
             <hr></hr>
-            <MenuItem onClick={handleClose}>My Profile</MenuItem>
-            <MenuItem onClick={handleClose}>Logout</MenuItem>
+            <MenuItem onClick={() => handleClose('Profile')}>My Profile</MenuItem>
+            <MenuItem onClick={() => handleClose('Medical')}>Medical Info</MenuItem>
+            <hr></hr>
+            <MenuItem onClick={() => handleClose('Appt')}>Appointments</MenuItem>
+            <MenuItem onClick={() => handleClose('Imaging')}>Imaging Results</MenuItem>
+            <MenuItem onClick={() => handleClose('Lab')}>Lab Results</MenuItem>
+            <hr></hr>
+            <MenuItem onClick={() => handleClose('Game')}>Play Games</MenuItem>
+            <MenuItem onClick={() => handleClose('Resources')}>Resources</MenuItem>
+            <MenuItem onClick={() => handleClose('Messaging')}>Messaging</MenuItem>
         </Menu>
         </div>
     );
 }
+
+export default FadeMenu;
