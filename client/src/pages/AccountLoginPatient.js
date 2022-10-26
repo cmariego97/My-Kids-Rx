@@ -2,7 +2,12 @@ import React from 'react'
 
 // import MUI styles
 import { createTheme, ThemeProvider, makeStyles } from '@material-ui/core/styles';
-import {CssBaseline, AppBar, Toolbar, Typography } from '@material-ui/core';
+import { CssBaseline, Typography, Link, Button } from '@material-ui/core';
+import { styled } from '@mui/material/styles';
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
 
 //import images
 import background from '../assets/images/site-design-images/plain-animal-bg.svg';
@@ -10,9 +15,6 @@ import HeartPtLogin from '../assets/images/site-design-images/HeartPtLogin.gif';
 
 //import components
 import HeaderAppBar from '../components/HeaderAppBar';
-
-//import FontAwesome Icons
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 /* website theme palette hex codes:
     • light shades - snowdrift: #FAFBF9
@@ -37,31 +39,31 @@ const theme = createTheme({
   palette: {
       primary: {
       // Sunglo
-          main: "#de7171",
+        main: "#de7171",
       },
       secondary: {
       // sandrift
-          main: "#a68674",
+        main: "#a68674",
       },
       error: {
       // pomegranate
-          main: "#f44336",
+        main: "#f44336",
       },
       warning: {
       // carrot-orange
-          main: "#f58c22"
+        main: "#f58c22"
       },
       info: {
       // fiord
-          main: "#3f4868"
+        main: "#3f4868"
       },
       success: {
       // asparagus
-          main: "#67a35b"
+        main: "#67a35b"
       },
       neutral: {
       // gull gray
-          main: "#9CA6B5"
+        main: "#9CA6B5"
       }
   },
   typography: {
@@ -88,25 +90,57 @@ const useStyles = makeStyles((theme) => ({
     backgroundSize: 'cover',
   },
   wrapper: {
-    width: "65%",
-    margin: "auto",
-    padding: "1rem",
+    margin: "0 auto",
     minHeight: "70vh",
+    maxWidth: "70%",
     display: "flex",
-    flexDirection: "row",
-    flexWrap: "wrap",
-    justifyContent: "evenly",
+    flexDirection: "column",
+    justifyContent: "space-evenly",
     alignItems: "center",
-    textAlign: "center",
+    alignSelf: "center",
     borderRadius: "24px",
     boxShadow: "0px 1px 3px rgba(44, 42, 72, 0.9)",
     backgroundColor: "#f4f6fc" 
     // add media query @780px
   },
+  container: {
+    margin: "100px"
+  },
+  containerImage: {
+    margin: "4px",
+  },
+  containerLogin: {
+    margin: "4px",
+    padding: "4px",
+    width: "50%",
+    justifyContent: "center",
+    alignItems: "center",
+  }
 }))
+
+const CssTextField = styled(TextField)({
+  '& label.Mui-focused': {
+    color: '#de7171',
+  },
+  '& .MuiInput-underline:after': {
+    borderBottomColor: 'green',
+  },
+  '& .MuiOutlinedInput-root': {
+    '& fieldset': {
+      borderColor: '#a68674',
+    },
+    '&:hover fieldset': {
+      borderColor: '#f58c22',
+    },
+    '&.Mui-focused fieldset': {
+      borderColor: '#de7171',
+    },
+  },
+});
 
 function AccountLoginPatient() {
   const classes = useStyles();
+  const btnstyle={margin:'8px 0'}
 
   return (
     <ThemeProvider theme={theme}>
@@ -114,44 +148,59 @@ function AccountLoginPatient() {
         <CssBaseline />
         <HeaderAppBar />
 
-        <div className={classes.wrapper} class="login-content-container relative flex flex-wrap flex-row justify-evenly items-center rounded-2xl m-5 p-3">
-          {/* <!-- left-side: image --> */}
-          <div class="left-image m-1 w-1/4">
-            <img src={`${HeartPtLogin}`} />
-          </div>
-          {/* <!-- right-side: login --> */}
-          <div class="right-login m-1 w-1/2">
-            <div class="form-body m-1">
-              <form action="submit" id="login-form">
-                <div class="form-group">
-                  <label>E-mail:</label>
-                  <input
-                    type="email"
-                    class="form-control"
-                    id="recipient-name"
+        <div className={classes.wrapper}>
+          <div className={classes.container}>
+            {/* <!-- left-side: image --> */}
+            <div className={classes.containerImage}>
+              <img src={`${HeartPtLogin}`} />
+            </div>
+
+            {/* <!-- right-side: login --> */}
+            <div className={classes.containerLogin}>
+              <Box component="form" sx={{'& .MuiTextField-root': { m: 1, width: '25ch' },}} noValidate autoComplete="off" >
+                <div>
+                  <CssTextField
+                    fullWidth
+                    required
+                    id="recipient-user"
+                    label="E-mail or Username"
                     placeholder="♫꒰･‿･๑꒱"
+                    margin="normal"
+                    helperText="e-mail required"
+                  />
+                  <CssTextField
+                    fullWidth
+                    required
+                    id="recipient-password"
+                    label="Password"
+                    placeholder="ᕙ(‾̀◡‾́)ᕗ"
+                    margin="normal"
+                    helperText="password required"
                   />
                 </div>
-                <div class="form-group">
-                  <label>Password:</label>
-                  <input type="password" class="form-control" id="recipient-pass" placeholder="ᕙ(‾̀◡‾́)ᕗ"/>
-                </div>
-              </form>
+
+                <FormControlLabel control={<Checkbox name="checkedB" color="primary"/>} label="Remember me"/>
+
+                <Button type='submit' color='primary' variant="contained" style={btnstyle} fullWidth>
+                  Sign in
+                </Button>
+
+                <Typography >
+                  <Link href="#" >
+                    Forgot password?
+                  </Link>
+                </Typography>
+                <Typography> 
+                  Don't have an Account? 
+                  <Link href="#" >
+                    Sign Up 
+                  </Link>
+                </Typography>
+
+              </Box>
             </div>
-            <div class="btn-container flex justify-evenly">
-              <button type="button" id="login-btn" class="btn m-2 px-10">
-                Login
-              </button>
-              <button type="button" id="create-accnt-btn" class="btn m-2 px-10">
-                <a href="/createacc">Create Account</a>
-              </button>
-            </div>
-            {/* <!-- displays message from JS --> */}
-            <p id="err-message"></p>
           </div>
         </div>
-
-        
       </div>
     </ThemeProvider>
   )
