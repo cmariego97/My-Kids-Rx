@@ -1,15 +1,22 @@
 import React, { useEffect, useState } from 'react';
-// import MUI styles
 
+// import MUI styles
 import { makeStyles } from '@material-ui/core/styles';
-import { AppBar, IconButton, Toolbar, Collapse } from '@material-ui/core';
+import { AppBar, IconButton, Toolbar, Collapse, Typography } from '@material-ui/core';
+
+// import components
+import NavBurger from './NavBurger';
 
 // import icons
-import SortIcon from '@material-ui/icons/Sort';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 // import react scroll
 import { Link as Scroll } from 'react-scroll';
+
+// import images
+import KidsRxLogo from '../assets/images/site-design-images/kidsrx-logo.svg'
+import { transform } from 'lodash';
+import { fontWeight, textTransform } from '@mui/system';
 
 {/* website theme palette hex codes:
     • light shades - snowdrift: #FAFBF9
@@ -42,26 +49,54 @@ const useStyles = makeStyles((theme) => ({
     appbarWrapper: {
         width: '80%',
         margin: '0 auto',
+        justifyContent: 'between',
     },
     appbarTitle: {
+        color: '#3F4868',
         flexGrow: '1',
     },
     icon: {
         color: '#DE7171',
         fontSize: '2rem',
     },
-    colorText: {
-        color: '#DE7171',
-    },
     container: {
         textAlign: 'center',
     },
-    title: {
+    containerInfo: {
+        display: 'flex',
+        flexDirection: 'row',
+        marginTop: '5rem',
+        marginBottom: '5rem',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    textWelcome: {
+        color: '#DE7171',
+        FontFamily: ['Josefin Sans', 'sans-serif'],
+        textTransform: 'uppercase',
+        textShadow: '2px 2px 8px #9CA6B5',
+    },
+    textTitle: {
+        marginTop: '2rem',
+        marginBottom: '5rem',
         color: '#3F4868',
-        fontSize: '4.5rem',
+        fontSize: '20rem',
+        fontFamily: ['Atma', 'cursive',],
+        fontWeight: '700',
+        textShadow: '0 0 5px #FF0000, 0 0 8px #0000FF',
+    },
+    textInfo: {
+        paddingLeft: '2rem',
+        paddingRight: '2rem',
+        color: '#B5765C',
+        FontFamily: ['Josefin Sans', 'sans-serif'],
+        fontSize: '1.8rem',
+        fontWeight: '500',
+        textShadow: '1px 1px 5px #9CA6B5',
+        lineHeight: '1.5',
     },
     goDown: {
-        color: '#B5765C',
+        color: '#a68674',
         fontSize: '4rem',
     },
 }));
@@ -74,36 +109,62 @@ export default function Header() {
     }, []);
     return (
         <div className={classes.root} id="header">
-        <AppBar className={classes.appbar} elevation={0}>
-            <Toolbar className={classes.appbarWrapper}>
-            <h1 className={classes.appbarTitle}>
-                My<span className={classes.colorText}>Kids-Rx</span>
-            </h1>
-            <IconButton>
-                <SortIcon className={classes.icon} />
-            </IconButton>
-            </Toolbar>
-        </AppBar>
+            <AppBar className={classes.appbar} elevation={0}>
+                <Toolbar className={classes.appbarWrapper}>
+                    <h1 className={classes.appbarTitle}>
+                        My Kids-Rx
+                        {/* <img src={`${KidsRxLogo}`} className={classes.icon}/> */}
+                    </h1>
+                    <NavBurger />
+                    {/* <IconButton>
+                        <SortIcon className={classes.icon} />
+                    </IconButton> */}
+                </Toolbar>
+            </AppBar>
 
-        <Collapse
-            in={checked}
-            {...(checked ? { timeout: 1000 } : {})}
-            collapsedHeight={50}
-        >
-            <div className={classes.container}>
-            <h1 className={classes.title}>
-                Welcome to <br />
-                <span className={classes.colorText}>Kids-Rx</span>
-            </h1>
+            <Collapse
+                in={checked}
+                {...(checked ? { timeout: 1000 } : {})}
+                collapsedHeight={50}
+            >
+                <div className={classes.container}>
+                    <Typography variant="h4" className={classes.textWelcome}>
+                        welcome to
+                    </Typography>
+                    <Typography variant="h1" className={classes.textTitle}>
+                        Kids Rx
+                    </Typography>
 
-            {/* a button that will scroll down to the about us section */}
-            <Scroll to="about-us" smooth={true}>
-                <IconButton>
-                <ExpandMoreIcon className={classes.goDown} />
-                </IconButton>
-            </Scroll>
-            </div>
-        </Collapse>
+                    <div className={classes.containerInfo}>
+                        <Typography variant='h5' className={classes.textInfo}>
+                            phone: (038) 532 - 5237
+                            <br></br>
+                            email: kidsrx@email.com
+                        </Typography>
+                        <Typography variant='h5' className={classes.textInfo}>
+                            Mon-Fri: 8:00 AM - 5:00 PM
+                            <br></br>
+                            Sat-Sun: 10:00 AM - 2:00 PM
+                            <br></br>
+                            Holidays: 11:00 AM - 1:00 PM
+                        </Typography>
+                        <Typography variant='h5' className={classes.textInfo}>
+                            420 Carlisle St.
+                            <br></br>
+                            Seattle, Washington
+                            <br></br>
+                            25408
+                        </Typography>
+                    </div>
+
+                    {/* a button that will scroll down to the about us section */}
+                    <Scroll to="our-services" smooth={true}>
+                        <IconButton>
+                            <ExpandMoreIcon className={classes.goDown} />
+                        </IconButton>
+                    </Scroll>
+                </div>
+            </Collapse>
         </div>
     );
 }
