@@ -22,10 +22,11 @@ const Medical = () => {
                 <h1>Info For {info.firstName} {info.middleName} {info.lastName}</h1>
                 <p>Allergies:{info.allergies}</p>
                 <p>Medical History:{info.medicalHistory}</p>
+                <p>Vaccines:</p>
                 {info.vaccines.map((vaccine) => 
                 (<li>
 
-                    {vaccine.name}
+                    {vaccine.name} given on 
                     {vaccine.date}
 
                 </li>)
@@ -34,25 +35,23 @@ const Medical = () => {
 
                <p>Lastest Vitals:</p>
                <li>
-                    {info.vitals[0].date}
+                    Date:{info.vitals[0].date}
                 </li>
                 <li>
-                    {info.vitals[0].height}
+                    Height:{info.vitals[0].height}inches
                 </li>
                 <li>
-                    {info.vitals[0].weight}
+                    Weight:{info.vitals[0].weight}pounds
                 </li>
                 <li>
-                    {info.vitals[0].systolicBP}
+                    {`Blood Pressure:${info.vitals[0].systolicBP}/${info.vitals[0].diastolicBP}`}
+                </li>
+                
+                <li>
+                    Heart Rate:{info.vitals[0].hr} bpm
                 </li>
                 <li>
-                    {info.vitals[0].diastolicBP}
-                </li>
-                <li>
-                    {info.vitals[0].hr}
-                </li>
-                <li>
-                    {info.vitals[0].o2}
+                    SpO2:{info.vitals[0].o2} percent
                 </li>
             </div>
         )
