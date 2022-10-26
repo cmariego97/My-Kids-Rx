@@ -14,6 +14,7 @@ import Medical from './pages/Medical';
 import Lab from './pages/Lab';
 import Imaging from './pages/Imaging';
 import Appointment from './pages/Appointment';
+import Messaging from './pages/Message';
 
 // import components
 import Navbar from './components/Navbar'
@@ -189,7 +190,8 @@ function App() {
       {/* <Medical/> */}
       {/* <Lab/> */}
       {/* <Imaging/> */}
-      <Appointment/>
+      {/* <Appointment/> */}
+      <Messaging />
     </ApolloProvider>
 //something like this in app function (inside apollo provider)
   //navbar
