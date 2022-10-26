@@ -71,13 +71,13 @@ const theme = createTheme({
       main: "#67a35b" 
     },
     neutral: {
-      // gull gray
+      // gull-gray
       main: "#9CA6B5"
     }
   },
   typography: {
     fontFamily: [
-      'Nunito', 'sans-serif', 'Nunito Sans', 'Atma', 'cursive', 'Londrina Solid'
+      'Nunito', 'sans-serif', 'Nunito Sans', 'Atma', 'cursive', 'Londrina Solid', 'Josefin Sans'
     ],
     h4: {
       fontWeight: 600,
@@ -144,53 +144,22 @@ function App() {
   return (
     <ApolloProvider client={client}>
       {/* this needs to wrap around everything else so the data can be accessed by all parts */}
-      <div className="App">
-        {/* <ThemeProvider theme={theme}>
-          <div> */}
-            {/* Navigation bar */}
+
+      {/* Homepage is complete with its own NavBar = "NavBurger" */}
+      <Homepage/>
+      {/* Navigation bar */}
             {/* function call */}
-            {/* <Navbar page={page} changePage={changePage}/>
-          </div> */}
+            {/* <Navbar page={page} changePage={changePage}/> */}
 
-          {/* Site Wrap */}
-          {/* <div className={classes.wrapper}> */}
-            {/* Header */}
-            {/* <Header/> */}
+        
+        {/* call fxn to render page */}
 
-            {/* Testing Testing */}
-            {/* <Typography variant="h4" className={classes.bigSpace} color="primary">
-              Claire, why are you awake at 4am?
-            </Typography>
-            <Typography variant="h5" className={classes.littleSpace} color="secondary">
-              Do you wear wigs? <em>uh, no, i do not.</em>
-              <br></br>
-              Have you worn wigs? <em>no, i have not.</em>
-              <br></br>
-              Will you wear wigs? <em>maybe!</em>
-              <br></br>
-              When will you wear wigs? <em>X_X</em>
-            </Typography> */}
-          {/* </div> */}
-
-          {/*renderPage()*/}
-
-          {/* Footer */}
-          {/* <div className={classes.bigSpace}>
-            <Footer/>
-          </div> */}
-
-        {/* </ThemeProvider> */}
-      </div>
-
-      {/* <Homepage/> */}
-      {/* call fxn to render page */}
-
-      {/* <Profile /> */}
-      {/* <Medical/> */}
-      {/* <Lab/> */}
-      {/* <Imaging/> */}
-      <Appointment/>
-    </ApolloProvider>
+        {/* <Profile /> */}
+        {/* <Medical/> */}
+        {/* <Lab/> */}
+        {/* <Imaging/> */}
+        {/* <Appointment/>*/}
+      </ApolloProvider> 
 //something like this in app function (inside apollo provider)
   //navbar
   //call function
