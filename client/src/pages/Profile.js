@@ -1,7 +1,7 @@
 import React,{useState} from 'react';
 import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_PROFILE } from '../utils/queries';
-import { UPDATE_PASS } from '../utils/mutations';g
+import { UPDATE_PASS } from '../utils/mutations';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
@@ -25,9 +25,12 @@ const style = {
 const Profile = () => {
     //TODO: when we have login we need to retrieve email from the jwt token instead of this const var
     const email = 'mgreen@test.com';
+    //for query
     const { loading, data } = useQuery(QUERY_PROFILE, {
         variables: { email }
     });
+    //for mutation
+    const [updatePass, {error}] = useMutation(UPDATE_PASS);
 
     var titleCase = function(str) {
         var result = [];
@@ -53,7 +56,6 @@ const Profile = () => {
         )
     }
     else {
-        console.log(data);
         const user = data.oneUser
         const fullName= titleCase(`${user.firstName} ${user.lastName}`);
 
@@ -67,7 +69,7 @@ const Profile = () => {
             }
         }
 
-        const changePassword = (e) => {
+        const changePassword = async (e) => {
             e.preventDefault();
             if (currentPass !== user.password) {
                 document.querySelector('#message-el').textContent = 'Current password incorrect, unable to change password'
@@ -76,7 +78,17 @@ const Profile = () => {
                 document.querySelector('#message-el').textContent = 'Please enter a new password'
             }
             else {
-                document.querySelector('#message-el').textContent = 'Good test'
+                try {
+                    const {data} = await updatePass({
+                        variables: {email: user.email, password: newPass}
+                    })
+                    console.log(data);
+                    document.querySelector('#message-el').textContent = 'Password successfully changed!'
+                }
+                catch(err) {
+                    console.error(err);
+                    document.querySelector('#message-el').textContent = 'Error changing password'
+                }
             }
         } 
         return (
