@@ -11,7 +11,7 @@ const Imaging= () => {
 
     if(loading) {
         return (
-            <h1>Loading Imagin Results...</h1>
+            <h1>Loading Imaging Results...</h1>
         )
     }
     else {
@@ -22,9 +22,9 @@ const Imaging= () => {
                <h1>Imaging Results</h1>
                {imaging.map((result) => (
                 <div>
-                    <li>Date: {result.date}</li>
+                    <li>{`Date: ${result.date}`}</li>
                     <li>{`Test: ${result.type} of ${result.site}`}</li>
-                    <li>Results:{result.report}</li>
+                    <li>{`Results: ${result.report}`}</li>
                 </div>
               
                )

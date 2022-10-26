@@ -19,69 +19,69 @@ const Lab = () => {
         const lab = data.onePatient.labs[0]
         return (
             <div>
-                <p>Showing Results from: {lab.date}</p>
+                <p>{`Showing Results from: ${lab.date}`}</p>
                 <p>Complete Blood Count</p>
                 <li>
-                    RBC:{lab.cbc.rbc} cells/mcL
+                    {`RBC: ${lab.cbc.rbc} cells/mcL`}
                 </li>
                 <li>
-                    WBC:{lab.cbc.wbc} cells/mcL
+                    {`WBC: ${lab.cbc.wbc} cells/mcL`}
                 </li>
                 <li>
-                    Platelets:{lab.cbc.platelets} cells/mcL
+                    {`Platelets: ${lab.cbc.platelets} cells/mcL`}
                 </li>  
                 <li>
-                    Hematocrit:{lab.cbc.hematocrit} percent
+                    {`Hematocrit: ${lab.cbc.hematocrit} percent`}
                 </li>
                 <p>Comprehensive Metabolic Panel</p>
                 <li>
-                    Sodium:{lab.cmp.sodium} mEq/L
+                    {`Sodium: ${lab.cmp.sodium} mEq/L`}
                 </li>
                 <li>
-                    potassium:{lab.cmp.potassium} mEq/L
+                    {`potassium: ${lab.cmp.potassium} mEq/L`}
                 </li>
                 <li>
-                    chloride:{lab.cmp.chloride} mmol/L
+                   {` chloride: ${lab.cmp.chloride} mmol/L`}
                 </li>
                 <li>
-                    calcium:{lab.cmp.calcium} mg/dL
+                    {`calcium: ${lab.cmp.calcium} mg/dL`}
                 </li>
                 <li>
-                    glucose:{lab.cmp.glucose} mg/dL
+                    {`glucose: ${lab.cmp.glucose} mg/dL`}
                 </li>
                 <li>
-                    carbon dioxide:{lab.cmp.carbonDioxide} mmol/L
+                    {`carbon dioxide: ${lab.cmp.carbonDioxide} mmol/L`}
                 </li>
                 <li>
-                    bun:{lab.cmp.bun} mg/dL
+                   {` bun: ${lab.cmp.bun} mg/dL`}
                 </li>
                 <li>
-                    creatinine:{lab.cmp.creatinine} mg/dL
+                    {`creatinine: ${lab.cmp.creatinine} mg/dL`}
                 </li>
                 <li>
-                    alp:{lab.cmp.alp} IU/L
+                    {`alp: ${lab.cmp.alp} IU/L`}
                 </li>
                 <li>
-                    alt:{lab.cmp.alt} IU/L
+                    {`alt: ${lab.cmp.alt} IU/L`}
                 </li>
                 <li>
-                    ast:{lab.cmp.ast} IU/L
+                    {`ast: ${lab.cmp.ast} IU/L`}
                 </li>
                 <li>
-                    bilirubin:{lab.cmp.bilirubin} mg/dL
+                    {`bilirubin: ${lab.cmp.bilirubin} mg/dL`}
                 </li>
                 <li>
-                    albumin:{lab.cmp.albumin} g/dL
+                    {`albumin: ${lab.cmp.albumin} g/dL`}
                 </li>
                 <li>
-                    total protein:{lab.cmp.totalProtein} g/dL
+                    {`total protein: ${lab.cmp.totalProtein} g/dL`}
                 </li>
                 <p>Lipid Panel</p>
-                <li>Total Cholesterol:{lab.lipid.total} mg/dL</li>
-                <li>LDL Cholesterol:{lab.lipid.ldl} mg/dL</li>
-                <li>HDL Cholesterol:{lab.lipid.hdl} mg/dL</li>
-                <li>Triglycerides:{lab.lipid.tg} mg/dL</li>
-                <p>Hemoglobin {lab.hb} g/dL</p>
+                <li>{`Total Cholesterol: ${lab.lipid.total} mg/dL`}</li>
+                <li>{`LDL Cholesterol: ${lab.lipid.ldl} mg/dL`}</li>
+                <li>{`HDL Cholesterol: ${lab.lipid.hdl} mg/dL`}</li>
+                <li>{`Triglycerides: ${lab.lipid.tg} mg/dL`}</li>
+                <p>{`Hemoglobin: ${lab.hb} g/dL`}</p>
                 
                 
             </div>
