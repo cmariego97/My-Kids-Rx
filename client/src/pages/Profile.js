@@ -52,8 +52,10 @@ const Profile = () => {
       const [newPass, setNewPass] = useState('');
       //for deleting profile
       const [visible, setVisible] = useState(false);
+      const [inputVis, setInputVis] = useState(false);
       const show = {display: 'block'};
       const hidden = {display: 'none'};
+      const [delPass, setDelPass] = useState('');
 
     if(loading) {
         return (
@@ -72,6 +74,11 @@ const Profile = () => {
             if (name === 'newPass') {
                 setNewPass(value);
             }
+        }
+
+        const handleDelChange = (e) => {
+            const {value} = e.target;
+            setDelPass(value);
         }
 
         const changePassword = async (e) => {
@@ -108,6 +115,14 @@ const Profile = () => {
         }
         const confDelete = async(e) => {
             e.preventDefault();
+            setInputVis(true);
+        }
+        const delAcct = async(e) => {
+            e.preventDefault();
+            if (delPass !== user.password) {
+                document.querySelector('#user-del').textContent = 'Incorrect password'
+            }
+            else {
             try {
                 const {data} = await delUser({
                     variables: {email: user.email}
@@ -121,6 +136,7 @@ const Profile = () => {
                 document.querySelector('#user-del').textContent = 'Error deleting account'
             }
         }
+        }
 
         return (
             <div>
@@ -133,7 +149,10 @@ const Profile = () => {
             <Button variant="outlined" onClick={initDelete}>Delete Account
             </Button>
             <p id='conf-delete'></p>
-            <button style={visible ? show : hidden} onClick={confDelete}>Yes, delete account</button>
+            <button style={visible ? show : hidden} onClick={confDelete}>Yes</button>
+            <label style={inputVis ? show : hidden}>Enter password:</label>
+            <input value={delPass} onChange={handleDelChange} style={inputVis ? show : hidden} type='password'></input>
+            <button style={inputVis ? show : hidden} onClick={delAcct}>Delete Account</button>
             <button style={visible ? show : hidden} onClick={cxDelete}>Cancel</button>
             <p id='user-del'></p>
             <Modal
