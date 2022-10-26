@@ -25,6 +25,16 @@ const resolvers = {
                 { $addToSet: { messages: { to, date, time, content} }},
                 { runValidators: true , new: true}
                 )
+        },
+        updateUser: async (parent, {email, password}) => {
+            return await User.findOneAndUpdate(
+                {email},
+                {password},
+                { runValidators: true, new: true}
+            )
+        },
+        deleteUser: async(parent, {email}) => {
+            return await User.findOneAndDelete({email})
         }
     }
 }

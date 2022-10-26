@@ -22,3 +22,21 @@ export const ADD_MESSAGE = gql`
         }
     }
   `
+  //update password 
+  export const UPDATE_PASS = gql`
+    mutation ($email: String!, $password: String!) {
+        updateUser(email: $email, password: $password) {
+        email
+        password
+        }
+  }
+  `
+  //delete user
+  export const DEL_USER = gql`
+    mutation ($email: String!) {
+        deleteUser(email: $email){
+        email
+        password
+        }
+    }
+  `

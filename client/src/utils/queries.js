@@ -8,6 +8,7 @@ export const QUERY_PROFILE = gql`
         lastName
         provider
         email
+        password
         }
     }
 `

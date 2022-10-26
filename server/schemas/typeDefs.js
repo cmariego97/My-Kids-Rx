@@ -148,6 +148,10 @@ const typeDefs = gql`
         addUser(firstName: String!, lastName: String!, provider: String!, email: String!, password: String!): User
 
         addMessage(email: String!, to: String!, date: String!, time: String!, content: String!): Patient
+
+        updateUser(email: String!, password: String!): User
+
+        deleteUser(email: String!): User
     }
 `
 module.exports = typeDefs;
