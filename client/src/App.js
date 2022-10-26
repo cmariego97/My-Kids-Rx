@@ -130,7 +130,6 @@ function App() {
     }
     if (page === 'Game') {
       return <Game />
-      
     }
     if (page === 'Imaging') {
       return <Imaging />

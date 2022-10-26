@@ -59,7 +59,6 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        height: '8vh',
         fontFamily: 'Nunito',
     },
     appbar: {
