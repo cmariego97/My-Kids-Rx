@@ -89,16 +89,16 @@ const HeaderAppBar = (props) => {
                 <div className={classes.root}>
                     <CssBaseline />
                     <AppBar className={classes.appbar} elevation={0}>
-                    <Toolbar className={classes.appbarWrapper}>
-                        <h1 className={classes.appbarTitle}>
-                            My Kids-Rx
-                            {/* <img src={`${KidsRxLogo}`} className={classes.icon}/> */}
-                        </h1>
-                        <NavBurger page={props.page} changePage={props.changePage}/>
-                        {/* <IconButton>
-                            <SortIcon className={classes.icon} />
-                        </IconButton> */}
-                    </Toolbar>
+                        <Toolbar className={classes.appbarWrapper}>
+                            <h1 className={classes.appbarTitle}>
+                                My Kids-Rx
+                                {/* <img src={`${KidsRxLogo}`} className={classes.icon}/> */}
+                            </h1>
+                            <NavBurger page={props.page} changePage={props.changePage}/>
+                            {/* <IconButton>
+                                <SortIcon className={classes.icon} />
+                            </IconButton> */}
+                        </Toolbar>
                     </AppBar>
                 </div>
             </ThemeProvider>

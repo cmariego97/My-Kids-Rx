@@ -2,10 +2,12 @@ import React from 'react'
 
 // import MUI styles
 import { createTheme, ThemeProvider, makeStyles } from '@material-ui/core/styles';
-import {CssBaseline} from '@material-ui/core';
+import { CssBaseline, Typography, Link, Button } from '@material-ui/core';
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
 
 //import images
 import background from '../assets/images/site-design-images/plain-animal-bg.svg';
@@ -88,23 +90,24 @@ const useStyles = makeStyles((theme) => ({
     backgroundSize: 'cover',
   },
   wrapper: {
-    width: "65%",
-    margin: "20px",
-    padding: "12px",
+    margin: "0 auto",
     minHeight: "70vh",
+    maxWidth: "70%",
     display: "flex",
-    flexDirection: "row",
-    position: "relative",
+    flexDirection: "column",
     justifyContent: "space-evenly",
     alignItems: "center",
+    alignSelf: "center",
     borderRadius: "24px",
     boxShadow: "0px 1px 3px rgba(44, 42, 72, 0.9)",
     backgroundColor: "#f4f6fc" 
     // add media query @780px
   },
+  container: {
+    margin: "100px"
+  },
   containerImage: {
     margin: "4px",
-    width: "25%",
   },
   containerLogin: {
     margin: "4px",
@@ -137,6 +140,7 @@ const CssTextField = styled(TextField)({
 
 function AccountLoginPatient() {
   const classes = useStyles();
+  const btnstyle={margin:'8px 0'}
 
   return (
     <ThemeProvider theme={theme}>
@@ -145,46 +149,58 @@ function AccountLoginPatient() {
         <HeaderAppBar />
 
         <div className={classes.wrapper}>
-          {/* <!-- left-side: image --> */}
-          <div className={classes.containerImage}>
-            <img src={`${HeartPtLogin}`} />
-          </div>
-          {/* <!-- right-side: login --> */}
-          <div className={classes.containerLogin} class="right-login m-1 w-1/2">
-            <Box component="form" sx={{'& .MuiTextField-root': { m: 1, width: '25ch' },}} noValidate autoComplete="off" >
-              <div>
-                <CssTextField
-                  fullWidth
-                  required
-                  id="recipient-user"
-                  label="E-mail or Username"
-                  placeholder="♫꒰･‿･๑꒱"
-                  margin="normal"
-                  helperText="e-mail required"
-                />
-                <CssTextField
-                  fullWidth
-                  required
-                  id="recipient-password"
-                  label="Password"
-                  placeholder="ᕙ(‾̀◡‾́)ᕗ"
-                  margin="normal"
-                  helperText="password required"
-                />
-              </div>
-            </Box>
-            <div class="btn-container flex justify-evenly">
-              <button type="button" id="login-btn" class="btn m-2 px-10">
-                Login
-              </button>
-              <button type="button" id="create-accnt-btn" class="btn m-2 px-10">
-                <a href="/createacc">Create Account</a>
-              </button>
+          <div className={classes.container}>
+            {/* <!-- left-side: image --> */}
+            <div className={classes.containerImage}>
+              <img src={`${HeartPtLogin}`} />
+            </div>
+
+            {/* <!-- right-side: login --> */}
+            <div className={classes.containerLogin}>
+              <Box component="form" sx={{'& .MuiTextField-root': { m: 1, width: '25ch' },}} noValidate autoComplete="off" >
+                <div>
+                  <CssTextField
+                    fullWidth
+                    required
+                    id="recipient-user"
+                    label="E-mail or Username"
+                    placeholder="♫꒰･‿･๑꒱"
+                    margin="normal"
+                    helperText="e-mail required"
+                  />
+                  <CssTextField
+                    fullWidth
+                    required
+                    id="recipient-password"
+                    label="Password"
+                    placeholder="ᕙ(‾̀◡‾́)ᕗ"
+                    margin="normal"
+                    helperText="password required"
+                  />
+                </div>
+
+                <FormControlLabel control={<Checkbox name="checkedB" color="primary"/>} label="Remember me"/>
+
+                <Button type='submit' color='primary' variant="contained" style={btnstyle} fullWidth>
+                  Sign in
+                </Button>
+
+                <Typography >
+                  <Link href="#" >
+                    Forgot password?
+                  </Link>
+                </Typography>
+                <Typography> 
+                  Don't have an Account? 
+                  <Link href="#" >
+                    Sign Up 
+                  </Link>
+                </Typography>
+
+              </Box>
             </div>
           </div>
         </div>
-
-        
       </div>
     </ThemeProvider>
   )
