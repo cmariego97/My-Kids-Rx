@@ -7,6 +7,8 @@ import { Typography } from '@material-ui/core';
 
 // import pages
 import Homepage from './pages/Homepage';
+import AccountLoginPatient from './pages/AccountLoginPatient';
+import AccountCreate from './pages/AccountCreate';
 import Game from './pages/Game';
 import Resources from './pages/Resources';
 import Profile from './pages/Profile';
@@ -20,6 +22,9 @@ import Messaging from './pages/Messaging';
 // import Navbar from './components/Navbar'
 import Header from './components/Header'; 
 import Footer from './components/Footer'; 
+
+//temp components
+import HeaderAppBar from './components/HeaderAppBar';
 
 // Apollo Client
 const client = new ApolloClient({
@@ -148,6 +153,11 @@ function App() {
 
       {/* Homepage is complete with its own NavBar = "NavBurger" */}
       {/* <Homepage/> */}
+
+      {/* NavBurger Content - render pages to view for now */}
+        <AccountLoginPatient />
+        {/* <AccountCreate /> */}
+
       {/* Navigation bar */}
             {/* function call */}
             {/* <Navbar page={page} changePage={changePage}/> */}

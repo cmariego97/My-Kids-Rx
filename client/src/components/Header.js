@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react';
 
 // import MUI styles
 import { makeStyles } from '@material-ui/core/styles';
-import { AppBar, IconButton, Toolbar, Collapse, Typography } from '@material-ui/core';
+import { IconButton, Collapse, Typography } from '@material-ui/core';
 
 // import components
-import NavBurger from './NavBurger';
+import HeaderAppBar from './HeaderAppBar';
 
 // import icons
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
@@ -13,12 +13,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 // import react scroll
 import { Link as Scroll } from 'react-scroll';
 
-// import images
-import KidsRxLogo from '../assets/images/site-design-images/kidsrx-logo.svg'
-import { transform } from 'lodash';
-import { fontWeight, textTransform } from '@mui/system';
-
-{/* website theme palette hex codes:
+/* website theme palette hex codes:
     • light shades - snowdrift: #FAFBF9
         --Use this color as the background for your dark-on-light designs, or the text color of an inverted design
     • light accent - gull gray: #9CA6B5
@@ -32,8 +27,10 @@ import { fontWeight, textTransform } from '@mui/system';
     • success - asparagus: #67a35b
     • warning - carrot-orange: #f58c22
     • danger - pomegranate: #f44336
-
--- collapse this to hide -claire <3 --*/}
+    • kidsrxblue: #f4f6fc;
+    • kidsrxgreen: #F5FCFF;
+    
+-- collapse this to hide -claire <3 --*/
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -107,20 +104,10 @@ export default function Header() {
     useEffect(() => {
         setChecked(true);
     }, []);
+
     return (
         <div className={classes.root} id="header">
-            <AppBar className={classes.appbar} elevation={0}>
-                <Toolbar className={classes.appbarWrapper}>
-                    <h1 className={classes.appbarTitle}>
-                        My Kids-Rx
-                        {/* <img src={`${KidsRxLogo}`} className={classes.icon}/> */}
-                    </h1>
-                    <NavBurger />
-                    {/* <IconButton>
-                        <SortIcon className={classes.icon} />
-                    </IconButton> */}
-                </Toolbar>
-            </AppBar>
+            <HeaderAppBar />
 
             <Collapse
                 in={checked}
