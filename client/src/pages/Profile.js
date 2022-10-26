@@ -1,6 +1,7 @@
 import React,{useState} from 'react';
-import { useQuery } from '@apollo/client';
+import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_PROFILE } from '../utils/queries';
+import { UPDATE_PASS } from '../utils/mutations';g
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
@@ -42,7 +43,7 @@ const Profile = () => {
       const [open, setOpen] = useState(false);
       const handleOpen = () => setOpen(true);
       const handleClose = () => setOpen(false);
-      //for settings
+      //for password change
       const [currentPass, setCurrentPass] = useState('');
       const [newPass, setNewPass] = useState('');
 
@@ -71,6 +72,9 @@ const Profile = () => {
             if (currentPass !== user.password) {
                 document.querySelector('#message-el').textContent = 'Current password incorrect, unable to change password'
             }
+            else if (!newPass) {
+                document.querySelector('#message-el').textContent = 'Please enter a new password'
+            }
             else {
                 document.querySelector('#message-el').textContent = 'Good test'
             }
@@ -80,10 +84,7 @@ const Profile = () => {
                 <h1>{`Hello, ${fullName}`}</h1>
                 <li>{`Email: ${user.email}`}</li>
                 <li>{`Provider: ${user.provider}`}</li>
-                {/* TODO: add options to update provider or update password if time */}
                 <h2>Settings:</h2>
-                <Button variant="outlined">Change Provider
-            </Button>
             <Button variant="outlined" onClick={handleOpen}>Change Password
             </Button>
             <Modal
