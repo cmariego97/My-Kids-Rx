@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-// import MUI styles
+import NavBurger from './NavBurger';
 
+// import MUI styles
 import { makeStyles } from '@material-ui/core/styles';
 import { AppBar, IconButton, Toolbar, Collapse } from '@material-ui/core';
 
@@ -10,6 +11,9 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 // import react scroll
 import { Link as Scroll } from 'react-scroll';
+
+// import images
+import KidsRxLogo from '../assets/images/site-design-images/kidsrx-logo.svg'
 
 {/* website theme palette hex codes:
     • light shades - snowdrift: #FAFBF9
@@ -42,6 +46,7 @@ const useStyles = makeStyles((theme) => ({
     appbarWrapper: {
         width: '80%',
         margin: '0 auto',
+        justifyContent: 'between',
     },
     appbarTitle: {
         flexGrow: '1',
@@ -76,12 +81,14 @@ export default function Header() {
         <div className={classes.root} id="header">
         <AppBar className={classes.appbar} elevation={0}>
             <Toolbar className={classes.appbarWrapper}>
-            <h1 className={classes.appbarTitle}>
-                My<span className={classes.colorText}>Kids-Rx</span>
-            </h1>
-            <IconButton>
-                <SortIcon className={classes.icon} />
-            </IconButton>
+                <h1 className={classes.appbarTitle}>
+                    My<span className={classes.colorText}>Kids-Rx</span>
+                    {/* <img src={`${KidsRxLogo}`} className={classes.icon}/> */}
+                </h1>
+                <NavBurger />
+                {/* <IconButton>
+                    <SortIcon className={classes.icon} />
+                </IconButton> */}
             </Toolbar>
         </AppBar>
 
@@ -99,7 +106,7 @@ export default function Header() {
             {/* a button that will scroll down to the about us section */}
             <Scroll to="about-us" smooth={true}>
                 <IconButton>
-                <ExpandMoreIcon className={classes.goDown} />
+                    <ExpandMoreIcon className={classes.goDown} />
                 </IconButton>
             </Scroll>
             </div>
