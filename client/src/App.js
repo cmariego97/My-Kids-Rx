@@ -123,60 +123,39 @@ function App() {
   const renderPage = () => {
     //can be accessed when logged in
     if (page === 'Profile') {
-      return(
-        <Profile />
-      )
+      return <Profile />
     }
     if (page === 'Appt') {
-      return (
-        <Appointment />
-      )
+      return <Appointment />
     }
     if (page === 'Game') {
-      return (
-        <Game />
-      )
+      return <Game />
+      
     }
     if (page === 'Imaging') {
-      return (
-        <Imaging />
-      )
+      return <Imaging />
     }
     if (page === 'Lab') {
-      return (
-        <Lab />
-      )
+      return <Lab />
     }
     if (page === 'Medical') {
-      return (
-        <Medical />
-      )
+      return <Medical />
     }
     if (page === 'Messaging') {
-      return (
-        <Messaging />
-      )
+      return <Messaging />
     }
     if (page === 'Resources') {
-      return (
-        <Resources />
-      )
+      return <Resources />
     }
     //when not logged in
     if (page === 'Home') {
-      return (
-        <Homepage />
-      )
+      return <Homepage />
     }
     if (page === 'Login') {
-      return (
-        <AccountLoginPatient />
-      )
+      return <AccountLoginPatient />
     }
     if (page === 'Create') {
-      return (
-        <AccountCreate />
-      )
+      return <AccountCreate />
     }
   }
   //fxn change value of page state variable

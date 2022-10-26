@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function FadeMenu({page, changePage}) {
+const FadeMenu = ({page, changePage})  => {
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
@@ -47,13 +47,13 @@ export default function FadeMenu({page, changePage}) {
             // onClose={handleClose}
             TransitionComponent={Fade}
         >
-            <MenuItem onClick={changePage('Home')}>Home</MenuItem>
+            <MenuItem onClick={() => changePage('Home')}>Home</MenuItem>
             <hr></hr>
             {/* <MenuItem onClick={handleClose('Create')}>Create Account</MenuItem>
             <MenuItem onClick={handleClose('Login')}>Patient Login</MenuItem> */}
             <hr></hr>
-            <MenuItem onClick={changePage('Profile')}>My Profile</MenuItem>
-            <MenuItem onClick={changePage('Medical')}>Medical Info</MenuItem>
+            <MenuItem onClick={() => changePage('Profile')}>My Profile</MenuItem>
+            <MenuItem onClick={() => changePage('Medical')}>Medical Info</MenuItem>
             <hr></hr>
             {/* <MenuItem onClick={handleClose('Appt')}>Appointments</MenuItem>
             <MenuItem onClick={handleClose('Imaging')}>Imaging Results</MenuItem>
@@ -66,3 +66,5 @@ export default function FadeMenu({page, changePage}) {
         </div>
     );
 }
+
+export default FadeMenu;
