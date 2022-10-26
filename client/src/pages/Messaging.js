@@ -62,7 +62,9 @@ const Messaging = () => {
             })
             console.log(data);
             setContent('');
-            document.querySelector('#conf-message').textContent = `Message sent to ${to}`
+            const success = data.addMessage.messages
+            const index = success.length - 1
+            document.querySelector('#conf-message').textContent = `The following message was sent to ${success[index].to}: ${success[index].content}`
         }
         catch (err) {
             console.error(err);
