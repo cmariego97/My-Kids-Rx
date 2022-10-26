@@ -4,8 +4,11 @@ import React from 'react';
 import { createTheme, ThemeProvider, makeStyles } from '@material-ui/core/styles';
 import {CssBaseline, Typography } from '@material-ui/core';
 
+//import images
+import background from '../assets/images/site-design-images/plain-animal-bg.svg';
+import AboutUsWhale from '../assets/images/site-design-images/about-us-whale.svg';
+
 //import components
-import background from '../assets/images/animal-bg.png';
 import Header from '../components/Header';
 import Grid from '../components/Grid';
 //import Footer from './components/Footer';
@@ -85,6 +88,19 @@ const useStyles = makeStyles((theme) => ({
         alignItems: "center",
         flexWrap: "wrap",
     },
+    aboutUsWrapper: {
+        backgroundColor: "#f4f6fc",
+    },
+    aboutUs: {
+        display: "flex",
+        flexDirection: "row",
+        alignItems: "center",
+        margin: "5rem",
+    },
+    textInfo: {
+        color: "#3F4868",
+        textAlign: "justify",
+    },
 }))
 
 export default function Homepage() {
@@ -97,14 +113,14 @@ export default function Homepage() {
                 <Header/>\
             </div>
 
-            {/* Section Title - Services */}
+            {/* Features and Services */}
             <div className={classes.wrapper}>
                 <Typography variant="h4" className={classes.bigSpace} color="primary">
                     Our Services + Features
                 </Typography>
             </div>
 
-            {/* Top Row */}
+            {/* Services Grid */}
             <div className={`${classes.grid} ${classes.bigSpace}`}>
                 {/* <!-- service #1 - physical exams --> */}
                 <Grid icon={<FontAwesomeIcon icon={faStethoscope} style={{color: "#a68674", height: "125", width: "125"}}></FontAwesomeIcon>} title="Appointments" btnTitle="Set Appointment" />
@@ -123,6 +139,21 @@ export default function Homepage() {
 
                 {/* <!-- service #6 - prescription --> */}
                 <Grid icon={<FontAwesomeIcon icon={faFilePrescription} style={{color: "#a68674", height: "125", width: "125"}}></FontAwesomeIcon>} title="Medications" btnTitle="Check Orders" />
+            </div>
+
+            {/* About Us */}
+            <div className={classes.aboutUsWrapper}>   
+                <section id="about" className={classes.aboutUs}>
+                    <div className={classes.sectionImg}>
+                        <img src={`${AboutUsWhale}`}/>
+                    </div>
+                    <Typography variant="h5" color="#3F4868"> 
+                        We are a small technology company with a big solution: electronic medical records (EMR) specifically designed for pediatrics! Pediatric patients
+                        must be treated differently than adults, as they are still growing and developing. 
+                        Why not have the EMR system for their records also be different?! Our staff is composed of four highly motivated full-stack developers 
+                        looking to provide your facility with your newest technology upgrade.
+                    </Typography>
+                </section>
             </div>
 
                 {/* Footer */}
