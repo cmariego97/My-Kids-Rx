@@ -89,21 +89,27 @@ const useStyles = makeStyles((theme) => ({
   },
   wrapper: {
     width: "65%",
-    margin: "auto",
-    padding: "1rem",
+    margin: "20px",
+    padding: "12px",
     minHeight: "70vh",
     display: "flex",
     flexDirection: "row",
-    justifyContent: "center",
+    position: "relative",
+    justifyContent: "space-evenly",
     alignItems: "center",
     borderRadius: "24px",
     boxShadow: "0px 1px 3px rgba(44, 42, 72, 0.9)",
     backgroundColor: "#f4f6fc" 
     // add media query @780px
   },
+  containerImage: {
+    margin: "4px",
+    width: "25%",
+  },
   containerLogin: {
-    margin: "auto",
-    padding: "1rem",
+    margin: "4px",
+    padding: "4px",
+    width: "50%",
     justifyContent: "center",
     alignItems: "center",
   }
@@ -138,9 +144,9 @@ function AccountLoginPatient() {
         <CssBaseline />
         <HeaderAppBar />
 
-        <div className={classes.wrapper} class="login-content-container relative flex flex-wrap flex-row justify-evenly items-center rounded-2xl m-5 p-3">
+        <div className={classes.wrapper}>
           {/* <!-- left-side: image --> */}
-          <div class="left-image m-1 w-1/4">
+          <div className={classes.containerImage}>
             <img src={`${HeartPtLogin}`} />
           </div>
           {/* <!-- right-side: login --> */}
@@ -165,7 +171,6 @@ function AccountLoginPatient() {
                   margin="normal"
                   helperText="password required"
                 />
-                <CssTextField label="Custom CSS" id="custom-css-outlined-input" />
               </div>
             </Box>
             <div class="btn-container flex justify-evenly">
@@ -176,8 +181,6 @@ function AccountLoginPatient() {
                 <a href="/createacc">Create Account</a>
               </button>
             </div>
-            {/* <!-- displays message from JS --> */}
-            <p id="err-message"></p>
           </div>
         </div>
 
