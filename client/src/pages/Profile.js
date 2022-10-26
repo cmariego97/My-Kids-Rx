@@ -49,6 +49,10 @@ const Profile = () => {
       //for password change
       const [currentPass, setCurrentPass] = useState('');
       const [newPass, setNewPass] = useState('');
+      //for deleting profile
+      const [visible, setVisible] = useState(false);
+      const show = {display: 'block'};
+      const hidden = {display: 'none'};
 
     if(loading) {
         return (
@@ -91,6 +95,16 @@ const Profile = () => {
                 }
             }
         } 
+
+        const initDelete = () => {
+            document.querySelector('#conf-delete').textContent = 'Are you sure you want to delete your patient account?';
+            setVisible(true);
+
+        }
+        const cxDelete = () => {
+            document.querySelector('#conf-delete').textContent = '';
+            setVisible(false);
+        }
         return (
             <div>
                 <h1>{`Hello, ${fullName}`}</h1>
@@ -99,6 +113,11 @@ const Profile = () => {
                 <h2>Settings:</h2>
             <Button variant="outlined" onClick={handleOpen}>Change Password
             </Button>
+            <Button variant="outlined" onClick={initDelete}>Delete Account
+            </Button>
+            <p id='conf-delete'></p>
+            <button style={visible ? show : hidden}>Yes, delete account</button>
+            <button style={visible ? show : hidden} onClick={cxDelete}>Cancel</button>
             <Modal
                 open={open}
                 onClose={handleClose}
