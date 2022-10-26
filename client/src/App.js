@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
+import { ApolloClient, ApolloProvider, from, InMemoryCache } from '@apollo/client';
 
 // import from MUI
 import { createTheme, ThemeProvider, makeStyles } from '@material-ui/core/styles';
@@ -10,6 +10,9 @@ import Homepage from './pages/Homepage';
 import Game from './pages/Game';
 import Resources from './pages/Resources';
 import Profile from './pages/Profile';
+import Medical from './pages/Medical';
+import Lab from './pages/Lab';
+import Imaging from './pages/Imaging';
 
 // import components
 import Navbar from './components/Navbar'
@@ -181,7 +184,10 @@ function App() {
       {/* <Homepage/> */}
       {/* call fxn to render page */}
 
-      <Profile />
+      {/* <Profile /> */}
+      {/* <Medical/> */}
+      {/* <Lab/> */}
+      <Imaging/>
     </ApolloProvider>
 //something like this in app function (inside apollo provider)
   //navbar
