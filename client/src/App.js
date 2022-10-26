@@ -11,6 +11,7 @@ import Game from './pages/Game';
 import Resources from './pages/Resources';
 import Profile from './pages/Profile';
 import Medical from './pages/Medical';
+import Lab from './pages/Lab';
 
 // import components
 import Navbar from './components/Navbar'
@@ -183,7 +184,8 @@ function App() {
       {/* call fxn to render page */}
 
       {/* <Profile /> */}
-      <Medical/>
+      {/* <Medical/> */}
+      <Lab/>
     </ApolloProvider>
 //something like this in app function (inside apollo provider)
   //navbar
