@@ -14,7 +14,7 @@ import Medical from './pages/Medical';
 import Lab from './pages/Lab';
 import Imaging from './pages/Imaging';
 import Appointment from './pages/Appointment';
-import Messaging from './pages/Message';
+import Messaging from './pages/Messaging';
 
 // import components
 import Navbar from './components/Navbar'

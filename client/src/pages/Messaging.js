@@ -6,8 +6,18 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import CardActions from '@mui/material/CardActions';
 //mutation
+import { useMutation } from '@apollo/client';
+import { ADD_MESSAGE } from '@apollo/client';
 
 const Messaging = () => {
+
+    const [addMessage, {error}] = useMutation(ADD_MESSAGE);
+    const handleFormSubmmit = async(e) => {
+        e.preventDefault();
+        try {
+            
+        }
+    }
 
     return (
         <div>
