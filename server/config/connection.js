@@ -4,7 +4,7 @@ const dotenv = require("dotenv")
 dotenv.config()
 
 mongoose.connect(
-  process.env.MONGODB_URI || `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.klxefmh.mongodb.net/?retryWrites=true&w=majority`,
+  process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/schools-db',
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
