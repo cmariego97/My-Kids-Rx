@@ -121,6 +121,7 @@ export default function Homepage() {
             </div>
 
             {/* Services Grid */}
+            {/* TODO: change these services or features to fit the project content */}
             <div className={`${classes.grid} ${classes.bigSpace}`} id="our-services">
                 {/* <!-- service #1 - physical exams --> */}
                 <Grid icon={<FontAwesomeIcon icon={faStethoscope} style={{color: "#a68674", height: "125", width: "125"}}></FontAwesomeIcon>} title="Appointments" btnTitle="Set Appointment" />
