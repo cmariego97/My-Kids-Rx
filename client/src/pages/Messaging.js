@@ -1,22 +1,74 @@
-import React from 'react';
-import Message from '../components/Message';
+import React, {useState} from 'react';
+import moment from 'moment';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import CardActions from '@mui/material/CardActions';
+import TextField from '@mui/material/TextField';
+import Autocomplete from '@mui/material/Autocomplete';
+//query
+import {useQuery} from '@apollo/client';
+import { QUERY_MESSAGES } from '../utils/queries'
 //mutation
 import { useMutation } from '@apollo/client';
 import { ADD_MESSAGE } from '@apollo/client';
 
 const Messaging = () => {
+    const email = 'mgreen@test.com';
+    //for query
+    const { loading, data } = useQuery(QUERY_MESSAGES, {
+        variables: { email }
+    });
+    var messages;
+    const renderMessage = () => {
+        if (loading) {
+            return (
+                <Typography variant="body2" color="text.secondary">
+                    Loading messages...
+            </Typography>
+            )
+        }
+        else {
+            console.log(data)
+            messages = data.onePatient.messages;
+            return (
+                <Typography variant="body2" color="text.secondary">
+                    {messages.map((message)=> (
+                        <div>
+                            <h2>{`Message to ${message.to}`}</h2>
+                            <h3>{`Sent on ${message.date} at ${message.time}`}</h3>
+                            <p>{message.content}</p>
+                        </div>
+                    ))}
+                </Typography>
+            )
+        }
+    }
+
+    //for mutation
+    const date = moment().format('YYYY-DD-MM');
+    const time = moment().format('mm:ss:SS A');
+    const [content, setContent] = useState('');
+    const to = messages[0].to
 
     const [addMessage, {error}] = useMutation(ADD_MESSAGE);
     const handleFormSubmmit = async(e) => {
         e.preventDefault();
         try {
-            
+            const { data } = await addMessage({
+                variables: {email, to, date, time, content}
+            })
         }
+        catch (err) {
+            console.error(err);
+        }
+    }
+
+    const handleChange = (e) => {
+        const { value } = e.target;
+        setContent(value);
+
     }
 
     return (
@@ -27,22 +79,36 @@ const Messaging = () => {
                 <Typography gutterBottom variant="h5" component="div">
                 My Sent Messages
                 </Typography>
-                <Message />
+                {renderMessage()}
             </CardContent>
         </Card>
         {/* form to send a message */}
         <Card sx={{ maxWidth: 345 }}>
             <CardContent>
                 <Typography gutterBottom variant="h5" component="div">
-                Lizard
+                Send a Message
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                Lizards are a widespread group of squamate reptiles, with over 6,000
-                species, ranging across all continents except Antarctica
+                <Autocomplete
+                    disablePortal
+                    id="combo-box-demo"
+                    options={{label: to}}
+                    sx={{ width: 300 }}
+                    renderInput={(params) => <TextField {...params} label="To" />}
+                    />
+                    <TextField
+                    id="standard-multiline-static"
+                    label="Multiline"
+                    multiline
+                    rows={4}
+                    value={content}
+                    onChange={handleChange}
+                    variant="standard"
+                    />
                 </Typography>
             </CardContent>
             <CardActions>
-                <Button size="small">Learn More</Button>
+                <Button variant="outlined">Outlined</Button>
             </CardActions>
         </Card>
     </div>
