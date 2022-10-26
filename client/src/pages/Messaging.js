@@ -50,7 +50,7 @@ const Messaging = () => {
 
     //for mutation
     const date = moment().format('YYYY-DD-MM');
-    const time = moment().format('mm:ss:SS A');
+    const time = moment().format('hh:mm:ss A');
     const [content, setContent] = useState('');
 
     const [addMessage, {error}] = useMutation(ADD_MESSAGE);

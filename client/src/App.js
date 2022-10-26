@@ -17,7 +17,7 @@ import Appointment from './pages/Appointment';
 import Messaging from './pages/Messaging';
 
 // import components
-import Navbar from './components/Navbar'
+// import Navbar from './components/Navbar'
 import Header from './components/Header'; 
 import Footer from './components/Footer'; 
 
