@@ -71,13 +71,13 @@ const theme = createTheme({
       main: "#67a35b" 
     },
     neutral: {
-      // gull gray
+      // gull-gray
       main: "#9CA6B5"
     }
   },
   typography: {
     fontFamily: [
-      'Nunito', 'sans-serif', 'Nunito Sans', 'Atma', 'cursive', 'Londrina Solid'
+      'Nunito', 'sans-serif', 'Nunito Sans', 'Atma', 'cursive', 'Londrina Solid', 'Josefin Sans'
     ],
     h4: {
       fontWeight: 600,
