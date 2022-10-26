@@ -12,6 +12,7 @@ import Resources from './pages/Resources';
 import Profile from './pages/Profile';
 import Medical from './pages/Medical';
 import Lab from './pages/Lab';
+import Imaging from './pages/Imaging';
 
 // import components
 import Navbar from './components/Navbar'
@@ -185,7 +186,8 @@ function App() {
 
       {/* <Profile /> */}
       {/* <Medical/> */}
-      <Lab/>
+      {/* <Lab/> */}
+      <Imaging/>
     </ApolloProvider>
 //something like this in app function (inside apollo provider)
   //navbar
