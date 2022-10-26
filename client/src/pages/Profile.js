@@ -38,10 +38,13 @@ const Profile = () => {
         }
         return result.join(" ");
       };
-      
+      //for modal
       const [open, setOpen] = useState(false);
       const handleOpen = () => setOpen(true);
       const handleClose = () => setOpen(false);
+      //for settings
+      const [currentPass, setCurrentPass] = useState('');
+      const [newPass, setNewPass] = useState('');
 
     if(loading) {
         return (
@@ -53,10 +56,25 @@ const Profile = () => {
         const user = data.oneUser
         const fullName= titleCase(`${user.firstName} ${user.lastName}`);
 
+        const handleChange = (e) => {
+            const { name, value } = e.target;
+            if (name === 'currentPass') {
+                setCurrentPass(value);
+            }
+            if (name === 'newPass') {
+                setNewPass(value);
+            }
+        }
 
-        // const changePassword = () => {
-
-        // } 
+        const changePassword = (e) => {
+            e.preventDefault();
+            if (currentPass !== user.password) {
+                document.querySelector('#message-el').textContent = 'Current password incorrect, unable to change password'
+            }
+            else {
+                document.querySelector('#message-el').textContent = 'Good test'
+            }
+        } 
         return (
             <div>
                 <h1>{`Hello, ${fullName}`}</h1>
@@ -78,12 +96,13 @@ const Profile = () => {
                 <Typography id="modal-modal-title" variant="h6" component="h2">
                     Enter Current Password
                 </Typography>
-                <input type='password'></input>
+                <input type='password' name='currentPass'value={currentPass} onChange={handleChange}></input>
                 <Typography id="modal-modal-description" sx={{ mt: 2 }}>
                     Enter New Password
                 </Typography>
-                <input type='password'></input>
-                <button>Change Password</button>
+                <input type='password' name='newPass' value={newPass} onChange={handleChange}></input>
+                <button onClick={changePassword}>Change Password</button>
+                <p id='message-el'></p>
                 </Box>
             </Modal>
 
