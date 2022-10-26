@@ -62,7 +62,7 @@ const typeDefs = gql`
         height: Int
         weight: Float
         systolicBP: Int
-        diasolicBP: Int
+        diastolicBP: Int
         hr: Int
         o2: Int
     }

@@ -29,7 +29,7 @@ export const QUERY_INFO = gql`
             height
             weight
             systolicBP
-            diasolicBP
+            diastolicBP
             hr
             o2
         }
