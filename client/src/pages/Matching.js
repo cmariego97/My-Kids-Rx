@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
@@ -51,13 +51,25 @@ const Matching = ({changeGame}) => {
    const matched4 = {display:'block', color: 'orange'}
    const matched5 = {display:'block', color: 'green'}
    const matched6 = {display:'block', color: 'pink'}
+
+   const[count, setCount] = useState(0);
+   useEffect(() => {
+    localStorage.setItem('myCount', count);
+   })
+   //this will instruct user to flip over unmatched cards every other click (excluding when actually flipping over the unmatched cards)
+   const incrementClick = () => {
+    setCount(count + 1);
+    if(((count+1) !== 0) && ((count+1) % 2 === 0) && ((count+1) % 4 !==0)) {
+      document.querySelector('#flip-message').textContent = 'Flip over your unmatched cards and try again!'
+    }
+    else {
+      document.querySelector('#flip-message').textContent = ''
+    }
+   }
    
    const matches = () => {
     if(visable1 === 'matched' && visable2 === 'matched' && visable3 === 'matched' && visable4 === 'matched' && visable5 === 'matched' && visable6 === 'matched' && visable7 === 'matched' && visable8 === 'matched' && visable9 === 'matched' && visable10 === 'matched' && visable11 === 'matched' && visable12 === 'matched') {
-      //TODO: make this better than a window popup
       document.querySelector('#message').textContent = 'All matches found!';
-      //TODO: may have to reload in a different way
-      // window.location.reload();
     }
     if (visable1 === 'visible' && visable2 === 'visible') {
       changeVisable1('matched');
@@ -106,28 +118,25 @@ const Matching = ({changeGame}) => {
       <Box sx={{ flexGrow: 1 }}>
          {matches()}
         <h1 style={{textAlign: 'center'}}>Matching Game</h1>
+        <p id='flip-message'></p>
         <Button variant="outlined" onClick={() => changeGame('Home')}>Back to gaming homepage
             </Button>
         <Button variant="outlined" onClick={() => resetGame()}>Play Again
             </Button>
         <p id={'message'}></p>
-        <Grid container spacing={2}>
-          {/* card 1 */}
-          <Grid item xs={4}>
-            <Item onClick={() => changeVisable1(visable1 === 'visible' ? 'invisible' : 'visible')}>
-            <CardMedia
-              component="img"
-              height="194"
-              image={Brain}
-              alt="Test"
-              sx={visable1 === 'invisible' ? cardBack : cardFront}
-                  />
-                  <CardContent sx={visable1 === 'invisible' ? cardFront : cardBack}>
-              <Typography variant="body2" color="text.secondary">
-              Matching Game!
-              </Typography>
-            </CardContent>
-            <p style={visable1 === 'matched' ? matched1 : unmatched}>Matched</p>
+        <Grid container spacing={2} onClick={() => incrementClick()}>
+            {/* card 6 */}
+            <Grid item xs={4}>
+            <Item onClick={() => changeVisable6(visable6 === 'visible' ? 'invisible' : 'visible')}>
+            <CardContent>
+            <Typography variant="body2" color="text.secondary" sx={visable6 === 'invisible' ? cardBack : cardFront}>
+            Heart: it pumps blood to the rest of your body!
+            </Typography>
+            <Typography variant="body2" color="text.secondary" sx={visable6 === 'invisible' ? cardFront : cardBack}>
+          Matching Game!
+            </Typography>
+          </CardContent>
+          <p style={visable6 === 'matched' ? matched3 : unmatched}>Matched</p>
             </Item>
           </Grid>
           {/* card 2 */}
@@ -142,6 +151,20 @@ const Matching = ({changeGame}) => {
             </Typography>
           </CardContent>
           <p style={visable2 === 'matched' ? matched1 : unmatched}>Matched</p>
+            </Item>
+          </Grid>
+            {/* card 8 */}
+            <Grid item xs={4}>
+            <Item onClick={() => changeVisable8(visable8 === 'visible' ? 'invisible' : 'visible')}>
+            <CardContent>
+            <Typography variant="body2" color="text.secondary" sx={visable8 === 'invisible' ? cardBack : cardFront}>
+            Lungs: you can't breathe without them!
+            </Typography>
+            <Typography variant="body2" color="text.secondary" sx={visable8 === 'invisible' ? cardFront : cardBack}>
+          Matching Game!
+            </Typography>
+          </CardContent>
+          <p style={visable8 === 'matched' ? matched4 : unmatched}>Matched</p>
             </Item>
           </Grid>
         {/* card 3 */}
@@ -162,6 +185,38 @@ const Matching = ({changeGame}) => {
             <p style={visable3 === 'matched' ? matched2 : unmatched}>Matched</p>
             </Item>
           </Grid>
+            {/* card 10 */}
+            <Grid item xs={4}>
+            <Item onClick={() => changeVisable10(visable10 === 'visible' ? 'invisible' : 'visible')}>
+            <CardContent>
+            <Typography variant="body2" color="text.secondary" sx={visable10 === 'invisible' ? cardBack : cardFront}>
+            Stomach: it breaks down all the food that you eat!
+            </Typography>
+            <Typography variant="body2" color="text.secondary" sx={visable10 === 'invisible' ? cardFront : cardBack}>
+          Matching Game!
+            </Typography>
+          </CardContent>
+          <p style={visable10 === 'matched' ? matched5 : unmatched}>Matched</p>
+            </Item>
+          </Grid>
+            {/* card 11 */}
+            <Grid item xs={4}>
+            <Item onClick={() => changeVisable11(visable11 === 'visible' ? 'invisible' : 'visible')}>
+            <CardMedia
+            component="img"
+            height="194"
+            image={Toes}
+            alt="Test"
+            sx={visable11 === 'invisible' ? cardBack : cardFront}
+                />
+                  <CardContent sx={visable11 === 'invisible' ? cardFront : cardBack}>
+            <Typography variant="body2" color="text.secondary">
+            Matching Game!
+            </Typography>
+          </CardContent>
+          <p style={visable11 === 'matched' ? matched6 : unmatched}>Matched</p>
+            </Item>
+          </Grid>
           {/* card 4 */}
           <Grid item xs={4}>
             <Item onClick={() => changeVisable4(visable4 === 'visible' ? 'invisible' : 'visible')}>
@@ -174,6 +229,24 @@ const Matching = ({changeGame}) => {
             </Typography>
           </CardContent>
           <p style={visable4 === 'matched' ? matched2 : unmatched}>Matched</p>
+            </Item>
+          </Grid>
+            {/* card 1 */}
+            <Grid item xs={4}>
+            <Item onClick={() => changeVisable1(visable1 === 'visible' ? 'invisible' : 'visible')}>
+            <CardMedia
+              component="img"
+              height="194"
+              image={Brain}
+              alt="Test"
+              sx={visable1 === 'invisible' ? cardBack : cardFront}
+                  />
+                  <CardContent sx={visable1 === 'invisible' ? cardFront : cardBack}>
+              <Typography variant="body2" color="text.secondary">
+              Matching Game!
+              </Typography>
+            </CardContent>
+            <p style={visable1 === 'matched' ? matched1 : unmatched}>Matched</p>
             </Item>
           </Grid>
           {/* card 5 */}
@@ -194,18 +267,22 @@ const Matching = ({changeGame}) => {
           <p style={visable5 === 'matched' ? matched3 : unmatched}>Matched</p>
             </Item>
           </Grid>
-          {/* card 6 */}
-          <Grid item xs={4}>
-            <Item onClick={() => changeVisable6(visable6 === 'visible' ? 'invisible' : 'visible')}>
-            <CardContent>
-            <Typography variant="body2" color="text.secondary" sx={visable6 === 'invisible' ? cardBack : cardFront}>
-            Heart: it pumps blood to the rest of your body!
-            </Typography>
-            <Typography variant="body2" color="text.secondary" sx={visable6 === 'invisible' ? cardFront : cardBack}>
-          Matching Game!
+            {/* card 9 */}
+            <Grid item xs={4}>
+            <Item onClick={() => changeVisable9(visable9 === 'visible' ? 'invisible' : 'visible')}>
+            <CardMedia
+            component="img"
+            height="194"
+            image={Stomach}
+            alt="Test"
+            sx={visable9 === 'invisible' ? cardBack : cardFront}
+                />
+                  <CardContent sx={visable9 === 'invisible' ? cardFront : cardBack}>
+            <Typography variant="body2" color="text.secondary">
+            Matching Game!
             </Typography>
           </CardContent>
-          <p style={visable6 === 'matched' ? matched3 : unmatched}>Matched</p>
+          <p style={visable9 === 'matched' ? matched5 : unmatched}>Matched</p>
             </Item>
           </Grid>
           {/* card 7 */}
@@ -224,70 +301,6 @@ const Matching = ({changeGame}) => {
             </Typography>
           </CardContent>
           <p style={visable7 === 'matched' ? matched4 : unmatched}>Matched</p>
-            </Item>
-          </Grid>
-          {/* card 8 */}
-          <Grid item xs={4}>
-            <Item onClick={() => changeVisable8(visable8 === 'visible' ? 'invisible' : 'visible')}>
-            <CardContent>
-            <Typography variant="body2" color="text.secondary" sx={visable8 === 'invisible' ? cardBack : cardFront}>
-            Lungs: you can't breathe without them!
-            </Typography>
-            <Typography variant="body2" color="text.secondary" sx={visable8 === 'invisible' ? cardFront : cardBack}>
-          Matching Game!
-            </Typography>
-          </CardContent>
-          <p style={visable8 === 'matched' ? matched4 : unmatched}>Matched</p>
-            </Item>
-          </Grid>
-          {/* card 9 */}
-          <Grid item xs={4}>
-            <Item onClick={() => changeVisable9(visable9 === 'visible' ? 'invisible' : 'visible')}>
-            <CardMedia
-            component="img"
-            height="194"
-            image={Stomach}
-            alt="Test"
-            sx={visable9 === 'invisible' ? cardBack : cardFront}
-                />
-                  <CardContent sx={visable9 === 'invisible' ? cardFront : cardBack}>
-            <Typography variant="body2" color="text.secondary">
-            Matching Game!
-            </Typography>
-          </CardContent>
-          <p style={visable9 === 'matched' ? matched5 : unmatched}>Matched</p>
-            </Item>
-          </Grid>
-          {/* card 10 */}
-          <Grid item xs={4}>
-            <Item onClick={() => changeVisable10(visable10 === 'visible' ? 'invisible' : 'visible')}>
-            <CardContent>
-            <Typography variant="body2" color="text.secondary" sx={visable10 === 'invisible' ? cardBack : cardFront}>
-            Stomach: it breaks down all the food that you eat!
-            </Typography>
-            <Typography variant="body2" color="text.secondary" sx={visable10 === 'invisible' ? cardFront : cardBack}>
-          Matching Game!
-            </Typography>
-          </CardContent>
-          <p style={visable10 === 'matched' ? matched5 : unmatched}>Matched</p>
-            </Item>
-          </Grid>
-          {/* card 11 */}
-          <Grid item xs={4}>
-            <Item onClick={() => changeVisable11(visable11 === 'visible' ? 'invisible' : 'visible')}>
-            <CardMedia
-            component="img"
-            height="194"
-            image={Toes}
-            alt="Test"
-            sx={visable11 === 'invisible' ? cardBack : cardFront}
-                />
-                  <CardContent sx={visable11 === 'invisible' ? cardFront : cardBack}>
-            <Typography variant="body2" color="text.secondary">
-            Matching Game!
-            </Typography>
-          </CardContent>
-          <p style={visable11 === 'matched' ? matched6 : unmatched}>Matched</p>
             </Item>
           </Grid>
           {/* card 12 */}

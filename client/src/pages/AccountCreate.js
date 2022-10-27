@@ -170,6 +170,7 @@ function AccountCreate() {
   //     [name]: value,
   //   });
   // };
+  //TODO: make first and last name to lowercase
   // const handleFormSubmit = async (event) => {
   //   event.preventDefault();
   //   console.log(formState);
