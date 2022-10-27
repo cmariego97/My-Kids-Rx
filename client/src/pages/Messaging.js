@@ -49,11 +49,12 @@ const Messaging = () => {
     }
 
     //for mutation
-    const date = moment().format('YYYY-DD-MM');
+    const date = moment().format('YYYY-MM-DD');
     const time = moment().format('hh:mm:ss A');
     const [content, setContent] = useState('');
 
     const [addMessage, {error}] = useMutation(ADD_MESSAGE);
+
     const handleFormSubmit = async(e) => {
         e.preventDefault();
         try {
@@ -62,9 +63,18 @@ const Messaging = () => {
             })
             console.log(data);
             setContent('');
+            
             const success = data.addMessage.messages
             const index = success.length - 1
-            document.querySelector('#conf-message').textContent = `The following message was sent to ${success[index].to}: ${success[index].content}`
+            document.querySelector('#conf-message').textContent = `Message delivered at to ${success[index].to} at ${success[index].time}`;
+            const recipient = document.createElement('h2');
+            recipient.textContent = `Message to ${success[index].to}`;
+            const when = document.createElement('h3');
+            when.textContent = `Sent on ${success[index].date} at ${success[index].time}`;
+            const text = document.createElement('p');
+            text.textContent = success[index].content;
+            document.querySelector('#new-container').append(recipient, when, text)
+            document.querySelector('#new-header').textContent = 'New Messages';
         }
         catch (err) {
             console.error(err);
@@ -77,16 +87,24 @@ const Messaging = () => {
         setContent(value);
 
     }
-
+    //if not sent message screen render messaging homepage
     return (
         <div>
         {/* load sent messages */}
         <Card sx={{ maxWidth: 345 }}>
             <CardContent>
                 <Typography gutterBottom variant="h5" component="div">
-                My Sent Messages
+                Past Messages
                 </Typography>
                 {renderMessage()}
+                {/* new messages header that displays when new message is added */}
+                <Typography gutterBottom variant="h5" component="div" id='new-header'>
+                </Typography>
+                {/* new messages go here */}
+                <Typography variant="body2" color="text.secondary">
+                <div id='new-container'>
+                </div>
+                </Typography>
             </CardContent>
         </Card>
         {/* form to send a message */}
