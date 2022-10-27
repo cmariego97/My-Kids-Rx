@@ -97,9 +97,14 @@ const Messaging = () => {
                 Past Messages
                 </Typography>
                 {renderMessage()}
+                {/* new messages header that displays when new message is added */}
+                <Typography gutterBottom variant="h5" component="div" id='new-header'>
+                </Typography>
+                {/* new messages go here */}
+                <Typography variant="body2" color="text.secondary">
                 <div id='new-container'>
-                    <p id='new-header'></p>
                 </div>
+                </Typography>
             </CardContent>
         </Card>
         {/* form to send a message */}
