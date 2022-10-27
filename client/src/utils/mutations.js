@@ -38,6 +38,8 @@ export const ADD_MESSAGE = gql`
         addMessage (email: $email, to: $to, date: $date, time: $time, content: $content) {
         messages {
             to
+            date
+            time
             content
         }
         }

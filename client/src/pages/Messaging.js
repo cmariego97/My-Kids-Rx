@@ -53,7 +53,21 @@ const Messaging = () => {
     const time = moment().format('hh:mm:ss A');
     const [content, setContent] = useState('');
 
-    const [addMessage, {error}] = useMutation(ADD_MESSAGE);
+    const [addMessage, {error}] = useMutation(ADD_MESSAGE, /*{
+        update(cache, {data: {addMessage: {messages}}}) {
+            try {
+                const { onePatient: {messages} } = cache.readQuery({query: QUERY_MESSAGES});
+                cache.writeQuery({
+                    query: QUERY_MESSAGES,
+                    data: {onePatient: {messages: [...messages, addMessage.messages]}}
+                })
+            }
+            catch(e) {
+                console.error(e)
+            }
+        }
+    }*/);
+
     const handleFormSubmit = async(e) => {
         e.preventDefault();
         try {
