@@ -49,24 +49,11 @@ const Messaging = () => {
     }
 
     //for mutation
-    const date = moment().format('YYYY-DD-MM');
+    const date = moment().format('YYYY-MM-DD');
     const time = moment().format('hh:mm:ss A');
     const [content, setContent] = useState('');
 
-    const [addMessage, {error}] = useMutation(ADD_MESSAGE, /*{
-        update(cache, {data: {addMessage: {messages}}}) {
-            try {
-                const { onePatient: {messages} } = cache.readQuery({query: QUERY_MESSAGES});
-                cache.writeQuery({
-                    query: QUERY_MESSAGES,
-                    data: {onePatient: {messages: [...messages, addMessage.messages]}}
-                })
-            }
-            catch(e) {
-                console.error(e)
-            }
-        }
-    }*/);
+    const [addMessage, {error}] = useMutation(ADD_MESSAGE);
 
     const handleFormSubmit = async(e) => {
         e.preventDefault();
@@ -76,9 +63,15 @@ const Messaging = () => {
             })
             console.log(data);
             setContent('');
+            // changeScreen('Sent');
             const success = data.addMessage.messages
             const index = success.length - 1
-            document.querySelector('#conf-message').textContent = `The following message was sent to ${success[index].to}: ${success[index].content}`
+            document.querySelector('#conf-message').textContent = `Message delivered at to ${success[index].to} at ${success[index].time}`;
+            document.querySelector('#new-container').append(`<div>
+            <h2>{\`Message to ${success[index].to}\`}</h2>
+            <h3>{\`Sent on ${success[index].date} at ${success[index].time}\`}</h3>
+            <p>\`${success[index].content}\`</p>
+        </div>`)
         }
         catch (err) {
             console.error(err);
@@ -91,7 +84,7 @@ const Messaging = () => {
         setContent(value);
 
     }
-
+    //if not sent message screen render messaging homepage
     return (
         <div>
         {/* load sent messages */}
@@ -101,6 +94,9 @@ const Messaging = () => {
                 My Sent Messages
                 </Typography>
                 {renderMessage()}
+                <div id='new-container'>
+                    <p>New:</p>
+                </div>
             </CardContent>
         </Card>
         {/* form to send a message */}
