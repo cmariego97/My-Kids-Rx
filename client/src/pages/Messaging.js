@@ -63,15 +63,18 @@ const Messaging = () => {
             })
             console.log(data);
             setContent('');
-            // changeScreen('Sent');
+            
             const success = data.addMessage.messages
             const index = success.length - 1
             document.querySelector('#conf-message').textContent = `Message delivered at to ${success[index].to} at ${success[index].time}`;
-            document.querySelector('#new-container').append(`<div>
-            <h2>{\`Message to ${success[index].to}\`}</h2>
-            <h3>{\`Sent on ${success[index].date} at ${success[index].time}\`}</h3>
-            <p>\`${success[index].content}\`</p>
-        </div>`)
+            const recipient = document.createElement('h2');
+            recipient.textContent = `Message to ${success[index].to}`;
+            const when = document.createElement('h3');
+            when.textContent = `Sent on ${success[index].date} at ${success[index].time}`;
+            const text = document.createElement('p');
+            text.textContent = success[index].content;
+            document.querySelector('#new-container').append(recipient, when, text)
+            document.querySelector('#new-header').textContent = 'New Messages';
         }
         catch (err) {
             console.error(err);
@@ -91,11 +94,11 @@ const Messaging = () => {
         <Card sx={{ maxWidth: 345 }}>
             <CardContent>
                 <Typography gutterBottom variant="h5" component="div">
-                My Sent Messages
+                Past Messages
                 </Typography>
                 {renderMessage()}
                 <div id='new-container'>
-                    <p>New:</p>
+                    <p id='new-header'></p>
                 </div>
             </CardContent>
         </Card>
