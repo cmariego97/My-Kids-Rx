@@ -1,4 +1,7 @@
-import React from 'react'
+import React, {useState} from 'react'
+// import { useMutation } from '@apollo/client';
+// import { LOGIN_USER } from '../utils/mutations';
+// import Auth from '../utils/auth';
 
 // import MUI styles
 import { createTheme, ThemeProvider, makeStyles } from '@material-ui/core/styles';
@@ -139,6 +142,37 @@ const CssTextField = styled(TextField)({
 });
 
 function AccountLoginPatient() {
+  //logic
+  // const [formState, setFormState] = useState({ email: '', password: '' });
+  // const [login, { error, data }] = useMutation(LOGIN_USER);
+  // const handleChange = (event) => {
+  //   const { name, value } = event.target;
+
+  //   setFormState({
+  //     ...formState,
+  //     [name]: value,
+  //   });
+  // };
+  // const handleFormSubmit = async (event) => {
+  //   event.preventDefault();
+  //   console.log(formState);
+  //   try {
+  //     const { data } = await login({
+  //       variables: { ...formState },
+  //     });
+        //again console log data to make sure this is correct param
+  //     Auth.login(data.login.token);
+  //   } catch (e) {
+  //     console.error(e);
+  //   }
+
+    // clear form values
+  //   setFormState({
+  //     email: '',
+  //     password: '',
+  //   });
+  // };
+
   const classes = useStyles();
   const btnstyle={margin:'8px 0'}
 

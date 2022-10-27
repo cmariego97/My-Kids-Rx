@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 //first query to check if user with input email already exists
 // import { useQuery } from '@apollo/client';
 // import { QUERY_PROFILE } from '@apollo/client';
