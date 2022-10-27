@@ -11,7 +11,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 
 //import images
 import background from '../assets/images/site-design-images/plain-animal-bg.svg';
-import HeartPtLogin from '../assets/images/site-design-images/HeartPtLogin.gif';
+import HeartPtCreate from '../assets/images/site-design-images/HeartPtCreate.gif';
 
 //import components
 import HeaderAppBar from '../components/HeaderAppBar';
@@ -112,9 +112,18 @@ const useStyles = makeStyles((theme) => ({
   containerLogin: {
     margin: "4px",
     padding: "4px",
-    width: "50%",
+    width: "80%",
     justifyContent: "center",
     alignItems: "center",
+  },
+  textFieldRow: {
+    display: "flex",
+    flexDirection: "row",
+  },
+  textFieldColumn: {
+    display: 'flex',
+    flexDirection: 'column',
+    width: '100%'
   }
 }))
 
@@ -152,22 +161,40 @@ function AccountCreate() {
           <div className={classes.container}>
             {/* <!-- left-side: image --> */}
             <div className={classes.containerImage}>
-              <img src={`${HeartPtLogin}`} />
+              <img src={`${HeartPtCreate}`} />
             </div>
 
             {/* <!-- right-side: login --> */}
             <div className={classes.containerLogin}>
               <Box component="form" sx={{'& .MuiTextField-root': { m: 1, width: '25ch' },}} noValidate autoComplete="off" >
-                <div>
+                <div className={classes.textFieldRow}>
+                <CssTextField
+                    required
+                    id="user-firstName"
+                    label="First Name"
+                    placeholder="(ゝз○`)"
+                    margin="normal"
+                  />
+                  <CssTextField
+                    required
+                    id="user-lastName"
+                    label="Last Name"
+                    placeholder="(´ε｀ )♡"
+                    margin="normal"
+                  />
+                </div>
+                
+                <div className={classes.textFieldColumn}>
                   <CssTextField
                     fullWidth
                     required
                     id="recipient-user"
-                    label="E-mail or Username"
+                    label="E-mail"
                     placeholder="♫꒰･‿･๑꒱"
                     margin="normal"
                     helperText="e-mail required"
                   />
+
                   <CssTextField
                     fullWidth
                     required
@@ -182,18 +209,13 @@ function AccountCreate() {
                 <FormControlLabel control={<Checkbox name="checkedB" color="primary"/>} label="Remember me"/>
 
                 <Button type='submit' color='primary' variant="contained" style={btnstyle} fullWidth>
-                  Sign in
+                  Create Account
                 </Button>
 
-                <Typography >
-                  <Link href="#" >
-                    Forgot password?
-                  </Link>
-                </Typography>
                 <Typography> 
-                  Don't have an Account? 
+                  Already have an Account? 
                   <Link href="#" >
-                    Sign Up 
+                    Login 
                   </Link>
                 </Typography>
 
