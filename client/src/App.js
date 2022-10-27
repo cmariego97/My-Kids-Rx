@@ -145,6 +145,7 @@ const styles = makeStyles({
 //   Auth.logout();
 // };
 //can do conditional rendering of navbar so only need 1 nav bar
+//for querying database, need to retrieve email from token --> Auth.getProfile() returns the token but need to console log to see exactly how to extract the email, this needs to be on all data pages
 
 function App() {
   const classes = styles();
