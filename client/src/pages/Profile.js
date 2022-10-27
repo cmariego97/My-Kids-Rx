@@ -11,6 +11,9 @@ import {CssBaseline, Typography } from '@material-ui/core';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
+import { styled } from '@mui/material/styles';
+import TextField from '@mui/material/TextField';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 //import images
 import background from '../assets/images/site-design-images/plain-animal-bg.svg';
@@ -101,6 +104,26 @@ const useStyles = makeStyles((theme) => ({
     },
 }))
 
+const CssTextField = styled(TextField)({
+    '& label.Mui-focused': {
+      color: '#de7171',
+    },
+    '& .MuiInput-underline:after': {
+      borderBottomColor: 'green',
+    },
+    '& .MuiOutlinedInput-root': {
+      '& fieldset': {
+        borderColor: '#a68674',
+      },
+      '&:hover fieldset': {
+        borderColor: '#f58c22',
+      },
+      '&.Mui-focused fieldset': {
+        borderColor: '#de7171',
+      },
+    },
+  });
+
 const style = {
     position: 'absolute',
     top: '50%',
@@ -115,6 +138,7 @@ const style = {
 
 const Profile = () => {
     const classes = useStyles();
+    const btnstyle={margin:'8px 0'}
 
     //TODO: when we have login we need to retrieve email from the jwt token instead of this const var
     const email = 'mgreen@test.com';
@@ -235,22 +259,48 @@ const Profile = () => {
         return (
             <ThemeProvider theme={theme}>
                 <div className={classes.root}>
+
+                    {/* TODO: insert an avatar icon image placeholder here */}
+                    <Typography variant="h1" className={classes.userName}>
+                        {`Hello, ${fullName}`}
+                    </Typography>
+
                     <div>
-                        <h1>{`Hello, ${fullName}`}</h1>
-                        <li>{`Email: ${user.email}`}</li>
-                        <li>{`Provider: ${user.provider}`}</li>
-                        <h2>Settings:</h2>
-                    <Button variant="outlined" onClick={handleOpen}>Change Password
-                    </Button>
-                    <Button variant="outlined" onClick={initDelete}>Delete Account
-                    </Button>
-                    <p id='conf-delete'></p>
-                    <button style={visible ? show : hidden} onClick={confDelete}>Yes</button>
-                    <label style={inputVis ? show : hidden}>Enter password:</label>
-                    <input value={delPass} onChange={handleDelChange} style={inputVis ? show : hidden} type='password'></input>
-                    <button style={inputVis ? show : hidden} onClick={delAcct}>Delete Account</button>
-                    <button style={visible ? show : hidden} onClick={cxDelete}>Cancel</button>
-                    <p id='user-del'></p>
+                        <Typography variant="h5">
+                            {`Email: ${user.email}`}
+                        </Typography>
+                        
+                        <Typography variant="h5">
+                            {`Provider: ${user.provider}`}
+                        </Typography>
+                    </div>
+
+                    <Typography variant="h2">
+                        Settings:
+                    </Typography>
+                        
+                    <div>
+                        <Button variant="outlined" onClick={handleOpen}>
+                            Change Password
+                        </Button>
+                        <Button variant="outlined" onClick={initDelete}>
+                            Delete Account
+                        </Button>
+                    </div>
+
+                    {/* CONFIRM MSG TO DELETE */}
+                    <div className={classes.confirmDel}>
+                        <p id='conf-delete'></p>
+
+                        <Button style={visible ? show : hidden} onClick={confDelete}>Yes</Button>
+
+                        <label style={inputVis ? show : hidden}>Enter password:</label>
+                        <input value={delPass} onChange={handleDelChange} style={inputVis ? show : hidden} type='password'></input>
+
+                        <Button style={inputVis ? show : hidden} onClick={delAcct}>Delete Account</Button>
+                        <Button style={visible ? show : hidden} onClick={cxDelete}>Cancel</Button>
+                        <p id='user-del'></p>
+                    </div>
                     <Modal
                         open={open}
                         onClose={handleClose}
@@ -270,8 +320,6 @@ const Profile = () => {
                         <p id='message-el'></p>
                         </Box>
                     </Modal>
-
-                    </div>
                 </div>
             </ThemeProvider>
         )
@@ -279,5 +327,3 @@ const Profile = () => {
 }
 
 export default Profile;
-
-
