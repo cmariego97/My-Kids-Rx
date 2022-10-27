@@ -137,9 +137,16 @@ const styles = makeStyles({
   },
 })
 
+//for conditional rendering of logged in vs not logged in
+// Auth.loggedIn () ? whatever : other option
+//for nav bar when logged in this will run when logout is clicked
+// const logout = (event) => {
+//   event.preventDefault();
+//   Auth.logout();
+// };
+//can do conditional rendering of navbar so only need 1 nav bar
+
 function App() {
-  //define function to render specific page
-  //if page === 'Home' return (<Home />)
   const classes = styles();
   const [page, setPage] = useState('Home')
   //TODO: eventually need to separate into pages that can be accessed vs logged in vs not logged in
