@@ -150,15 +150,13 @@ const typeDefs = gql`
     }
 
     type Mutation {
-        addUser(firstName: String!, lastName: String!, provider: String!, email: String!, password: String!): User
+        addUser(firstName: String!, lastName: String!, provider: String!, email: String!, password: String!): Auth
 
         addMessage(email: String!, to: String!, date: String!, time: String!, content: String!): Patient
 
         updateUser(email: String!, password: String!): User
 
         deleteUser(email: String!): User
-
-        login(email: String!, password: String!): Auth
     }
 `
 module.exports = typeDefs;
@@ -167,3 +165,5 @@ module.exports = typeDefs;
 // login(email: String!, password: String!): Auth
 // adjust this for adding user 
 // addProfile(firstName: String!, lastName: String!, email: String!, password: String!): Auth
+//for client side
+    //copy queries saved in apollo

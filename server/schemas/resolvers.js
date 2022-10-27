@@ -19,10 +19,10 @@ const resolvers = {
     },
     Mutation: {
         addUser: async(parent, { firstName, lastName, provider, email, password}) => {
-            return await User.create({firstName, lastName, provider, email, password})
-        //    const profile = await User.create({firstName, lastName, provider, email, password}) 
-        //    const token = signToken(profile);
-        //     return { token, profile };
+            // return await User.create({firstName, lastName, provider, email, password})
+           const profile = await User.create({firstName, lastName, provider, email, password}) 
+           const token = signToken(profile.email);
+            return { token, profile };
 
         },
         addMessage: async (parent, { email, to, date, time, content}) => {
@@ -42,18 +42,18 @@ const resolvers = {
         deleteUser: async(parent, {email}) => {
             return await User.findOneAndDelete({email})
         },
-        login: async (parent, { email, password }) => {
-            const profile = await User.findOne({ email });
-            if (!profile) {
-              throw new AuthenticationError('No profile with this email found!');
-            }
+        // login: async (parent, { email, password }) => {
+        //     const profile = await User.findOne({ email });
+        //     if (!profile) {
+        //       throw new AuthenticationError('No profile with this email found!');
+        //     }
 
-            if (password !== profile.password) {
-            throw new AuthenticationError('Incorrect password!');  
-            }
-            const token = signToken(profile.email);
-            return { token, profile };
-          },
+        //     if (password !== profile.password) {
+        //     throw new AuthenticationError('Incorrect password!');  
+        //     }
+        //     const token = signToken(profile.email);
+        //     return { token, profile };
+        //   },
     }
 }
 
