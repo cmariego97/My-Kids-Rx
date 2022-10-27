@@ -137,6 +137,11 @@ const typeDefs = gql`
         imaging: [Imaging]
     }
 
+    type Auth {
+        token: ID!
+        profile: User
+      }
+
     type Query {
         diseases: [Disease]
         facts: [Fact]
@@ -152,6 +157,8 @@ const typeDefs = gql`
         updateUser(email: String!, password: String!): User
 
         deleteUser(email: String!): User
+
+        login(email: String!, password: String!): Auth
     }
 `
 module.exports = typeDefs;

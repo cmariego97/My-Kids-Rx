@@ -1,6 +1,6 @@
 const { Patient, User, Disease, Fact } = require('../models');
-// const { AuthenticationError } = require('apollo-server-express');
-// const { signToken } = require('../utils/auth');
+const { AuthenticationError } = require('apollo-server-express');
+const { signToken } = require('../utils/auth');
 
 const resolvers = {
     Query: {
@@ -42,18 +42,18 @@ const resolvers = {
         deleteUser: async(parent, {email}) => {
             return await User.findOneAndDelete({email})
         },
-        // login: async (parent, { email, password }) => {
-        //     const profile = await User.findOne({ email });
-        //     if (!profile) {
-        //       throw new AuthenticationError('No profile with this email found!');
-        //     }
+        login: async (parent, { email, password }) => {
+            const profile = await User.findOne({ email });
+            if (!profile) {
+              throw new AuthenticationError('No profile with this email found!');
+            }
 
-        //     if (password !== profile.password) {
-        //     throw new AuthenticationError('Incorrect password!');  
-        //     }
-        //     const token = signToken(profile.email);
-        //     return { token, profile };
-        //   },
+            if (password !== profile.password) {
+            throw new AuthenticationError('Incorrect password!');  
+            }
+            const token = signToken(profile.email);
+            return { token, profile };
+          },
     }
 }
 
