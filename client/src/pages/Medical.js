@@ -3,6 +3,7 @@ import { useQuery } from '@apollo/client';
 import { QUERY_INFO } from '../utils/queries';
 //import components
 import Vitals from '../components/Vitals';
+import Vaccine from '../components/Vaccine';
 
 const Medical = () => {
     //TODO: when we have login we need to retrieve email from the jwt token instead of this const var
@@ -31,6 +32,7 @@ const Medical = () => {
         console.log(data);
         const info = data.onePatient;
         const vitals = info.vitals;
+        const vaccines = info.vaccines;
         const fullName = titleCase(`${info.firstName} ${info.middleName} ${info.lastName}`);
         return (
             <div>
@@ -38,14 +40,7 @@ const Medical = () => {
                 <p>{`Allergies: ${info.allergies}`}</p>
                 <p>{`Medical History: ${info.medicalHistory}`}</p>
                 <p>Vaccines:</p>
-                {info.vaccines.map((vaccine) => 
-                (<li>
-
-                    {`${vaccine.name} given on ${vaccine.date}`}
-
-                </li>)
-                
-                )}
+                <Vaccine vaccines={vaccines}/>
                 <p>Vital Signs:</p>
                 <Vitals vitals={vitals}/>
             </div>
