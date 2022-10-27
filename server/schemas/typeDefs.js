@@ -1,6 +1,5 @@
 const { gql } = require('apollo-server-express');
 
-//split up patient query into queries for seperate sections of website --> this can be done on client side each one will use the same patient query but select specific pieces of data to extract
 const typeDefs = gql`
     type Disease {
         _id: ID
@@ -150,7 +149,7 @@ const typeDefs = gql`
     }
 
     type Mutation {
-        addUser(firstName: String!, lastName: String!, provider: String!, email: String!, password: String!): Auth
+        addUser(firstName: String!, lastName: String!, provider: String!, email: String!, password: String!): User
 
         addMessage(email: String!, to: String!, date: String!, time: String!, content: String!): Patient
 
@@ -163,7 +162,7 @@ module.exports = typeDefs;
 
 // add to mutations when ready to implement login 
 // login(email: String!, password: String!): Auth
-// adjust this for adding user 
+// adjust this for adding user key is returning Auth
 // addProfile(firstName: String!, lastName: String!, email: String!, password: String!): Auth
 //for client side
     //copy queries saved in apollo
