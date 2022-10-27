@@ -16,7 +16,6 @@ const Lab = () => {
     }
     else {
         console.log(data);
-        // const lab = data.onePatient.labs[0]
         const labs = data.onePatient.labs;
         if (labs.length === 0) {
             return (
