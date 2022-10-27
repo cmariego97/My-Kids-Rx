@@ -1,6 +1,7 @@
 import React,{useState} from 'react';
-import { useQuery } from '@apollo/client';
+import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_PROFILE } from '../utils/queries';
+import { UPDATE_PASS, DEL_USER } from '../utils/mutations';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
@@ -24,9 +25,13 @@ const style = {
 const Profile = () => {
     //TODO: when we have login we need to retrieve email from the jwt token instead of this const var
     const email = 'mgreen@test.com';
+    //for query
     const { loading, data } = useQuery(QUERY_PROFILE, {
         variables: { email }
     });
+    //for mutation
+    const [updatePass, {error}] = useMutation(UPDATE_PASS);
+    const [delUser, {errorDel}] = useMutation(DEL_USER);
 
     var titleCase = function(str) {
         var result = [];
@@ -38,10 +43,19 @@ const Profile = () => {
         }
         return result.join(" ");
       };
-      
+      //for modal
       const [open, setOpen] = useState(false);
       const handleOpen = () => setOpen(true);
       const handleClose = () => setOpen(false);
+      //for password change
+      const [currentPass, setCurrentPass] = useState('');
+      const [newPass, setNewPass] = useState('');
+      //for deleting profile
+      const [visible, setVisible] = useState(false);
+      const [inputVis, setInputVis] = useState(false);
+      const show = {display: 'block'};
+      const hidden = {display: 'none'};
+      const [delPass, setDelPass] = useState('');
 
     if(loading) {
         return (
@@ -49,25 +63,98 @@ const Profile = () => {
         )
     }
     else {
-        console.log(data);
         const user = data.oneUser
         const fullName= titleCase(`${user.firstName} ${user.lastName}`);
 
+        const handleChange = (e) => {
+            const { name, value } = e.target;
+            if (name === 'currentPass') {
+                setCurrentPass(value);
+            }
+            if (name === 'newPass') {
+                setNewPass(value);
+            }
+        }
 
-        // const changePassword = () => {
+        const handleDelChange = (e) => {
+            const {value} = e.target;
+            setDelPass(value);
+        }
 
-        // } 
+        const changePassword = async (e) => {
+            e.preventDefault();
+            if (currentPass !== user.password) {
+                document.querySelector('#message-el').textContent = 'Current password incorrect, unable to change password'
+            }
+            else if (!newPass) {
+                document.querySelector('#message-el').textContent = 'Please enter a new password'
+            }
+            else {
+                try {
+                    const {data} = await updatePass({
+                        variables: {email: user.email, password: newPass}
+                    })
+                    console.log(data);
+                    document.querySelector('#message-el').textContent = 'Password successfully changed!'
+                }
+                catch(err) {
+                    console.error(err);
+                    document.querySelector('#message-el').textContent = 'Error changing password'
+                }
+            }
+        } 
+
+        const initDelete = () => {
+            document.querySelector('#conf-delete').textContent = 'Are you sure you want to delete your patient account?';
+            setVisible(true);
+
+        }
+        const cxDelete = () => {
+            document.querySelector('#conf-delete').textContent = '';
+            setVisible(false);
+        }
+        const confDelete = async(e) => {
+            e.preventDefault();
+            setInputVis(true);
+        }
+        const delAcct = async(e) => {
+            e.preventDefault();
+            if (delPass !== user.password) {
+                document.querySelector('#user-del').textContent = 'Incorrect password'
+            }
+            else {
+            try {
+                const {data} = await delUser({
+                    variables: {email: user.email}
+                })
+                console.log(data);
+                document.querySelector('#user-del').textContent = 'User account deleted!'
+                //TODO: logout of acct
+            }
+            catch(err) {
+                console.error(err);
+                document.querySelector('#user-del').textContent = 'Error deleting account'
+            }
+        }
+        }
+
         return (
             <div>
                 <h1>{`Hello, ${fullName}`}</h1>
                 <li>{`Email: ${user.email}`}</li>
                 <li>{`Provider: ${user.provider}`}</li>
-                {/* TODO: add options to update provider or update password if time */}
                 <h2>Settings:</h2>
-                <Button variant="outlined">Change Provider
-            </Button>
             <Button variant="outlined" onClick={handleOpen}>Change Password
             </Button>
+            <Button variant="outlined" onClick={initDelete}>Delete Account
+            </Button>
+            <p id='conf-delete'></p>
+            <button style={visible ? show : hidden} onClick={confDelete}>Yes</button>
+            <label style={inputVis ? show : hidden}>Enter password:</label>
+            <input value={delPass} onChange={handleDelChange} style={inputVis ? show : hidden} type='password'></input>
+            <button style={inputVis ? show : hidden} onClick={delAcct}>Delete Account</button>
+            <button style={visible ? show : hidden} onClick={cxDelete}>Cancel</button>
+            <p id='user-del'></p>
             <Modal
                 open={open}
                 onClose={handleClose}
@@ -78,12 +165,13 @@ const Profile = () => {
                 <Typography id="modal-modal-title" variant="h6" component="h2">
                     Enter Current Password
                 </Typography>
-                <input type='password'></input>
+                <input type='password' name='currentPass'value={currentPass} onChange={handleChange}></input>
                 <Typography id="modal-modal-description" sx={{ mt: 2 }}>
                     Enter New Password
                 </Typography>
-                <input type='password'></input>
-                <button>Change Password</button>
+                <input type='password' name='newPass' value={newPass} onChange={handleChange}></input>
+                <button onClick={changePassword}>Change Password</button>
+                <p id='message-el'></p>
                 </Box>
             </Modal>
 
