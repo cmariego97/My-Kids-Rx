@@ -17,18 +17,24 @@ const Note = () => {
     else {
       console.log(data)
         var note = data.onePatient.notes
-      
-        return (
-            <div>
-                {note.map((visit) =>(
-                    <div>
-                        <li>Date:{visit.date}</li>
-                        <li>Report:{visit.notes}</li>
-                    </div>
-                )
-                )}
-            </div>
-        )
+        if (note.length !== 0) {
+            return (
+                <div>
+                    {note.map((visit) =>(
+                        <div>
+                            <li>Date:{visit.date}</li>
+                            <li>Report:{visit.notes}</li>
+                        </div>
+                    )
+                    )}
+                </div>
+            )
+        }
+        else {
+            return (
+                <p>No past appointment reports found!</p>
+            )
+        }
     }
 }
 
