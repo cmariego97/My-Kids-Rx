@@ -155,3 +155,8 @@ const typeDefs = gql`
     }
 `
 module.exports = typeDefs;
+
+// add to mutations when ready ti implement login 
+// login(email: String!, password: String!): Auth
+// adjust this for adding user 
+// addProfile(name: String!, email: String!, password: String!): Auth
