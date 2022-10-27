@@ -1,6 +1,8 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
 import { QUERY_INFO } from '../utils/queries';
+//import components
+import Vitals from '../components/Vitals';
 
 const Medical = () => {
     //TODO: when we have login we need to retrieve email from the jwt token instead of this const var
@@ -27,8 +29,8 @@ const Medical = () => {
     }
     else {
         console.log(data);
-        const info = data.onePatient
-        const index= info.vitals.length-1
+        const info = data.onePatient;
+        const vitals = info.vitals;
         const fullName = titleCase(`${info.firstName} ${info.middleName} ${info.lastName}`);
         return (
             <div>
@@ -44,27 +46,8 @@ const Medical = () => {
                 </li>)
                 
                 )}
-
-               <p>Lastest Vitals:</p>
-               <li>
-                   {` Date: ${info.vitals[index].date}`}
-                </li>
-                <li>
-                   {` Height: ${info.vitals[index].height} inches`}
-                </li>
-                <li>
-                   { `Weight: ${info.vitals[index].weight} pounds`}
-                </li>
-                <li>
-                    {`Blood Pressure: ${info.vitals[index].systolicBP}/${info.vitals[index].diastolicBP}`}
-                </li>
-                
-                <li>
-                    {`Heart Rate: ${info.vitals[index].hr} bpm`}
-                </li>
-                <li>
-                    {`SpO2: ${info.vitals[index].o2} percent`}
-                </li>
+                <p>Vital Signs:</p>
+                <Vitals vitals={vitals}/>
             </div>
         )
     }
