@@ -1,6 +1,11 @@
 import React, {useState} from 'react';
-import { ApolloClient, ApolloProvider, from, InMemoryCache } from '@apollo/client';
-
+import { ApolloClient,
+      ApolloProvider, 
+      InMemoryCache, 
+      // createHttpLink
+    } 
+  from '@apollo/client';
+// import { setContext } from '@apollo/client/link/context';
 // import from MUI
 import { createTheme, ThemeProvider, makeStyles } from '@material-ui/core/styles';
 import { Typography } from '@material-ui/core';
@@ -22,9 +27,27 @@ import Messaging from './pages/Messaging';
 import HeaderAppBar from './components/HeaderAppBar';
 import Footer from './components/Footer'; 
 
+// const httpLink = createHttpLink({
+//   uri: '/graphql',
+// });
+
+// const authLink = setContext((_, { headers }) => {
+//   // get the authentication token from local storage if it exists
+//   const token = localStorage.getItem('id_token');
+//   // return the headers to the context so httpLink can read them
+//   return {
+//     headers: {
+//       ...headers,
+//       authorization: token ? `Bearer ${token}` : '',
+//     },
+//   };
+// });
+
 // Apollo Client
 const client = new ApolloClient({
   uri: '/graphql',
+  //when implementing login get rid of above uri and replace with this:
+  // link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
 });
 
@@ -114,9 +137,17 @@ const styles = makeStyles({
   },
 })
 
+//for conditional rendering of logged in vs not logged in
+// Auth.loggedIn () ? whatever : other option
+//for nav bar when logged in this will run when logout is clicked
+// const logout = (event) => {
+//   event.preventDefault();
+//   Auth.logout();
+// };
+//can do conditional rendering of navbar so only need 1 nav bar
+//for querying database, need to retrieve email from token --> Auth.getProfile() returns the token but need to console log to see exactly how to extract the email, this needs to be on all data pages
+
 function App() {
-  //define function to render specific page
-  //if page === 'Home' return (<Home />)
   const classes = styles();
   const [page, setPage] = useState('Home')
   //TODO: eventually need to separate into pages that can be accessed vs logged in vs not logged in

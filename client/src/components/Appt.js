@@ -17,19 +17,25 @@ const Appt = () => {
     else {
       console.log(data)
         var appointment = data.onePatient.appointments
-      
-        return (
-            <div>
-                {appointment.map((visit) =>(
-                    <div>
-                        <li>Date:{visit.date}</li>
-                        <li>Time:{visit.time}</li>
-                        <li>Reason:{visit.reason}</li>
-                    </div>
-                )
-                )}
-            </div>
-        )
+        if (appointment.length !== 0) {
+            return (
+                <div>
+                    {appointment.map((visit) =>(
+                        <div>
+                            <li>Date:{visit.date}</li>
+                            <li>Time:{visit.time}</li>
+                            <li>Reason:{visit.reason}</li>
+                        </div>
+                    )
+                    )}
+                </div>
+            )
+        }
+        else {
+            return (
+                <p>No upcoming appointments!</p>
+            )
+        }
     }
 }
 

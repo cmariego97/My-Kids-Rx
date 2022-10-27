@@ -1,6 +1,6 @@
 const { Patient, User, Disease, Fact } = require('../models');
-const { AuthenticationError } = require('apollo-server-express');
-const { signToken } = require('../utils/auth');
+// const { AuthenticationError } = require('apollo-server-express');
+// const { signToken } = require('../utils/auth');
 
 const resolvers = {
     Query: {
@@ -20,9 +20,8 @@ const resolvers = {
     Mutation: {
         addUser: async(parent, { firstName, lastName, provider, email, password}) => {
             return await User.create({firstName, lastName, provider, email, password})
-
         //    const profile = await User.create({firstName, lastName, provider, email, password}) 
-        //    const token = signToken(profile);
+        //    const token = signToken(profile.email);
         //     return { token, profile };
 
         },
@@ -52,7 +51,7 @@ const resolvers = {
         //     if (password !== profile.password) {
         //     throw new AuthenticationError('Incorrect password!');  
         //     }
-        //     const token = signToken(profile);
+        //     const token = signToken(profile.email);
         //     return { token, profile };
         //   },
     }

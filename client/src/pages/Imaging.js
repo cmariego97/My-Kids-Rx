@@ -17,21 +17,28 @@ const Imaging= () => {
     else {
         console.log(data);
         const imaging = data.onePatient.imaging
-        return (
-            <div>
-               <h1>Imaging Results</h1>
-               {imaging.map((result) => (
+        if (imaging.length !== 0) {
+            return (
                 <div>
-                    <li>{`Date: ${result.date}`}</li>
-                    <li>{`Test: ${result.type} of ${result.site}`}</li>
-                    <li>{`Results: ${result.report}`}</li>
+                   <h1>Imaging Results</h1>
+                   {imaging.map((result) => (
+                    <div>
+                        <li>{`Date: ${result.date}`}</li>
+                        <li>{`Test: ${result.type} of ${result.site}`}</li>
+                        <li>{`Results: ${result.report}`}</li>
+                    </div>
+                  
+                   )
+                   )}
+    
                 </div>
-              
-               )
-               )}
-
-            </div>
-        )
+            )
+        }
+        else {
+            return (
+                <p>No imaging results on file!</p>
+            )
+        }
     }
 }
 
