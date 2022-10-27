@@ -1,7 +1,11 @@
 import React from 'react'
-
 //first query to check if user with input email already exists
+// import { useQuery } from '@apollo/client';
+// import { QUERY_PROFILE } from '@apollo/client';
 //then mutation to create new acct
+// import { useMutation } from '@apollo/client';
+// import { ADD_USER } from '../utils/mutations';
+import Auth from '../utils/auth';
 // import MUI styles
 import { createTheme, ThemeProvider, makeStyles } from '@material-ui/core/styles';
 import { CssBaseline, Typography, Link, Button } from '@material-ui/core';
@@ -150,6 +154,38 @@ const CssTextField = styled(TextField)({
 });
 
 function AccountCreate() {
+  //logic
+  //add all the fields here
+  // const [formState, setFormState] = useState({
+  //   name: '',
+  //   email: '',
+  //   password: '',
+  // });
+  // const [addProfile, { error, data }] = useMutation(ADD_USER);
+  // const handleChange = (event) => {
+  //   const { name, value } = event.target;
+
+  //   setFormState({
+  //     ...formState,
+  //     [name]: value,
+  //   });
+  // };
+  // const handleFormSubmit = async (event) => {
+  //   event.preventDefault();
+  //   console.log(formState);
+
+  //   try {
+  //     const { data } = await addProfile({
+  //       variables: { ...formState },
+  //     });
+  //     //console log data first to see if this is correct param
+  //     //need param to be token id
+  //     Auth.login(data.addProfile.token);
+  //   } catch (e) {
+  //     console.error(e);
+  //   }
+  // };
+
   const classes = useStyles();
   const btnstyle={margin:'8px 0'}
 
