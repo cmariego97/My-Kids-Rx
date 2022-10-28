@@ -20,6 +20,7 @@ export const QUERY_INFO = gql`
         firstName
         middleName
         lastName
+        dob
         allergies
         medicalHistory
         medications{

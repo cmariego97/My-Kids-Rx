@@ -107,6 +107,12 @@ const Medical = () => {
         return result.join(" ");
       };
 
+    //converts dob to age
+    const getAge = (dateString) => {
+        var ageInMilliseconds = new Date() - new Date(dateString);
+        return Math.floor(ageInMilliseconds/1000/60/60/24/365);
+    }
+
     if(loading) {
         return (
             <h1>Loading profile...</h1>
@@ -124,11 +130,15 @@ const Medical = () => {
         const vaccines = info.vaccines;
         const meds = info.medications;
         const fullName = titleCase(`${info.firstName} ${info.middleName} ${info.lastName}`);
+        const age = getAge(info.dob)
         return (
             <div>
                 <Typography variant="h4" className={classes.cardTitle}>
                     My Medical Information
                 </Typography>
+
+                <Typography variant="h5" className={classes.infoLabel}>Age:</Typography>
+                <Typography className={classes.infoContent}>{age}</Typography>
 
                 <Typography variant="h5" className={classes.infoLabel}>Allergies:</Typography>
                 <Typography className={classes.infoContent}>{`${info.allergies}`}</Typography>
