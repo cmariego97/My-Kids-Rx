@@ -266,12 +266,8 @@ const Profile = () => {
     const classes = useStyles();
     const btnstyle={margin:'8px 0'}
 
-    // console.log(Auth.getProfile());
     const acctData = Auth.getProfile();
-    console.log(acctData.data.email);
-
-    //TODO: when we have login we need to retrieve email from the jwt token instead of this const var
-    const email = 'mgreen@test.com';
+    const email = acctData.data.email;
     //for query
     const { loading, data } = useQuery(QUERY_PROFILE, {
         variables: { email }

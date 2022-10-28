@@ -1,6 +1,7 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
 import { QUERY_INFO } from '../utils/queries';
+import Auth from '../utils/auth';
 
 // import MUI styles
 import { createTheme, ThemeProvider, makeStyles } from '@material-ui/core/styles';
@@ -89,8 +90,8 @@ const useStyles = makeStyles({
 const Medical = () => {
     const classes = useStyles();
 
-    //TODO: when we have login we need to retrieve email from the jwt token instead of this const var
-    const email = 'mgreen@test.com';
+    const acctData = Auth.getProfile();
+    const email = acctData.data.email;
     const { loading, data } = useQuery(QUERY_INFO, {
         variables: { email }
     });
