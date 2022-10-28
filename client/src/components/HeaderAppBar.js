@@ -1,4 +1,5 @@
 import React from 'react'
+import Auth from '../utils/auth';
 
 // import MUI styles
 import { createTheme, ThemeProvider, makeStyles } from '@material-ui/core/styles';
@@ -83,7 +84,15 @@ const HeaderAppBar = (props) => {
         )
     }
     else {
-        console.log(props);
+        const status = ()=> {
+            const acctData = Auth.getProfile();
+            const email = acctData.data.email;
+            if(Auth.loggedIn()) {
+                return (
+                    <h2 className={classes.appbarTitle}>Logged in as {email}</h2>
+                )
+            }
+        }
         return (
             <ThemeProvider theme={theme}>
                 <div className={classes.root}>
@@ -94,6 +103,7 @@ const HeaderAppBar = (props) => {
                                 My Kids-Rx
                                 {/* <img src={`${KidsRxLogo}`} className={classes.icon}/> */}
                             </h1>
+                            {status()}
                             <NavBurger page={props.page} changePage={props.changePage}/>
                             {/* <IconButton>
                                 <SortIcon className={classes.icon} />
