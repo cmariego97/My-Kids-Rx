@@ -13,9 +13,11 @@ import { QUERY_MESSAGES } from '../utils/queries'
 //mutation
 import { useMutation } from '@apollo/client';
 import { ADD_MESSAGE } from '../utils/mutations';
-//TODO: have messages update after sending message
+import Auth from '../utils/auth';
+
 const Messaging = () => {
-    const email = 'mgreen@test.com';
+    const acctData = Auth.getProfile();
+    const email = acctData.data.email;
     //for query
     const { loading, data } = useQuery(QUERY_MESSAGES, {
         variables: { email }

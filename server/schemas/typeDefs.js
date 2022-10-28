@@ -1,5 +1,6 @@
 const { gql } = require('apollo-server-express');
-
+//for client side
+    //copy queries saved in apollo
 const typeDefs = gql`
     type Disease {
         _id: ID
@@ -149,20 +150,15 @@ const typeDefs = gql`
     }
 
     type Mutation {
-        addUser(firstName: String!, lastName: String!, provider: String!, email: String!, password: String!): User
+        addUser(firstName: String!, lastName: String!, provider: String!, email: String!, password: String!): Auth
 
         addMessage(email: String!, to: String!, date: String!, time: String!, content: String!): Patient
 
         updateUser(email: String!, password: String!): User
 
         deleteUser(email: String!): User
+
+        login(email: String!, password: String!): Auth
     }
 `
 module.exports = typeDefs;
-
-// add to mutations when ready to implement login 
-// login(email: String!, password: String!): Auth
-// adjust this for adding user key is returning Auth
-// addProfile(firstName: String!, lastName: String!, email: String!, password: String!): Auth
-//for client side
-    //copy queries saved in apollo

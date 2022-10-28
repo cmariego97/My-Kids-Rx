@@ -2,10 +2,10 @@ import React, {useState} from 'react';
 import { ApolloClient,
       ApolloProvider, 
       InMemoryCache, 
-      // createHttpLink
+      createHttpLink
     } 
   from '@apollo/client';
-// import { setContext } from '@apollo/client/link/context';
+import { setContext } from '@apollo/client/link/context';
 // import from MUI
 import { createTheme, ThemeProvider, makeStyles } from '@material-ui/core/styles';
 import { Typography } from '@material-ui/core';
@@ -27,27 +27,25 @@ import Messaging from './pages/Messaging';
 import HeaderAppBar from './components/HeaderAppBar';
 import Footer from './components/Footer'; 
 
-// const httpLink = createHttpLink({
-//   uri: '/graphql',
-// });
+const httpLink = createHttpLink({
+  uri: '/graphql',
+});
 
-// const authLink = setContext((_, { headers }) => {
-//   // get the authentication token from local storage if it exists
-//   const token = localStorage.getItem('id_token');
-//   // return the headers to the context so httpLink can read them
-//   return {
-//     headers: {
-//       ...headers,
-//       authorization: token ? `Bearer ${token}` : '',
-//     },
-//   };
-// });
+const authLink = setContext((_, { headers }) => {
+  // get the authentication token from local storage if it exists
+  const token = localStorage.getItem('id_token');
+  // return the headers to the context so httpLink can read them
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : '',
+    },
+  };
+});
 
 // Apollo Client
 const client = new ApolloClient({
-  uri: '/graphql',
-  //when implementing login get rid of above uri and replace with this:
-  // link: authLink.concat(httpLink),
+  link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
 });
 
@@ -153,9 +151,8 @@ const styles = makeStyles({
 function App() {
   const classes = styles();
   const [page, setPage] = useState('Home')
-  //TODO: eventually need to separate into pages that can be accessed vs logged in vs not logged in
+
   const renderPage = () => {
-    //can be accessed when logged in
     if (page === 'Profile') {
       return <Profile />
     }
@@ -180,7 +177,6 @@ function App() {
     if (page === 'Resources') {
       return <Resources />
     }
-    //when not logged in
     if (page === 'Home') {
       return <Homepage />
     }
@@ -196,22 +192,10 @@ function App() {
 
   return (
     <ApolloProvider client={client}>
-      {/* this needs to wrap around everything else so the data can be accessed by all parts */}
-
-      {/* Homepage is complete with its own NavBar = "NavBurger" */}
-
-      {/* NavBurger Content - render pages to view for now */}
-        {/* <AccountLoginPatient /> */}
-        {/* <AccountCreate /> */}
-
       <HeaderAppBar page={page} changePage={changePage}/>
         {renderPage()}
         <Footer />
       </ApolloProvider> 
-//something like this in app function (inside apollo provider)
-  //navbar
-  //call function
-  //footer
     
   );
 }

@@ -3,8 +3,8 @@ import React, {useState} from 'react'
 // import { useQuery } from '@apollo/client';
 // import { QUERY_PROFILE } from '@apollo/client';
 //then mutation to create new acct
-// import { useMutation } from '@apollo/client';
-// import { ADD_USER } from '../utils/mutations';
+import { useMutation } from '@apollo/client';
+import { ADD_USER } from '../utils/mutations';
 import Auth from '../utils/auth';
 // import MUI styles
 import { createTheme, ThemeProvider, makeStyles } from '@material-ui/core/styles';
@@ -154,38 +154,58 @@ const CssTextField = styled(TextField)({
 });
 
 function AccountCreate() {
-  //logic
-  //add all the fields here
-  // const [formState, setFormState] = useState({
-  //   name: '',
-  //   email: '',
-  //   password: '',
-  // });
-  // const [addProfile, { error, data }] = useMutation(ADD_USER);
-  // const handleChange = (event) => {
-  //   const { name, value } = event.target;
+  
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [provider, setProvider] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confPassword, setConf] = useState('');
 
-  //   setFormState({
-  //     ...formState,
-  //     [name]: value,
-  //   });
-  // };
-  //TODO: make first and last name to lowercase
-  // const handleFormSubmit = async (event) => {
-  //   event.preventDefault();
-  //   console.log(formState);
+  const [addProfile, { error, data }] = useMutation(ADD_USER);
 
-  //   try {
-  //     const { data } = await addProfile({
-  //       variables: { ...formState },
-  //     });
-  //     //console log data first to see if this is correct param
-  //     //need param to be token id
-  //     Auth.login(data.addProfile.token);
-  //   } catch (e) {
-  //     console.error(e);
-  //   }
-  // };
+  const handleChange = (event) => {
+    const { id, value } = event.target;
+    if (id === 'user-firstName') {
+      setFirstName(value);
+    }
+    else if (id === 'user-lastName') {
+      setLastName(value);
+    }
+    else if (id === 'recipient-provider') {
+      setProvider(value);
+    }
+    else if (id === 'recipient-user') {
+      setEmail(value);
+    }
+    else if (id === 'conf-password') {
+      setConf(value);
+    }
+    else {
+      setPassword(value);
+    }
+  };
+  
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+    if (!firstName || !lastName || !provider || !email || !password || !confPassword) {
+      document.querySelector('#err-message').textContent = 'Please fill out all required fields!';
+    }
+    if(password !== confPassword) {
+      document.querySelector('#err-message').textContent = 'Error creating account: passwords must match';
+    }
+    else{
+      try {
+      const { data } = await addProfile({
+        variables: { firstName, lastName, provider, email, password },
+      });
+      Auth.login(data.addUser.token);
+    } catch (e) {
+      console.error(e);
+      document.querySelector('#err-message').textContent = 'Error creating account';
+    }
+    }
+  };
 
   const classes = useStyles();
   const btnstyle={margin:'8px 0'}
@@ -213,6 +233,7 @@ function AccountCreate() {
                     label="First Name"
                     placeholder="(ゝз○`)"
                     margin="normal"
+                    onChange={handleChange}
                   />
                   <CssTextField
                     required
@@ -220,10 +241,22 @@ function AccountCreate() {
                     label="Last Name"
                     placeholder="(´ε｀ )♡"
                     margin="normal"
+                    onChange={handleChange}
                   />
                 </div>
                 
                 <div className={classes.textFieldColumn}>
+                <CssTextField
+                    fullWidth
+                    required
+                    id="recipient-provider"
+                    label="Provider"
+                    placeholder="♫꒰･‿･๑꒱"
+                    margin="normal"
+                    helperText="provider required"
+                    onChange={handleChange}
+                  />
+
                   <CssTextField
                     fullWidth
                     required
@@ -232,26 +265,43 @@ function AccountCreate() {
                     placeholder="♫꒰･‿･๑꒱"
                     margin="normal"
                     helperText="e-mail required"
+                    onChange={handleChange}
                   />
 
                   <CssTextField
                     fullWidth
                     required
                     id="recipient-password"
+                    type="password"
                     label="Password"
                     placeholder="ᕙ(‾̀◡‾́)ᕗ"
                     margin="normal"
                     helperText="password required"
+                    onChange={handleChange}
+                  />
+
+                  <CssTextField
+                    fullWidth
+                    required
+                    id="conf-password"
+                    type="password"
+                    label="Confirm Password"
+                    placeholder="ᕙ(‾̀◡‾́)ᕗ"
+                    margin="normal"
+                    helperText="confirm password required"
+                    onChange={handleChange}
                   />
                 </div>
 
                 <FormControlLabel control={<Checkbox name="checkedB" color="primary"/>} label="Remember me"/>
 
-                <Button type='submit' color='primary' variant="contained" style={btnstyle} fullWidth>
+                <Button type='submit' color='primary' variant="contained" style={btnstyle} fullWidth onClick={handleFormSubmit}>
                   Create Account
                 </Button>
+                <p id='err-message'></p>
 
                 <Typography> 
+                  {/* TODO: fix this */}
                   Already have an Account? 
                   <Link href="#" >
                     Login 
@@ -267,4 +317,4 @@ function AccountCreate() {
   )
 }
 
-export default AccountCreate
+export default AccountCreate;
