@@ -33,20 +33,76 @@ const Messaging = () => {
             )
         }
         else {
-            console.log(data)
-            messages = data.onePatient.messages;
-            to = messages[0].to
+            if (!data.onePatient) {
+                return (
+                    <p>No messages found for this email, you must first contact your provider to set up your profile!</p>
+                )
+            }
+            else {
+                messages = data.onePatient.messages;
+                to = messages[0].to
+                return (
+                    <Typography variant="body2" color="text.secondary">
+                        {messages.map((message)=> (
+                            <div>
+                                <h2>{`Message to ${message.to}`}</h2>
+                                <h3>{`Sent on ${message.date} at ${message.time}`}</h3>
+                                <p>{message.content}</p>
+                            </div>
+                        ))}
+                    </Typography>
+                )
+            }
+        }
+    }
+
+    const renderForm = () => {
+        if (loading) {
             return (
                 <Typography variant="body2" color="text.secondary">
-                    {messages.map((message)=> (
-                        <div>
-                            <h2>{`Message to ${message.to}`}</h2>
-                            <h3>{`Sent on ${message.date} at ${message.time}`}</h3>
-                            <p>{message.content}</p>
-                        </div>
-                    ))}
-                </Typography>
+                    Loading...
+            </Typography>
             )
+        }
+        else {
+            if (!data.onePatient) {
+                return (
+                    <p>Messaging will not be enabled until you contact your provider to set up your profile!</p>
+                )
+            }
+            else {
+                return(
+                    <div sx={{ maxWidth: 345 }}>
+                    <CardContent>
+                        <Typography gutterBottom variant="h5" component="div">
+                        Send a Message
+                        </Typography>
+                        <Typography variant="body2" color="text.secondary">
+                        <Autocomplete
+                            disablePortal
+                            id="combo-box-demo"
+                            options={[{label: to}]}
+                            sx={{ width: 300 }}
+                            renderInput={(params) => <TextField {...params} label="To" />}
+                            />
+                            <TextField
+                            id="standard-multiline-static"
+                            label="Multiline"
+                            multiline
+                            rows={4}
+                            value={content}
+                            onChange={handleChange}
+                            variant="standard"
+                            />
+                        </Typography>
+                    </CardContent>
+                    <CardActions>
+                        <Button variant="outlined" onClick={handleFormSubmit}>Send</Button>
+                    </CardActions>
+                    <p id="conf-message"></p>
+                </div>
+                )
+            }
         }
     }
 
@@ -110,35 +166,7 @@ const Messaging = () => {
                 </CardContent>
             </div>
             {/* form to send a message */}
-            <div sx={{ maxWidth: 345 }}>
-                <CardContent>
-                    <Typography gutterBottom variant="h5" component="div">
-                    Send a Message
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                    <Autocomplete
-                        disablePortal
-                        id="combo-box-demo"
-                        options={[{label: to}]}
-                        sx={{ width: 300 }}
-                        renderInput={(params) => <TextField {...params} label="To" />}
-                        />
-                        <TextField
-                        id="standard-multiline-static"
-                        label="Multiline"
-                        multiline
-                        rows={4}
-                        value={content}
-                        onChange={handleChange}
-                        variant="standard"
-                        />
-                    </Typography>
-                </CardContent>
-                <CardActions>
-                    <Button variant="outlined" onClick={handleFormSubmit}>Send</Button>
-                </CardActions>
-                <p id="conf-message"></p>
-            </div>
+            {renderForm()}
     </div>
     )
 }

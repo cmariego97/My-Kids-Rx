@@ -6,6 +6,7 @@ import { ApolloClient,
     } 
   from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
+import Auth from './utils/auth';
 // import from MUI
 import { createTheme, ThemeProvider, makeStyles } from '@material-ui/core/styles';
 import { Typography } from '@material-ui/core';
@@ -137,16 +138,6 @@ const styles = makeStyles({
     flexWrap: "wrap",
   },
 })
-
-//for conditional rendering of logged in vs not logged in
-// Auth.loggedIn () ? whatever : other option
-//for nav bar when logged in this will run when logout is clicked
-// const logout = (event) => {
-//   event.preventDefault();
-//   Auth.logout();
-// };
-//can do conditional rendering of navbar so only need 1 nav bar
-//for querying database, need to retrieve email from token --> Auth.getProfile() returns the token but need to console log to see exactly how to extract the email, this needs to be on all data pages
 
 function App() {
   const classes = styles();

@@ -12,6 +12,7 @@ export const QUERY_PROFILE = gql`
         }
     }
 `
+
 //for basic medical info
 export const QUERY_INFO = gql`
     query OnePatient($email: String!) {
@@ -19,6 +20,7 @@ export const QUERY_INFO = gql`
         firstName
         middleName
         lastName
+        dob
         allergies
         medicalHistory
         medications{
