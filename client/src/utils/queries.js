@@ -21,6 +21,11 @@ export const QUERY_INFO = gql`
         lastName
         allergies
         medicalHistory
+        medications{
+            name
+            dose
+            directions
+        }
         vaccines {
             date
             name
