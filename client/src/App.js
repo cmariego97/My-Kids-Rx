@@ -2,10 +2,10 @@ import React, {useState} from 'react';
 import { ApolloClient,
       ApolloProvider, 
       InMemoryCache, 
-      // createHttpLink
+      createHttpLink
     } 
   from '@apollo/client';
-// import { setContext } from '@apollo/client/link/context';
+import { setContext } from '@apollo/client/link/context';
 // import from MUI
 import { createTheme, ThemeProvider, makeStyles } from '@material-ui/core/styles';
 import { Typography } from '@material-ui/core';
@@ -27,27 +27,27 @@ import Messaging from './pages/Messaging';
 import HeaderAppBar from './components/HeaderAppBar';
 import Footer from './components/Footer'; 
 
-// const httpLink = createHttpLink({
-//   uri: '/graphql',
-// });
+const httpLink = createHttpLink({
+  uri: '/graphql',
+});
 
-// const authLink = setContext((_, { headers }) => {
-//   // get the authentication token from local storage if it exists
-//   const token = localStorage.getItem('id_token');
-//   // return the headers to the context so httpLink can read them
-//   return {
-//     headers: {
-//       ...headers,
-//       authorization: token ? `Bearer ${token}` : '',
-//     },
-//   };
-// });
+const authLink = setContext((_, { headers }) => {
+  // get the authentication token from local storage if it exists
+  const token = localStorage.getItem('id_token');
+  // return the headers to the context so httpLink can read them
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : '',
+    },
+  };
+});
 
 // Apollo Client
 const client = new ApolloClient({
-  uri: '/graphql',
+  // uri: '/graphql',
   //when implementing login get rid of above uri and replace with this:
-  // link: authLink.concat(httpLink),
+  link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
 });
 

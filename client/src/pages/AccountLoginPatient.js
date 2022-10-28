@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
-// import { useMutation } from '@apollo/client';
-// import { LOGIN_USER } from '../utils/mutations';
-// import Auth from '../utils/auth';
+import { useMutation } from '@apollo/client';
+import { LOGIN_USER } from '../utils/mutations';
+import Auth from '../utils/auth';
 
 // import MUI styles
 import { createTheme, ThemeProvider, makeStyles } from '@material-ui/core/styles';
@@ -143,16 +143,17 @@ const CssTextField = styled(TextField)({
 
 function AccountLoginPatient() {
   //logic
-  // const [formState, setFormState] = useState({ email: '', password: '' });
+  const [formState, setFormState] = useState({ email: '', password: '' });
   // const [login, { error, data }] = useMutation(LOGIN_USER);
-  // const handleChange = (event) => {
-  //   const { name, value } = event.target;
+  const handleChange = (event) => {
+    const { name, value } = event.target;
 
-  //   setFormState({
-  //     ...formState,
-  //     [name]: value,
-  //   });
-  // };
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
+    console.log(formState);
+  };
   // const handleFormSubmit = async (event) => {
   //   event.preventDefault();
   //   console.log(formState);
@@ -201,6 +202,8 @@ function AccountLoginPatient() {
                     placeholder="♫꒰･‿･๑꒱"
                     margin="normal"
                     helperText="e-mail required"
+                    value={formState.email}
+                    onChange={handleChange}
                   />
                   <CssTextField
                     fullWidth
@@ -210,6 +213,8 @@ function AccountLoginPatient() {
                     placeholder="ᕙ(‾̀◡‾́)ᕗ"
                     margin="normal"
                     helperText="password required"
+                    value={formState.password}
+                    onChange={handleChange}
                   />
                 </div>
 
