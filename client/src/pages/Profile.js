@@ -5,9 +5,10 @@ import { UPDATE_PASS, DEL_USER } from '../utils/mutations';
 
 // import MUI styles
 import { createTheme, ThemeProvider, makeStyles } from '@material-ui/core/styles';
-import {CssBaseline, Typography } from '@material-ui/core';
+import { CssBaseline, Typography } from '@material-ui/core';
 
 // import MUI components
+import Avatar from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
@@ -17,6 +18,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 //import images
 import background from '../assets/images/site-design-images/plain-animal-bg.svg';
+import avatarImg from '../assets/images/avatars/avatar1-pink.png';
 
 const theme = createTheme({
     palette: {
@@ -72,35 +74,19 @@ const useStyles = makeStyles((theme) => ({
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
     },
-    wrapper: {
-        width: "65%",
-        margin: "auto",
-        textAlign: "center"
+    wrapContainer: {},
+    cardProfile: {
+        margin: ' 0 auto',
+        width: '30%',
+        backgroundColor: '#AA858E',
+        justifyContent: 'center',
+        borderRadius: '5px',
+        boxShadow: "0px 3px 3px rgba(44, 42, 72, 0.9)",
     },
-    bigSpace: {
-        marginTop: "5rem"
-    },
-    littleSpace: {
-        marginTop: "2.5rem",
-    },
-    grid: {
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        flexWrap: "wrap",
-    },
-    aboutUsWrapper: {
-        backgroundColor: "#f4f6fc",
-    },
-    aboutUs: {
-        display: "flex",
-        flexDirection: "row",
-        alignItems: "center",
-        margin: "5rem",
-    },
-    textInfo: {
-        color: "#3F4868",
-        textAlign: "justify",
+    avatarImage: {
+        margin: '0 auto',
+        width: '100%',
+        height: 'auto',
     },
 }))
 
@@ -259,67 +245,80 @@ const Profile = () => {
         return (
             <ThemeProvider theme={theme}>
                 <div className={classes.root}>
-
-                    {/* TODO: insert an avatar icon image placeholder here */}
-                    <Typography variant="h1" className={classes.userName}>
-                        {`Hello, ${fullName}`}
-                    </Typography>
-
-                    <div>
-                        <Typography variant="h5">
-                            {`Email: ${user.email}`}
-                        </Typography>
+                    <div className={classes.wrapContainer}>
                         
-                        <Typography variant="h5">
-                            {`Provider: ${user.provider}`}
+                        {/* Profile Card - avatar + name */}
+                        <div className={classes.cardProfile}>
+                            {/* TODO: insert an avatar icon image placeholder here */}
+                            <div>
+                                <Avatar 
+                                    className={classes.avatarImage}
+                                    alt="pink-haired girl with headphones" 
+                                    src={`${avatarImg}`}
+                                    sx={{ width: 300, height: 300 }}
+                                />
+                            </div>
+                            <Typography variant="h1" className={classes.userName}>
+                                {`Hello, ${fullName}`}
+                            </Typography>
+                        </div>
+
+                        <div>
+                            <Typography variant="h5">
+                                {`Email: ${user.email}`}
+                            </Typography>
+                            
+                            <Typography variant="h5">
+                                {`Provider: ${user.provider}`}
+                            </Typography>
+                        </div>
+
+                        <Typography variant="h2">
+                            Settings:
                         </Typography>
+                            
+                        <div>
+                            <Button variant="outlined" onClick={handleOpen}>
+                                Change Password
+                            </Button>
+                            <Button variant="outlined" onClick={initDelete}>
+                                Delete Account
+                            </Button>
+                        </div>
+
+                        {/* CONFIRM MSG TO DELETE */}
+                        <div className={classes.confirmDel}>
+                            <p id='conf-delete'></p>
+
+                            <Button style={visible ? show : hidden} onClick={confDelete}>Yes</Button>
+
+                            <label style={inputVis ? show : hidden}>Enter password:</label>
+                            <input value={delPass} onChange={handleDelChange} style={inputVis ? show : hidden} type='password'></input>
+
+                            <Button style={inputVis ? show : hidden} onClick={delAcct}>Delete Account</Button>
+                            <Button style={visible ? show : hidden} onClick={cxDelete}>Cancel</Button>
+                            <p id='user-del'></p>
+                        </div>
+                        <Modal
+                            open={open}
+                            onClose={handleClose}
+                            aria-labelledby="modal-modal-title"
+                            aria-describedby="modal-modal-description"
+                        >
+                            <Box sx={style}>
+                            <Typography id="modal-modal-title" variant="h6" component="h2">
+                                Enter Current Password
+                            </Typography>
+                            <input type='password' name='currentPass'value={currentPass} onChange={handleChange}></input>
+                            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                                Enter New Password
+                            </Typography>
+                            <input type='password' name='newPass' value={newPass} onChange={handleChange}></input>
+                            <button onClick={changePassword}>Change Password</button>
+                            <p id='message-el'></p>
+                            </Box>
+                        </Modal>
                     </div>
-
-                    <Typography variant="h2">
-                        Settings:
-                    </Typography>
-                        
-                    <div>
-                        <Button variant="outlined" onClick={handleOpen}>
-                            Change Password
-                        </Button>
-                        <Button variant="outlined" onClick={initDelete}>
-                            Delete Account
-                        </Button>
-                    </div>
-
-                    {/* CONFIRM MSG TO DELETE */}
-                    <div className={classes.confirmDel}>
-                        <p id='conf-delete'></p>
-
-                        <Button style={visible ? show : hidden} onClick={confDelete}>Yes</Button>
-
-                        <label style={inputVis ? show : hidden}>Enter password:</label>
-                        <input value={delPass} onChange={handleDelChange} style={inputVis ? show : hidden} type='password'></input>
-
-                        <Button style={inputVis ? show : hidden} onClick={delAcct}>Delete Account</Button>
-                        <Button style={visible ? show : hidden} onClick={cxDelete}>Cancel</Button>
-                        <p id='user-del'></p>
-                    </div>
-                    <Modal
-                        open={open}
-                        onClose={handleClose}
-                        aria-labelledby="modal-modal-title"
-                        aria-describedby="modal-modal-description"
-                    >
-                        <Box sx={style}>
-                        <Typography id="modal-modal-title" variant="h6" component="h2">
-                            Enter Current Password
-                        </Typography>
-                        <input type='password' name='currentPass'value={currentPass} onChange={handleChange}></input>
-                        <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                            Enter New Password
-                        </Typography>
-                        <input type='password' name='newPass' value={newPass} onChange={handleChange}></input>
-                        <button onClick={changePassword}>Change Password</button>
-                        <p id='message-el'></p>
-                        </Box>
-                    </Modal>
                 </div>
             </ThemeProvider>
         )
