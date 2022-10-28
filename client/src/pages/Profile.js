@@ -20,6 +20,7 @@ import TextField from '@mui/material/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 // import components
+import MedicalInfo from '../pages/Medical';
 
 //import images
 import background from '../assets/images/site-design-images/plain-animal-bg.svg';
@@ -75,16 +76,18 @@ const theme = createTheme({
         },
         h3: {
             fontFamily: 'Atma',
-            fontWeight: 400,
             fontSize: 50,
         },
         h4: {
             fontWeight: 600,
             fontSize: 28,
+            textTransform: 'uppercase',
             lineHeight: '2rem',
         },
         h5: {
-            fontWeight: 100,
+            fontFamily: 'Nunito',
+            fontWeight: 500,
+            fontSize: 24,
             lineHeight: '2rem',
         },
     },
@@ -104,17 +107,34 @@ const useStyles = makeStyles((theme) => ({
         margin: '2.5rem 1rem 2rem',
     },
     wrapContainer: {
-        margin: '50px'
+        display: 'flex',
+        margin: '0 auto',
+        width: '70%',
     },
     cardProfile: {
         display: 'flex',
+        position: 'relative',
         flexDirection: 'column',
         flexWrap: 'nowrap',
-        margin: ' 0 auto',
+        margin: '10rem auto',
         width: '30%',
         minWidth: '320px',
         minHeight: '500px',
         backgroundColor: '#AA858E',
+        borderRadius: '5px',
+        boxShadow: [ '0 16px 38px -12px rgb(0 0 0 / 56%)', '0 4px 25px 0px rgb(0 0 0 / 12%)', '0 8px 10px -5px rgb(0 0 0 / 20%)' ],
+    },
+    cardMedicalInfo: {
+        display: 'flex',
+        position: 'relative',
+        flexDirection: 'column',
+        flexWrap: 'nowrap',
+        margin: '10rem auto',
+        padding: '1rem 2rem',
+        width: '60%',
+        minWidth: '320px',
+        minHeight: '500px',
+        backgroundColor: '#F5F2EF',
         borderRadius: '5px',
         boxShadow: [ '0 16px 38px -12px rgb(0 0 0 / 56%)', '0 4px 25px 0px rgb(0 0 0 / 12%)', '0 8px 10px -5px rgb(0 0 0 / 20%)' ],
     },
@@ -323,6 +343,8 @@ const Profile = () => {
                                 src={`${avatarImg}`}
                                 sx={{ width: 280, height: 280 }}
                             />
+
+                            {/* greeting + user name */}
                             <div className={classes.littleSpace}>
                                 <Typography variant="p" className={classes.greeting}>
                                     Hello there,
@@ -356,7 +378,6 @@ const Profile = () => {
                                     >
                                         {/* popover content here */}
                                         <Typography sx={{ p: 2 }}>User Settings</Typography>
-
                                         <div>
                                             <Button variant="outlined" onClick={handleOpen}>
                                                 <Typography variant="p" className={classes.settingsOption}>
@@ -373,7 +394,8 @@ const Profile = () => {
                                 </div>
 
                             </Divider>
-
+                            
+                            {/* user info + settings */}
                             <div className={classes.littleSpace}>
                                 <div className={classes.boxUserInfo}>
                                     <Typography variant="h5" className={classes.userInfo}>
@@ -389,12 +411,9 @@ const Profile = () => {
                                 </div>
                             </div>
                         </div>
-                        
-                        
 
-                        
-
-                        {/* CONFIRM MSG TO DELETE */}
+                        {/* confirm msg to delete */}
+                        {/* // TODO: make this into a popover */}
                         <div className={classes.confirmDel}>
                             <p id='conf-delete'></p>
 
@@ -407,7 +426,8 @@ const Profile = () => {
                             <Button style={visible ? show : hidden} onClick={cxDelete}>Cancel</Button>
                             <p id='user-del'></p>
                         </div>
-
+                        
+                        {/* MODAL - change password */}
                         <Modal
                             open={open}
                             onClose={handleClose}
@@ -427,6 +447,13 @@ const Profile = () => {
                             <p id='message-el'></p>
                             </Box>
                         </Modal>
+
+                        {/* -------------------------------- */}
+
+                        {/* Medical Info */}
+                        <div className={classes.cardMedicalInfo}>
+                                <MedicalInfo/>
+                        </div>
 
                     </div>
                 </div>
