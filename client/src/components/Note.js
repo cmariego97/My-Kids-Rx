@@ -1,10 +1,11 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
 import { QUERY_NOTES } from '../utils/queries';
+import Auth from '../utils/auth';
 
 const Note = () => {
-     //TODO: when we have login we need to retrieve email from the jwt token instead of this const var
-     const email = 'mgreen@test.com';
+    const acctData = Auth.getProfile();
+    const email = acctData.data.email;
      const { loading, data } = useQuery(QUERY_NOTES, {
          variables: { email }
      });

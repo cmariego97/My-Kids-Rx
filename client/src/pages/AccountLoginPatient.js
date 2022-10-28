@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
-// import { useMutation } from '@apollo/client';
-// import { LOGIN_USER } from '../utils/mutations';
-// import Auth from '../utils/auth';
+import { useMutation } from '@apollo/client';
+import { LOGIN_USER } from '../utils/mutations';
+import Auth from '../utils/auth';
 
 // import MUI styles
 import { createTheme, ThemeProvider, makeStyles } from '@material-ui/core/styles';
@@ -142,36 +142,39 @@ const CssTextField = styled(TextField)({
 });
 
 function AccountLoginPatient() {
-  //logic
-  // const [formState, setFormState] = useState({ email: '', password: '' });
-  // const [login, { error, data }] = useMutation(LOGIN_USER);
-  // const handleChange = (event) => {
-  //   const { name, value } = event.target;
+  
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-  //   setFormState({
-  //     ...formState,
-  //     [name]: value,
-  //   });
-  // };
-  // const handleFormSubmit = async (event) => {
-  //   event.preventDefault();
-  //   console.log(formState);
-  //   try {
-  //     const { data } = await login({
-  //       variables: { ...formState },
-  //     });
-        //again console log data to make sure this is correct param
-  //     Auth.login(data.login.token);
-  //   } catch (e) {
-  //     console.error(e);
-  //   }
+  const [login, { error, data }] = useMutation(LOGIN_USER);
 
-    // clear form values
-  //   setFormState({
-  //     email: '',
-  //     password: '',
-  //   });
-  // };
+  const handleChange = (event) => {
+    const { id, value } = event.target;
+
+    if (id === 'recipient-user') {
+      setEmail(value);
+    }
+    else {
+      setPassword(value);
+    }
+  };
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+    if(!email || !password) {
+      document.querySelector('#err-message').textContent = 'Please fill out all required fields!';
+    }
+    else {
+      try {
+        const { data } = await login({
+          variables: { email, password },
+        });
+        Auth.login(data.login.token);
+      } catch (e) {
+        console.error(e);
+        document.querySelector('#err-message').textContent = 'Unable to log in, please check your email and password';
+      }
+    }
+  };
 
   const classes = useStyles();
   const btnstyle={margin:'8px 0'}
@@ -201,29 +204,34 @@ function AccountLoginPatient() {
                     placeholder="♫꒰･‿･๑꒱"
                     margin="normal"
                     helperText="e-mail required"
+                    onChange={handleChange}
                   />
                   <CssTextField
                     fullWidth
                     required
                     id="recipient-password"
+                    type="password"
                     label="Password"
                     placeholder="ᕙ(‾̀◡‾́)ᕗ"
                     margin="normal"
                     helperText="password required"
+                    onChange={handleChange}
                   />
                 </div>
 
                 <FormControlLabel control={<Checkbox name="checkedB" color="primary"/>} label="Remember me"/>
 
-                <Button type='submit' color='primary' variant="contained" style={btnstyle} fullWidth>
+                <Button type='submit' color='primary' variant="contained" style={btnstyle} fullWidth onClick={handleFormSubmit}>
                   Sign in
                 </Button>
+                <p id='err-message'></p>
 
                 <Typography >
                   <Link href="#" >
                     Forgot password?
                   </Link>
                 </Typography>
+                {/* TODO: fix this */}
                 <Typography> 
                   Don't have an Account? 
                   <Link href="#" >
