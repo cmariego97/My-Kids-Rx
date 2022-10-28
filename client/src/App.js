@@ -52,15 +52,15 @@ const client = new ApolloClient({
 });
 
 {/* website theme palette hex codes:
-  • light shades - snowdrift: #FAFBF9
+  • light shades - snowdrift: #FAFBF9 || pampas: #F5F2EF
     --Use this color as the background for your dark-on-light designs, or the text color of an inverted design
-  • light accent - gull gray: #9CA6B5
+  • light accent - gull gray: #9CA6B5 || indian khaki: #C5A284
     --Accent colors can be used to bring attention to design elements by contrasting with the rest of the palette.
-  • main brand color / primary - sunglo: #DE7171
+  • main brand color / primary - sunglo: #DE7171 || pharlap: #AA858E
     --This color should be eye-catching but not harsh. It can be liberally applied to your layout as its main identity.
-  • dark accent - santa fe: #B5765C
+  • dark accent - santa fe: #B5765C || fountain blue: #55C4BA
     --Another accent color to consider. Not all colors have to be used - sometimes a simple color scheme works best.
-  • dark shades / info - fiord: #3F4868
+  • dark shades / info - fiord: #3F4868 || butterfly bush: #5F5088
     --Use as the text color for dark-on-light designs, or as the background for inverted designs.
   • success - asparagus: #67a35b
   • warning - carrot-orange: #f58c22

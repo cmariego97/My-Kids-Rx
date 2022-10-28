@@ -90,53 +90,53 @@ const Messaging = () => {
     //if not sent message screen render messaging homepage
     return (
         <div>
-        {/* load sent messages */}
-        <Card sx={{ maxWidth: 345 }}>
-            <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
-                Past Messages
-                </Typography>
-                {renderMessage()}
-                {/* new messages header that displays when new message is added */}
-                <Typography gutterBottom variant="h5" component="div" id='new-header'>
-                </Typography>
-                {/* new messages go here */}
-                <Typography variant="body2" color="text.secondary">
-                <div id='new-container'>
-                </div>
-                </Typography>
-            </CardContent>
-        </Card>
-        {/* form to send a message */}
-        <Card sx={{ maxWidth: 345 }}>
-            <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
-                Send a Message
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                <Autocomplete
-                    disablePortal
-                    id="combo-box-demo"
-                    options={[{label: to}]}
-                    sx={{ width: 300 }}
-                    renderInput={(params) => <TextField {...params} label="To" />}
-                    />
-                    <TextField
-                    id="standard-multiline-static"
-                    label="Multiline"
-                    multiline
-                    rows={4}
-                    value={content}
-                    onChange={handleChange}
-                    variant="standard"
-                    />
-                </Typography>
-            </CardContent>
-            <CardActions>
-                <Button variant="outlined" onClick={handleFormSubmit}>Send</Button>
-            </CardActions>
-            <p id="conf-message"></p>
-        </Card>
+            {/* load sent messages */}
+            <div sx={{ maxWidth: 345 }}>
+                <CardContent>
+                    <Typography gutterBottom variant="h5" component="div">
+                    Past Messages
+                    </Typography>
+                    {renderMessage()}
+                    {/* new messages header that displays when new message is added */}
+                    <Typography gutterBottom variant="h5" component="div" id='new-header'>
+                    </Typography>
+                    {/* new messages go here */}
+                    <Typography variant="body2" color="text.secondary">
+                    <div id='new-container'>
+                    </div>
+                    </Typography>
+                </CardContent>
+            </div>
+            {/* form to send a message */}
+            <div sx={{ maxWidth: 345 }}>
+                <CardContent>
+                    <Typography gutterBottom variant="h5" component="div">
+                    Send a Message
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                    <Autocomplete
+                        disablePortal
+                        id="combo-box-demo"
+                        options={[{label: to}]}
+                        sx={{ width: 300 }}
+                        renderInput={(params) => <TextField {...params} label="To" />}
+                        />
+                        <TextField
+                        id="standard-multiline-static"
+                        label="Multiline"
+                        multiline
+                        rows={4}
+                        value={content}
+                        onChange={handleChange}
+                        variant="standard"
+                        />
+                    </Typography>
+                </CardContent>
+                <CardActions>
+                    <Button variant="outlined" onClick={handleFormSubmit}>Send</Button>
+                </CardActions>
+                <p id="conf-message"></p>
+            </div>
     </div>
     )
 }
