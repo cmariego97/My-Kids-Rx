@@ -72,7 +72,23 @@ const theme = createTheme({
     },
 });
 
+const useStyles = makeStyles({
+    cardTitle: {
+        color: '#5F5088',
+    },
+    infoLabel: {
+        padding: '1rem',
+        color: '#C5A284',
+    },
+    infoContent: {
+        padding: '0 2rem',
+        color: '#3f4868'
+    },
+})
+
 const Medical = () => {
+    const classes = useStyles();
+
     //TODO: when we have login we need to retrieve email from the jwt token instead of this const var
     const email = 'mgreen@test.com';
     const { loading, data } = useQuery(QUERY_INFO, {
@@ -104,20 +120,24 @@ const Medical = () => {
         const fullName = titleCase(`${info.firstName} ${info.middleName} ${info.lastName}`);
         return (
             <div>
-                {/* //TODO: Name here is quite redundant, delete this if no issue */}
-                <h1>{`Info For ${fullName}`}</h1>
-                <Typography variant="h4">
+                <Typography variant="h4" className={classes.cardTitle}>
                     My Medical Information
                 </Typography>
-                <Typography variant="h5">Allergies:</Typography>
-                <Typography>{`${info.allergies}`}</Typography>
-                <p>{`Medical History: ${info.medicalHistory}`}</p>
-                <p>Medications:</p>
-                <Medication meds={meds} />
-                <p>Vaccines:</p>
-                <Vaccine vaccines={vaccines}/>
-                <p>Vital Signs:</p>
-                <Vitals vitals={vitals}/>
+
+                <Typography variant="h5" className={classes.infoLabel}>Allergies:</Typography>
+                <Typography className={classes.infoContent}>{`${info.allergies}`}</Typography>
+
+                <Typography variant="h5" className={classes.infoLabel}>Medical History:</Typography>
+                <Typography className={classes.infoContent}>{`${info.medicalHistory}`}</Typography>
+
+                <Typography variant="h5" className={classes.infoLabel}>Medications:</Typography>
+                <div className={classes.infoContent}><Medication meds={meds}/></div>
+
+                <Typography variant="h5" className={classes.infoLabel}>Vaccines:</Typography>
+                <div className={classes.infoContent}><Vaccine vaccines={vaccines}/></div>
+
+                <Typography variant="h5" className={classes.infoLabel}>Vital Signs:</Typography>
+                <div className={classes.infoContent}><Vitals vitals={vitals}/></div>
             </div>
         )
     }

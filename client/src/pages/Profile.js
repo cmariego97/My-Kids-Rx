@@ -19,8 +19,12 @@ import { styled } from '@mui/material/styles';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 
-// import components
-import MedicalInfo from '../pages/Medical';
+// import other pages
+import MedicalInfo from './Medical';
+import Messages from './Messaging';
+import Appointments from './Appointment';
+import LabResults from './Lab';
+import ImagingResults from './Imaging';
 
 //import images
 import background from '../assets/images/site-design-images/plain-animal-bg.svg';
@@ -87,7 +91,8 @@ const theme = createTheme({
         h5: {
             fontFamily: 'Nunito',
             fontWeight: 500,
-            fontSize: 24,
+            fontSize: 18,
+            textTransform: 'uppercase',
             lineHeight: '2rem',
         },
     },
@@ -130,7 +135,7 @@ const useStyles = makeStyles((theme) => ({
         flexDirection: 'column',
         flexWrap: 'nowrap',
         margin: '10rem auto',
-        padding: '1rem 2rem',
+        padding: '2rem 2.5rem',
         width: '60%',
         minWidth: '320px',
         minHeight: '500px',
@@ -361,7 +366,6 @@ const Profile = () => {
                                     <Typography variant="p">
                                         patient info 
                                     </Typography>
-
                                     <IconButton aria-describedby={id} onClick={handleClickPopper}>
                                         <FontAwesomeIcon icon={faUserPen} style={{color: "#3f4868", height: "18", width: "18"}} />
                                     </IconButton>
@@ -392,7 +396,6 @@ const Profile = () => {
                                         </div>
                                     </Popover>
                                 </div>
-
                             </Divider>
                             
                             {/* user info + settings */}
@@ -452,7 +455,27 @@ const Profile = () => {
 
                         {/* Medical Info */}
                         <div className={classes.cardMedicalInfo}>
-                                <MedicalInfo/>
+                            <MedicalInfo/>
+                        </div>
+
+                        {/* Messages */}
+                        <div className={classes.cardMessages}>
+                            <Messages />
+                        </div>
+
+                        {/* Appointments */}
+                        <div className={classes.cardAppointments}>
+                            <Appointments />
+                        </div>
+
+                        {/* Lab Results */}
+                        <div className={classes.cardLabResults}>
+                            <LabResults />
+                        </div>
+
+                        {/* Imaging */}
+                        <div className={classes.cardImaging}>
+                            <ImagingResults />
                         </div>
 
                     </div>
