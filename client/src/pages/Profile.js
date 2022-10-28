@@ -547,7 +547,6 @@ const Profile = () => {
                                 <ImagingResults />
                             </div>
                         </div>
-
                     
                     </div>
                 </div>
