@@ -4,6 +4,7 @@ import { QUERY_INFO } from '../utils/queries';
 //import components
 import Vitals from '../components/Vitals';
 import Vaccine from '../components/Vaccine';
+import Medication from '../components/Medication';
 
 const Medical = () => {
     //TODO: when we have login we need to retrieve email from the jwt token instead of this const var
@@ -33,12 +34,15 @@ const Medical = () => {
         const info = data.onePatient;
         const vitals = info.vitals;
         const vaccines = info.vaccines;
+        const meds = info.medications;
         const fullName = titleCase(`${info.firstName} ${info.middleName} ${info.lastName}`);
         return (
             <div>
                 <h1>{`Info For ${fullName}`}</h1>
                 <p>{`Allergies: ${info.allergies}`}</p>
                 <p>{`Medical History: ${info.medicalHistory}`}</p>
+                <p>Medications:</p>
+                <Medication meds={meds} />
                 <p>Vaccines:</p>
                 <Vaccine vaccines={vaccines}/>
                 <p>Vital Signs:</p>

@@ -12,6 +12,13 @@
           "date": "2021-09-27",
           "time": "10:00:00",
           "content": "Hi doc, could you please call me sometime soon to discuss Olivia's test results?"
+        },
+
+        {
+          "to": "Joseph Smith MD",
+          "date": "2022-10-27",
+          "time": "9:00:00",
+          "content": "Hi doc, when should i make Olivia's next appointment ?"
         }
       ],
       "gender": "Female",
@@ -22,7 +29,13 @@
       "guardianEmail": "asmith@test.com",
       "appointments": [
         {
-          "date": "2022-10-03",
+          "date": "2022-11-03",
+          "time": "08:00:00",
+          "reason": "Sick"
+        },
+
+        {
+          "date": "2023-01-03",
           "time": "08:00:00",
           "reason": "Routine"
         }
@@ -124,6 +137,12 @@
             "date": "2022-02-18",
             "time": "10:00:00",
             "content": "Hi doc, could you please call me sometime soon to discuss John's test results?"
+          },
+          {
+            "to": "Joseph Smith MD",
+            "date": "2022-10-27",
+            "time": "10:00:00",
+            "content": "Hi doc, could you please call me sometime soon to discuss John's medication?"
           }
         ],
         "gender": "Male",
@@ -134,9 +153,14 @@
         "guardianEmail": "mgreen@test.com",
         "appointments": [
           {
-            "date": "2022-10-03",
+            "date": "2022-11-03",
             "time": "09:00:00",
             "reason": "Sick"
+          },
+          {
+            "date": "2023-01-03",
+            "time": "09:00:00",
+            "reason": "Routine"
           }
         ],
         "medications": [
@@ -255,6 +279,12 @@
           "date": "2021-09-27",
           "time": "10:00:00",
           "content": "Hi doc, could you please call me sometime soon to discuss Jane's test results?"
+        },
+        {
+          "to": "Joseph Smith MD",
+          "date": "2022-10-27",
+          "time": "10:00:00",
+          "content": "Hi doc, does Jane have any new test results?"
         }
       ],
       "gender": "Female",
@@ -265,8 +295,13 @@
       "guardianEmail": "jdoe@test.com",
       "appointments": [
         {
-          "date": "2022-10-03",
+          "date": "2022-11-03",
           "time": "10:00:00",
+          "reason": "Sick"
+        },
+        {
+          "date": "2023-01-03",
+          "time": "08:00:00",
           "reason": "Routine"
         }
       ],
@@ -350,7 +385,14 @@
         },
         "hb": 11.8
       },
-      "imaging": []
+      "imaging": [  
+        {
+        "date": "2021-09-26",
+        "type": "X-Ray",
+        "site": "Chest",
+        "report": "Mediastinal air is noted adjacent to the anteroposterior window and airtrapping extends to the neck, especially on the right side. Otherwise unremarkable."
+    }
+  ]
     },
 
     {
@@ -366,6 +408,12 @@
           "date": "2021-09-27",
           "time": "10:00:00",
           "content": "Hi doc, could you please call me sometime soon to discuss Jake's test results?"
+        },
+        {
+          "to": "Joseph Smith MD",
+          "date": "2022-10-27",
+          "time": "10:00:00",
+          "content": "Hi doc, can i bring Jake in tomorrow ?"
         }
       ],
       "gender": "Male",
@@ -376,9 +424,14 @@
       "guardianEmail": "ajones@test.com",
       "appointments": [
         {
-          "date": "2022-10-03",
+          "date": "2022-11-03",
           "time": "11:00:00",
           "reason": "Sick"
+        },
+        {
+          "date": "2023-01-03",
+          "time": "11:00:00",
+          "reason": "Routine"
         }
       ],
       "medications": [
@@ -497,6 +550,12 @@
           "date": "2021-09-27",
           "time": "10:00:00",
           "content": "Hi doc, could you please call me sometime soon to discuss Ed's test results?"
+        },
+        {
+          "to": "Joseph Smith MD",
+          "date": "2022-10-27",
+          "time": "10:00:00",
+          "content": "Hi doc, Ed is doing better. Thank you!"
         }
       ],
       "gender": "male",
@@ -510,7 +569,12 @@
           "date": "2022-10-03",
           "time": "12:00:00",
           "reason": "Urgent"
-       }
+       },
+       {
+        "date": "2023-01-03",
+        "time": "12:00:00",
+        "reason": "Routine"
+     }
       ],
       "medications": [
         {
