@@ -113,8 +113,13 @@ const Medical = () => {
         )
     }
     else {
-        console.log(data);
-        const info = data.onePatient;
+        if (!data.onePatient) {
+            return (
+                <p>No medical information found for this email, you must first contact your provider to set up your profile!</p>
+            )
+        }
+        else {
+            const info = data.onePatient;
         const vitals = info.vitals;
         const vaccines = info.vaccines;
         const meds = info.medications;
@@ -141,6 +146,7 @@ const Medical = () => {
                 <div className={classes.infoContent}><Vitals vitals={vitals}/></div>
             </div>
         )
+        }
     }
 }
 
