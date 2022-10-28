@@ -1,6 +1,5 @@
 const { gql } = require('apollo-server-express');
-//for client side
-    //copy queries saved in apollo
+
 const typeDefs = gql`
     type Disease {
         _id: ID
@@ -21,6 +20,12 @@ const typeDefs = gql`
         provider: String
         email: String
         password: String
+    }
+    type Provider {
+        _id: ID
+        firstName: String
+        lastName: String
+        suffix: String
     }
 
     type Message {
