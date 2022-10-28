@@ -16,26 +16,32 @@ const Appt = () => {
         )
     }
     else {
-      console.log(data)
-        var appointment = data.onePatient.appointments
-        if (appointment.length !== 0) {
+        if (!data.onePatient) {
             return (
-                <div>
-                    {appointment.map((visit) =>(
-                        <div>
-                            <li>Date:{visit.date}</li>
-                            <li>Time:{visit.time}</li>
-                            <li>Reason:{visit.reason}</li>
-                        </div>
-                    )
-                    )}
-                </div>
+                <p>No appointments found for this email, you must first contact your provider to set up your profile!</p>
             )
         }
         else {
-            return (
-                <p>No upcoming appointments!</p>
-            )
+            var appointment = data.onePatient.appointments
+            if (appointment.length !== 0) {
+                return (
+                    <div>
+                        {appointment.map((visit) =>(
+                            <div>
+                                <li>Date:{visit.date}</li>
+                                <li>Time:{visit.time}</li>
+                                <li>Reason:{visit.reason}</li>
+                            </div>
+                        )
+                        )}
+                    </div>
+                )
+            }
+            else {
+                return (
+                    <p>No upcoming appointments!</p>
+                )
+            }
         }
     }
 }
