@@ -16,29 +16,35 @@ const Imaging= () => {
         )
     }
     else {
-        console.log(data);
-        const imaging = data.onePatient.imaging
-        if (imaging.length !== 0) {
+        if (!data.onePatient) {
             return (
-                <div>
-                   <h1>Imaging Results</h1>
-                   {imaging.map((result) => (
-                    <div>
-                        <li>{`Date: ${result.date}`}</li>
-                        <li>{`Test: ${result.type} of ${result.site}`}</li>
-                        <li>{`Results: ${result.report}`}</li>
-                    </div>
-                  
-                   )
-                   )}
-    
-                </div>
+                <p>No imaging results found for this email, you must first contact your provider to set up your profile!</p>
             )
         }
         else {
-            return (
-                <p>No imaging results on file!</p>
-            )
+            const imaging = data.onePatient.imaging
+            if (imaging.length !== 0) {
+                return (
+                    <div>
+                       <h1>Imaging Results</h1>
+                       {imaging.map((result) => (
+                        <div>
+                            <li>{`Date: ${result.date}`}</li>
+                            <li>{`Test: ${result.type} of ${result.site}`}</li>
+                            <li>{`Results: ${result.report}`}</li>
+                        </div>
+                      
+                       )
+                       )}
+        
+                    </div>
+                )
+            }
+            else {
+                return (
+                    <p>No imaging results on file!</p>
+                )
+            }
         }
     }
 }

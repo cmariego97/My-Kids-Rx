@@ -319,8 +319,7 @@ const Profile = () => {
         )
     }
     else {
-        console.log(data);
-        if (!data.onePatientg) {
+        if (!data.onePatient) {
             return (
                 <p>No profile found for this email, you must first contact your provider to set up your profile!</p>
             )
