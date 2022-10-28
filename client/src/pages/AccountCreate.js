@@ -314,4 +314,4 @@ function AccountCreate() {
   )
 }
 
-export default AccountCreate
+export default AccountCreate;

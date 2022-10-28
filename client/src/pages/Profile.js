@@ -2,6 +2,7 @@ import React,{useState} from 'react';
 import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_PROFILE } from '../utils/queries';
 import { UPDATE_PASS, DEL_USER } from '../utils/mutations';
+import Auth from '../utils/auth';
 
 // import MUI styles
 import { createTheme, ThemeProvider, makeStyles } from '@material-ui/core/styles';
@@ -264,6 +265,10 @@ const style = {
 const Profile = () => {
     const classes = useStyles();
     const btnstyle={margin:'8px 0'}
+
+    // console.log(Auth.getProfile());
+    const acctData = Auth.getProfile();
+    console.log(acctData.data.email);
 
     //TODO: when we have login we need to retrieve email from the jwt token instead of this const var
     const email = 'mgreen@test.com';
