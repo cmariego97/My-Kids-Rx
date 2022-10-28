@@ -28,7 +28,7 @@ import { textTransform } from '@mui/system';
 
 // import FontAwesome Icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; 
-import { faUserGear, faEnvelope, faUserDoctor } from '@fortawesome/free-solid-svg-icons';
+import { faUserPen, faTrashCan, faEnvelope, faUserDoctor } from '@fortawesome/free-solid-svg-icons';
 
 const theme = createTheme({
     palette: {
@@ -202,6 +202,8 @@ const Profile = () => {
         }
         return result.join(" ");
     };
+
+    //for popover
     const [anchorEl, setAnchorEl] = React.useState(null);
     const handleClickPopper = (event) => {
         setAnchorEl(event.currentTarget);
@@ -339,7 +341,7 @@ const Profile = () => {
                                     </Typography>
 
                                     <IconButton aria-describedby={id} onClick={handleClickPopper}>
-                                        <FontAwesomeIcon icon={faUserGear} style={{color: "#3f4868", height: "18", width: "18"}} />
+                                        <FontAwesomeIcon icon={faUserPen} style={{color: "#3f4868", height: "18", width: "18"}} />
                                     </IconButton>
 
                                     <Popover
