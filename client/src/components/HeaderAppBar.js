@@ -85,9 +85,9 @@ const HeaderAppBar = (props) => {
     }
     else {
         const status = ()=> {
-            const acctData = Auth.getProfile();
-            const email = acctData.data.email;
             if(Auth.loggedIn()) {
+                const acctData = Auth.getProfile();
+                const email = acctData.data.email;
                 return (
                     <h2 className={classes.appbarTitle}>Logged in as {email}</h2>
                 )
