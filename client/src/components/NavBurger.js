@@ -7,6 +7,8 @@ import Fade from '@mui/material/Fade';
 
 import SortIcon from '@material-ui/icons/Sort';
 
+import Auth from '../utils/auth';
+
 const useStyles = makeStyles((theme) => ({
     icon: {
         color: '#DE7171',
@@ -25,6 +27,10 @@ const FadeMenu = ({page, changePage})  => {
         setAnchorEl(null);
         changePage(newPage);
     };
+    
+    const logOut = () => {
+        Auth.logout();
+    }
 
     return (
         <div>
@@ -47,6 +53,7 @@ const FadeMenu = ({page, changePage})  => {
             TransitionComponent={Fade}
         >
             <MenuItem onClick={() => handleClose('Home')}>Home</MenuItem>
+            <MenuItem onClick={logOut}>Log Out</MenuItem>
             <hr></hr>
             <MenuItem onClick={() => handleClose('Create')}>Create Account</MenuItem>
             <MenuItem onClick={() => handleClose('Login')}>Patient Login</MenuItem>
