@@ -22,8 +22,7 @@ const Messaging = () => {
     const { loading, data } = useQuery(QUERY_MESSAGES, {
         variables: { email }
     });
-    var messages;
-    var to;
+    const to = acctData.data.provider;
     const renderMessage = () => {
         if (loading) {
             return (
@@ -39,8 +38,7 @@ const Messaging = () => {
                 )
             }
             else {
-                messages = data.onePatient.messages;
-                to = messages[0].to
+                const messages = data.onePatient.messages;
                 return (
                     <Typography variant="body2" color="text.secondary">
                         {messages.map((message)=> (
