@@ -32,6 +32,53 @@ const FadeMenu = ({page, changePage})  => {
         Auth.logout();
     }
 
+    const menuOptions = () => {
+        if(!Auth.loggedIn()) {
+            return (
+                <Menu
+                id="fade-menu"
+                MenuListProps={{
+                'aria-labelledby': 'fade-button',
+                }}
+                anchorEl={anchorEl}
+                open={open}
+                TransitionComponent={Fade}
+                >
+                    <MenuItem onClick={() => handleClose('Home')}>Home</MenuItem>
+                    <MenuItem onClick={() => handleClose('Create')}>Create Account</MenuItem>
+                    <MenuItem onClick={() => handleClose('Login')}>Patient Login</MenuItem>  
+                </Menu>
+            )
+        }
+        else {
+            return (
+                <Menu
+                id="fade-menu"
+                MenuListProps={{
+                'aria-labelledby': 'fade-button',
+                }}
+                anchorEl={anchorEl}
+                open={open}
+                TransitionComponent={Fade}
+                >
+                    <MenuItem onClick={() => handleClose('Home')}>Home</MenuItem>
+                    <MenuItem onClick={() => handleClose('Profile')}>My Profile</MenuItem>
+                    <MenuItem onClick={() => handleClose('Medical')}>Medical Info</MenuItem>
+                    <hr></hr>
+                    <MenuItem onClick={() => handleClose('Appt')}>Appointments</MenuItem>
+                    <MenuItem onClick={() => handleClose('Imaging')}>Imaging Results</MenuItem>
+                    <MenuItem onClick={() => handleClose('Lab')}>Lab Results</MenuItem>
+                    <hr></hr>
+                    <MenuItem onClick={() => handleClose('Game')}>Play Games</MenuItem>
+                    <MenuItem onClick={() => handleClose('Resources')}>Resources</MenuItem>
+                    <MenuItem onClick={() => handleClose('Messaging')}>Messaging</MenuItem>
+                    <hr></hr>
+                    <MenuItem onClick={logOut}>Log Out</MenuItem>
+                </Menu>
+            )
+        }
+    }
+
     return (
         <div>
         <IconButton
@@ -43,32 +90,7 @@ const FadeMenu = ({page, changePage})  => {
         >
             <SortIcon className={classes.icon} />
         </IconButton>
-        <Menu
-            id="fade-menu"
-            MenuListProps={{
-            'aria-labelledby': 'fade-button',
-            }}
-            anchorEl={anchorEl}
-            open={open}
-            TransitionComponent={Fade}
-        >
-            <MenuItem onClick={() => handleClose('Home')}>Home</MenuItem>
-            <MenuItem onClick={logOut}>Log Out</MenuItem>
-            <hr></hr>
-            <MenuItem onClick={() => handleClose('Create')}>Create Account</MenuItem>
-            <MenuItem onClick={() => handleClose('Login')}>Patient Login</MenuItem>
-            <hr></hr>
-            <MenuItem onClick={() => handleClose('Profile')}>My Profile</MenuItem>
-            <MenuItem onClick={() => handleClose('Medical')}>Medical Info</MenuItem>
-            <hr></hr>
-            <MenuItem onClick={() => handleClose('Appt')}>Appointments</MenuItem>
-            <MenuItem onClick={() => handleClose('Imaging')}>Imaging Results</MenuItem>
-            <MenuItem onClick={() => handleClose('Lab')}>Lab Results</MenuItem>
-            <hr></hr>
-            <MenuItem onClick={() => handleClose('Game')}>Play Games</MenuItem>
-            <MenuItem onClick={() => handleClose('Resources')}>Resources</MenuItem>
-            <MenuItem onClick={() => handleClose('Messaging')}>Messaging</MenuItem>
-        </Menu>
+        {menuOptions()}
         </div>
     );
 }
