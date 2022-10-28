@@ -113,6 +113,9 @@ const theme = createTheme({
       fontWeight: 100,
       lineHeight: '2rem',
     },
+    p: {
+      fontSize: 18,
+    }
   },
 });
 

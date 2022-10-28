@@ -11,14 +11,24 @@ import { CssBaseline, Typography } from '@material-ui/core';
 import Avatar from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
+import Divider from '@mui/material/Divider';
+import IconButton from '@mui/material/IconButton';
 import Modal from '@mui/material/Modal';
 import { styled } from '@mui/material/styles';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 
+// import components
+import UserSettingsPop from '../components/UserSettingsPop';
+
 //import images
 import background from '../assets/images/site-design-images/plain-animal-bg.svg';
 import avatarImg from '../assets/images/avatars/avatar1-pink.png';
+import { textTransform } from '@mui/system';
+
+// import FontAwesome Icons
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; 
+import { faUserGear, faEnvelope, faUserDoctor } from '@fortawesome/free-solid-svg-icons';
 
 const theme = createTheme({
     palette: {
@@ -55,6 +65,19 @@ const theme = createTheme({
         fontFamily: [
             'Nunito', 'sans-serif', 'Nunito Sans', 'Atma', 'cursive', 'Londrina Solid'
         ],
+        h1: {
+            fontWeight: 600,
+            fontSize: 80,
+        },
+        h2: {
+            fontWeight: 500,
+            fontSize: 70,
+        },
+        h3: {
+            fontFamily: 'Atma',
+            fontWeight: 400,
+            fontSize: 50,
+        },
         h4: {
             fontWeight: 600,
             fontSize: 28,
@@ -74,20 +97,53 @@ const useStyles = makeStyles((theme) => ({
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
     },
-    wrapContainer: {},
+    bigSpace: {
+        margin: '5rem 1rem 2rem',     
+    },
+    littleSpace: {
+        margin: '2.5rem 1rem 2rem',
+    },
+    wrapContainer: {
+        margin: '50px'
+    },
     cardProfile: {
+        display: 'flex',
+        flexDirection: 'column',
+        flexWrap: 'nowrap',
         margin: ' 0 auto',
         width: '30%',
+        minWidth: '320px',
+        minHeight: '500px',
         backgroundColor: '#AA858E',
-        justifyContent: 'center',
         borderRadius: '5px',
-        boxShadow: "0px 3px 3px rgba(44, 42, 72, 0.9)",
+        boxShadow: [ '0 16px 38px -12px rgb(0 0 0 / 56%)', '0 4px 25px 0px rgb(0 0 0 / 12%)', '0 8px 10px -5px rgb(0 0 0 / 20%)' ],
     },
     avatarImage: {
-        margin: '0 auto',
-        width: '100%',
-        height: 'auto',
+        margin: '-30px auto 0',
+        position: 'relative',
+        overflow: 'hidden',
+        boxShadow: [ '0 16px 38px -12px rgb(0 0 0 / 56%)', '0 4px 25px 0px rgb(0 0 0 / 12%)', '0 8px 10px -5px rgb(0 0 0 / 20%)' ],
     },
+    greeting: {
+        fontFamily: [ 'Nunito Sans', 'sans-serif' ],
+        textTransform: 'uppercase',
+    },
+    boxUserName: {
+        display: 'flex',
+        overflow: 'hidden',
+    },
+    boxUserInfo: {
+        display: 'flex',
+        justifyContent: 'space-between',
+    },
+    userName: {
+        margin: '0 auto',
+        textAlign: 'space-between',
+    },
+    userInfo: {
+        margin: '0 auto',
+        padding: '0.25rem',
+    }
 }))
 
 const CssTextField = styled(TextField)({
@@ -132,6 +188,7 @@ const Profile = () => {
     const { loading, data } = useQuery(QUERY_PROFILE, {
         variables: { email }
     });
+
     //for mutation
     const [updatePass, {error}] = useMutation(UPDATE_PASS);
     const [delUser, {errorDel}] = useMutation(DEL_USER);
@@ -151,6 +208,7 @@ const Profile = () => {
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+
     //for password change
     const [currentPass, setCurrentPass] = useState('');
     const [newPass, setNewPass] = useState('');
@@ -249,33 +307,52 @@ const Profile = () => {
                         
                         {/* Profile Card - avatar + name */}
                         <div className={classes.cardProfile}>
-                            {/* TODO: insert an avatar icon image placeholder here */}
-                            <div>
-                                <Avatar 
-                                    className={classes.avatarImage}
-                                    alt="pink-haired girl with headphones" 
-                                    src={`${avatarImg}`}
-                                    sx={{ width: 300, height: 300 }}
-                                />
+                            <Avatar 
+                                className={classes.avatarImage}
+                                alt="pink-haired girl with headphones" 
+                                src={`${avatarImg}`}
+                                sx={{ width: 280, height: 280 }}
+                            />
+                            <div className={classes.littleSpace}>
+                                <Typography variant="p" className={classes.greeting}>
+                                    Hello there,
+                                </Typography>
+                                <div className={classes.boxUserName}>
+                                    <Typography variant="h3" className={classes.userName}>
+                                        {`${fullName}`}
+                                    </Typography>
+                                </div>
                             </div>
-                            <Typography variant="h1" className={classes.userName}>
-                                {`Hello, ${fullName}`}
-                            </Typography>
-                        </div>
 
-                        <div>
-                            <Typography variant="h5">
-                                {`Email: ${user.email}`}
-                            </Typography>
-                            
-                            <Typography variant="h5">
-                                {`Provider: ${user.provider}`}
-                            </Typography>
-                        </div>
+                            <Divider variant="middle" textAlign="right">
+                                <Typography variant="p">
+                                    patient info 
+                                </Typography>
 
-                        <Typography variant="h2">
-                            Settings:
-                        </Typography>
+                                <IconButton>
+                                    <FontAwesomeIcon icon={faUserGear} style={{color: "#3f4868", height: "18", width: "18"}} />
+                                </IconButton>
+
+                                <UserSettingsPop />
+
+                            </Divider>
+
+                            <div className={classes.littleSpace}>
+                                <div className={classes.boxUserInfo}>
+                                    <Typography variant="h5" className={classes.userInfo}>
+                                        <FontAwesomeIcon icon={faEnvelope} />
+                                        <span>{`${user.email}`}</span>
+                                    </Typography>
+                                </div>
+                                <div className={classes.boxUserInfo}>
+                                    <Typography variant="h5" className={classes.userInfo}>
+                                        <FontAwesomeIcon icon={faUserDoctor}/>
+                                        <span>{`${user.provider}`}</span>
+                                    </Typography>
+                                </div>
+                            </div>
+                        </div>
+                        
                             
                         <div>
                             <Button variant="outlined" onClick={handleOpen}>
