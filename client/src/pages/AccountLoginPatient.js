@@ -142,37 +142,39 @@ const CssTextField = styled(TextField)({
 });
 
 function AccountLoginPatient() {
-  //logic
-  const [formState, setFormState] = useState({ email: '', password: '' });
-  // const [login, { error, data }] = useMutation(LOGIN_USER);
+  
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const [login, { error, data }] = useMutation(LOGIN_USER);
+
   const handleChange = (event) => {
-    const { name, value } = event.target;
+    const { id, value } = event.target;
 
-    setFormState({
-      ...formState,
-      [name]: value,
-    });
-    console.log(formState);
+    if (id === 'recipient-user') {
+      setEmail(value);
+    }
+    else {
+      setPassword(value);
+    }
   };
-  // const handleFormSubmit = async (event) => {
-  //   event.preventDefault();
-  //   console.log(formState);
-  //   try {
-  //     const { data } = await login({
-  //       variables: { ...formState },
-  //     });
-        //again console log data to make sure this is correct param
-  //     Auth.login(data.login.token);
-  //   } catch (e) {
-  //     console.error(e);
-  //   }
-
-    // clear form values
-  //   setFormState({
-  //     email: '',
-  //     password: '',
-  //   });
-  // };
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+    if(!email || !password) {
+      document.querySelector('#err-message').textContent = 'Please fill out all required fields!';
+    }
+    else {
+      try {
+        const { data } = await login({
+          variables: { email, password },
+        });
+        Auth.login(data.login.token);
+      } catch (e) {
+        console.error(e);
+        document.querySelector('#err-message').textContent = 'Unable to log in, please check your email and password';
+      }
+    }
+  };
 
   const classes = useStyles();
   const btnstyle={margin:'8px 0'}
@@ -202,33 +204,34 @@ function AccountLoginPatient() {
                     placeholder="♫꒰･‿･๑꒱"
                     margin="normal"
                     helperText="e-mail required"
-                    value={formState.email}
                     onChange={handleChange}
                   />
                   <CssTextField
                     fullWidth
                     required
                     id="recipient-password"
+                    type="password"
                     label="Password"
                     placeholder="ᕙ(‾̀◡‾́)ᕗ"
                     margin="normal"
                     helperText="password required"
-                    value={formState.password}
                     onChange={handleChange}
                   />
                 </div>
 
                 <FormControlLabel control={<Checkbox name="checkedB" color="primary"/>} label="Remember me"/>
 
-                <Button type='submit' color='primary' variant="contained" style={btnstyle} fullWidth>
+                <Button type='submit' color='primary' variant="contained" style={btnstyle} fullWidth onClick={handleFormSubmit}>
                   Sign in
                 </Button>
+                <p id='err-message'></p>
 
                 <Typography >
                   <Link href="#" >
                     Forgot password?
                   </Link>
                 </Typography>
+                {/* TODO: fix this */}
                 <Typography> 
                   Don't have an Account? 
                   <Link href="#" >

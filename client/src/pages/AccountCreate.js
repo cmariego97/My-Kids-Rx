@@ -161,7 +161,9 @@ function AccountCreate() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confPassword, setConf] = useState('');
+
   const [addProfile, { error, data }] = useMutation(ADD_USER);
+
   const handleChange = (event) => {
     const { id, value } = event.target;
     if (id === 'user-firstName') {
@@ -200,6 +202,7 @@ function AccountCreate() {
       Auth.login(data.addUser.token);
     } catch (e) {
       console.error(e);
+      document.querySelector('#err-message').textContent = 'Error creating account';
     }
     }
   };
