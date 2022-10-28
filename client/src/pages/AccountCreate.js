@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 //first query to check if user with input email already exists
-// import { useQuery } from '@apollo/client';
-// import { QUERY_PROFILE } from '@apollo/client';
+import { useQuery } from '@apollo/client';
+import { QUERY_EMAIL } from '@apollo/client';
 //then mutation to create new acct
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../utils/mutations';

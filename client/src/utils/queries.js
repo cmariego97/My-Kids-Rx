@@ -12,6 +12,7 @@ export const QUERY_PROFILE = gql`
         }
     }
 `
+
 //for basic medical info
 export const QUERY_INFO = gql`
     query OnePatient($email: String!) {
