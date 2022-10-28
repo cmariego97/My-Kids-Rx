@@ -14,12 +14,12 @@ import Button from '@mui/material/Button';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import Modal from '@mui/material/Modal';
+import Popover from '@mui/material/Popover';
 import { styled } from '@mui/material/styles';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 // import components
-import UserSettingsPop from '../components/UserSettingsPop';
 
 //import images
 import background from '../assets/images/site-design-images/plain-animal-bg.svg';
@@ -148,23 +148,23 @@ const useStyles = makeStyles((theme) => ({
 
 const CssTextField = styled(TextField)({
     '& label.Mui-focused': {
-      color: '#de7171',
+        color: '#de7171',
     },
     '& .MuiInput-underline:after': {
-      borderBottomColor: 'green',
+        borderBottomColor: 'green',
     },
     '& .MuiOutlinedInput-root': {
-      '& fieldset': {
-        borderColor: '#a68674',
-      },
-      '&:hover fieldset': {
-        borderColor: '#f58c22',
-      },
-      '&.Mui-focused fieldset': {
-        borderColor: '#de7171',
-      },
+        '& fieldset': {
+            borderColor: '#a68674',
+        },
+        '&:hover fieldset': {
+            borderColor: '#f58c22',
+        },
+        '&.Mui-focused fieldset': {
+            borderColor: '#de7171',
+        },
     },
-  });
+});
 
 const style = {
     position: 'absolute',
@@ -192,7 +192,6 @@ const Profile = () => {
     //for mutation
     const [updatePass, {error}] = useMutation(UPDATE_PASS);
     const [delUser, {errorDel}] = useMutation(DEL_USER);
-
     var titleCase = function(str) {
         var result = [];
         var words = str.split(" ");
@@ -203,6 +202,15 @@ const Profile = () => {
         }
         return result.join(" ");
     };
+    const [anchorEl, setAnchorEl] = React.useState(null);
+    const handleClickPopper = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+    const handleClosePopper = () => {
+        setAnchorEl(null);
+    };
+    const openPopper = Boolean(anchorEl);
+    const id = openPopper ? 'simple-popover' : undefined;
 
     //for modal
     const [open, setOpen] = useState(false);
@@ -325,15 +333,42 @@ const Profile = () => {
                             </div>
 
                             <Divider variant="middle" textAlign="right">
-                                <Typography variant="p">
-                                    patient info 
-                                </Typography>
+                                <div>
+                                    <Typography variant="p">
+                                        patient info 
+                                    </Typography>
 
-                                <IconButton>
-                                    <FontAwesomeIcon icon={faUserGear} style={{color: "#3f4868", height: "18", width: "18"}} />
-                                </IconButton>
+                                    <IconButton aria-describedby={id} onClick={handleClickPopper}>
+                                        <FontAwesomeIcon icon={faUserGear} style={{color: "#3f4868", height: "18", width: "18"}} />
+                                    </IconButton>
 
-                                <UserSettingsPop />
+                                    <Popover
+                                        id={id}
+                                        open={openPopper}
+                                        anchorEl={anchorEl}
+                                        onClose={handleClosePopper}
+                                        anchorOrigin={{
+                                        vertical: 'bottom',
+                                        horizontal: 'left',
+                                        }}
+                                    >
+                                        {/* popover content here */}
+                                        <Typography sx={{ p: 2 }}>User Settings</Typography>
+
+                                        <div>
+                                            <Button variant="outlined" onClick={handleOpen}>
+                                                <Typography variant="p" className={classes.settingsOption}>
+                                                    Change Password
+                                                </Typography> 
+                                            </Button>
+                                            <Button variant="outlined" onClick={initDelete}>
+                                                <Typography variant="p" className={classes.settingsOption}>
+                                                    Delete Account
+                                                </Typography> 
+                                            </Button>
+                                        </div>
+                                    </Popover>
+                                </div>
 
                             </Divider>
 
@@ -353,15 +388,9 @@ const Profile = () => {
                             </div>
                         </div>
                         
-                            
-                        <div>
-                            <Button variant="outlined" onClick={handleOpen}>
-                                Change Password
-                            </Button>
-                            <Button variant="outlined" onClick={initDelete}>
-                                Delete Account
-                            </Button>
-                        </div>
+                        
+
+                        
 
                         {/* CONFIRM MSG TO DELETE */}
                         <div className={classes.confirmDel}>
@@ -376,6 +405,7 @@ const Profile = () => {
                             <Button style={visible ? show : hidden} onClick={cxDelete}>Cancel</Button>
                             <p id='user-del'></p>
                         </div>
+
                         <Modal
                             open={open}
                             onClose={handleClose}
@@ -395,6 +425,7 @@ const Profile = () => {
                             <p id='message-el'></p>
                             </Box>
                         </Modal>
+
                     </div>
                 </div>
             </ThemeProvider>
