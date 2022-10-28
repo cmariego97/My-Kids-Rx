@@ -25,6 +25,7 @@ const typeDefs = gql`
         _id: ID
         firstName: String
         lastName: String
+        email: String
         suffix: String
     }
 
@@ -152,6 +153,7 @@ const typeDefs = gql`
         facts: [Fact]
         oneUser(email: String!): User
         onePatient(email: String!): Patient
+        providers: [Provider]
     }
 
     type Mutation {

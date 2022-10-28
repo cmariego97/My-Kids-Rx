@@ -1,0 +1,38 @@
+[
+    {
+        "firstName": "Joseph",
+        "lastName": "Smith",
+        "email": "jsmith@test.com",
+        "suffix": "MD"
+    },
+    {
+        "firstName": "Mary",
+        "lastName": "Marie",
+        "email": "msmith@test.com",
+        "suffix": "PA-C"
+    },
+    {
+      "firstName": "Rita",
+      "lastName": "Pecuch",
+      "email": "rpecuch@comcast.net",
+      "suffix": "Student"
+    },
+    {
+        "firstName": "Claire",
+        "lastName": "Go",
+        "email": "cmarie.go97@gmail.com",
+        "suffix": "Student"
+      },
+      {
+        "firstName": "Kevin",
+        "lastName": "Crespo",
+        "email": "KevinCrespo15@gmail.com",
+        "suffix": "Student"
+      },
+      {
+        "firstName": "Nick",
+        "lastName": "Stevens",
+        "email": "nickyapril123@gmail.com",
+        "suffix": "Student"
+      }
+  ]
