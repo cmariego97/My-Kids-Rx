@@ -112,9 +112,11 @@ const useStyles = makeStyles((theme) => ({
         margin: '2.5rem 1rem 2rem',
     },
     wrapContainer: {
-        display: 'flex',
         margin: '0 auto',
         width: '70%',
+    },
+    rowContainer: {
+        display: 'flex',
     },
     cardProfile: {
         display: 'flex',
@@ -339,145 +341,155 @@ const Profile = () => {
             <ThemeProvider theme={theme}>
                 <div className={classes.root}>
                     <div className={classes.wrapContainer}>
-                        
-                        {/* Profile Card - avatar + name */}
-                        <div className={classes.cardProfile}>
-                            <Avatar 
-                                className={classes.avatarImage}
-                                alt="pink-haired girl with headphones" 
-                                src={`${avatarImg}`}
-                                sx={{ width: 280, height: 280 }}
-                            />
 
-                            {/* greeting + user name */}
-                            <div className={classes.littleSpace}>
-                                <Typography variant="p" className={classes.greeting}>
-                                    Hello there,
-                                </Typography>
-                                <div className={classes.boxUserName}>
-                                    <Typography variant="h3" className={classes.userName}>
-                                        {`${fullName}`}
+                        {/* ROW 1 */}
+                        <div className={classes.rowContainer}>
+                            {/* Profile Card - avatar + name */}
+                            <div className={classes.cardProfile}>
+                                <Avatar 
+                                    className={classes.avatarImage}
+                                    alt="pink-haired girl with headphones" 
+                                    src={`${avatarImg}`}
+                                    sx={{ width: 280, height: 280 }}
+                                />
+
+                                {/* greeting + user name */}
+                                <div className={classes.littleSpace}>
+                                    <Typography variant="p" className={classes.greeting}>
+                                        Hello there,
                                     </Typography>
+                                    <div className={classes.boxUserName}>
+                                        <Typography variant="h3" className={classes.userName}>
+                                            {`${fullName}`}
+                                        </Typography>
+                                    </div>
+                                </div>
+
+                                <Divider variant="middle" textAlign="right">
+                                    <div>
+                                        <Typography variant="p">
+                                            patient info 
+                                        </Typography>
+                                        <IconButton aria-describedby={id} onClick={handleClickPopper}>
+                                            <FontAwesomeIcon icon={faUserPen} style={{color: "#3f4868", height: "18", width: "18"}} />
+                                        </IconButton>
+
+                                        <Popover
+                                            id={id}
+                                            open={openPopper}
+                                            anchorEl={anchorEl}
+                                            onClose={handleClosePopper}
+                                            anchorOrigin={{
+                                            vertical: 'bottom',
+                                            horizontal: 'left',
+                                            }}
+                                        >
+                                            {/* popover content here */}
+                                            <Typography sx={{ p: 2 }}>User Settings</Typography>
+                                            <div>
+                                                <Button variant="outlined" onClick={handleOpen}>
+                                                    <Typography variant="p" className={classes.settingsOption}>
+                                                        Change Password
+                                                    </Typography> 
+                                                </Button>
+                                                <Button variant="outlined" onClick={initDelete}>
+                                                    <Typography variant="p" className={classes.settingsOption}>
+                                                        Delete Account
+                                                    </Typography> 
+                                                </Button>
+                                            </div>
+                                        </Popover>
+                                    </div>
+                                </Divider>
+                                
+                                {/* user info + settings */}
+                                <div className={classes.littleSpace}>
+                                    <div className={classes.boxUserInfo}>
+                                        <Typography variant="h5" className={classes.userInfo}>
+                                            <FontAwesomeIcon icon={faEnvelope} />
+                                            <span>{`${user.email}`}</span>
+                                        </Typography>
+                                    </div>
+                                    <div className={classes.boxUserInfo}>
+                                        <Typography variant="h5" className={classes.userInfo}>
+                                            <FontAwesomeIcon icon={faUserDoctor}/>
+                                            <span>{`${user.provider}`}</span>
+                                        </Typography>
+                                    </div>
                                 </div>
                             </div>
 
-                            <Divider variant="middle" textAlign="right">
-                                <div>
-                                    <Typography variant="p">
-                                        patient info 
-                                    </Typography>
-                                    <IconButton aria-describedby={id} onClick={handleClickPopper}>
-                                        <FontAwesomeIcon icon={faUserPen} style={{color: "#3f4868", height: "18", width: "18"}} />
-                                    </IconButton>
+                            {/* confirm msg to delete */}
+                            {/* // TODO: make this into a popover */}
+                            <div className={classes.confirmDel}>
+                                <p id='conf-delete'></p>
 
-                                    <Popover
-                                        id={id}
-                                        open={openPopper}
-                                        anchorEl={anchorEl}
-                                        onClose={handleClosePopper}
-                                        anchorOrigin={{
-                                        vertical: 'bottom',
-                                        horizontal: 'left',
-                                        }}
-                                    >
-                                        {/* popover content here */}
-                                        <Typography sx={{ p: 2 }}>User Settings</Typography>
-                                        <div>
-                                            <Button variant="outlined" onClick={handleOpen}>
-                                                <Typography variant="p" className={classes.settingsOption}>
-                                                    Change Password
-                                                </Typography> 
-                                            </Button>
-                                            <Button variant="outlined" onClick={initDelete}>
-                                                <Typography variant="p" className={classes.settingsOption}>
-                                                    Delete Account
-                                                </Typography> 
-                                            </Button>
-                                        </div>
-                                    </Popover>
-                                </div>
-                            </Divider>
+                                <Button style={visible ? show : hidden} onClick={confDelete}>Yes</Button>
+
+                                <label style={inputVis ? show : hidden}>Enter password:</label>
+                                <input value={delPass} onChange={handleDelChange} style={inputVis ? show : hidden} type='password'></input>
+
+                                <Button style={inputVis ? show : hidden} onClick={delAcct}>Delete Account</Button>
+                                <Button style={visible ? show : hidden} onClick={cxDelete}>Cancel</Button>
+                                <p id='user-del'></p>
+                            </div>
                             
-                            {/* user info + settings */}
-                            <div className={classes.littleSpace}>
-                                <div className={classes.boxUserInfo}>
-                                    <Typography variant="h5" className={classes.userInfo}>
-                                        <FontAwesomeIcon icon={faEnvelope} />
-                                        <span>{`${user.email}`}</span>
-                                    </Typography>
-                                </div>
-                                <div className={classes.boxUserInfo}>
-                                    <Typography variant="h5" className={classes.userInfo}>
-                                        <FontAwesomeIcon icon={faUserDoctor}/>
-                                        <span>{`${user.provider}`}</span>
-                                    </Typography>
-                                </div>
+                            {/* MODAL - change password */}
+                            <Modal
+                                open={open}
+                                onClose={handleClose}
+                                aria-labelledby="modal-modal-title"
+                                aria-describedby="modal-modal-description"
+                            >
+                                <Box sx={style}>
+                                <Typography id="modal-modal-title" variant="h6" component="h2">
+                                    Enter Current Password
+                                </Typography>
+                                <input type='password' name='currentPass'value={currentPass} onChange={handleChange}></input>
+                                <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                                    Enter New Password
+                                </Typography>
+                                <input type='password' name='newPass' value={newPass} onChange={handleChange}></input>
+                                <button onClick={changePassword}>Change Password</button>
+                                <p id='message-el'></p>
+                                </Box>
+                            </Modal>
+
+                            {/* -------------------------------- */}
+
+                            {/* Medical Info */}
+                            <div className={classes.cardMedicalInfo}>
+                                <MedicalInfo/>
+                            </div>
+                        </div>
+                        
+                        {/* ROW 2 */}
+                        <div className={classes.rowContainer}>
+                            {/* Messages */}
+                            <div className={classes.cardMessages}>
+                                <Messages />
+                            </div>
+
+                            {/* Appointments */}
+                            <div className={classes.cardAppointments}>
+                                <Appointments />
                             </div>
                         </div>
 
-                        {/* confirm msg to delete */}
-                        {/* // TODO: make this into a popover */}
-                        <div className={classes.confirmDel}>
-                            <p id='conf-delete'></p>
+                        {/* ROW 3 */}
+                        <div className={classes.rowContainer}>
+                            {/* Lab Results */}
+                            <div className={classes.cardLabResults}>
+                                <LabResults />
+                            </div>
 
-                            <Button style={visible ? show : hidden} onClick={confDelete}>Yes</Button>
-
-                            <label style={inputVis ? show : hidden}>Enter password:</label>
-                            <input value={delPass} onChange={handleDelChange} style={inputVis ? show : hidden} type='password'></input>
-
-                            <Button style={inputVis ? show : hidden} onClick={delAcct}>Delete Account</Button>
-                            <Button style={visible ? show : hidden} onClick={cxDelete}>Cancel</Button>
-                            <p id='user-del'></p>
-                        </div>
-                        
-                        {/* MODAL - change password */}
-                        <Modal
-                            open={open}
-                            onClose={handleClose}
-                            aria-labelledby="modal-modal-title"
-                            aria-describedby="modal-modal-description"
-                        >
-                            <Box sx={style}>
-                            <Typography id="modal-modal-title" variant="h6" component="h2">
-                                Enter Current Password
-                            </Typography>
-                            <input type='password' name='currentPass'value={currentPass} onChange={handleChange}></input>
-                            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                                Enter New Password
-                            </Typography>
-                            <input type='password' name='newPass' value={newPass} onChange={handleChange}></input>
-                            <button onClick={changePassword}>Change Password</button>
-                            <p id='message-el'></p>
-                            </Box>
-                        </Modal>
-
-                        {/* -------------------------------- */}
-
-                        {/* Medical Info */}
-                        <div className={classes.cardMedicalInfo}>
-                            <MedicalInfo/>
+                            {/* Imaging */}
+                            <div className={classes.cardImaging}>
+                                <ImagingResults />
+                            </div>
                         </div>
 
-                        {/* Messages */}
-                        <div className={classes.cardMessages}>
-                            <Messages />
-                        </div>
-
-                        {/* Appointments */}
-                        <div className={classes.cardAppointments}>
-                            <Appointments />
-                        </div>
-
-                        {/* Lab Results */}
-                        <div className={classes.cardLabResults}>
-                            <LabResults />
-                        </div>
-
-                        {/* Imaging */}
-                        <div className={classes.cardImaging}>
-                            <ImagingResults />
-                        </div>
-
+                    
                     </div>
                 </div>
             </ThemeProvider>
