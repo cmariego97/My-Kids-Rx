@@ -190,16 +190,17 @@ function AccountCreate() {
       document.querySelector('#err-message').textContent = 'Please fill out all required fields!';
     }
     if(password !== confPassword) {
-      
+      document.querySelector('#err-message').textContent = 'Error creating account: passwords must match';
     }
-
-    try {
+    else{
+      try {
       const { data } = await addProfile({
         variables: { firstName, lastName, provider, email, password },
       });
       Auth.login(data.addUser.token);
     } catch (e) {
       console.error(e);
+    }
     }
   };
 
