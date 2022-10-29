@@ -19,11 +19,9 @@ const Operation = ({changeGame}) => {
       function allowDrop(ev) {
         ev.preventDefault();
       }
-      //TODO: just drag to trash can icon or something
       //TODO: add timer
       function drop(ev) {
         ev.preventDefault();
-        console.log(ev.target);
         var data = ev.dataTransfer.getData("text");
         ev.target.appendChild(document.getElementById(data));
         score++;
@@ -32,10 +30,17 @@ const Operation = ({changeGame}) => {
         var items = document.querySelector('#target').children.length;
         var index = items - 1;
         var discardedItem = document.querySelector('#target').children[index];
-        console.log(discardedItem);
         discardedItem.style.display = 'none';
         if (items === 6) {
             document.querySelector('#game-over').textContent = `All items removed! Your final score is ${score}`;
+            var oldScore = localStorage.getItem('highScore');
+            if (oldScore === null || oldScore < score) {
+                localStorage.setItem('highScore', score);
+                document.querySelector('#high-score').textContent = `High score: ${score}`
+            }
+            else {
+                document.querySelector('#high-score').textContent = `High score: ${oldScore}`
+            }
         }
       }
 
@@ -72,6 +77,7 @@ const Operation = ({changeGame}) => {
                 <p id='warning'>Remove the objects that do not belong! Do not touch the patient or table!</p>
                 <p id='game-over'></p>
                 <button onClick={() => changeGame('Home')}>Play Again</button>
+                <p id='high-score'></p>
                 <p style={{marginTop: '30%'}}>Throw away objects in the container below</p>
             </div>
             <div 
