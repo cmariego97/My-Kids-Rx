@@ -398,9 +398,9 @@ const Profile = () => {
                     const {data} = await delUser({
                         variables: {email: user.email}
                     })
-                    console.log(data);
                     document.querySelector('#user-del').textContent = 'User account deleted!'
-                    //TODO: logout of acct
+                    //removes jwt from local storage
+                    Auth.logout();
                 }
                 catch(err) {
                     console.error(err);
