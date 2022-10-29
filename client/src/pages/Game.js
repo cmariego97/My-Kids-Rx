@@ -3,6 +3,7 @@ import Button from '@mui/material/Button';
 //import all game pages
 import Matching from './Matching';
 import TTT from './TTT';
+import Operation from './Operation';
 
 const Game = () => {
     const [game, setGame] = useState('Home');
@@ -18,6 +19,11 @@ const Game = () => {
                 <TTT changeGame={changeGame} />
             )
         }
+    if (game === 'Operation') {
+        return (
+            <Operation changeGame={changeGame}/>
+        )
+    }
     //if not a specific game then render game homepage
     return (
         <div>
@@ -25,6 +31,8 @@ const Game = () => {
             <Button variant="outlined" onClick={() => changeGame('Matching')}>Matching
             </Button>
             <Button variant="outlined" onClick={() => changeGame('TTT')}>Tic Tac Toe
+            </Button>
+            <Button variant="outlined" onClick={() => changeGame('Operation')}>Operation
             </Button>
         </div>
     )
