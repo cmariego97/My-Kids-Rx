@@ -1,6 +1,12 @@
 #cont {
     display: flex;
-    background: blue;
+    background: #a68674;
+}
+#title {
+    text-align: center;
+    margin: 0;
+    padding: 2%;
+    background: #a68674;
 }
 #col-1 {
     width: 50%;
@@ -8,16 +14,32 @@
 }
 #man {
     height: 100vh;
+    border-radius: 5px;
+}
+#col-1 img:hover {
+    cursor: pointer;
 }
 #col-2 {
     flex-direction: column;
     width: 50%;
+    padding: 1%;
 }
 #info {
     height: 50vh;
 }
 #target {
     height: 50vh;
+}
+#again {
+    padding: 2%;
+    background: #3f4868;
+    border-radius: 10px;
+    border: none;
+    color: white;
+}
+#again:hover {
+    background: #9CA6B5;
+    cursor: pointer;
 }
 
 @media screen and (max-width: 900px) {
@@ -34,7 +56,6 @@
     #col-2 {
         flex-direction: row;
         width: 75%;
-        padding: 1%;
     }
     #col-1, #col-2 {
         margin: 0 auto;

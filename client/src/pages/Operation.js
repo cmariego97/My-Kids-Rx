@@ -55,9 +55,11 @@ const Operation = ({changeGame}) => {
     //     console.log(true)
     //   }
     return (
+        <div>
+                    <h1 id='title'>Operation</h1>
         <Container id='cont' maxWidth="lg">
             {/* column 1 */}
-        <div id='col-1' style={{ background: 'white'}}>
+        <div id='col-1' style={{ background: '#a68674'}}>
                 <img id='man' src={Man} alt='operation-game' style={{border: '1px solid black'}} onClick={penalty}>
                 </img>
                 <img src={Pencil} alt='pencil' style={{width: '100px', position: 'absolute', bottom: '510px', left: '190px'}} draggable="true" onDragStart={drag}
@@ -76,12 +78,12 @@ const Operation = ({changeGame}) => {
          {/* column 2 */}
          <div id='col-2' style={{display: 'flex'}}>
             <div 
-            id='info' style={{background: 'white'}}
+            id='info' style={{background: '#a68674'}}
             >
                 <h2>Score: <span id='score'>0</span></h2>
                 <p id='warning'>Remove the objects that do not belong! Do not touch the patient or table!</p>
                 <p id='game-over'></p>
-                <button onClick={() => changeGame('Home')}>Play Again</button>
+                <button id='again' onClick={() => changeGame('Home')}>Play Again</button>
                 <p id='high-score'></p>
                 <p style={{marginTop: '30%'}}>Throw away objects in the container below</p>
             </div>
@@ -94,6 +96,7 @@ const Operation = ({changeGame}) => {
             </div>
          </div>
       </Container>
+        </div>
     )
 }
 
