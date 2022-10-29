@@ -23,12 +23,17 @@ const Operation = ({changeGame}) => {
       //TODO: add timer
       function drop(ev) {
         ev.preventDefault();
+        console.log(ev.target);
         var data = ev.dataTransfer.getData("text");
         ev.target.appendChild(document.getElementById(data));
         score++;
         document.querySelector('#score').textContent = score;
         document.querySelector('#warning').textContent = 'Object successfully removed! +1 point!'
         var items = document.querySelector('#target').children.length;
+        var index = items - 1;
+        var discardedItem = document.querySelector('#target').children[index];
+        console.log(discardedItem);
+        discardedItem.style.display = 'none';
         if (items === 6) {
             document.querySelector('#game-over').textContent = `All items removed! Your final score is ${score}`;
         }
