@@ -28,6 +28,10 @@ const Operation = ({changeGame}) => {
         score++;
         document.querySelector('#score').textContent = score;
         document.querySelector('#warning').textContent = 'Object successfully removed! +1 point!'
+        var items = document.querySelector('#target').children.length;
+        if (items === 6) {
+            document.querySelector('#game-over').textContent = `All items removed! Your final score is ${score}`;
+        }
       }
 
       function penalty() {
@@ -35,12 +39,9 @@ const Operation = ({changeGame}) => {
         document.querySelector('#score').textContent = score;
         document.querySelector('#warning').textContent = 'Oh no! You touched the patient or table! -1 point!'
       }
-      function next() {
-        document.querySelector('#warning').textContent = 'Remove the objects that do not belong! Do not touch the patient or table!';
-      }
     return (
         <Container maxWidth="lg" sx={{display: 'flex'}}>
-        <div style={{ background: 'white', height: '100vh', width: '50%' }}>
+        <div style={{ background: 'white', height: '100vh', width: '50%'}}>
                 <img src={Man} alt='operation-game' style={{height: '100vh', border: '1px solid black'}} onClick={penalty}>
                 </img>
                 <img src={Pencil} alt='pencil' style={{width: '100px', position: 'relative', bottom: '500px'}} draggable="true" onDragStart={drag}
@@ -60,14 +61,15 @@ const Operation = ({changeGame}) => {
             style={{background: 'black', height: '100vh', width: '25%'}}
             onDrop={drop}
             onDragOver={allowDrop}
-            id="div1"
+            id="target"
             ></div>
         <div 
             style={{background: 'white', height: '100vh', width: '25%'}}
         >
             <h2>Score: <span id='score'>0</span></h2>
             <p id='warning'>Remove the objects that do not belong! Do not touch the patient or table!</p>
-            <button onClick={next}>Try Again</button>
+            <p id='game-over'></p>
+            <button onClick={() => changeGame('Home')}>Play Again</button>
         </div>
       </Container>
     )
