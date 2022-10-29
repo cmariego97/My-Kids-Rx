@@ -41,10 +41,11 @@ const Operation = ({changeGame}) => {
       }
     return (
         <Container maxWidth="lg" sx={{display: 'flex'}}>
+            {/* column 1 */}
         <div style={{ background: 'white', height: '100vh', width: '50%'}}>
                 <img src={Man} alt='operation-game' style={{height: '100vh', border: '1px solid black'}} onClick={penalty}>
                 </img>
-                <img src={Pencil} alt='pencil' style={{width: '100px', position: 'relative', bottom: '500px'}} draggable="true" onDragStart={drag}
+                <img src={Pencil} alt='pencil' style={{width: '100px', position: 'absolute', bottom: '500px'}} draggable="true" onDragStart={drag}
                 id="drag1"></img>
                 <img src={Butterfly} alt='butterfly' style={{width: '50px', position: 'relative', bottom: '300px'}} draggable="true" onDragStart={drag}
                 id="drag2"></img>
@@ -57,20 +58,25 @@ const Operation = ({changeGame}) => {
                 <img src={Light} alt='light' style={{width: '30px', position: 'relative', bottom: '600px', right: '200px'}} draggable="true" onDragStart={drag}
                 id="drag6"></img>
          </div>
-         <div 
-            style={{background: 'black', height: '100vh', width: '25%'}}
-            onDrop={drop}
-            onDragOver={allowDrop}
-            id="target"
-            ></div>
-        <div 
-            style={{background: 'white', height: '100vh', width: '25%'}}
-        >
-            <h2>Score: <span id='score'>0</span></h2>
-            <p id='warning'>Remove the objects that do not belong! Do not touch the patient or table!</p>
-            <p id='game-over'></p>
-            <button onClick={() => changeGame('Home')}>Play Again</button>
-        </div>
+         {/* column 2 */}
+         <div style={{width: '50%', display: 'flex', flexDirection: 'column'}}>
+            <div 
+            style={{background: 'white', height: '50vh'}}
+            >
+                <h2>Score: <span id='score'>0</span></h2>
+                <p id='warning'>Remove the objects that do not belong! Do not touch the patient or table!</p>
+                <p id='game-over'></p>
+                <button onClick={() => changeGame('Home')}>Play Again</button>
+                <p style={{marginTop: '30%'}}>Throw away objects in the container below</p>
+            </div>
+            <div 
+                style={{background: 'black', height: '50vh', borderRadius: '10px', border: '10px solid grey'}}
+                onDrop={drop}
+                onDragOver={allowDrop}
+                id="target"
+            >
+            </div>
+         </div>
       </Container>
     )
 }
