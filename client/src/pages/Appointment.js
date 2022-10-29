@@ -1,4 +1,5 @@
 import React from 'react';
+//import components
 import Appt from '../components/Appt'
 import Note from '../components/Note'
 

@@ -141,8 +141,9 @@ const styles = makeStyles({
 
 function App() {
   const classes = styles();
+  //state variable to indicate which page to display
   const [page, setPage] = useState('Home')
-
+  //renders main content based on value of page state variable
   const renderPage = () => {
     if (page === 'Profile') {
       return <Profile />
@@ -178,7 +179,7 @@ function App() {
       return <AccountCreate />
     }
   }
-  //fxn change value of page state variable
+  //fxn to change value of page state variable
   const changePage = (newPage) => setPage(newPage);
 
   return (

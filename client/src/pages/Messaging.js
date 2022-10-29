@@ -16,13 +16,16 @@ import { ADD_MESSAGE } from '../utils/mutations';
 import Auth from '../utils/auth';
 
 const Messaging = () => {
+    //retrieve email from jwt to use to find specific patient
     const acctData = Auth.getProfile();
     const email = acctData.data.email;
     //for query
     const { loading, data } = useQuery(QUERY_MESSAGES, {
         variables: { email }
     });
+    //retrieves patient's provider from jwt, used in the provider input field of form
     const to = acctData.data.provider;
+    //renders sent messages section
     const renderMessage = () => {
         if (loading) {
             return (
@@ -32,6 +35,7 @@ const Messaging = () => {
             )
         }
         else {
+            //if patient not in database
             if (!data.onePatient) {
                 return (
                     <p>No messages found for this email, you must first contact your provider to set up your profile!</p>
@@ -53,7 +57,7 @@ const Messaging = () => {
             }
         }
     }
-
+    //renders form
     const renderForm = () => {
         if (loading) {
             return (
@@ -63,6 +67,7 @@ const Messaging = () => {
             )
         }
         else {
+            //if patient not in database
             if (!data.onePatient) {
                 return (
                     <p>Messaging will not be enabled until you contact your provider to set up your profile!</p>
@@ -117,12 +122,14 @@ const Messaging = () => {
             const { data } = await addMessage({
                 variables: {email, to, date, time, content}
             })
-            console.log(data);
+            //reset content field
             setContent('');
             
             const success = data.addMessage.messages
             const index = success.length - 1
+            //confirmation message
             document.querySelector('#conf-message').textContent = `Message delivered at to ${success[index].to} at ${success[index].time}`;
+            //add new message to messages list
             const recipient = document.createElement('h2');
             recipient.textContent = `Message to ${success[index].to}`;
             const when = document.createElement('h3');
@@ -137,7 +144,7 @@ const Messaging = () => {
             document.querySelector('#conf-message').textContent = `Message unable to be sent to ${to}`
         }
     }
-
+    //set value of content state variable from input field
     const handleChange = (e) => {
         const { value } = e.target;
         setContent(value);

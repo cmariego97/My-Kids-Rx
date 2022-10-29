@@ -17,6 +17,7 @@ import Stomach from '../assets/images/stomach.jpg'
 import Toes from '../assets/images/toes.jpg'
 
 const Matching = ({changeGame}) => {
+  //styling for grid items
   const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
     ...theme.typography.body2,
@@ -39,7 +40,7 @@ const Matching = ({changeGame}) => {
    const [visable10,changeVisable10] = useState('invisible')
    const [visable11,changeVisable11] = useState('invisible')
    const [visable12,changeVisable12] = useState('invisible')
-
+  //styling options
    const cardBack = {display:'none'};
    const cardFront = {display:'block'};
    const unmatched = {display:'none'};
@@ -51,7 +52,7 @@ const Matching = ({changeGame}) => {
    const matched4 = {display:'block', color: 'orange'}
    const matched5 = {display:'block', color: 'green'}
    const matched6 = {display:'block', color: 'pink'}
-
+  //state variable for click count
    const[count, setCount] = useState(0);
    useEffect(() => {
     localStorage.setItem('myCount', count);
@@ -68,9 +69,11 @@ const Matching = ({changeGame}) => {
    }
    
    const matches = () => {
+    //if all sets matched
     if(visable1 === 'matched' && visable2 === 'matched' && visable3 === 'matched' && visable4 === 'matched' && visable5 === 'matched' && visable6 === 'matched' && visable7 === 'matched' && visable8 === 'matched' && visable9 === 'matched' && visable10 === 'matched' && visable11 === 'matched' && visable12 === 'matched') {
       document.querySelector('#message').textContent = 'All matches found!';
     }
+    //if 1 set matched then indicate so
     if (visable1 === 'visible' && visable2 === 'visible') {
       changeVisable1('matched');
       changeVisable2('matched');
@@ -113,7 +116,6 @@ const Matching = ({changeGame}) => {
     document.querySelector('#message').textContent = '';
    }
 
-    //TODO: make this look like a card grid
     return (
       <Box sx={{ flexGrow: 1 }}>
          {matches()}

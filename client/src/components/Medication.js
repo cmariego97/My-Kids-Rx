@@ -3,6 +3,7 @@ import React from 'react';
 
 const Medication = ({meds}) => {
     if (meds.length === 0) {
+        //if no medications for this patient
         return (
             <p>No medications on file!</p>
         )

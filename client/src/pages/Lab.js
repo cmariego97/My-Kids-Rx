@@ -4,8 +4,10 @@ import { QUERY_LAB } from '../utils/queries';
 import Auth from '../utils/auth';
 
 const Lab = () => {
+    //retrieve email from jwt to use to find specific patient
     const acctData = Auth.getProfile();
     const email = acctData.data.email;
+    //lab results query
     const { loading, data } = useQuery(QUERY_LAB, {
         variables: { email }
     });
@@ -16,6 +18,7 @@ const Lab = () => {
         )
     }
     else {
+        //if patient not in database
         if (!data.onePatient) {
             return (
                 <p>No lab results found for this email, you must first contact your provider to set up your profile!</p>
@@ -24,11 +27,13 @@ const Lab = () => {
         else {
             const labs = data.onePatient.labs;
             if (labs.length === 0) {
+                //if patient does not have any lab results in database
                 return (
                     <p>No lab results on file!</p>
                 )
             }
             else {
+                //styles lab results differently if outside of normal range
                 const abnormal = {color: 'red'};
                 const normal = {color: 'black'}
                 return (

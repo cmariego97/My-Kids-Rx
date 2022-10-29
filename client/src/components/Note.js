@@ -4,8 +4,10 @@ import { QUERY_NOTES } from '../utils/queries';
 import Auth from '../utils/auth';
 
 const Note = () => {
+    //retrieve email from jwt to use to find specific patient
     const acctData = Auth.getProfile();
     const email = acctData.data.email;
+    //find notes query
      const { loading, data } = useQuery(QUERY_NOTES, {
          variables: { email }
      });
@@ -16,6 +18,7 @@ const Note = () => {
         )
     }
     else {
+        //if user is not in the database as a patient
         if (!data.onePatient) {
             return (
                 <p>No visit reports found for this email, you must first contact your provider to set up your profile!</p>

@@ -142,12 +142,12 @@ const CssTextField = styled(TextField)({
 });
 
 function AccountLoginPatient() {
-  
+  //state variables corresponding to input fields
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
+  //login mutation
   const [login, { error, data }] = useMutation(LOGIN_USER);
-
+  //sets value of state variable corresponding to input field that was edited
   const handleChange = (event) => {
     const { id, value } = event.target;
 
@@ -158,12 +158,15 @@ function AccountLoginPatient() {
       setPassword(value);
     }
   };
+
   const handleFormSubmit = async (event) => {
     event.preventDefault();
+    //check to make sure all input fields are filled out
     if(!email || !password) {
       document.querySelector('#err-message').textContent = 'Please fill out all required fields!';
     }
     else {
+      //logs in user
       try {
         const { data } = await login({
           variables: { email, password },

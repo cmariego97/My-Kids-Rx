@@ -265,7 +265,7 @@ const style = {
 const Profile = () => {
     const classes = useStyles();
     const btnstyle={margin:'8px 0'}
-
+    //retrieve email from jwt to use to find specific patient
     const acctData = Auth.getProfile();
     const email = acctData.data.email;
     //for query
@@ -273,9 +273,11 @@ const Profile = () => {
         variables: { email }
     });
 
-    //for mutation
+    //update password mutation
     const [updatePass, {error}] = useMutation(UPDATE_PASS);
+    //delete user mutation
     const [delUser, {errorDel}] = useMutation(DEL_USER);
+    //helper fxn to capitalize first letter of each word in a string
     var titleCase = function(str) {
         var result = [];
         var words = str.split(" ");
@@ -319,6 +321,7 @@ const Profile = () => {
         )
     }
     else {
+        //if user not in database as a patient
         if (!data.oneUser) {
             return (
                 <p>No profile found for this email, you must first contact your provider to set up your profile!</p>
@@ -327,7 +330,7 @@ const Profile = () => {
         else {
             const user = data.oneUser
             const fullName= titleCase(`${user.firstName} ${user.lastName}`);
-    
+            //set value of state variable corresponding to input fields in change password form
             const handleChange = (e) => {
                 const { name, value } = e.target;
                 if (name === 'currentPass') {
@@ -337,7 +340,7 @@ const Profile = () => {
                     setNewPass(value);
                 }
             }
-    
+            //sets value state variable corresponding to password input field when deleting user
             const handleDelChange = (e) => {
                 const {value} = e.target;
                 setDelPass(value);
@@ -345,18 +348,20 @@ const Profile = () => {
     
             const changePassword = async (e) => {
                 e.preventDefault();
+                //check if current password entered correctly
                 if (currentPass !== user.password) {
                     document.querySelector('#message-el').textContent = 'Current password incorrect, unable to change password'
                 }
+                //check if new password field is empty
                 else if (!newPass) {
                     document.querySelector('#message-el').textContent = 'Please enter a new password'
                 }
                 else {
+                    //update password
                     try {
                         const {data} = await updatePass({
                             variables: {email: user.email, password: newPass}
                         })
-                        console.log(data);
                         document.querySelector('#message-el').textContent = 'Password successfully changed!'
                     }
                     catch(err) {
@@ -365,26 +370,30 @@ const Profile = () => {
                     }
                 }
             } 
-    
+            //confirm if user wants to delete account
             const initDelete = () => {
                 document.querySelector('#conf-delete').textContent = 'Are you sure you want to delete your patient account?';
                 setVisible(true);
-    
             }
+            //if user clicks Cancel instead of moving forward with deleting acct
             const cxDelete = () => {
                 document.querySelector('#conf-delete').textContent = '';
                 setVisible(false);
             }
+            //if user confirms wanting to delete acct
             const confDelete = async(e) => {
                 e.preventDefault();
                 setInputVis(true);
             }
+
             const delAcct = async(e) => {
                 e.preventDefault();
+                //checks if entered password matches current password
                 if (delPass !== user.password) {
                     document.querySelector('#user-del').textContent = 'Incorrect password'
                 }
                 else {
+                    //delete user mutation
                 try {
                     const {data} = await delUser({
                         variables: {email: user.email}

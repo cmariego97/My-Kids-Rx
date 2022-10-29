@@ -10,6 +10,7 @@ import O from '../assets/images/o.jpg';
 
 // TODO: center images
 function TTT({ changeGame }) {
+    //styling for grid items
     const Item = styled(Paper)(({ theme }) => ({
         backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
         ...theme.typography.body2,
@@ -135,11 +136,12 @@ function TTT({ changeGame }) {
         }
         setClick9(!click9);
     };
-
+    //initially hide play again button
     var btnDisplay;
     btnDisplay = { display: 'none' };
 
     const chooseWinner = () => {
+        //all cases of 1 player winning
         if ((player1 === 'X' && click1 && player2 === 'X' && click2 && player3 === 'X' && click3) ||
             (player4 === 'X' && click4 && player5 === 'X' && click5 && player6 === 'X' && click6) ||
             (player7 === 'X' && click7 && player8 === 'X' && click8 && player9 === 'X' && click9) ||
@@ -157,10 +159,11 @@ function TTT({ changeGame }) {
             (player1 === 'O' && click1 && player5 === 'O' && click5 && player9 === 'O' && click9) ||
             (player7 === 'O' && click7 && player5 === 'O' && click5 && player3 === 'O' && click3)) {
             document.querySelector('#test').textContent = `Game over! The winner is player ${turn}`;
+            //give option to play again
             btnDisplay = { display: 'block' };
         }
     };
-
+    //resets game
     const resetGame = () => {
         setClick1(false);
         setClick2(false);

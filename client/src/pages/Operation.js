@@ -11,8 +11,9 @@ import Hammer from '../assets/images/hammer.jpeg';
 import Light from '../assets/images/light.png'
 
 const Operation = ({changeGame}) => {
+    //keeps track of current score
     let score = 0;
-    
+    //while dragging
     function drag(ev) {
         ev.dataTransfer.setData("text", ev.target.id);
       }
@@ -20,14 +21,16 @@ const Operation = ({changeGame}) => {
       function allowDrop(ev) {
         ev.preventDefault();
       }
-      //TODO: add timer
+      //upon drop
       function drop(ev) {
         ev.preventDefault();
         var data = ev.dataTransfer.getData("text");
         ev.target.appendChild(document.getElementById(data));
+        //add 1 to score
         score++;
         document.querySelector('#score').textContent = score;
         document.querySelector('#warning').textContent = 'Object successfully removed! +1 point!'
+        //prevent dragged item for continuing to be displayed in previous position
         var items = document.querySelector('#target').children.length;
         var index = items - 1;
         var discardedItem = document.querySelector('#target').children[index];
@@ -46,14 +49,11 @@ const Operation = ({changeGame}) => {
       }
 
       function penalty() {
+        //decrease score by 1
         score--;
         document.querySelector('#score').textContent = score;
         document.querySelector('#warning').textContent = 'Oh no! You touched the patient or table! -1 point!'
       }
-    //   console.log(window.screen.width);
-    //   if (window.screen.width > 800) {
-    //     console.log(true)
-    //   }
     return (
         <div id='screen'>
                     <h1 id='title'>Operation</h1>

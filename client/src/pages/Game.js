@@ -6,7 +6,9 @@ import TTT from './TTT';
 import Operation from './Operation';
 
 const Game = () => {
+    //game state variable to control which game screen is rendered
     const [game, setGame] = useState('Home');
+    //fxn to change value of game state variable
     const changeGame = (newGame) => setGame(newGame);
     //for each specific game
     if (game === 'Matching') {

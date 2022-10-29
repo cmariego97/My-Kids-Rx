@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import { useQuery } from '@apollo/client';
 import { QUERY_PROVIDERS } from '../utils/queries';
-//then mutation to create new acct
+//import mutation to create new acct
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../utils/mutations';
 import Auth from '../utils/auth';
@@ -153,18 +153,18 @@ const CssTextField = styled(TextField)({
 });
 
 function AccountCreate() {
-
+  //finds all providers
   const {loading, data} = useQuery(QUERY_PROVIDERS);
-  
+  //state variables for create acct input fields
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [provider, setProvider] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confPassword, setConf] = useState('');
-
+  //mutation to add new user
   const [addProfile, { error }] = useMutation(ADD_USER);
-
+  //sets value of state variable that corresponds to input field that was edited
   const handleChange = (event) => {
     const { id, value } = event.target;
     if (id === 'user-firstName') {
@@ -189,12 +189,15 @@ function AccountCreate() {
   
   const handleFormSubmit = async (event) => {
     event.preventDefault();
+    //checks to make sure all input fields were filled out
     if (!firstName || !lastName || !provider || !email || !password || !confPassword) {
       document.querySelector('#err-message').textContent = 'Please fill out all required fields!';
     }
+    //checks to make sure passwords match
     if(password !== confPassword) {
       document.querySelector('#err-message').textContent = 'Error creating account: passwords must match';
     }
+    //creates new user and logs them in
     else{
       try {
       const { data } = await addProfile({
@@ -210,14 +213,15 @@ function AccountCreate() {
 
   const classes = useStyles();
   const btnstyle={margin:'8px 0'}
-
+  
   if(loading) {
+    //if still loading data from query
     return (
       <h1>Loading...</h1>
     )
   }
   else {
-    console.log(data.providers);
+    //when done loading data from query
     return (
       <ThemeProvider theme={theme}>
         <div className={classes.root}>
