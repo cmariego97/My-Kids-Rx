@@ -45,17 +45,17 @@ const Operation = ({changeGame}) => {
         <div style={{ background: 'white', height: '100vh', width: '50%'}}>
                 <img src={Man} alt='operation-game' style={{height: '100vh', border: '1px solid black'}} onClick={penalty}>
                 </img>
-                <img src={Pencil} alt='pencil' style={{width: '100px', position: 'absolute', bottom: '500px'}} draggable="true" onDragStart={drag}
+                <img src={Pencil} alt='pencil' style={{width: '100px', position: 'absolute', bottom: '510px', left: '190px'}} draggable="true" onDragStart={drag}
                 id="drag1"></img>
-                <img src={Butterfly} alt='butterfly' style={{width: '50px', position: 'relative', bottom: '300px'}} draggable="true" onDragStart={drag}
+                <img src={Butterfly} alt='butterfly' style={{width: '50px', position: 'absolute', bottom: '350px', left: '230px'}} draggable="true" onDragStart={drag}
                 id="drag2"></img>
-                <img src={Wishbone} alt='wishbone' style={{width: '30px', position: 'relative', bottom: '100px'}} draggable="true" onDragStart={drag}
+                <img src={Wishbone} alt='wishbone' style={{width: '30px', position: 'absolute', bottom: '100px', left: '230px'}} draggable="true" onDragStart={drag}
                 id="drag3"></img>
-                <img src={Apple} alt='apple' style={{width: '30px', position: 'relative', bottom: '100px', right: '200px'}} draggable="true" onDragStart={drag}
+                <img src={Apple} alt='apple' style={{width: '30px', position: 'absolute', bottom: '100px', left: '170px'}} draggable="true" onDragStart={drag}
                 id="drag4"></img>
-                <img src={Hammer} alt='hammer' style={{width: '30px', position: 'relative', bottom: '300px', right: '200px'}} draggable="true" onDragStart={drag}
+                <img src={Hammer} alt='hammer' style={{width: '30px', position: 'absolute', bottom: '300px', left: '170px'}} draggable="true" onDragStart={drag}
                 id="drag5"></img>
-                <img src={Light} alt='light' style={{width: '30px', position: 'relative', bottom: '600px', right: '200px'}} draggable="true" onDragStart={drag}
+                <img src={Light} alt='light' style={{width: '30px', position: 'absolute', bottom: '600px', left: '150px'}} draggable="true" onDragStart={drag}
                 id="drag6"></img>
          </div>
          {/* column 2 */}
