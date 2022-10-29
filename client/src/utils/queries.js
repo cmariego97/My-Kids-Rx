@@ -158,3 +158,13 @@ export const QUERY_FACTS = gql`
             }
     }
 `
+//retrieves all providers for create acct form
+export const QUERY_PROVIDERS = gql`
+    query Providers {
+        providers {
+        firstName
+        lastName
+        suffix
+        }
+    }
+`

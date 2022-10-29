@@ -1,4 +1,4 @@
-const { Patient, User, Disease, Fact } = require('../models');
+const { Patient, User, Disease, Fact, Provider } = require('../models');
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
 
@@ -15,6 +15,9 @@ const resolvers = {
         },
         facts: async () => {
             return await Fact.find({})
+        },
+        providers: async () => {
+            return await Provider.find({})
         }
     },
     Mutation: {
