@@ -1,5 +1,6 @@
 #cont {
     display: flex;
+    background: blue;
 }
 #col-1 {
     width: 50%;
@@ -33,6 +34,7 @@
     #col-2 {
         flex-direction: row;
         width: 75%;
+        padding: 1%;
     }
     #col-1, #col-2 {
         margin: 0 auto;
@@ -45,6 +47,6 @@
     }
     #info {
         order: 2;
-        /* height: 20vh; */
+        padding: 2%;
     }
 }
