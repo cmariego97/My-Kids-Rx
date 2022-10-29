@@ -62,18 +62,20 @@ const Operation = ({changeGame}) => {
         <div id='col-1' style={{ background: '#a68674'}}>
                 <img id='man' src={Man} alt='operation-game' style={{border: '1px solid black'}} onClick={penalty}>
                 </img>
-                <img src={Pencil} alt='pencil' draggable="true" onDragStart={drag}
-                id="drag1"></img>
-                <img src={Butterfly} alt='butterfly' draggable="true" onDragStart={drag}
-                id="drag2"></img>
-                <img src={Wishbone} alt='wishbone' draggable="true" onDragStart={drag}
-                id="drag3"></img>
-                <img src={Apple} alt='apple' draggable="true" onDragStart={drag}
-                id="drag4"></img>
-                <img src={Hammer} alt='hammer' draggable="true" onDragStart={drag}
-                id="drag5"></img>
-                <img src={Light} alt='light' draggable="true" onDragStart={drag}
-                id="drag6"></img>
+                <div id='boundary'>
+                  <img src={Pencil} alt='pencil' draggable="true" onDragStart={drag}
+                  id="drag1"></img>
+                  <img src={Butterfly} alt='butterfly' draggable="true" onDragStart={drag}
+                  id="drag2"></img>
+                  <img src={Wishbone} alt='wishbone' draggable="true" onDragStart={drag}
+                  id="drag3"></img>
+                  <img src={Apple} alt='apple' draggable="true" onDragStart={drag}
+                  id="drag4"></img>
+                  <img src={Hammer} alt='hammer' draggable="true" onDragStart={drag}
+                  id="drag5"></img>
+                  <img src={Light} alt='light' draggable="true" onDragStart={drag}
+                  id="drag6"></img>
+                </div>
          </div>
          {/* column 2 */}
          <div id='col-2' style={{display: 'flex'}}>

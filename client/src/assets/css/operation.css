@@ -44,6 +44,14 @@
     background: #9CA6B5;
     cursor: pointer;
 }
+/* invisible container to use to keep images of foreign objects from moving around when screen size changes */
+#boundary {
+    width: 400px;
+    border: 2px solid red;
+    height: 100vh;
+    position: absolute;
+    top: 82px;
+}
 /* images of foreign objects */
 #drag1 {
     width: 100px;
