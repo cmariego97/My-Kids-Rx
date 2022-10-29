@@ -141,7 +141,7 @@ const CssTextField = styled(TextField)({
   },
 });
 
-function AccountLoginPatient() {
+function AccountLoginPatient({changePage}) {
   //state variables corresponding to input fields
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -237,7 +237,8 @@ function AccountLoginPatient() {
                 {/* TODO: fix this */}
                 <Typography> 
                   Don't have an Account? 
-                  <Link href="#" >
+                  {/* DO NOT add href attribute it will not work correctly, but can change the element type if you want */}
+                  <Link onClick={() => changePage('Create')}>
                     Sign Up 
                   </Link>
                 </Typography>

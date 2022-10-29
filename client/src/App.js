@@ -173,10 +173,10 @@ function App() {
       return <Homepage />
     }
     if (page === 'Login') {
-      return <AccountLoginPatient />
+      return <AccountLoginPatient changePage={changePage}/>
     }
     if (page === 'Create') {
-      return <AccountCreate />
+      return <AccountCreate changePage={changePage}/>
     }
   }
   //fxn to change value of page state variable

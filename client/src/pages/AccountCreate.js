@@ -152,7 +152,7 @@ const CssTextField = styled(TextField)({
   },
 });
 
-function AccountCreate() {
+function AccountCreate({changePage}) {
   //finds all providers
   const {loading, data} = useQuery(QUERY_PROVIDERS);
   //state variables for create acct input fields
@@ -323,9 +323,9 @@ function AccountCreate() {
                   <p id='err-message'></p>
   
                   <Typography> 
-                    {/* TODO: fix this */}
                     Already have an Account? 
-                    <Link href="#" >
+                    {/* DO NOT add href attribute it will not work correctly, but can change the element type if you want */}
+                    <Link onClick={() =>changePage('Login')}>
                       Login 
                     </Link>
                   </Typography>
