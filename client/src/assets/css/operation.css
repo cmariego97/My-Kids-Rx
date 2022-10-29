@@ -1,3 +1,6 @@
+#screen {
+    background: #a68674;
+}
 #cont {
     display: flex;
     background: #a68674;
@@ -40,6 +43,43 @@
 #again:hover {
     background: #9CA6B5;
     cursor: pointer;
+}
+/* images of foreign objects */
+#drag1 {
+    width: 100px;
+    position: absolute;
+    bottom: 435px;
+    left: 1%;
+}
+#drag2 {
+    width: 50px;
+    position: absolute;
+    bottom: 270px;
+    left: 230px;
+}
+#drag3 {
+    width: 30px;
+    position: absolute;
+    bottom: 50px;
+    left: 230px;
+}
+#drag4 {
+    width: 30px;
+    position: absolute;
+    bottom: 90px;
+    left: 170px;
+}
+#drag5 {
+    width: 30px;
+    position: absolute;
+    bottom: 210px;
+    left: 170px; 
+}
+#drag6 {
+    width: 30px;
+    position: absolute;
+    bottom: 520px;
+    left: 170px; 
 }
 
 @media screen and (max-width: 900px) {

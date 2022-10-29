@@ -55,24 +55,24 @@ const Operation = ({changeGame}) => {
     //     console.log(true)
     //   }
     return (
-        <div>
+        <div id='screen'>
                     <h1 id='title'>Operation</h1>
         <Container id='cont' maxWidth="lg">
             {/* column 1 */}
         <div id='col-1' style={{ background: '#a68674'}}>
                 <img id='man' src={Man} alt='operation-game' style={{border: '1px solid black'}} onClick={penalty}>
                 </img>
-                <img src={Pencil} alt='pencil' style={{width: '100px', position: 'absolute', bottom: '510px', left: '190px'}} draggable="true" onDragStart={drag}
+                <img src={Pencil} alt='pencil' draggable="true" onDragStart={drag}
                 id="drag1"></img>
-                <img src={Butterfly} alt='butterfly' style={{width: '50px', position: 'absolute', bottom: '350px', left: '230px'}} draggable="true" onDragStart={drag}
+                <img src={Butterfly} alt='butterfly' draggable="true" onDragStart={drag}
                 id="drag2"></img>
-                <img src={Wishbone} alt='wishbone' style={{width: '30px', position: 'absolute', bottom: '100px', left: '230px'}} draggable="true" onDragStart={drag}
+                <img src={Wishbone} alt='wishbone' draggable="true" onDragStart={drag}
                 id="drag3"></img>
-                <img src={Apple} alt='apple' style={{width: '30px', position: 'absolute', bottom: '100px', left: '170px'}} draggable="true" onDragStart={drag}
+                <img src={Apple} alt='apple' draggable="true" onDragStart={drag}
                 id="drag4"></img>
-                <img src={Hammer} alt='hammer' style={{width: '30px', position: 'absolute', bottom: '300px', left: '170px'}} draggable="true" onDragStart={drag}
+                <img src={Hammer} alt='hammer' draggable="true" onDragStart={drag}
                 id="drag5"></img>
-                <img src={Light} alt='light' style={{width: '30px', position: 'absolute', bottom: '600px', left: '150px'}} draggable="true" onDragStart={drag}
+                <img src={Light} alt='light' draggable="true" onDragStart={drag}
                 id="drag6"></img>
          </div>
          {/* column 2 */}

@@ -1,5 +1,5 @@
 const { Schema, model } = require('mongoose');
-//import models for labs, vitals, etc
+//import schemas for labs, vitals, etc
 const Medication = require('./Medication');
 const Note = require('./Note');
 const Vaccine = require('./Vaccine');
