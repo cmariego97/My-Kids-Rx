@@ -1,0 +1,50 @@
+#cont {
+    display: flex;
+}
+#col-1 {
+    width: 50%;
+    height: 100vh;
+}
+#man {
+    height: 100vh;
+}
+#col-2 {
+    flex-direction: column;
+    width: 50%;
+}
+#info {
+    height: 50vh;
+}
+#target {
+    height: 50vh;
+}
+
+@media screen and (max-width: 900px) {
+	#cont {
+        flex-direction: column;
+    }
+    #col-1 {
+        width: 75%;
+        /* height: 50vh; */
+    }
+    #man {
+        margin: 0 auto;
+    }
+    #col-2 {
+        flex-direction: row;
+        width: 75%;
+    }
+    #col-1, #col-2 {
+        margin: 0 auto;
+    }
+    #target {
+        order: 1;
+        /* margin: 0 auto; */
+        width: 50%;
+        /* height: 20vh; */
+    }
+    #info {
+        order: 2;
+        /* height: 20vh; */
+    }
+}
