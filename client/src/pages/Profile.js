@@ -29,7 +29,9 @@ import MedicalInfo from './Medical';
 
 //import images
 import background from '../assets/images/site-design-images/plain-animal-bg.svg';
-import avatarImg from '../assets/images/avatars/avatar1-pink.png';
+import femaleAv from '../assets/images/avatars/avatar1-pink.png';
+import otherAv from '../assets/images/avatars/avatar2-purple.png';
+import maleAv from '../assets/images/avatars/avatar3-boy.png';
 import { textTransform } from '@mui/system';
 
 // import FontAwesome Icons
@@ -323,6 +325,35 @@ const Profile = () => {
     else {
     const user = data.oneUser
     const fullName= titleCase(`${user.firstName} ${user.lastName}`);
+    //selects avatar for account based on gender
+    const chooseAvatar = () => {
+        if(user.gender === 'Female') {
+            return (
+                <Avatar 
+                    className={classes.avatarImage}
+                    alt="pink-haired girl with headphones avatar" 
+                    src={`${femaleAv}`}
+                    sx={{ width: 280, height: 280 }}
+                />
+            )
+        }
+        else if(user.gender === 'Male') {
+            <Avatar 
+                    className={classes.avatarImage}
+                    alt="male avatar" 
+                    src={`${maleAv}`}
+                    sx={{ width: 280, height: 280 }}
+                />
+        }
+        else {
+            <Avatar 
+                    className={classes.avatarImage}
+                    alt="neutral avatar" 
+                    src={`${otherAv}`}
+                    sx={{ width: 280, height: 280 }}
+                />
+        }
+    }
     //set value of state variable corresponding to input fields in change password form
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -415,12 +446,7 @@ const Profile = () => {
                     <div className={classes.rowContainer}>
                         {/* Profile Card - avatar + name */}
                         <div className={classes.cardProfile}>
-                            <Avatar 
-                                className={classes.avatarImage}
-                                alt="pink-haired girl with headphones" 
-                                src={`${avatarImg}`}
-                                sx={{ width: 280, height: 280 }}
-                            />
+                            {chooseAvatar()}
 
                             {/* greeting + user name */}
                             <div className={classes.littleSpace}>
@@ -489,7 +515,7 @@ const Profile = () => {
                         </div>
 
                         {/* confirm msg to delete */}
-                        {/* // TODO: make this into a popover */}
+                        {/* // TODO: make this into a popover, it is showing up weird */}
                         <div className={classes.confirmDel}>
                             <p id='conf-delete'></p>
 

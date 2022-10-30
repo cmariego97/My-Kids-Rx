@@ -3,6 +3,7 @@
         "firstName": "olivia",
         "lastName": "smith",
         "provider": "Joseph Smith MD",
+        "gender": "Female",
         "email": "asmith@test.com",
         "password": "password12345"
     },
@@ -10,6 +11,7 @@
         "firstName": "john",
         "lastName": "green",
         "provider": "Joseph Smith MD",
+        "gender": "Male",
         "email": "mgreen@test.com",
         "password": "password12345"
     },
@@ -17,6 +19,7 @@
         "firstName": "jane",
         "lastName": "doe",
         "provider": "Joseph Smith MD",
+        "gender": "Female",
         "email": "jdoe@test.com",
         "password": "password12345"
     }

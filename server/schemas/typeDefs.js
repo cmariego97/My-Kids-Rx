@@ -17,6 +17,7 @@ const typeDefs = gql`
         _id: ID
         firstName: String
         lastName: String
+        gender: String
         provider: String
         email: String
         password: String

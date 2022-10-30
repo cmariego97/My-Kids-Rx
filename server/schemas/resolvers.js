@@ -27,8 +27,8 @@ const resolvers = {
     },
     Mutation: {
         //adds new user and utilizes jwt
-        addUser: async(parent, { firstName, lastName, provider, email, password}) => {
-           const profile = await User.create({firstName, lastName, provider, email, password}) 
+        addUser: async(parent, { firstName, lastName, gender, provider, email, password}) => {
+           const profile = await User.create({firstName, lastName, gender, provider, email, password}) 
            const token = signToken(profile);
             return { token, profile };
 
