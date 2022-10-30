@@ -4,8 +4,10 @@ import { QUERY_IMAGING } from '../utils/queries';
 import Auth from '../utils/auth';
 
 const Imaging= () => {
+    //retrieve email from jwt to use to find specific patient
     const acctData = Auth.getProfile();
     const email = acctData.data.email;
+    //imaging results query
     const { loading, data } = useQuery(QUERY_IMAGING, {
         variables: { email }
     });
@@ -16,6 +18,7 @@ const Imaging= () => {
         )
     }
     else {
+        //if patient not in database
         if (!data.onePatient) {
             return (
                 <p>No imaging results found for this email, you must first contact your provider to set up your profile!</p>
@@ -41,6 +44,7 @@ const Imaging= () => {
                 )
             }
             else {
+                //if no imaging results for the patient
                 return (
                     <p>No imaging results on file!</p>
                 )

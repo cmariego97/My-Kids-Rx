@@ -4,8 +4,10 @@ import { QUERY_APPTS } from '../utils/queries';
 import Auth from '../utils/auth';
 
 const Appt = () => {
+    //retrieve email from jwt to use to find specific patient
     const acctData = Auth.getProfile();
     const email = acctData.data.email;
+    //find appts query
     const { loading, data } = useQuery(QUERY_APPTS, {
         variables: { email }
     });
@@ -16,6 +18,7 @@ const Appt = () => {
         )
     }
     else {
+        //if user not a patient in database
         if (!data.onePatient) {
             return (
                 <p>No appointments found for this email, you must first contact your provider to set up your profile!</p>
@@ -38,6 +41,7 @@ const Appt = () => {
                 )
             }
             else {
+                //if in database but no appts on file
                 return (
                     <p>No upcoming appointments!</p>
                 )

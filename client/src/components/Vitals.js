@@ -15,6 +15,7 @@ const Vitals = ({vitals}) => {
     }
 
     if (vitals.length === 0) {
+        //if no vitals on file for patient
         return (
             <p>No vital signs on file!</p>
         )

@@ -1,5 +1,5 @@
 const { Schema, Types } = require('mongoose');
-
+//schema for medication within patient model
 const medSchema = new Schema(
   {
     name: {

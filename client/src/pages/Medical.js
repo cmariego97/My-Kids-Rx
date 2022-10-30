@@ -89,23 +89,13 @@ const useStyles = makeStyles({
 
 const Medical = () => {
     const classes = useStyles();
-
+    //retrieve email from jwt to use to find specific patient
     const acctData = Auth.getProfile();
     const email = acctData.data.email;
+    //medical info query
     const { loading, data } = useQuery(QUERY_INFO, {
         variables: { email }
     });
-
-    var titleCase = function(str) {
-        var result = [];
-        var words = str.split(" ");
-        for (var i = 0; i < words.length; i++) {
-          var word = words[i].split("");
-          word[0] = word[0].toUpperCase();
-          result.push(word.join(""));
-        }
-        return result.join(" ");
-      };
 
     //converts dob to age
     const getAge = (dateString) => {
@@ -119,17 +109,17 @@ const Medical = () => {
         )
     }
     else {
+        //it patient not in database
         if (!data.onePatient) {
             return (
                 <p>No medical information found for this email, you must first contact your provider to set up your profile!</p>
             )
         }
         else {
-            const info = data.onePatient;
+        const info = data.onePatient;
         const vitals = info.vitals;
         const vaccines = info.vaccines;
         const meds = info.medications;
-        const fullName = titleCase(`${info.firstName} ${info.middleName} ${info.lastName}`);
         const age = getAge(info.dob)
         return (
             <div>

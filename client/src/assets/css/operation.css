@@ -1,0 +1,124 @@
+#screen {
+    background: #a68674;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+#cont {
+    display: flex;
+}
+#title {
+    text-align: center;
+    margin: 0;
+    padding: 2%;
+    font-size: 250%;
+}
+#col-1 {
+    width: 50%;
+    height: 100vh;
+    cursor: pointer;
+}
+#man {
+    height: 100vh;
+    width: 100%;
+    background-image: url('operation.jpeg');
+    background-position: center;
+    border-radius: 35px;
+}
+#col-2 {
+    flex-direction: column;
+    width: 50%;
+    padding: 1%;
+    font-size: 120%;
+}
+#info {
+    height: 50vh;
+}
+#target {
+    height: 50vh;
+}
+#again,
+#start {
+    padding: 2%;
+    background: #3f4868;
+    border-radius: 10px;
+    border: none;
+    color: white;
+}
+#again:hover,
+#start:hover {
+    background: #9CA6B5;
+    cursor: pointer;
+}
+/* images of foreign objects */
+#drag1 {
+    width: 100px;
+    position: absolute;
+    bottom: 500px;
+    left: 250px;
+    border: 1px solid brown;
+} 
+#drag2 {
+    width: 50px;
+    position: absolute;
+    bottom: 370px;
+    left: 230px;
+    border: 1px solid brown;
+}
+#drag3 {
+    width: 30px;
+    position: absolute;
+    bottom: 290px;
+    left: 300px;
+    border: 1px solid brown;
+}
+#drag4 {
+    width: 30px;
+    position: absolute;
+    bottom: 190px;
+    left: 400px;
+    border: 1px solid brown;
+}
+#drag5 {
+    width: 30px;
+    position: absolute;
+    bottom: 290px;
+    left: 400px; 
+    border: 1px solid brown;
+}
+#drag6 {
+    width: 30px;
+    position: absolute;
+    bottom: 580px;
+    left: 260px; 
+    border: 1px solid brown;
+}
+
+@media screen and (max-width: 900px) {
+	#cont {
+        flex-direction: column;
+    }
+    #col-1 {
+        width: 75%;
+        /* height: 50vh; */
+    }
+    #man {
+        margin: 0 auto;
+    }
+    #col-2 {
+        flex-direction: row;
+        width: 75%;
+    }
+    #col-1, #col-2 {
+        margin: 0 auto;
+    }
+    #target {
+        order: 1;
+        /* margin: 0 auto; */
+        width: 50%;
+        /* height: 20vh; */
+    }
+    #info {
+        order: 2;
+        padding: 2%;
+    }
+}

@@ -78,12 +78,14 @@ const useStyles = makeStyles((theme) => ({
 
 const HeaderAppBar = (props) => {
     const classes = useStyles();
+    //this needs to be in place because sometimes the program tries to read props before the page finishes loading
     if (!props.changePage) {
         return (
             <h1></h1>
         )
     }
     else {
+        //indicates which user is logged in (if logged in)
         const status = ()=> {
             if(Auth.loggedIn()) {
                 const acctData = Auth.getProfile();

@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import { useQuery } from '@apollo/client';
 import { QUERY_PROVIDERS } from '../utils/queries';
-//then mutation to create new acct
+//import mutation to create new acct
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../utils/mutations';
 import Auth from '../utils/auth';
@@ -152,19 +152,20 @@ const CssTextField = styled(TextField)({
   },
 });
 
-function AccountCreate() {
-
+function AccountCreate({changePage}) {
+  //finds all providers
   const {loading, data} = useQuery(QUERY_PROVIDERS);
-  
+  //state variables for create acct input fields
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
+  const [gender, setGender] = useState('');
   const [provider, setProvider] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confPassword, setConf] = useState('');
-
+  //mutation to add new user
   const [addProfile, { error }] = useMutation(ADD_USER);
-
+  //sets value of state variable that corresponds to input field that was edited
   const handleChange = (event) => {
     const { id, value } = event.target;
     if (id === 'user-firstName') {
@@ -172,6 +173,9 @@ function AccountCreate() {
     }
     else if (id === 'user-lastName') {
       setLastName(value);
+    }
+    else if (id === 'gender') {
+      setGender(value);
     }
     else if (id === 'recipient-provider') {
       setProvider(value);
@@ -189,16 +193,19 @@ function AccountCreate() {
   
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    if (!firstName || !lastName || !provider || !email || !password || !confPassword) {
+    //checks to make sure all input fields were filled out
+    if (!firstName || !lastName || !gender || !provider || !email || !password || !confPassword) {
       document.querySelector('#err-message').textContent = 'Please fill out all required fields!';
     }
+    //checks to make sure passwords match
     if(password !== confPassword) {
       document.querySelector('#err-message').textContent = 'Error creating account: passwords must match';
     }
+    //creates new user and logs them in
     else{
       try {
       const { data } = await addProfile({
-        variables: { firstName, lastName, provider, email, password },
+        variables: { firstName, lastName, gender, provider, email, password },
       });
       Auth.login(data.addUser.token);
     } catch (e) {
@@ -210,14 +217,15 @@ function AccountCreate() {
 
   const classes = useStyles();
   const btnstyle={margin:'8px 0'}
-
+  
   if(loading) {
+    //if still loading data from query
     return (
       <h1>Loading...</h1>
     )
   }
   else {
-    console.log(data.providers);
+    //when done loading data from query
     return (
       <ThemeProvider theme={theme}>
         <div className={classes.root}>
@@ -241,6 +249,7 @@ function AccountCreate() {
                       label="First Name"
                       placeholder="(ゝз○`)"
                       margin="normal"
+                      helperText="first name required"
                       onChange={handleChange}
                     />
                     <CssTextField
@@ -249,6 +258,7 @@ function AccountCreate() {
                       label="Last Name"
                       placeholder="(´ε｀ )♡"
                       margin="normal"
+                      helperText="last name required"
                       onChange={handleChange}
                     />
                   </div>
@@ -264,7 +274,16 @@ function AccountCreate() {
                       helperText="provider required"
                       onChange={handleChange}
                     /> */}
-                    {/* {TODO: not sure how to make this look like the other text fields} */}
+                    {/* {//TODO: not sure how to make these look like the other text fields} */}
+                    <select
+                      id='gender'
+                      onChange={handleChange}
+                    >
+                      <option selected>Select a gender</option>
+                      <option>Female</option>
+                      <option>Male</option>
+                      <option>Other</option>
+                    </select>
                     <select
                       id="recipient-provider"
                       onChange={handleChange}
@@ -319,9 +338,9 @@ function AccountCreate() {
                   <p id='err-message'></p>
   
                   <Typography> 
-                    {/* TODO: fix this */}
                     Already have an Account? 
-                    <Link href="#" >
+                    {/* DO NOT add href attribute it will not work correctly, but can change the element type if you want */}
+                    <Link onClick={() =>changePage('Login')}>
                       Login 
                     </Link>
                   </Typography>

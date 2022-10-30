@@ -6,12 +6,12 @@ class AuthService {
       return decode(this.getToken());
     }
   
-    // return `true` or `false` if token exists (does not verify if it's expired yet)
+    // checks if token exists and if it is expired
     loggedIn() {
       const token = this.getToken();
       return token && !this.isTokenExpired(token) ? true : false;
     }
-
+    //removes token from local storage if expired
     isTokenExpired(token) {
       const decoded = decode(token);
       if (decoded.exp < Date.now() / 1000) {
@@ -33,9 +33,12 @@ class AuthService {
     }
   
     logout() {
-      // Clear user token and profile data from localStorage
+      // Clear user token and profile data from localStorage and reloads the application for logged out status to take effect
       localStorage.removeItem('id_token');
-      // this will reload the page and reset the state of the application
+      const gameScore = localStorage.getItem('highScore');
+      if(gameScore !== null) {
+        localStorage.removeItem('highScore');
+      }
       window.location.reload();
     }
   }

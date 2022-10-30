@@ -1,6 +1,5 @@
 const { Schema } = require('mongoose');
-// const moment = require('moment');
-
+//schema for imaging within patient model
 const imSchema = new Schema(
   {
     date: {

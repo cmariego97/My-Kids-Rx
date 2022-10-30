@@ -23,15 +23,16 @@ const FadeMenu = ({page, changePage})  => {
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
     };
+    //collapses menu and sets new value to page state variable to change page
     const handleClose = (newPage) => {
         setAnchorEl(null);
         changePage(newPage);
     };
-    
+    //logs out user
     const logOut = () => {
         Auth.logout();
     }
-
+    //displays different menu options depending on if a user is logged in or not
     const menuOptions = () => {
         if(!Auth.loggedIn()) {
             return (

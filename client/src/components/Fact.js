@@ -3,6 +3,7 @@ import { useQuery } from '@apollo/client';
 import { QUERY_FACTS } from '../utils/queries';
 
 const Fact = () => {
+    //find facts query
     const { loading, data } = useQuery(QUERY_FACTS);
 
     if(loading) {
@@ -11,7 +12,9 @@ const Fact = () => {
         )
     }
     else {
+        //generate random number
         var randomNum = Math.floor(Math.random()* data.facts.length);
+        //pick random disease
         var fact = data.facts[randomNum]
         console.log(fact)
         return (

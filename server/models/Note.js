@@ -1,5 +1,5 @@
 const { Schema, Types } = require('mongoose');
-
+//schema for note within patient model
 const noteSchema = new Schema(
   {
     date: {

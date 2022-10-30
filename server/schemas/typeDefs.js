@@ -17,6 +17,7 @@ const typeDefs = gql`
         _id: ID
         firstName: String
         lastName: String
+        gender: String
         provider: String
         email: String
         password: String
@@ -157,7 +158,7 @@ const typeDefs = gql`
     }
 
     type Mutation {
-        addUser(firstName: String!, lastName: String!, provider: String!, email: String!, password: String!): Auth
+        addUser(firstName: String!, lastName: String!, gender: String!, provider: String!, email: String!, password: String!): Auth
 
         addMessage(email: String!, to: String!, date: String!, time: String!, content: String!): Patient
 

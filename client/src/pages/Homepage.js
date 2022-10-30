@@ -11,7 +11,6 @@ import AboutUsWhale from '../assets/images/site-design-images/about-us-whale.svg
 //import components
 import Header from '../components/Header';
 import Grid from '../components/Grid';
-//import Footer from './components/Footer';
 
 //import FontAwesome Icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

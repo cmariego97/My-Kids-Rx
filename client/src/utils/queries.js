@@ -6,6 +6,7 @@ export const QUERY_PROFILE = gql`
         oneUser(email: $email) {
         firstName
         lastName
+        gender
         provider
         email
         password
