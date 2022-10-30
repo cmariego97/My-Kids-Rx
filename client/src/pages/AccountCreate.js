@@ -163,6 +163,7 @@ function AccountCreate({changePage}) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confPassword, setConf] = useState('');
+  const [checkEmail, setCheckEmail] = useState('');
   //mutation to add new user
   const [addProfile, { error }] = useMutation(ADD_USER);
   //sets value of state variable that corresponds to input field that was edited
@@ -182,6 +183,11 @@ function AccountCreate({changePage}) {
     }
     else if (id === 'recipient-user') {
       setEmail(value);
+      if (!email.match(/^([a-z0-9_.-]+)@([\da-z.-]+)\.([a-z.]{2,6})$/)) {
+        setCheckEmail('Invalid email format!')
+    } else {
+      setCheckEmail('');
+    }
     }
     else if (id === 'conf-password') {
       setConf(value);
@@ -304,6 +310,9 @@ function AccountCreate({changePage}) {
                       helperText="e-mail required"
                       onChange={handleChange}
                     />
+                    <p >
+                        {checkEmail}
+                    </p>
   
                     <CssTextField
                       fullWidth
