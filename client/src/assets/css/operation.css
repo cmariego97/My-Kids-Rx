@@ -15,7 +15,7 @@
     width: 50%;
     height: 100vh;
 }
-#test {
+#man {
     height: 100vh;
     width: 100%;
     background-image: url('operation.jpeg');
@@ -47,50 +47,48 @@
     background: #9CA6B5;
     cursor: pointer;
 }
-/* invisible container to use to keep images of foreign objects from moving around when screen size changes */
-/* #boundary {
-    width: 400px;
-    border: 2px solid red;
-    height: 100vh;
-    position: absolute;
-    top: 80px;
-} */
 /* images of foreign objects */
 #drag1 {
     width: 100px;
     position: absolute;
     bottom: 500px;
-    left: 150px;
+    left: 250px;
+    border: 1px solid brown;
 } 
 #drag2 {
     width: 50px;
     position: absolute;
-    bottom: 270px;
+    bottom: 370px;
     left: 230px;
+    border: 1px solid brown;
 }
 #drag3 {
     width: 30px;
     position: absolute;
-    bottom: 50px;
-    left: 230px;
+    bottom: 290px;
+    left: 300px;
+    border: 1px solid brown;
 }
 #drag4 {
     width: 30px;
     position: absolute;
-    bottom: 90px;
-    left: 170px;
+    bottom: 190px;
+    left: 400px;
+    border: 1px solid brown;
 }
 #drag5 {
     width: 30px;
     position: absolute;
-    bottom: 210px;
-    left: 170px; 
+    bottom: 290px;
+    left: 400px; 
+    border: 1px solid brown;
 }
 #drag6 {
     width: 30px;
     position: absolute;
-    bottom: 520px;
-    left: 170px; 
+    bottom: 600px;
+    left: 260px; 
+    border: 1px solid brown;
 }
 
 @media screen and (max-width: 900px) {

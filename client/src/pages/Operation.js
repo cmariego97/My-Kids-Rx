@@ -2,7 +2,6 @@ import React from 'react';
 import Container from '@mui/material/Container';
 import '../assets/css/operation.css';
 //import game images
-// import Man from '../assets/images/operation.jpeg';
 import Pencil from '../assets/images/pencil.png';
 import Butterfly from '../assets/images/butterfly.jpeg';
 import Wishbone from '../assets/images/wishbone.jpeg';
@@ -52,7 +51,7 @@ const Operation = ({changeGame}) => {
         //decrease score by 1
         score--;
         document.querySelector('#score').textContent = score;
-        document.querySelector('#warning').textContent = 'Oh no! You touched the patient or table! -1 point!'
+        document.querySelector('#warning').textContent = 'Oh no! You touched the patient! -1 point!'
       }
     return (
         <div id='screen'>
@@ -60,10 +59,8 @@ const Operation = ({changeGame}) => {
         <Container id='cont' maxWidth="lg">
             {/* column 1 */}
         <div id='col-1'>
-                <div id='test' onClick={penalty}></div>
-                {/* <img id='man' src={Man} alt='operation-game' style={{border: '1px solid black'}} onClick={penalty}>
-                </img> */}
-                <img src={Pencil} alt='pencil' draggable="true" onDragStart={drag}
+                <div id='man' onClick={penalty}></div>
+                  <img src={Pencil} alt='pencil' draggable="true" onDragStart={drag}
                   id="drag1"></img>
                   <img src={Butterfly} alt='butterfly' draggable="true" onDragStart={drag}
                   id="drag2"></img>
@@ -75,18 +72,6 @@ const Operation = ({changeGame}) => {
                   id="drag5"></img>
                   <img src={Light} alt='light' draggable="true" onDragStart={drag}
                   id="drag6"></img>
-                {/* <div id='boundary'>
-                  <img src={Butterfly} alt='butterfly' draggable="true" onDragStart={drag}
-                  id="drag2"></img>
-                  <img src={Wishbone} alt='wishbone' draggable="true" onDragStart={drag}
-                  id="drag3"></img>
-                  <img src={Apple} alt='apple' draggable="true" onDragStart={drag}
-                  id="drag4"></img>
-                  <img src={Hammer} alt='hammer' draggable="true" onDragStart={drag}
-                  id="drag5"></img>
-                  <img src={Light} alt='light' draggable="true" onDragStart={drag}
-                  id="drag6"></img>
-                </div> */}
          </div>
          {/* column 2 */}
          <div id='col-2' style={{display: 'flex'}}>
@@ -94,7 +79,7 @@ const Operation = ({changeGame}) => {
             id='info' style={{background: '#a68674'}}
             >
                 <h2>Score: <span id='score'>0</span></h2>
-                <p id='warning'>Remove the objects that do not belong! Do not touch the patient or table!</p>
+                <p id='warning'>Remove the objects that do not belong! Do not touch the patient!</p>
                 <p id='game-over'></p>
                 <button id='again' onClick={() => changeGame('Home')}>Play Again</button>
                 <p id='high-score'></p>
