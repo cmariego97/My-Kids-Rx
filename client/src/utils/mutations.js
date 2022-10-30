@@ -6,8 +6,11 @@ export const ADD_USER = gql`
     addUser(firstName: $firstName, lastName: $lastName, provider: $provider, email: $email, password: $password) {
       token
       profile {
-        email
+        firstName
+        lastName
         provider
+        email
+        password
       }
     }
   }
@@ -18,8 +21,11 @@ export const LOGIN_USER = gql`
     login(email: $email, password: $password) {
       token
       profile {
-        email
+        firstName
+        lastName
         provider
+        email
+        password
       }
     }
   }
