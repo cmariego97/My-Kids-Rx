@@ -12,14 +12,18 @@ import Light from '../assets/images/light.png'
 const Operation = ({changeGame}) => {
     //keeps track of current score
     let score = 0;
+    //declare global variables for timer
     var timerInterval;
     var secondsLeft = 30;
     function startGame(ev) {
       ev.preventDefault();
+      //hide start game button once game starts
       document.querySelector('#start').style.display = 'none';
+      //start timer
       timerInterval = setInterval(function() {
         secondsLeft--;
         document.querySelector('#timer').textContent = "🕓 " + secondsLeft + " seconds left";
+        //end game if time expires
         if(secondsLeft === 0) {
           endGame();
         }
@@ -42,11 +46,12 @@ const Operation = ({changeGame}) => {
         score++;
         document.querySelector('#score').textContent = score;
         document.querySelector('#warning').textContent = 'Object successfully removed! +1 point!'
-        //prevent dragged item for continuing to be displayed in previous position
+        //prevent dragged item from continuing to be displayed in previous position
         var items = document.querySelector('#target').children.length;
         var index = items - 1;
         var discardedItem = document.querySelector('#target').children[index];
         discardedItem.style.display = 'none';
+        //set next item to draggables and instruct user which object it is
         if (discardedItem.id === 'drag4') {
           document.querySelector('#drag6').setAttribute('draggable', 'true');
           document.querySelector('#item').textContent = 'Remove the light bulb!'
@@ -67,6 +72,7 @@ const Operation = ({changeGame}) => {
           document.querySelector('#drag2').setAttribute('draggable', 'true');
           document.querySelector('#item').textContent = 'Remove the butterfly!'
         }
+        //end game if all objects removed
         if (items === 6) {
             endGame();
         }
@@ -78,6 +84,9 @@ const Operation = ({changeGame}) => {
             document.querySelector('#item').textContent = '';
             document.querySelector('#trash').textContent = '';
             document.querySelector('#game-over').textContent = `Game over! Your final score is ${score}`;
+            //reveal play gain button
+            document.querySelector('#again').style.display = 'block';
+            //retrieve high score from local storage
             var oldScore = localStorage.getItem('highScore');
             if (oldScore === null || oldScore < score) {
                 localStorage.setItem('highScore', score);
