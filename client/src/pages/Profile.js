@@ -338,20 +338,24 @@ const Profile = () => {
             )
         }
         else if(user.gender === 'Male') {
-            <Avatar 
+            return (
+                <Avatar 
                     className={classes.avatarImage}
                     alt="male avatar" 
                     src={`${maleAv}`}
                     sx={{ width: 280, height: 280 }}
                 />
+            )
         }
         else {
-            <Avatar 
+            return (
+                <Avatar 
                     className={classes.avatarImage}
                     alt="neutral avatar" 
                     src={`${otherAv}`}
                     sx={{ width: 280, height: 280 }}
                 />
+            )
         }
     }
     //set value of state variable corresponding to input fields in change password form
