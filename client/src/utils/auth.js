@@ -35,6 +35,10 @@ class AuthService {
     logout() {
       // Clear user token and profile data from localStorage and reloads the application for logged out status to take effect
       localStorage.removeItem('id_token');
+      const gameScore = localStorage.getItem('highScore');
+      if(gameScore !== null) {
+        localStorage.removeItem('highScore');
+      }
       window.location.reload();
     }
   }
