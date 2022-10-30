@@ -19,6 +19,7 @@ const Operation = ({changeGame}) => {
       ev.preventDefault();
       //hide start game button once game starts
       document.querySelector('#start').style.display = 'none';
+      document.querySelector('#item').textContent = 'Remove the apple!'
       //start timer
       timerInterval = setInterval(function() {
         secondsLeft--;
@@ -135,7 +136,7 @@ const Operation = ({changeGame}) => {
                 <button id='again' onClick={() => changeGame('Home')} style={{display: 'none'}}>Play Again</button>
                 <button id='start' onClick={startGame}>Start Game</button>
                 <p id='high-score'></p>
-                <p id='item' style={{color: 'white'}}>Remove the apple!</p>
+                <p id='item' style={{color: 'white'}}></p>
                 <p id='trash' style={{marginTop: '10%'}}>Throw away objects in the container below</p>
             </div>
             <div 
