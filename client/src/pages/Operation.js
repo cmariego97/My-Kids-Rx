@@ -2,7 +2,7 @@ import React from 'react';
 import Container from '@mui/material/Container';
 import '../assets/css/operation.css';
 //import game images
-import Man from '../assets/images/operation.jpeg';
+// import Man from '../assets/images/operation.jpeg';
 import Pencil from '../assets/images/pencil.png';
 import Butterfly from '../assets/images/butterfly.jpeg';
 import Wishbone from '../assets/images/wishbone.jpeg';
@@ -59,12 +59,15 @@ const Operation = ({changeGame}) => {
                     <h1 id='title'>Operation</h1>
         <Container id='cont' maxWidth="lg">
             {/* column 1 */}
-        <div id='col-1' style={{ background: '#a68674'}}>
-                <img id='man' src={Man} alt='operation-game' style={{border: '1px solid black'}} onClick={penalty}>
-                </img>
-                <div id='boundary'>
-                  <img src={Pencil} alt='pencil' draggable="true" onDragStart={drag}
+        <div id='col-1'>
+                <div id='test'></div>
+                {/* <img id='man' src={Man} alt='operation-game' style={{border: '1px solid black'}} onClick={penalty}>
+                </img> */}
+                <img src={Pencil} alt='pencil' draggable="true" onDragStart={drag}
                   id="drag1"></img>
+                <div id='boundary'>
+                  {/* <img src={Pencil} alt='pencil' draggable="true" onDragStart={drag}
+                  id="drag1"></img> */}
                   <img src={Butterfly} alt='butterfly' draggable="true" onDragStart={drag}
                   id="drag2"></img>
                   <img src={Wishbone} alt='wishbone' draggable="true" onDragStart={drag}

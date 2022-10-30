@@ -1,22 +1,29 @@
 #screen {
     background: #a68674;
+    margin: 0 auto;
+    max-width: 1200px;
 }
 #cont {
     display: flex;
-    background: #a68674;
+    border: 2px solid purple;
 }
 #title {
     text-align: center;
     margin: 0;
     padding: 2%;
-    background: #a68674;
 }
 #col-1 {
     width: 50%;
     height: 100vh;
 }
-#man {
+#test {
     height: 100vh;
+    width: 100%;
+    background-image: url('operation.jpeg');
+    background-position: center;
+}
+#man {
+    width: 600px;
     border-radius: 5px;
 }
 #col-1 img:hover {
@@ -50,15 +57,15 @@
     border: 2px solid red;
     height: 100vh;
     position: absolute;
-    top: 82px;
+    top: 80px;
 }
 /* images of foreign objects */
 #drag1 {
     width: 100px;
     position: absolute;
-    bottom: 435px;
-    left: 1%;
-}
+    bottom: 500px;
+    left: 150px;
+} 
 #drag2 {
     width: 50px;
     position: absolute;
