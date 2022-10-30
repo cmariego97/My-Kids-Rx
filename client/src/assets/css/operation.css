@@ -10,10 +10,12 @@
     text-align: center;
     margin: 0;
     padding: 2%;
+    font-size: 250%;
 }
 #col-1 {
     width: 50%;
     height: 100vh;
+    cursor: pointer;
 }
 #man {
     height: 100vh;
@@ -22,13 +24,11 @@
     background-position: center;
     border-radius: 35px;
 }
-#col-1 img:hover {
-    cursor: pointer;
-}
 #col-2 {
     flex-direction: column;
     width: 50%;
     padding: 1%;
+    font-size: 120%;
 }
 #info {
     height: 50vh;
@@ -86,7 +86,7 @@
 #drag6 {
     width: 30px;
     position: absolute;
-    bottom: 600px;
+    bottom: 580px;
     left: 260px; 
     border: 1px solid brown;
 }
