@@ -22,10 +22,10 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 // import other pages
 import MedicalInfo from './Medical';
-import Messages from './Messaging';
-import Appointments from './Appointment';
-import LabResults from './Lab';
-import ImagingResults from './Imaging';
+// import Messages from './Messaging';
+// import Appointments from './Appointment';
+// import LabResults from './Lab';
+// import ImagingResults from './Imaging';
 
 //import images
 import background from '../assets/images/site-design-images/plain-animal-bg.svg';
@@ -356,6 +356,10 @@ const Profile = () => {
                     variables: {email: user.email, password: newPass}
                 })
                 document.querySelector('#message-el').textContent = 'Password successfully changed!'
+                setCurrentPass('');
+                setNewPass('');
+                //reload application in order to have find user query run again and supply page with updated password
+                window.location.reload();
             }
             catch(err) {
                 console.error(err);
