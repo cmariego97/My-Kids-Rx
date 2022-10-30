@@ -11,6 +11,10 @@ const userSchema = new Schema(
         type: String,
         required: true
       },
+    gender: {
+      type: String,
+      required: true
+    },
       provider: {
         type: String,
         required: true
@@ -18,8 +22,7 @@ const userSchema = new Schema(
     email: {
       type: String,
       required: true,
-      unique: true,
-      match: [/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/, 'Please enter a valid email address']
+      unique: true
     },
     password: {
         type: String,

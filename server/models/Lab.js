@@ -1,5 +1,5 @@
 const { Schema } = require('mongoose');
-
+//schema for cbc within lab schema
 const cbcSchema = new Schema(
   {
     rbc: {
@@ -20,7 +20,7 @@ const cbcSchema = new Schema(
     }
   }
 );
-
+//schema for cmp within lab schema
 const cmpSchema = new Schema(
     {
       sodium: {
@@ -81,7 +81,7 @@ const cmpSchema = new Schema(
     }
     }
   );
-
+  //schema for lipid within lab schema
   const lipidSchema = new Schema(
     {
       total: {
@@ -102,7 +102,7 @@ const cmpSchema = new Schema(
       }
     }
   );
-
+//schema for lab within patient model
 const labSchema = new Schema(
     {
       date: {

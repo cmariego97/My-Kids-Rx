@@ -1,10 +1,13 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
 import { QUERY_IMAGING } from '../utils/queries';
+import Auth from '../utils/auth';
 
 const Imaging= () => {
-    //TODO: when we have login we need to retrieve email from the jwt token instead of this const var
-    const email = 'mgreen@test.com';
+    //retrieve email from jwt to use to find specific patient
+    const acctData = Auth.getProfile();
+    const email = acctData.data.email;
+    //imaging results query
     const { loading, data } = useQuery(QUERY_IMAGING, {
         variables: { email }
     });
@@ -15,29 +18,37 @@ const Imaging= () => {
         )
     }
     else {
-        console.log(data);
-        const imaging = data.onePatient.imaging
-        if (imaging.length !== 0) {
+        //if patient not in database
+        if (!data.onePatient) {
             return (
-                <div>
-                   <h1>Imaging Results</h1>
-                   {imaging.map((result) => (
-                    <div>
-                        <li>{`Date: ${result.date}`}</li>
-                        <li>{`Test: ${result.type} of ${result.site}`}</li>
-                        <li>{`Results: ${result.report}`}</li>
-                    </div>
-                  
-                   )
-                   )}
-    
-                </div>
+                <p>No imaging results found for this email, you must first contact your provider to set up your profile!</p>
             )
         }
         else {
-            return (
-                <p>No imaging results on file!</p>
-            )
+            const imaging = data.onePatient.imaging
+            if (imaging.length !== 0) {
+                return (
+                    <div>
+                       <h1>Imaging Results</h1>
+                       {imaging.map((result) => (
+                        <div>
+                            <li>{`Date: ${result.date}`}</li>
+                            <li>{`Test: ${result.type} of ${result.site}`}</li>
+                            <li>{`Results: ${result.report}`}</li>
+                        </div>
+                      
+                       )
+                       )}
+        
+                    </div>
+                )
+            }
+            else {
+                //if no imaging results for the patient
+                return (
+                    <p>No imaging results on file!</p>
+                )
+            }
         }
     }
 }

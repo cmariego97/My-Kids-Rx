@@ -1,4 +1,5 @@
 import React from 'react'
+import Auth from '../utils/auth';
 
 // import MUI styles
 import { createTheme, ThemeProvider, makeStyles } from '@material-ui/core/styles';
@@ -77,13 +78,23 @@ const useStyles = makeStyles((theme) => ({
 
 const HeaderAppBar = (props) => {
     const classes = useStyles();
+    //this needs to be in place because sometimes the program tries to read props before the page finishes loading
     if (!props.changePage) {
         return (
             <h1></h1>
         )
     }
     else {
-        console.log(props);
+        //indicates which user is logged in (if logged in)
+        const status = ()=> {
+            if(Auth.loggedIn()) {
+                const acctData = Auth.getProfile();
+                const email = acctData.data.email;
+                return (
+                    <h2 className={classes.appbarTitle}>Logged in as {email}</h2>
+                )
+            }
+        }
         return (
             <ThemeProvider theme={theme}>
                 <div className={classes.root}>
@@ -94,6 +105,7 @@ const HeaderAppBar = (props) => {
                                 My Kids-Rx
                                 {/* <img src={`${KidsRxLogo}`} className={classes.icon}/> */}
                             </h1>
+                            {status()}
                             <NavBurger page={props.page} changePage={props.changePage}/>
                             {/* <IconButton>
                                 <SortIcon className={classes.icon} />

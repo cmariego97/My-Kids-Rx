@@ -1,5 +1,5 @@
 const { Schema } = require('mongoose');
-
+//schema for message within patient model
 const messageSchema = new Schema(
   {
     //to is referring to the provider that the message is being sent to

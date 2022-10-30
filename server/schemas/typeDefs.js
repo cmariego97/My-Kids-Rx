@@ -17,9 +17,17 @@ const typeDefs = gql`
         _id: ID
         firstName: String
         lastName: String
+        gender: String
         provider: String
         email: String
         password: String
+    }
+    type Provider {
+        _id: ID
+        firstName: String
+        lastName: String
+        email: String
+        suffix: String
     }
 
     type Message {
@@ -146,23 +154,19 @@ const typeDefs = gql`
         facts: [Fact]
         oneUser(email: String!): User
         onePatient(email: String!): Patient
+        providers: [Provider]
     }
 
     type Mutation {
-        addUser(firstName: String!, lastName: String!, provider: String!, email: String!, password: String!): User
+        addUser(firstName: String!, lastName: String!, gender: String!, provider: String!, email: String!, password: String!): Auth
 
         addMessage(email: String!, to: String!, date: String!, time: String!, content: String!): Patient
 
         updateUser(email: String!, password: String!): User
 
         deleteUser(email: String!): User
+
+        login(email: String!, password: String!): Auth
     }
 `
 module.exports = typeDefs;
-
-// add to mutations when ready to implement login 
-// login(email: String!, password: String!): Auth
-// adjust this for adding user key is returning Auth
-// addProfile(firstName: String!, lastName: String!, email: String!, password: String!): Auth
-//for client side
-    //copy queries saved in apollo

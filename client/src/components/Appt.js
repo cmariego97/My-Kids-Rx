@@ -1,10 +1,13 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
 import { QUERY_APPTS } from '../utils/queries';
+import Auth from '../utils/auth';
 
 const Appt = () => {
-    //TODO: when we have login we need to retrieve email from the jwt token instead of this const var
-    const email = 'mgreen@test.com';
+    //retrieve email from jwt to use to find specific patient
+    const acctData = Auth.getProfile();
+    const email = acctData.data.email;
+    //find appts query
     const { loading, data } = useQuery(QUERY_APPTS, {
         variables: { email }
     });
@@ -15,26 +18,34 @@ const Appt = () => {
         )
     }
     else {
-      console.log(data)
-        var appointment = data.onePatient.appointments
-        if (appointment.length !== 0) {
+        //if user not a patient in database
+        if (!data.onePatient) {
             return (
-                <div>
-                    {appointment.map((visit) =>(
-                        <div>
-                            <li>Date:{visit.date}</li>
-                            <li>Time:{visit.time}</li>
-                            <li>Reason:{visit.reason}</li>
-                        </div>
-                    )
-                    )}
-                </div>
+                <p>No appointments found for this email, you must first contact your provider to set up your profile!</p>
             )
         }
         else {
-            return (
-                <p>No upcoming appointments!</p>
-            )
+            var appointment = data.onePatient.appointments
+            if (appointment.length !== 0) {
+                return (
+                    <div>
+                        {appointment.map((visit) =>(
+                            <div>
+                                <li>Date:{visit.date}</li>
+                                <li>Time:{visit.time}</li>
+                                <li>Reason:{visit.reason}</li>
+                            </div>
+                        )
+                        )}
+                    </div>
+                )
+            }
+            else {
+                //if in database but no appts on file
+                return (
+                    <p>No upcoming appointments!</p>
+                )
+            }
         }
     }
 }

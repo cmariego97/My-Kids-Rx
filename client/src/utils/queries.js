@@ -6,12 +6,14 @@ export const QUERY_PROFILE = gql`
         oneUser(email: $email) {
         firstName
         lastName
+        gender
         provider
         email
         password
         }
     }
 `
+
 //for basic medical info
 export const QUERY_INFO = gql`
     query OnePatient($email: String!) {
@@ -19,6 +21,7 @@ export const QUERY_INFO = gql`
         firstName
         middleName
         lastName
+        dob
         allergies
         medicalHistory
         medications{
@@ -154,5 +157,15 @@ export const QUERY_FACTS = gql`
         facts {
             fact
             }
+    }
+`
+//retrieves all providers for create acct form
+export const QUERY_PROVIDERS = gql`
+    query Providers {
+        providers {
+        firstName
+        lastName
+        suffix
+        }
     }
 `

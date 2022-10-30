@@ -1,5 +1,5 @@
 const { Schema, Types } = require('mongoose');
-
+//schema for vitals within patient model
 const vitalsSchema = new Schema(
   {
     date: {

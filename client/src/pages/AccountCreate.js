@@ -1,10 +1,9 @@
 import React, {useState} from 'react'
-//first query to check if user with input email already exists
-// import { useQuery } from '@apollo/client';
-// import { QUERY_PROFILE } from '@apollo/client';
-//then mutation to create new acct
-// import { useMutation } from '@apollo/client';
-// import { ADD_USER } from '../utils/mutations';
+import { useQuery } from '@apollo/client';
+import { QUERY_PROVIDERS } from '../utils/queries';
+//import mutation to create new acct
+import { useMutation } from '@apollo/client';
+import { ADD_USER } from '../utils/mutations';
 import Auth from '../utils/auth';
 // import MUI styles
 import { createTheme, ThemeProvider, makeStyles } from '@material-ui/core/styles';
@@ -153,118 +152,207 @@ const CssTextField = styled(TextField)({
   },
 });
 
-function AccountCreate() {
-  //logic
-  //add all the fields here
-  // const [formState, setFormState] = useState({
-  //   name: '',
-  //   email: '',
-  //   password: '',
-  // });
-  // const [addProfile, { error, data }] = useMutation(ADD_USER);
-  // const handleChange = (event) => {
-  //   const { name, value } = event.target;
-
-  //   setFormState({
-  //     ...formState,
-  //     [name]: value,
-  //   });
-  // };
-  //TODO: make first and last name to lowercase
-  // const handleFormSubmit = async (event) => {
-  //   event.preventDefault();
-  //   console.log(formState);
-
-  //   try {
-  //     const { data } = await addProfile({
-  //       variables: { ...formState },
-  //     });
-  //     //console log data first to see if this is correct param
-  //     //need param to be token id
-  //     Auth.login(data.addProfile.token);
-  //   } catch (e) {
-  //     console.error(e);
-  //   }
-  // };
+function AccountCreate({changePage}) {
+  //finds all providers
+  const {loading, data} = useQuery(QUERY_PROVIDERS);
+  //state variables for create acct input fields
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [gender, setGender] = useState('');
+  const [provider, setProvider] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confPassword, setConf] = useState('');
+  //mutation to add new user
+  const [addProfile, { error }] = useMutation(ADD_USER);
+  //sets value of state variable that corresponds to input field that was edited
+  const handleChange = (event) => {
+    const { id, value } = event.target;
+    if (id === 'user-firstName') {
+      setFirstName(value);
+    }
+    else if (id === 'user-lastName') {
+      setLastName(value);
+    }
+    else if (id === 'gender') {
+      setGender(value);
+    }
+    else if (id === 'recipient-provider') {
+      setProvider(value);
+    }
+    else if (id === 'recipient-user') {
+      setEmail(value);
+    }
+    else if (id === 'conf-password') {
+      setConf(value);
+    }
+    else {
+      setPassword(value);
+    }
+  };
+  
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+    //checks to make sure all input fields were filled out
+    if (!firstName || !lastName || !gender || !provider || !email || !password || !confPassword) {
+      document.querySelector('#err-message').textContent = 'Please fill out all required fields!';
+    }
+    //checks to make sure passwords match
+    if(password !== confPassword) {
+      document.querySelector('#err-message').textContent = 'Error creating account: passwords must match';
+    }
+    //creates new user and logs them in
+    else{
+      try {
+      const { data } = await addProfile({
+        variables: { firstName, lastName, gender, provider, email, password },
+      });
+      Auth.login(data.addUser.token);
+    } catch (e) {
+      console.error(e);
+      document.querySelector('#err-message').textContent = 'Error creating account';
+    }
+    }
+  };
 
   const classes = useStyles();
   const btnstyle={margin:'8px 0'}
-
-  return (
-    <ThemeProvider theme={theme}>
-      <div className={classes.root}>
-        <CssBaseline />
-        <HeaderAppBar />
-
-        <div className={classes.wrapper}>
-          <div className={classes.container}>
-            {/* <!-- left-side: image --> */}
-            <div className={classes.containerImage}>
-              <img src={`${HeartPtCreate}`} />
-            </div>
-
-            {/* <!-- right-side: login --> */}
-            <div className={classes.containerLogin}>
-              <Box component="form" sx={{'& .MuiTextField-root': { m: 1, width: '25ch' },}} noValidate autoComplete="off" >
-                <div className={classes.textFieldRow}>
-                <CssTextField
-                    required
-                    id="user-firstName"
-                    label="First Name"
-                    placeholder="(ゝз○`)"
-                    margin="normal"
-                  />
+  
+  if(loading) {
+    //if still loading data from query
+    return (
+      <h1>Loading...</h1>
+    )
+  }
+  else {
+    //when done loading data from query
+    return (
+      <ThemeProvider theme={theme}>
+        <div className={classes.root}>
+          <CssBaseline />
+          <HeaderAppBar />
+  
+          <div className={classes.wrapper}>
+            <div className={classes.container}>
+              {/* <!-- left-side: image --> */}
+              <div className={classes.containerImage}>
+                <img src={`${HeartPtCreate}`} />
+              </div>
+  
+              {/* <!-- right-side: login --> */}
+              <div className={classes.containerLogin}>
+                <Box component="form" sx={{'& .MuiTextField-root': { m: 1, width: '25ch' },}} noValidate autoComplete="off" >
+                  <div className={classes.textFieldRow}>
                   <CssTextField
-                    required
-                    id="user-lastName"
-                    label="Last Name"
-                    placeholder="(´ε｀ )♡"
-                    margin="normal"
-                  />
-                </div>
-                
-                <div className={classes.textFieldColumn}>
-                  <CssTextField
-                    fullWidth
-                    required
-                    id="recipient-user"
-                    label="E-mail"
-                    placeholder="♫꒰･‿･๑꒱"
-                    margin="normal"
-                    helperText="e-mail required"
-                  />
-
-                  <CssTextField
-                    fullWidth
-                    required
-                    id="recipient-password"
-                    label="Password"
-                    placeholder="ᕙ(‾̀◡‾́)ᕗ"
-                    margin="normal"
-                    helperText="password required"
-                  />
-                </div>
-
-                <FormControlLabel control={<Checkbox name="checkedB" color="primary"/>} label="Remember me"/>
-
-                <Button type='submit' color='primary' variant="contained" style={btnstyle} fullWidth>
-                  Create Account
-                </Button>
-
-                <Typography> 
-                  Already have an Account? 
-                  <Link href="#" >
-                    Login 
-                  </Link>
-                </Typography>
-
-              </Box>
+                      required
+                      id="user-firstName"
+                      label="First Name"
+                      placeholder="(ゝз○`)"
+                      margin="normal"
+                      helperText="first name required"
+                      onChange={handleChange}
+                    />
+                    <CssTextField
+                      required
+                      id="user-lastName"
+                      label="Last Name"
+                      placeholder="(´ε｀ )♡"
+                      margin="normal"
+                      helperText="last name required"
+                      onChange={handleChange}
+                    />
+                  </div>
+                  
+                  <div className={classes.textFieldColumn}>
+                  {/* <CssTextField
+                      fullWidth
+                      required
+                      id="recipient-provider"
+                      label="Provider"
+                      placeholder="♫꒰･‿･๑꒱"
+                      margin="normal"
+                      helperText="provider required"
+                      onChange={handleChange}
+                    /> */}
+                    {/* {//TODO: not sure how to make these look like the other text fields} */}
+                    <select
+                      id='gender'
+                      onChange={handleChange}
+                    >
+                      <option selected>Select a gender</option>
+                      <option>Female</option>
+                      <option>Male</option>
+                      <option>Other</option>
+                    </select>
+                    <select
+                      id="recipient-provider"
+                      onChange={handleChange}
+                    >
+                      <option selected>Select a provider</option>
+                      {data.providers.map((provider) => (
+                        <option>{`${provider.firstName} ${provider.lastName} ${provider.suffix}`}</option>
+                      ))}
+                    </select>
+  
+                    <CssTextField
+                      fullWidth
+                      required
+                      id="recipient-user"
+                      label="E-mail"
+                      placeholder="♫꒰･‿･๑꒱"
+                      margin="normal"
+                      helperText="e-mail required"
+                      onChange={handleChange}
+                    />
+  
+                    <CssTextField
+                      fullWidth
+                      required
+                      id="recipient-password"
+                      type="password"
+                      label="Password"
+                      placeholder="ᕙ(‾̀◡‾́)ᕗ"
+                      margin="normal"
+                      helperText="password required"
+                      onChange={handleChange}
+                    />
+  
+                    <CssTextField
+                      fullWidth
+                      required
+                      id="conf-password"
+                      type="password"
+                      label="Confirm Password"
+                      placeholder="ᕙ(‾̀◡‾́)ᕗ"
+                      margin="normal"
+                      helperText="confirm password required"
+                      onChange={handleChange}
+                    />
+                  </div>
+  
+                  <FormControlLabel control={<Checkbox name="checkedB" color="primary"/>} label="Remember me"/>
+  
+                  <Button type='submit' color='primary' variant="contained" style={btnstyle} fullWidth onClick={handleFormSubmit}>
+                    Create Account
+                  </Button>
+                  <p id='err-message'></p>
+  
+                  <Typography> 
+                    Already have an Account? 
+                    {/* DO NOT add href attribute it will not work correctly, but can change the element type if you want */}
+                    <Link onClick={() =>changePage('Login')}>
+                      Login 
+                    </Link>
+                  </Typography>
+  
+                </Box>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </ThemeProvider>
-  )
+      </ThemeProvider>
+    )
+  }
 }
 
-export default AccountCreate
+export default AccountCreate;

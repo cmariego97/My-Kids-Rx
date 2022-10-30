@@ -2,10 +2,11 @@ import React, {useState} from 'react';
 import { ApolloClient,
       ApolloProvider, 
       InMemoryCache, 
-      // createHttpLink
+      createHttpLink
     } 
   from '@apollo/client';
-// import { setContext } from '@apollo/client/link/context';
+import { setContext } from '@apollo/client/link/context';
+import Auth from './utils/auth';
 // import from MUI
 import { createTheme, ThemeProvider, makeStyles } from '@material-ui/core/styles';
 import { Typography } from '@material-ui/core';
@@ -27,40 +28,38 @@ import Messaging from './pages/Messaging';
 import HeaderAppBar from './components/HeaderAppBar';
 import Footer from './components/Footer'; 
 
-// const httpLink = createHttpLink({
-//   uri: '/graphql',
-// });
+const httpLink = createHttpLink({
+  uri: '/graphql',
+});
 
-// const authLink = setContext((_, { headers }) => {
-//   // get the authentication token from local storage if it exists
-//   const token = localStorage.getItem('id_token');
-//   // return the headers to the context so httpLink can read them
-//   return {
-//     headers: {
-//       ...headers,
-//       authorization: token ? `Bearer ${token}` : '',
-//     },
-//   };
-// });
+const authLink = setContext((_, { headers }) => {
+  // get the authentication token from local storage if it exists
+  const token = localStorage.getItem('id_token');
+  // return the headers to the context so httpLink can read them
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : '',
+    },
+  };
+});
 
 // Apollo Client
 const client = new ApolloClient({
-  uri: '/graphql',
-  //when implementing login get rid of above uri and replace with this:
-  // link: authLink.concat(httpLink),
+  link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
 });
 
 {/* website theme palette hex codes:
-  • light shades - snowdrift: #FAFBF9
+  • light shades - snowdrift: #FAFBF9 || pampas: #F5F2EF
     --Use this color as the background for your dark-on-light designs, or the text color of an inverted design
-  • light accent - gull gray: #9CA6B5
+  • light accent - gull gray: #9CA6B5 || indian khaki: #C5A284
     --Accent colors can be used to bring attention to design elements by contrasting with the rest of the palette.
-  • main brand color / primary - sunglo: #DE7171
+  • main brand color / primary - sunglo: #DE7171 || pharlap: #AA858E
     --This color should be eye-catching but not harsh. It can be liberally applied to your layout as its main identity.
-  • dark accent - santa fe: #B5765C
+  • dark accent - santa fe: #B5765C || fountain blue: #55C4BA
     --Another accent color to consider. Not all colors have to be used - sometimes a simple color scheme works best.
-  • dark shades / info - fiord: #3F4868
+  • dark shades / info - fiord: #3F4868 || butterfly bush: #5F5088
     --Use as the text color for dark-on-light designs, or as the background for inverted designs.
   • success - asparagus: #67a35b
   • warning - carrot-orange: #f58c22
@@ -113,6 +112,9 @@ const theme = createTheme({
       fontWeight: 100,
       lineHeight: '2rem',
     },
+    p: {
+      fontSize: 18,
+    }
   },
 });
 
@@ -137,22 +139,12 @@ const styles = makeStyles({
   },
 })
 
-//for conditional rendering of logged in vs not logged in
-// Auth.loggedIn () ? whatever : other option
-//for nav bar when logged in this will run when logout is clicked
-// const logout = (event) => {
-//   event.preventDefault();
-//   Auth.logout();
-// };
-//can do conditional rendering of navbar so only need 1 nav bar
-//for querying database, need to retrieve email from token --> Auth.getProfile() returns the token but need to console log to see exactly how to extract the email, this needs to be on all data pages
-
 function App() {
   const classes = styles();
+  //state variable to indicate which page to display
   const [page, setPage] = useState('Home')
-  //TODO: eventually need to separate into pages that can be accessed vs logged in vs not logged in
+  //renders main content based on value of page state variable
   const renderPage = () => {
-    //can be accessed when logged in
     if (page === 'Profile') {
       return <Profile />
     }
@@ -177,38 +169,25 @@ function App() {
     if (page === 'Resources') {
       return <Resources />
     }
-    //when not logged in
     if (page === 'Home') {
       return <Homepage />
     }
     if (page === 'Login') {
-      return <AccountLoginPatient />
+      return <AccountLoginPatient changePage={changePage}/>
     }
     if (page === 'Create') {
-      return <AccountCreate />
+      return <AccountCreate changePage={changePage}/>
     }
   }
-  //fxn change value of page state variable
+  //fxn to change value of page state variable
   const changePage = (newPage) => setPage(newPage);
 
   return (
     <ApolloProvider client={client}>
-      {/* this needs to wrap around everything else so the data can be accessed by all parts */}
-
-      {/* Homepage is complete with its own NavBar = "NavBurger" */}
-
-      {/* NavBurger Content - render pages to view for now */}
-        {/* <AccountLoginPatient /> */}
-        {/* <AccountCreate /> */}
-
       <HeaderAppBar page={page} changePage={changePage}/>
         {renderPage()}
         <Footer />
       </ApolloProvider> 
-//something like this in app function (inside apollo provider)
-  //navbar
-  //call function
-  //footer
     
   );
 }

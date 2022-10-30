@@ -1,5 +1,5 @@
 const { Schema, Types } = require('mongoose');
-
+//schema for vaccine within patient model
 const vaxSchema = new Schema(
   {
     name: {
