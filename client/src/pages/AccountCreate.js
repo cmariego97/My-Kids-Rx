@@ -158,6 +158,7 @@ function AccountCreate({changePage}) {
   //state variables for create acct input fields
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
+  const [gender, setGender] = useState('');
   const [provider, setProvider] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -172,6 +173,9 @@ function AccountCreate({changePage}) {
     }
     else if (id === 'user-lastName') {
       setLastName(value);
+    }
+    else if (id === 'gender') {
+      setGender(value);
     }
     else if (id === 'recipient-provider') {
       setProvider(value);
@@ -190,7 +194,7 @@ function AccountCreate({changePage}) {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     //checks to make sure all input fields were filled out
-    if (!firstName || !lastName || !provider || !email || !password || !confPassword) {
+    if (!firstName || !lastName || !gender || !provider || !email || !password || !confPassword) {
       document.querySelector('#err-message').textContent = 'Please fill out all required fields!';
     }
     //checks to make sure passwords match
@@ -201,7 +205,7 @@ function AccountCreate({changePage}) {
     else{
       try {
       const { data } = await addProfile({
-        variables: { firstName, lastName, provider, email, password },
+        variables: { firstName, lastName, gender, provider, email, password },
       });
       Auth.login(data.addUser.token);
     } catch (e) {
@@ -245,6 +249,7 @@ function AccountCreate({changePage}) {
                       label="First Name"
                       placeholder="(ゝз○`)"
                       margin="normal"
+                      helperText="first name required"
                       onChange={handleChange}
                     />
                     <CssTextField
@@ -253,6 +258,7 @@ function AccountCreate({changePage}) {
                       label="Last Name"
                       placeholder="(´ε｀ )♡"
                       margin="normal"
+                      helperText="last name required"
                       onChange={handleChange}
                     />
                   </div>
@@ -268,7 +274,16 @@ function AccountCreate({changePage}) {
                       helperText="provider required"
                       onChange={handleChange}
                     /> */}
-                    {/* {TODO: not sure how to make this look like the other text fields} */}
+                    {/* {//TODO: not sure how to make these look like the other text fields} */}
+                    <select
+                      id='gender'
+                      onChange={handleChange}
+                    >
+                      <option selected>Select a gender</option>
+                      <option>Female</option>
+                      <option>Male</option>
+                      <option>Other</option>
+                    </select>
                     <select
                       id="recipient-provider"
                       onChange={handleChange}
