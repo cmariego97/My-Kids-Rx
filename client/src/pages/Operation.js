@@ -12,6 +12,18 @@ import Light from '../assets/images/light.png'
 const Operation = ({changeGame}) => {
     //keeps track of current score
     let score = 0;
+    var timerInterval;
+    var secondsLeft = 30;
+    function startGame(ev) {
+      ev.preventDefault();
+      timerInterval = setInterval(function() {
+        secondsLeft--;
+        document.querySelector('#timer').textContent = "🕓 " + secondsLeft + " seconds left";
+        if(secondsLeft === 0) {
+          endGame();
+        }
+      }, 1000)
+    }
     //while dragging
     function drag(ev) {
         ev.dataTransfer.setData("text", ev.target.id);
@@ -55,6 +67,13 @@ const Operation = ({changeGame}) => {
           document.querySelector('#item').textContent = 'Remove the butterfly!'
         }
         if (items === 6) {
+            endGame();
+        }
+      }
+
+      function endGame(ev) {
+            ev.preventDefault();
+            clearInterval(timerInterval);
             document.querySelector('#item').textContent = '';
             document.querySelector('#trash').textContent = '';
             document.querySelector('#game-over').textContent = `All items removed! Your final score is ${score}`;
@@ -66,7 +85,6 @@ const Operation = ({changeGame}) => {
             else {
                 document.querySelector('#high-score').textContent = `High score: ${oldScore}`
             }
-        }
       }
 
       function penalty() {
@@ -100,10 +118,12 @@ const Operation = ({changeGame}) => {
             <div 
             id='info' style={{background: '#a68674'}}
             >
+                <h2 id='timer'></h2>
                 <h2>Score: <span id='score'>0</span></h2>
                 <p id='warning'>Remove the objects that do not belong! Do not touch the patient!</p>
                 <p id='game-over'></p>
                 <button id='again' onClick={() => changeGame('Home')}>Play Again</button>
+                <button id='start' onClick={startGame}>Start Game</button>
                 <p id='high-score'></p>
                 <p id='item' style={{color: 'white'}}>Remove the apple!</p>
                 <p id='trash' style={{marginTop: '20%'}}>Throw away objects in the container below</p>
