@@ -36,14 +36,16 @@
 #target {
     height: 50vh;
 }
-#again {
+#again,
+#start {
     padding: 2%;
     background: #3f4868;
     border-radius: 10px;
     border: none;
     color: white;
 }
-#again:hover {
+#again:hover,
+#start:hover {
     background: #9CA6B5;
     cursor: pointer;
 }

@@ -16,6 +16,7 @@ const Operation = ({changeGame}) => {
     var secondsLeft = 30;
     function startGame(ev) {
       ev.preventDefault();
+      document.querySelector('#start').style.display = 'none';
       timerInterval = setInterval(function() {
         secondsLeft--;
         document.querySelector('#timer').textContent = "🕓 " + secondsLeft + " seconds left";
@@ -71,12 +72,12 @@ const Operation = ({changeGame}) => {
         }
       }
 
-      function endGame(ev) {
-            ev.preventDefault();
+      function endGame() {
             clearInterval(timerInterval);
+            document.querySelector('#timer').textContent = '';
             document.querySelector('#item').textContent = '';
             document.querySelector('#trash').textContent = '';
-            document.querySelector('#game-over').textContent = `All items removed! Your final score is ${score}`;
+            document.querySelector('#game-over').textContent = `Game over! Your final score is ${score}`;
             var oldScore = localStorage.getItem('highScore');
             if (oldScore === null || oldScore < score) {
                 localStorage.setItem('highScore', score);
@@ -122,11 +123,11 @@ const Operation = ({changeGame}) => {
                 <h2>Score: <span id='score'>0</span></h2>
                 <p id='warning'>Remove the objects that do not belong! Do not touch the patient!</p>
                 <p id='game-over'></p>
-                <button id='again' onClick={() => changeGame('Home')}>Play Again</button>
+                <button id='again' onClick={() => changeGame('Home')} style={{display: 'none'}}>Play Again</button>
                 <button id='start' onClick={startGame}>Start Game</button>
                 <p id='high-score'></p>
                 <p id='item' style={{color: 'white'}}>Remove the apple!</p>
-                <p id='trash' style={{marginTop: '20%'}}>Throw away objects in the container below</p>
+                <p id='trash' style={{marginTop: '10%'}}>Throw away objects in the container below</p>
             </div>
             <div 
                 style={{background: 'black',borderRadius: '10px', border: '10px solid grey'}}
