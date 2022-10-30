@@ -134,7 +134,7 @@ The user may log out at any time by visiting the navigation bar.
 - [Kevin Crespo](https://github.com/kcrespo15)
 
 ## Credits
-This project was built using the following Node.js packages:apollo-server-express, dotenv, express, graphql, jsonwebtoken, mongoose, apollo/client, emotion/react emotion/styled, fontsource/roboto, font awesome, material-ui, mui, jwt-decode, moment, react, react-dom react-external-link, react-scripts, and react-scroll.
+This project was built using the following Node.js packagesg
 
 The [Mayo Clinic](https://www.mayoclinic.org/diseases-conditions) website was used to build our database of childhood illness information.
 The [National Geographic Kids](https://www.natgeokids.com/uk/discover/science/general-science/15-facts-about-the-human-body/) website was used while building our database of human body fun facts.
