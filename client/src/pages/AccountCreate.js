@@ -216,7 +216,7 @@ function AccountCreate({changePage}) {
       Auth.login(data.addUser.token);
     } catch (e) {
       console.error(e);
-      document.querySelector('#err-message').textContent = 'Error creating account';
+      document.querySelector('#err-message').textContent = 'Error creating account, this email address may already have an account';
     }
     }
   };
