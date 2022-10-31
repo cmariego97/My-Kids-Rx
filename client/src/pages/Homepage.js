@@ -130,7 +130,7 @@ export default function Homepage({changePage}) {
 
                 {/* <!-- service #3 - first aid? --> */}
                 
-                <Grid icon={<FontAwesomeIcon icon={faGamepad} style={{color: "#a68674", height: "125", width: "125"}}></FontAwesomeIcon>} title=" Health Tips" btnTitle="Learn More" />
+                <Grid icon={<FontAwesomeIcon icon={faGamepad} style={{color: "#a68674", height: "125", width: "125"}}></FontAwesomeIcon>} title="Games" btnTitle="Play" changePage={changePage} newPage='Game'id='game'/>
 
                 {/* <!-- service #4 - Lab Works --> */}
                 <Grid icon={<FontAwesomeIcon icon={faMicroscope} style={{color: "#a68674", height: "125", width: "125"}}></FontAwesomeIcon>} title="Lab Work" btnTitle="View Results" changePage={changePage} newPage='Lab' id='lab'/>
@@ -148,7 +148,7 @@ export default function Homepage({changePage}) {
                     <div className={classes.sectionImg}>
                         <img src={`${AboutUsWhale}`}/>
                     </div>
-                    <Typography variant="h5" color="#3F4868"> 
+                    <Typography color="#3F4868"> 
                         We are a small technology company with a big solution: electronic medical records (EMR) specifically designed for pediatrics! Pediatric patients
                         must be treated differently than adults, as they are still growing and developing. 
                         Why not have the EMR system for their records also be different?! Our staff is composed of four highly motivated full-stack developers 
