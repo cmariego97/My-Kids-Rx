@@ -13,6 +13,8 @@ import Operation from './Operation';
 import OpImg from '../assets/images/game-operation.jpeg';
 import TttImg from '../assets/images/game-ttt.png';
 import MatchImg from '../assets/images/game-match.jpeg';
+//import custom css
+import '../assets/css/game.css';
 
 const Game = () => {
     //styling for grid items
@@ -52,22 +54,22 @@ const Game = () => {
         <div style={{background: "#a68674", padding: "1%"}}>
             <h1 style={{textAlign: 'center'}}>Choose a game to play!</h1>
             <Box sx={{ flexGrow: 1}}>
-            <Grid container spacing={2}>
-                <Grid item xs={4}>
+            <Grid container spacing={2} id='grid'>
+                <Grid class='cust-col'>
                     <Item>
                         <img src={OpImg} alt='operation' style={{width: '250px', margin: '0 auto'}}></img>
                         <Button sx={{margin: '0 auto'}}variant="outlined" onClick={() => changeGame('Operation')}>Play Operation
                          </Button>
                     </Item>
                 </Grid>
-                <Grid item xs={4}>
+                <Grid class='cust-col'>
                     <Item>
                         <img src={TttImg} alt='tic tac toe' style={{width: '250px', margin: '0 auto'}}></img>
                         <Button sx={{margin: '0 auto'}}variant="outlined" onClick={() => changeGame('TTT')}>Play Tic Tac Toe
                         </Button>
                     </Item>
                 </Grid>
-                <Grid item xs={4}>
+                <Grid class='cust-col'>
                     <Item>
                         <img src={MatchImg} alt='matching game' style={{width: '250px', margin: '0 auto'}}></img>
                         <Button sx={{margin: '0 auto'}}variant="outlined" onClick={() => changeGame('Matching')}>Play Matching
