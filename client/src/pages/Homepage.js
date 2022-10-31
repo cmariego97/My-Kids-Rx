@@ -16,9 +16,9 @@ import Grid from '../components/Grid';
 
 //import FontAwesome Icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStethoscope, faSyringe, faGamepad, faMicroscope, faXRay, faFilePrescription } from '@fortawesome/free-solid-svg-icons';
+import { faStethoscope, faSyringe, faGamepad, faMicroscope, faXRay, faFilePrescription, faComments } from '@fortawesome/free-solid-svg-icons';
 
-export default function Homepage() {
+export default function Homepage({changePage}) {
     return (
         <Box>
             {/* Header */}
@@ -40,10 +40,10 @@ export default function Homepage() {
                 {/* <!-- service #1 - physical exams --> */}
                 <Grid icon={<FontAwesomeIcon icon={faStethoscope} style={{color: "#a68674", height: "125", width: "125"}}></FontAwesomeIcon>} title="Appointments" btnTitle="View Appointments" changePage={changePage} newPage='Appt'id='appt'/>
 
-                {/* <!-- service #2  - vaccines --> */}
-                <Grid icon={<FontAwesomeIcon icon={faSyringe} style={{color: "#a68674", height: "125", width: "125"}}></FontAwesomeIcon>} title="Health Tips" btnTitle="Learn More" changePage={changePage} newPage='Resources'id='resources'/>
+                {/* <!-- service #2  - messaging --> */}
+                <Grid icon={<FontAwesomeIcon icon={faComments} style={{color: "#a68674", height: "125", width: "125"}}></FontAwesomeIcon>} title="Messaging" btnTitle="Learn More" changePage={changePage} newPage='Messaging'id='messaging'/>
 
-                {/* <!-- service #3 - first aid? --> */}
+                {/* <!-- service #3 - games --> */}
                 
                 <Grid icon={<FontAwesomeIcon icon={faGamepad} style={{color: "#a68674", height: "125", width: "125"}}></FontAwesomeIcon>} title="Games" btnTitle="Play" changePage={changePage} newPage='Game'id='game'/>
 

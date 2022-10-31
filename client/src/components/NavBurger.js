@@ -64,7 +64,6 @@ const FadeMenu = ({page, changePage})  => {
                 >
                     <MenuItem onClick={() => handleClose('Home')}>Home</MenuItem>
                     <MenuItem onClick={() => handleClose('Profile')}>My Profile</MenuItem>
-                    <MenuItem onClick={() => handleClose('Medical')}>Medical Info</MenuItem>
                     <hr></hr>
                     <MenuItem onClick={() => handleClose('Appt')}>Appointments</MenuItem>
                     <MenuItem onClick={() => handleClose('Imaging')}>Imaging Results</MenuItem>
