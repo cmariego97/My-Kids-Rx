@@ -115,9 +115,9 @@ const Matching = ({changeGame}) => {
     changeVisable12('invisible');
     document.querySelector('#message').textContent = '';
    }
-
+// TODO: fix buttons design
     return (
-      <Box sx={{ flexGrow: 1 }}>
+      <Box sx={{ flexGrow: 1, background: "#a68674", padding: "1%" }}>
          {matches()}
         <h1 style={{textAlign: 'center'}}>Matching Game</h1>
         <p id='flip-message'></p>

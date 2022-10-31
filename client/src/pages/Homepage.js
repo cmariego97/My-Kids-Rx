@@ -118,9 +118,9 @@ export default function Homepage() {
                     Our Services + Features
                 </Typography>
             </div>
-
+            
             {/* Services Grid */}
-            {/* TODO: change these services or features to fit the project content */}
+            {/* TODO: figure out what to do with the buttons*/}
             <div className={`${classes.grid} ${classes.bigSpace}`} id="our-services">
                 {/* <!-- service #1 - physical exams --> */}
                 <Grid icon={<FontAwesomeIcon icon={faStethoscope} style={{color: "#a68674", height: "125", width: "125"}}></FontAwesomeIcon>} title="Appointments" btnTitle="Set Appointment" />
@@ -129,7 +129,7 @@ export default function Homepage() {
                 <Grid icon={<FontAwesomeIcon icon={faSyringe} style={{color: "#a68674", height: "125", width: "125"}}></FontAwesomeIcon>} title="Vaccinations" btnTitle="Resources Info" />
 
                 {/* <!-- service #3 - first aid? --> */}
-                <Grid icon={<FontAwesomeIcon icon={faBriefcaseMedical} style={{color: "#a68674", height: "125", width: "125"}}></FontAwesomeIcon>} title="First Aid Tips" btnTitle="Learn More" />
+                <Grid icon={<FontAwesomeIcon icon={faBriefcaseMedical} style={{color: "#a68674", height: "125", width: "125"}}></FontAwesomeIcon>} title=" Health Tips" btnTitle="Learn More" />
 
                 {/* <!-- service #4 - Lab Works --> */}
                 <Grid icon={<FontAwesomeIcon icon={faMicroscope} style={{color: "#a68674", height: "125", width: "125"}}></FontAwesomeIcon>} title="Lab Work" btnTitle="View Results" />

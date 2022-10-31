@@ -6,7 +6,7 @@ import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
 //import x and o images 
 import X from '../assets/images/x.jpg';
-import O from '../assets/images/o.jpg';
+import O from '../assets/images/cell.jpeg';
 
 // TODO: center images
 function TTT({ changeGame }) {
@@ -177,11 +177,12 @@ function TTT({ changeGame }) {
         btnDisplay = { display: 'none' };
         document.querySelector('#test').textContent = '';
     };
-
+    
+// TODO: Fix button style
     return (
-        <Box sx={{ flexGrow: 1 }}>
+        <Box sx={{ flexGrow: 1, background: "#a68674", padding: "1%"}}>
             {chooseWinner()}
-            <h1 style={{ textAlign: 'center' }}>Tic Tac Toe</h1>
+            <h1 style={{ textAlign: 'center', fontSize: "250%" }}>Tic Tac Toe</h1>
             <Button variant="outlined" onClick={() => changeGame('Home')}>Back to gaming homepage
             </Button>
             <Button variant="outlined" onClick={() => changeTurn()}>Change Player

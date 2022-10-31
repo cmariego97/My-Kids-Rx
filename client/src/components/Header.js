@@ -119,9 +119,11 @@ export default function Header() {
                         welcome to
                     </Typography>
                     <Typography variant="h1" className={classes.textTitle}>
-                        Kids Rx
+                       My Kids Rx
                     </Typography>
-
+                    <Typography variant="h4" className={classes.textWelcome}>
+                        Pediatric Health Records
+                    </Typography>
                     <div className={classes.containerInfo}>
                         <Typography variant='h5' className={classes.textInfo}>
                             phone: (038) 532 - 5237
