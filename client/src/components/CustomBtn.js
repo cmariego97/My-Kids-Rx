@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import Auth from '../utils/auth';
 import {Button} from '@material-ui/core'
 import {withStyles} from '@material-ui/core/styles';
 
@@ -27,9 +28,22 @@ const StyledButton = withStyles({
     },
 })(Button);
 
-function CustomBtn(props) {
+function CustomBtn({changePage, newPage, txt, id}) {
+    const btnAction = () => {
+        console.log('hi');
+        if(!Auth.loggedIn()) {
+            document.querySelector(`#${id}`).textContent = 'You must log in or create an account first!';
+        }
+        else {
+            changePage(newPage);
+        }
+    }
+
     return (
-        <StyledButton variant="contained">{props.txt}</StyledButton>
+        <div>
+            <StyledButton variant="contained" onClick={()=> btnAction(newPage)}>{txt}</StyledButton>
+            <p id={id}></p>
+        </div>
     )
 }
 

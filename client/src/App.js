@@ -170,7 +170,7 @@ function App() {
       return <Resources />
     }
     if (page === 'Home') {
-      return <Homepage />
+      return <Homepage changePage={changePage}/>
     }
     if (page === 'Login') {
       return <AccountLoginPatient changePage={changePage}/>

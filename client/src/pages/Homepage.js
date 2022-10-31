@@ -102,7 +102,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }))
 
-export default function Homepage() {
+export default function Homepage({changePage}) {
     const classes = useStyles();
 
     return (
@@ -120,25 +120,25 @@ export default function Homepage() {
             </div>
             
             {/* Services Grid */}
-            {/* TODO: figure out what to do with the buttons*/}
+            {/* //TODO: figure out what to do with the buttons*/}
             <div className={`${classes.grid} ${classes.bigSpace}`} id="our-services">
                 {/* <!-- service #1 - physical exams --> */}
-                <Grid icon={<FontAwesomeIcon icon={faStethoscope} style={{color: "#a68674", height: "125", width: "125"}}></FontAwesomeIcon>} title="Appointments" btnTitle="Set Appointment" />
+                <Grid icon={<FontAwesomeIcon icon={faStethoscope} style={{color: "#a68674", height: "125", width: "125"}}></FontAwesomeIcon>} title="Appointments" btnTitle="View Appointments" changePage={changePage} newPage='Appt'id='appt'/>
 
                 {/* <!-- service #2  - vaccines --> */}
-                <Grid icon={<FontAwesomeIcon icon={faSyringe} style={{color: "#a68674", height: "125", width: "125"}}></FontAwesomeIcon>} title="Vaccinations" btnTitle="Resources Info" />
+                <Grid icon={<FontAwesomeIcon icon={faSyringe} style={{color: "#a68674", height: "125", width: "125"}}></FontAwesomeIcon>} title="Health Tips" btnTitle="Learn More" changePage={changePage} newPage='Resources'id='resources'/>
 
                 {/* <!-- service #3 - first aid? --> */}
-                <Grid icon={<FontAwesomeIcon icon={faBriefcaseMedical} style={{color: "#a68674", height: "125", width: "125"}}></FontAwesomeIcon>} title=" Health Tips" btnTitle="Learn More" />
+                <Grid icon={<FontAwesomeIcon icon={faBriefcaseMedical} style={{color: "#a68674", height: "125", width: "125"}}></FontAwesomeIcon>} title="Games" btnTitle="Play" changePage={changePage} newPage='Game'id='game'/>
 
                 {/* <!-- service #4 - Lab Works --> */}
-                <Grid icon={<FontAwesomeIcon icon={faMicroscope} style={{color: "#a68674", height: "125", width: "125"}}></FontAwesomeIcon>} title="Lab Work" btnTitle="View Results" />
+                <Grid icon={<FontAwesomeIcon icon={faMicroscope} style={{color: "#a68674", height: "125", width: "125"}}></FontAwesomeIcon>} title="Lab Work" btnTitle="View Results" changePage={changePage} newPage='Lab' id='lab'/>
 
                 {/* <!-- service #5 - radiology --> */}
-                <Grid icon={<FontAwesomeIcon icon={faXRay} style={{color: "#a68674", height: "125", width: "125"}}></FontAwesomeIcon>} title="Radiology" btnTitle="View Results" />
+                <Grid icon={<FontAwesomeIcon icon={faXRay} style={{color: "#a68674", height: "125", width: "125"}}></FontAwesomeIcon>} title="Radiology" btnTitle="View Results" changePage={changePage} newPage='Imaging' id='image'/>
 
                 {/* <!-- service #6 - prescription --> */}
-                <Grid icon={<FontAwesomeIcon icon={faFilePrescription} style={{color: "#a68674", height: "125", width: "125"}}></FontAwesomeIcon>} title="Medications" btnTitle="Check Orders" />
+                <Grid icon={<FontAwesomeIcon icon={faFilePrescription} style={{color: "#a68674", height: "125", width: "125"}}></FontAwesomeIcon>} title="Medications" btnTitle="View Medications" changePage={changePage} newPage='Profile'id='profile'/>
             </div>
 
             {/* About Us */}
