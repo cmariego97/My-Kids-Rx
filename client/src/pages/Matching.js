@@ -15,6 +15,8 @@ import Heart from '../assets/images/heart.jpg'
 import Lungs from '../assets/images/lungs.jpg'
 import Stomach from '../assets/images/stomach.jpg'
 import Toes from '../assets/images/toes.jpg'
+//import custom css
+import '../assets/css/match.css';
 
 const Matching = ({changeGame}) => {
   //styling for grid items
@@ -115,7 +117,7 @@ const Matching = ({changeGame}) => {
     changeVisable12('invisible');
     document.querySelector('#message').textContent = '';
    }
-// TODO: fix buttons design
+//TODO: fix buttons design
     return (
       <Box sx={{ flexGrow: 1, background: "#a68674", padding: "1%" }}>
          {matches()}
@@ -126,9 +128,9 @@ const Matching = ({changeGame}) => {
         <Button variant="outlined" onClick={() => resetGame()}>Play Again
             </Button>
         <p id={'message'}></p>
-        <Grid container spacing={2} onClick={() => incrementClick()}>
+        <Grid container spacing={2} onClick={() => incrementClick()} id='grid'>
             {/* card 6 */}
-            <Grid item xs={4}>
+            <Grid item xs={8} sm={8} md={4} sx={{margin: '0 auto', width: '75%'}}>
             <Item onClick={() => changeVisable6(visable6 === 'visible' ? 'invisible' : 'visible')}>
             <CardContent>
             <Typography variant="body2" color="text.secondary" sx={visable6 === 'invisible' ? cardBack : cardFront}>
@@ -142,7 +144,7 @@ const Matching = ({changeGame}) => {
             </Item>
           </Grid>
           {/* card 2 */}
-          <Grid item xs={4}>
+          <Grid item xs={8} sm={8} md={4} sx={{margin: '0 auto', width: '75%'}}>
             <Item onClick={() => changeVisable2(visable2 === 'visible' ? 'invisible' : 'visible')}>
             <CardContent>
             <Typography variant="body2" color="text.secondary"  sx={visable2 === 'invisible' ? cardBack : cardFront}>
@@ -156,7 +158,7 @@ const Matching = ({changeGame}) => {
             </Item>
           </Grid>
             {/* card 8 */}
-            <Grid item xs={4}>
+            <Grid item xs={8} sm={8} md={4} sx={{margin: '0 auto', width: '75%'}}>
             <Item onClick={() => changeVisable8(visable8 === 'visible' ? 'invisible' : 'visible')}>
             <CardContent>
             <Typography variant="body2" color="text.secondary" sx={visable8 === 'invisible' ? cardBack : cardFront}>
@@ -170,7 +172,7 @@ const Matching = ({changeGame}) => {
             </Item>
           </Grid>
         {/* card 3 */}
-          <Grid item xs={4}>
+          <Grid item xs={8} sm={8} md={4} sx={{margin: '0 auto', width: '75%'}}>
             <Item onClick={() => changeVisable3(visable3 === 'visible' ? 'invisible' : 'visible')}>
             <CardMedia
               component="img"
@@ -188,7 +190,7 @@ const Matching = ({changeGame}) => {
             </Item>
           </Grid>
             {/* card 10 */}
-            <Grid item xs={4}>
+            <Grid item xs={8} sm={8} md={4} sx={{margin: '0 auto', width: '75%'}}>
             <Item onClick={() => changeVisable10(visable10 === 'visible' ? 'invisible' : 'visible')}>
             <CardContent>
             <Typography variant="body2" color="text.secondary" sx={visable10 === 'invisible' ? cardBack : cardFront}>
@@ -202,7 +204,7 @@ const Matching = ({changeGame}) => {
             </Item>
           </Grid>
             {/* card 11 */}
-            <Grid item xs={4}>
+            <Grid item xs={8} sm={8} md={4} sx={{margin: '0 auto', width: '75%'}}>
             <Item onClick={() => changeVisable11(visable11 === 'visible' ? 'invisible' : 'visible')}>
             <CardMedia
             component="img"
@@ -220,7 +222,7 @@ const Matching = ({changeGame}) => {
             </Item>
           </Grid>
           {/* card 4 */}
-          <Grid item xs={4}>
+          <Grid item xs={8} sm={8} md={4} sx={{margin: '0 auto', width: '75%'}}>
             <Item onClick={() => changeVisable4(visable4 === 'visible' ? 'invisible' : 'visible')}>
             <CardContent>
             <Typography variant="body2" color="text.secondary" sx={visable4 === 'invisible' ? cardBack : cardFront}>
@@ -234,7 +236,7 @@ const Matching = ({changeGame}) => {
             </Item>
           </Grid>
             {/* card 1 */}
-            <Grid item xs={4}>
+            <Grid item xs={8} sm={8} md={4} sx={{margin: '0 auto', width: '75%'}}>
             <Item onClick={() => changeVisable1(visable1 === 'visible' ? 'invisible' : 'visible')}>
             <CardMedia
               component="img"
@@ -252,7 +254,7 @@ const Matching = ({changeGame}) => {
             </Item>
           </Grid>
           {/* card 5 */}
-          <Grid item xs={4}>
+          <Grid item xs={8} sm={8} md={4} sx={{margin: '0 auto', width: '75%'}}>
             <Item onClick={() => changeVisable5(visable5 === 'visible' ? 'invisible' : 'visible')}>
             <CardMedia
             component="img"
@@ -270,7 +272,7 @@ const Matching = ({changeGame}) => {
             </Item>
           </Grid>
             {/* card 9 */}
-            <Grid item xs={4}>
+            <Grid item xs={8} sm={8} md={4} sx={{margin: '0 auto', width: '75%'}}>
             <Item onClick={() => changeVisable9(visable9 === 'visible' ? 'invisible' : 'visible')}>
             <CardMedia
             component="img"
@@ -288,7 +290,7 @@ const Matching = ({changeGame}) => {
             </Item>
           </Grid>
           {/* card 7 */}
-          <Grid item xs={4}>
+          <Grid item xs={8} sm={8} md={4} sx={{margin: '0 auto', width: '75%'}}>
             <Item onClick={() => changeVisable7(visable7 === 'visible' ? 'invisible' : 'visible')}>
             <CardMedia
             component="img"
@@ -306,7 +308,7 @@ const Matching = ({changeGame}) => {
             </Item>
           </Grid>
           {/* card 12 */}
-          <Grid item xs={4}>
+          <Grid item xs={8} sm={8} md={4} sx={{margin: '0 auto', width: '75%'}}>
             <Item onClick={() => changeVisable12(visable12 === 'visible' ? 'invisible' : 'visible')}>
             <CardContent>
             <Typography variant="body2" color="text.secondary" sx={visable12 === 'invisible' ? cardBack : cardFront}>
