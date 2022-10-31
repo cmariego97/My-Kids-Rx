@@ -112,7 +112,12 @@ const Medical = () => {
         //it patient not in database
         if (!data.onePatient) {
             return (
-                <p>No medical information found for this email, you must first contact your provider to set up your profile!</p>
+                <div>
+                    <Typography variant="h4" className={classes.cardTitle}>
+                    My Medical Information
+                    </Typography>
+                    <p>No medical information found for this email, you must first contact your provider to complete your profile!</p>
+                </div>
             )
         }
         else {

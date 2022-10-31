@@ -7,6 +7,8 @@ import Button from '@mui/material/Button';
 //import x and o images 
 import X from '../assets/images/x.jpg';
 import O from '../assets/images/cell.jpeg';
+//import custom css
+import '../assets/css/ttt.css';
 
 // TODO: center images
 function TTT({ changeGame }) {
