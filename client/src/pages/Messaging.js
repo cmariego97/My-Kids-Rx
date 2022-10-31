@@ -182,22 +182,30 @@ const Messaging = () => {
             //if patient not in database
             if (!data.onePatient) {
                 return (
-                    <p>No messages found for this email, you must first contact your provider to set up your profile!</p>
+                    <p>Email not on file with a provider, contact your provider for details!</p>
                 )
             }
             else {
                 const messages = data.onePatient.messages;
-                return (
-                    <Typography variant="body2" color="text.secondary">
-                        {messages.map((message)=> (
-                            <div>
-                                <h2>{`Message to ${message.to}`}</h2>
-                                <h3>{`Sent on ${message.date} at ${message.time}`}</h3>
-                                <p>{message.content}</p>
-                            </div>
-                        ))}
-                    </Typography>
-                )
+                if (messages.length !== 0) {
+                    return (
+                        <Typography variant="body2" color="text.secondary">
+                            {messages.map((message)=> (
+                                <div>
+                                    <h2>{`Message to ${message.to}`}</h2>
+                                    <h3>{`Sent on ${message.date} at ${message.time}`}</h3>
+                                    <p>{message.content}</p>
+                                </div>
+                            ))}
+                        </Typography>
+                    )
+                }
+                else {
+                    //if no messages in database for the patient
+                    return (
+                        <p>No sent messages on file!</p>
+                    ) 
+                }
             }
         }
     }
@@ -214,7 +222,12 @@ const Messaging = () => {
             //if patient not in database
             if (!data.onePatient) {
                 return (
-                    <p>Messaging will not be enabled until you contact your provider to set up your profile!</p>
+                    <div>
+                        <Typography gutterBottom variant="h5" component="div">
+                        Send a Message
+                        </Typography>
+                        <p>Messaging will not be enabled until you contact your provider!</p>
+                    </div>
                 )
             }
             else {
@@ -244,6 +257,7 @@ const Messaging = () => {
                         </Typography>
                     </CardContent>
                     <CardActions>
+                    {/* //TODO: make it prettier */}
                         <Button variant="outlined" onClick={handleFormSubmit}>Send</Button>
                     </CardActions>
                     <p id="conf-message"></p>

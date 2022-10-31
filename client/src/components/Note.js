@@ -21,7 +21,7 @@ const Note = () => {
         //if user is not in the database as a patient
         if (!data.onePatient) {
             return (
-                <p>No visit reports found for this email, you must first contact your provider to set up your profile!</p>
+                <p>Email not on file with a provider, contact your provider for details!</p>
             )
         }
         else {
@@ -31,8 +31,8 @@ const Note = () => {
                     <div>
                         {note.map((visit) =>(
                             <div>
-                                <li>Date:{visit.date}</li>
-                                <li>Report:{visit.notes}</li>
+                                <li>Date: {visit.date}</li>
+                                <li>Report: {visit.notes}</li>
                             </div>
                         )
                         )}
@@ -41,7 +41,7 @@ const Note = () => {
             }
             else {
                 return (
-                    <p>No past appointment reports found!</p>
+                    <p>No past appointments found, contact your provider to schedule an appointment!</p>
                 )
             }
         }

@@ -480,6 +480,7 @@ const Profile = () => {
                                         }}
                                     >
                                         {/* popover content here */}
+                                        {/* //TODO: style buttons prettier and maybe throw some padding in there */}
                                         <Typography sx={{ p: 2 }}>User Settings</Typography>
                                         <div>
                                             <Button variant="outlined" onClick={handleOpen}>
@@ -528,7 +529,7 @@ const Profile = () => {
                             <Button style={visible ? show : hidden} onClick={cxDelete}>Cancel</Button>
                             <p id='user-del'></p>
                         </div>
-                        
+                        {/* //TODO:make this look prettier */}
                         {/* MODAL - change password */}
                         <Modal
                             open={open}

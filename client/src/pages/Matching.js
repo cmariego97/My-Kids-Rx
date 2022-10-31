@@ -15,7 +15,9 @@ import Heart from '../assets/images/heart.jpg'
 import Lungs from '../assets/images/lungs.jpg'
 import Stomach from '../assets/images/stomach.jpg'
 import Toes from '../assets/images/toes.jpg'
-
+//import custom css
+import '../assets/css/match.css';
+// TODO: style buttons
 const Matching = ({changeGame}) => {
   //styling for grid items
   const Item = styled(Paper)(({ theme }) => ({
@@ -42,16 +44,16 @@ const Matching = ({changeGame}) => {
    const [visable12,changeVisable12] = useState('invisible')
   //styling options
    const cardBack = {display:'none'};
-   const cardFront = {display:'block'};
+   const cardFront = {display:'block', margin: '0 auto', width: '75%'};
    const unmatched = {display:'none'};
    //color code each matched set
    //TODO: make the colors better for the eyes
-   const matched1 = {display:'block', color: 'black'}
-   const matched2 = {display:'block', color: 'red'};
-   const matched3 = {display:'block', color: 'blue'}
-   const matched4 = {display:'block', color: 'orange'}
-   const matched5 = {display:'block', color: 'green'}
-   const matched6 = {display:'block', color: 'pink'}
+   const matched1 = {display:'inline', color: 'black', border: '1px solid black', padding: '1%', borderRadius: '5px'}
+   const matched2 = {display:'inline', color: 'red', border: '1px solid red', padding: '1%', borderRadius: '5px'};
+   const matched3 = {display:'inline', color: 'blue', border: '1px solid blue', padding: '1%', borderRadius: '5px'}
+   const matched4 = {display:'inline', color: 'orange', border: '1px solid orange', padding: '1%', borderRadius: '5px', background: 'grey'}
+   const matched5 = {display:'inline', color: 'green', border: '1px solid green', padding: '1%', borderRadius: '5px'}
+   const matched6 = {display:'inline', color: 'pink', border: '1px solid pink', padding: '1%', borderRadius: '5px', background: 'grey'}
   //state variable for click count
    const[count, setCount] = useState(0);
    useEffect(() => {
@@ -115,20 +117,20 @@ const Matching = ({changeGame}) => {
     changeVisable12('invisible');
     document.querySelector('#message').textContent = '';
    }
-// TODO: fix buttons design
+//TODO: fix buttons design
     return (
       <Box sx={{ flexGrow: 1, background: "#a68674", padding: "1%" }}>
          {matches()}
-        <h1 style={{textAlign: 'center'}}>Matching Game</h1>
+        <h1 style={{textAlign: 'center'}}>Human Body Matching Game</h1>
         <p id='flip-message'></p>
         <Button variant="outlined" onClick={() => changeGame('Home')}>Back to gaming homepage
             </Button>
         <Button variant="outlined" onClick={() => resetGame()}>Play Again
             </Button>
         <p id={'message'}></p>
-        <Grid container spacing={2} onClick={() => incrementClick()}>
+        <Grid container spacing={2} onClick={() => incrementClick()} id='grid'>
             {/* card 6 */}
-            <Grid item xs={4}>
+            <Grid item xs={8} sm={8} md={4} sx={{margin: '0 auto', width: '75%'}}>
             <Item onClick={() => changeVisable6(visable6 === 'visible' ? 'invisible' : 'visible')}>
             <CardContent>
             <Typography variant="body2" color="text.secondary" sx={visable6 === 'invisible' ? cardBack : cardFront}>
@@ -142,7 +144,7 @@ const Matching = ({changeGame}) => {
             </Item>
           </Grid>
           {/* card 2 */}
-          <Grid item xs={4}>
+          <Grid item xs={8} sm={8} md={4} sx={{margin: '0 auto', width: '75%'}}>
             <Item onClick={() => changeVisable2(visable2 === 'visible' ? 'invisible' : 'visible')}>
             <CardContent>
             <Typography variant="body2" color="text.secondary"  sx={visable2 === 'invisible' ? cardBack : cardFront}>
@@ -156,7 +158,7 @@ const Matching = ({changeGame}) => {
             </Item>
           </Grid>
             {/* card 8 */}
-            <Grid item xs={4}>
+            <Grid item xs={8} sm={8} md={4} sx={{margin: '0 auto', width: '75%'}}>
             <Item onClick={() => changeVisable8(visable8 === 'visible' ? 'invisible' : 'visible')}>
             <CardContent>
             <Typography variant="body2" color="text.secondary" sx={visable8 === 'invisible' ? cardBack : cardFront}>
@@ -170,7 +172,7 @@ const Matching = ({changeGame}) => {
             </Item>
           </Grid>
         {/* card 3 */}
-          <Grid item xs={4}>
+          <Grid item xs={8} sm={8} md={4} sx={{margin: '0 auto', width: '75%'}}>
             <Item onClick={() => changeVisable3(visable3 === 'visible' ? 'invisible' : 'visible')}>
             <CardMedia
               component="img"
@@ -188,7 +190,7 @@ const Matching = ({changeGame}) => {
             </Item>
           </Grid>
             {/* card 10 */}
-            <Grid item xs={4}>
+            <Grid item xs={8} sm={8} md={4} sx={{margin: '0 auto', width: '75%'}}>
             <Item onClick={() => changeVisable10(visable10 === 'visible' ? 'invisible' : 'visible')}>
             <CardContent>
             <Typography variant="body2" color="text.secondary" sx={visable10 === 'invisible' ? cardBack : cardFront}>
@@ -202,7 +204,7 @@ const Matching = ({changeGame}) => {
             </Item>
           </Grid>
             {/* card 11 */}
-            <Grid item xs={4}>
+            <Grid item xs={8} sm={8} md={4} sx={{margin: '0 auto', width: '75%'}}>
             <Item onClick={() => changeVisable11(visable11 === 'visible' ? 'invisible' : 'visible')}>
             <CardMedia
             component="img"
@@ -220,7 +222,7 @@ const Matching = ({changeGame}) => {
             </Item>
           </Grid>
           {/* card 4 */}
-          <Grid item xs={4}>
+          <Grid item xs={8} sm={8} md={4} sx={{margin: '0 auto', width: '75%'}}>
             <Item onClick={() => changeVisable4(visable4 === 'visible' ? 'invisible' : 'visible')}>
             <CardContent>
             <Typography variant="body2" color="text.secondary" sx={visable4 === 'invisible' ? cardBack : cardFront}>
@@ -234,7 +236,7 @@ const Matching = ({changeGame}) => {
             </Item>
           </Grid>
             {/* card 1 */}
-            <Grid item xs={4}>
+            <Grid item xs={8} sm={8} md={4} sx={{margin: '0 auto', width: '75%'}}>
             <Item onClick={() => changeVisable1(visable1 === 'visible' ? 'invisible' : 'visible')}>
             <CardMedia
               component="img"
@@ -252,7 +254,7 @@ const Matching = ({changeGame}) => {
             </Item>
           </Grid>
           {/* card 5 */}
-          <Grid item xs={4}>
+          <Grid item xs={8} sm={8} md={4} sx={{margin: '0 auto', width: '75%'}}>
             <Item onClick={() => changeVisable5(visable5 === 'visible' ? 'invisible' : 'visible')}>
             <CardMedia
             component="img"
@@ -270,7 +272,7 @@ const Matching = ({changeGame}) => {
             </Item>
           </Grid>
             {/* card 9 */}
-            <Grid item xs={4}>
+            <Grid item xs={8} sm={8} md={4} sx={{margin: '0 auto', width: '75%'}}>
             <Item onClick={() => changeVisable9(visable9 === 'visible' ? 'invisible' : 'visible')}>
             <CardMedia
             component="img"
@@ -288,7 +290,7 @@ const Matching = ({changeGame}) => {
             </Item>
           </Grid>
           {/* card 7 */}
-          <Grid item xs={4}>
+          <Grid item xs={8} sm={8} md={4} sx={{margin: '0 auto', width: '75%'}}>
             <Item onClick={() => changeVisable7(visable7 === 'visible' ? 'invisible' : 'visible')}>
             <CardMedia
             component="img"
@@ -306,7 +308,7 @@ const Matching = ({changeGame}) => {
             </Item>
           </Grid>
           {/* card 12 */}
-          <Grid item xs={4}>
+          <Grid item xs={8} sm={8} md={4} sx={{margin: '0 auto', width: '75%'}}>
             <Item onClick={() => changeVisable12(visable12 === 'visible' ? 'invisible' : 'visible')}>
             <CardContent>
             <Typography variant="body2" color="text.secondary" sx={visable12 === 'invisible' ? cardBack : cardFront}>
