@@ -16,7 +16,7 @@ const styles = makeStyles({
 })
 
 function Grid(props) {
-    const {icon, title, btnTitle} = props;
+    const {icon, title, btnTitle, changePage, newPage, id} = props;
     const classes = styles();
     
     return (
@@ -28,7 +28,7 @@ function Grid(props) {
                 {title}
             </Typography>
             <div className={classes.item}>
-                <CustomBtn txt={btnTitle}/>
+                <CustomBtn txt={btnTitle} changePage={changePage} newPage={newPage} id={id}/>
             </div>
         </div>
     )
