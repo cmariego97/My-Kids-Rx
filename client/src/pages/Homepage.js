@@ -2,7 +2,7 @@ import React from 'react';
 
 // import MUI styles
 import { createTheme, ThemeProvider, makeStyles } from '@material-ui/core/styles';
-import {CssBaseline, Typography } from '@material-ui/core';
+import {Box, CssBaseline, Typography } from '@material-ui/core';
 
 //import images
 import background from '../assets/images/site-design-images/plain-animal-bg.svg';
@@ -106,7 +106,7 @@ export default function Homepage() {
     const classes = useStyles();
 
     return (
-        <ThemeProvider theme={theme}>
+        <Box>
             <div className={classes.root}>
                 <CssBaseline />
                 <Header/>\
@@ -160,6 +160,6 @@ export default function Homepage() {
                 {/* <div className={classes.bigSpace}>
                     <Footer/>
                 </div> */}
-        </ThemeProvider>
+        </Box>
     );
 }

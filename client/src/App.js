@@ -7,6 +7,7 @@ import { ApolloClient,
   from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import Auth from './utils/auth';
+
 // import from MUI
 import { createTheme, ThemeProvider, makeStyles } from '@material-ui/core/styles';
 import { Typography } from '@material-ui/core';
@@ -27,6 +28,9 @@ import Messaging from './pages/Messaging';
 // import components
 import HeaderAppBar from './components/HeaderAppBar';
 import Footer from './components/Footer'; 
+
+//import images
+import background from './assets/images/site-design-images/plain-animal-bg.svg';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -120,6 +124,12 @@ const theme = createTheme({
 
 // MUI - styles
 const styles = makeStyles({
+  root: {
+    minHeight: '100vh',
+    backgroundImage: `url(${background})`,
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover',
+  },
   wrapper: {
     width: "65%",
     margin: "auto",
@@ -184,10 +194,12 @@ function App() {
 
   return (
     <ApolloProvider client={client}>
-      <HeaderAppBar page={page} changePage={changePage}/>
+      <ThemeProvider theme={theme}>
+        <HeaderAppBar page={page} changePage={changePage}/>
         {renderPage()}
         <Footer />
-      </ApolloProvider> 
+      </ThemeProvider>
+    </ApolloProvider> 
     
   );
 }
