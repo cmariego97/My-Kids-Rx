@@ -48,12 +48,12 @@ const Matching = ({changeGame}) => {
    const unmatched = {display:'none'};
    //color code each matched set
    //TODO: make the colors better for the eyes
-   const matched1 = {display:'block', color: 'black'}
-   const matched2 = {display:'block', color: 'red'};
-   const matched3 = {display:'block', color: 'blue'}
-   const matched4 = {display:'block', color: 'orange'}
-   const matched5 = {display:'block', color: 'green'}
-   const matched6 = {display:'block', color: 'pink'}
+   const matched1 = {display:'inline', color: 'black', border: '1px solid black', padding: '1%', borderRadius: '5px'}
+   const matched2 = {display:'inline', color: 'red', border: '1px solid red', padding: '1%', borderRadius: '5px'};
+   const matched3 = {display:'inline', color: 'blue', border: '1px solid blue', padding: '1%', borderRadius: '5px'}
+   const matched4 = {display:'inline', color: 'orange', border: '1px solid orange', padding: '1%', borderRadius: '5px', background: 'grey'}
+   const matched5 = {display:'inline', color: 'green', border: '1px solid green', padding: '1%', borderRadius: '5px'}
+   const matched6 = {display:'inline', color: 'pink', border: '1px solid pink', padding: '1%', borderRadius: '5px', background: 'grey'}
   //state variable for click count
    const[count, setCount] = useState(0);
    useEffect(() => {
