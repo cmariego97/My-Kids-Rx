@@ -258,7 +258,7 @@ const Messaging = () => {
                     </CardContent>
                     <CardActions>
                     {/* //TODO: make it prettier */}
-                        <Button variant="outlined" onClick={handleFormSubmit}>Send</Button>
+                        <Button sx={{backgroundColor: '#3f4868'}} variant="contained" onClick={handleFormSubmit}>Send</Button>
                     </CardActions>
                     <p id="conf-message"></p>
                 </div>

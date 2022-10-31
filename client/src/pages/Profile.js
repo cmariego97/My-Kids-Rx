@@ -490,12 +490,14 @@ const Profile = () => {
                                         </Button> */}
 
 
-                                            <Button type='submit' color='primary' variant="contained" onClick={handleOpen} style={btnstyle} fullWidth>
+                                            <Button 
+                                            sx={{backgroundColor: '#3f4868'}} type='submit' color='primary' variant="contained" onClick={handleOpen} style={btnstyle} fullWidth>
                                                 <Typography variant="p" className={classes.settingsOption}>
                                                     Change Password
                                                 </Typography> 
                                             </Button>
-                                            <Button type='submit' color='primary' variant="contained" onClick={initDelete} fullWidth>
+                                            <Button 
+                                            sx={{backgroundColor: '#3f4868'}}type='submit' color='primary' variant="contained" onClick={initDelete} fullWidth>
                                                 <Typography variant="p" className={classes.settingsOption}>
                                                     Delete Account
                                                 </Typography> 

@@ -123,9 +123,9 @@ const Matching = ({changeGame}) => {
          {matches()}
         <h1 style={{textAlign: 'center'}}>Human Body Matching Game</h1>
         <p id='flip-message'></p>
-        <Button variant="outlined" onClick={() => changeGame('Home')}>Back to gaming homepage
+        <Button sx={{margin: '0 auto', backgroundColor: '#3f4868', display: 'flex', justifyContent: 'center', my:'15px'}}variant="contained" onClick={() => changeGame('Home')}>Back to gaming homepage
             </Button>
-        <Button variant="outlined" onClick={() => resetGame()}>Play Again
+        <Button sx={{margin: '0 auto', backgroundColor: '#3f4868', display: 'flex', justifyContent: 'center'}}variant="contained" onClick={() => resetGame()}>Play Again
             </Button>
         <p id={'message'}></p>
         <Grid container spacing={2} onClick={() => incrementClick()} id='grid'>
