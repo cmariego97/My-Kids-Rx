@@ -44,7 +44,7 @@ const Matching = ({changeGame}) => {
    const [visable12,changeVisable12] = useState('invisible')
   //styling options
    const cardBack = {display:'none'};
-   const cardFront = {display:'block'};
+   const cardFront = {display:'block', margin: '0 auto', width: '75%'};
    const unmatched = {display:'none'};
    //color code each matched set
    //TODO: make the colors better for the eyes
