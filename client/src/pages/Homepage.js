@@ -14,7 +14,7 @@ import Grid from '../components/Grid';
 
 //import FontAwesome Icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStethoscope, faSyringe, faGamepad, faMicroscope, faXRay, faFilePrescription } from '@fortawesome/free-solid-svg-icons';
+import { faStethoscope, faSyringe, faGamepad, faMicroscope, faXRay, faFilePrescription, faComments } from '@fortawesome/free-solid-svg-icons';
 
 const theme = createTheme({
     palette: {
@@ -122,13 +122,13 @@ export default function Homepage({changePage}) {
             {/* Services Grid */}
             {/* //TODO: figure out what to do with the buttons*/}
             <div className={`${classes.grid} ${classes.bigSpace}`} id="our-services">
-                {/* <!-- service #1 - physical exams --> */}
+                {/* <!-- service #1 - appts --> */}
                 <Grid icon={<FontAwesomeIcon icon={faStethoscope} style={{color: "#a68674", height: "125", width: "125"}}></FontAwesomeIcon>} title="Appointments" btnTitle="View Appointments" changePage={changePage} newPage='Appt'id='appt'/>
 
-                {/* <!-- service #2  - vaccines --> */}
-                <Grid icon={<FontAwesomeIcon icon={faSyringe} style={{color: "#a68674", height: "125", width: "125"}}></FontAwesomeIcon>} title="Health Tips" btnTitle="Learn More" changePage={changePage} newPage='Resources'id='resources'/>
+                {/* <!-- service #2  - messaging --> */}
+                <Grid icon={<FontAwesomeIcon icon={faComments} style={{color: "#a68674", height: "125", width: "125"}}></FontAwesomeIcon>} title="Messaging" btnTitle="Learn More" changePage={changePage} newPage='Messaging'id='messaging'/>
 
-                {/* <!-- service #3 - first aid? --> */}
+                {/* <!-- service #3 - games --> */}
                 
                 <Grid icon={<FontAwesomeIcon icon={faGamepad} style={{color: "#a68674", height: "125", width: "125"}}></FontAwesomeIcon>} title="Games" btnTitle="Play" changePage={changePage} newPage='Game'id='game'/>
 
@@ -138,7 +138,7 @@ export default function Homepage({changePage}) {
                 {/* <!-- service #5 - radiology --> */}
                 <Grid icon={<FontAwesomeIcon icon={faXRay} style={{color: "#a68674", height: "125", width: "125"}}></FontAwesomeIcon>} title="Radiology" btnTitle="View Results" changePage={changePage} newPage='Imaging' id='image'/>
 
-                {/* <!-- service #6 - prescription --> */}
+                {/* <!-- service #6 - meds --> */}
                 <Grid icon={<FontAwesomeIcon icon={faFilePrescription} style={{color: "#a68674", height: "125", width: "125"}}></FontAwesomeIcon>} title="Medications" btnTitle="View Medications" changePage={changePage} newPage='Profile'id='profile'/>
             </div>
 
