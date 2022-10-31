@@ -18,7 +18,6 @@ import AccountCreate from './pages/AccountCreate';
 import Game from './pages/Game';
 import Resources from './pages/Resources';
 import Profile from './pages/Profile';
-import Medical from './pages/Medical';
 import Lab from './pages/Lab';
 import Imaging from './pages/Imaging';
 import Appointment from './pages/Appointment';
@@ -159,9 +158,6 @@ function App() {
     }
     if (page === 'Lab') {
       return <Lab />
-    }
-    if (page === 'Medical') {
-      return <Medical />
     }
     if (page === 'Messaging') {
       return <Messaging />

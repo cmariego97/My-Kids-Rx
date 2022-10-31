@@ -20,12 +20,8 @@ import { styled } from '@mui/material/styles';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 
-// import other pages
-import MedicalInfo from './Medical';
-// import Messages from './Messaging';
-// import Appointments from './Appointment';
-// import LabResults from './Lab';
-// import ImagingResults from './Imaging';
+// import component
+import MedicalInfo from '../components/Medical';
 
 //import images
 import background from '../assets/images/site-design-images/plain-animal-bg.svg';
@@ -561,34 +557,6 @@ const Profile = () => {
                             <MedicalInfo/>
                         </div>
                     </div>
-                    
-                    {/* //TODO:  I commented out these sections because we said we are getting rid of them from this page anyway. If you recomment them they honestly will not load properly anyway so just delete them if you are still good with that */}
-                                         
-                    {/* ROW 2 */}
-                    {/* <div className={classes.rowContainer}> */}
-                        {/* Messages */}
-                        {/* <div className={classes.cardMessages}>
-                            <Messages />
-                        </div> */}
-
-                        {/* Appointments */}
-                        {/* <div className={classes.cardAppointments}>
-                            <Appointments />
-                        </div>
-                    </div> */}
-
-                    {/* ROW 3 */}
-                    {/* <div className={classes.rowContainer}> */}
-                        {/* Lab Results */}
-                        {/* <div className={classes.cardLabResults}>
-                            <LabResults />
-                        </div> */}
-
-                        {/* Imaging */}
-                        {/* <div className={classes.cardImaging}>
-                            <ImagingResults />
-                        </div>
-                    </div> */}
                 
                 </div>
             </div>
