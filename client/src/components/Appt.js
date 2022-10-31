@@ -31,9 +31,9 @@ const Appt = () => {
                     <div>
                         {appointment.map((visit) =>(
                             <div>
-                                <li>Date:{visit.date}</li>
-                                <li>Time:{visit.time}</li>
-                                <li>Reason:{visit.reason}</li>
+                                <li>Date: {visit.date}</li>
+                                <li>Time: {visit.time}</li>
+                                <li>Reason: {visit.reason}</li>
                             </div>
                         )
                         )}

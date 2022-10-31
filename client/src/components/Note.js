@@ -31,8 +31,8 @@ const Note = () => {
                     <div>
                         {note.map((visit) =>(
                             <div>
-                                <li>Date:{visit.date}</li>
-                                <li>Report:{visit.notes}</li>
+                                <li>Date: {visit.date}</li>
+                                <li>Report: {visit.notes}</li>
                             </div>
                         )
                         )}

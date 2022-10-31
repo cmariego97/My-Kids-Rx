@@ -10,7 +10,7 @@ import O from '../assets/images/cell.jpeg';
 //import custom css
 import '../assets/css/ttt.css';
 
-// TODO: center images
+// TODO: style buttons
 function TTT({ changeGame }) {
     //styling for grid items
     const Item = styled(Paper)(({ theme }) => ({
@@ -180,7 +180,6 @@ function TTT({ changeGame }) {
         document.querySelector('#test').textContent = '';
     };
     
-// TODO: Fix button style
     return (
         <Box sx={{ flexGrow: 1, background: "#a68674", padding: "1%"}}>
             {chooseWinner()}

@@ -257,6 +257,7 @@ const Messaging = () => {
                         </Typography>
                     </CardContent>
                     <CardActions>
+                    {/* //TODO: make it prettier */}
                         <Button variant="outlined" onClick={handleFormSubmit}>Send</Button>
                     </CardActions>
                     <p id="conf-message"></p>

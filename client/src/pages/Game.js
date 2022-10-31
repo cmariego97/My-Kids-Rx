@@ -15,7 +15,7 @@ import TttImg from '../assets/images/game-ttt.png';
 import MatchImg from '../assets/images/game-match.jpeg';
 //import custom css
 import '../assets/css/game.css';
-
+//TODO: style buttons
 const Game = () => {
     //styling for grid items
     const Item = styled(Paper)(({ theme }) => ({

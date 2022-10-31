@@ -17,7 +17,7 @@ import Stomach from '../assets/images/stomach.jpg'
 import Toes from '../assets/images/toes.jpg'
 //import custom css
 import '../assets/css/match.css';
-
+// TODO: style buttons
 const Matching = ({changeGame}) => {
   //styling for grid items
   const Item = styled(Paper)(({ theme }) => ({
@@ -121,7 +121,7 @@ const Matching = ({changeGame}) => {
     return (
       <Box sx={{ flexGrow: 1, background: "#a68674", padding: "1%" }}>
          {matches()}
-        <h1 style={{textAlign: 'center'}}>Matching Game</h1>
+        <h1 style={{textAlign: 'center'}}>Human Body Matching Game</h1>
         <p id='flip-message'></p>
         <Button variant="outlined" onClick={() => changeGame('Home')}>Back to gaming homepage
             </Button>

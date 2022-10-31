@@ -178,6 +178,7 @@ const Lab = () => {
                 }
                 else {
                     //styles lab results differently if outside of normal range
+                    //TODO: make element with date stand out
                     const abnormal = {color: 'red'};
                     const normal = {color: 'black'}
                     return (

@@ -7,6 +7,7 @@ import { CssBaseline, AppBar, Toolbar } from '@material-ui/core';
 import { Box } from '@mui/material'
 // import components
 import NavBurger from './NavBurger';
+//TODO: fix display of header, fix display of grid
 
 const useStyles = makeStyles((theme) => ({
     navbarWrapper: {
