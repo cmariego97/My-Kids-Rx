@@ -14,7 +14,7 @@ import Grid from '../components/Grid';
 
 //import FontAwesome Icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStethoscope, faSyringe, faBriefcaseMedical, faMicroscope, faXRay, faFilePrescription } from '@fortawesome/free-solid-svg-icons';
+import { faStethoscope, faSyringe, faGamepad, faMicroscope, faXRay, faFilePrescription } from '@fortawesome/free-solid-svg-icons';
 
 const theme = createTheme({
     palette: {
@@ -129,7 +129,7 @@ export default function Homepage() {
                 <Grid icon={<FontAwesomeIcon icon={faSyringe} style={{color: "#a68674", height: "125", width: "125"}}></FontAwesomeIcon>} title="Vaccinations" btnTitle="Resources Info" />
 
                 {/* <!-- service #3 - first aid? --> */}
-                <Grid icon={<FontAwesomeIcon icon={faBriefcaseMedical} style={{color: "#a68674", height: "125", width: "125"}}></FontAwesomeIcon>} title=" Health Tips" btnTitle="Learn More" />
+                <Grid icon={<FontAwesomeIcon icon={faGamepad} style={{color: "#a68674", height: "125", width: "125"}}></FontAwesomeIcon>} title=" Health Tips" btnTitle="Learn More" />
 
                 {/* <!-- service #4 - Lab Works --> */}
                 <Grid icon={<FontAwesomeIcon icon={faMicroscope} style={{color: "#a68674", height: "125", width: "125"}}></FontAwesomeIcon>} title="Lab Work" btnTitle="View Results" />
