@@ -58,21 +58,25 @@ const Game = () => {
                 <Grid class='cust-col'>
                     <Item>
                         <img src={OpImg} alt='operation' style={{width: '250px', margin: '0 auto'}}></img>
-                        <Button sx={{margin: '0 auto'}}variant="outlined" onClick={() => changeGame('Operation')}>Play Operation
+                        {/* <Button type='submit' color='primary' variant="contained" style={btnstyle} fullWidth onClick={handleOpen}>
+                        Create Account
+                        </Button> */}
+
+                        <Button sx={{margin: '0 auto', backgroundColor: '#3f4868'}}variant="contained"  onClick={() => changeGame('Operation')}>Play Operation
                          </Button>
                     </Item>
                 </Grid>
                 <Grid class='cust-col'>
                     <Item>
                         <img src={TttImg} alt='tic tac toe' style={{width: '250px', margin: '0 auto'}}></img>
-                        <Button sx={{margin: '0 auto'}}variant="outlined" onClick={() => changeGame('TTT')}>Play Tic Tac Toe
+                        <Button sx={{margin: '0 auto', backgroundColor: '#3f4868'}}variant="contained" onClick={() => changeGame('TTT')}>Play Tic Tac Toe
                         </Button>
                     </Item>
                 </Grid>
                 <Grid class='cust-col'>
                     <Item>
                         <img src={MatchImg} alt='matching game' style={{width: '250px', margin: '0 auto'}}></img>
-                        <Button sx={{margin: '0 auto'}}variant="outlined" onClick={() => changeGame('Matching')}>Play Matching
+                        <Button sx={{margin: '0 auto', backgroundColor: '#3f4868'}}variant="contained" onClick={() => changeGame('Matching')}>Play Matching
                         </Button>
                     </Item>
                 </Grid>

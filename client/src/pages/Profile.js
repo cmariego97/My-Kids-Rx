@@ -480,7 +480,7 @@ const Profile = () => {
                                         }}
                                     >
                                         {/* popover content here */}
-                                        {/* //TODO: style buttons prettier and maybe throw some padding in there */}
+                                    
                                         <Typography align='center' sx={{ p: 2 }}>User Settings</Typography>
                                         <div>
 
