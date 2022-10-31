@@ -21,7 +21,7 @@ const Appt = () => {
         //if user not a patient in database
         if (!data.onePatient) {
             return (
-                <p>No appointments found for this email, you must first contact your provider to set up your profile!</p>
+                <p>Email not on file with a provider, contact your provider to schedule an appointment!</p>
             )
         }
         else {
@@ -43,7 +43,7 @@ const Appt = () => {
             else {
                 //if in database but no appts on file
                 return (
-                    <p>No upcoming appointments!</p>
+                    <p>No upcoming appointments, contact your provider to schedule!</p>
                 )
             }
         }

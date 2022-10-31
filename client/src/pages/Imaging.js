@@ -161,38 +161,42 @@ const Imaging= () => {
         )
     }
     else {
-        //if patient not in database
-        if (!data.onePatient) {
-            return (
-                <p>No imaging results found for this email, you must first contact your provider to set up your profile!</p>
-            )
-        }
-        else {
-            const imaging = data.onePatient.imaging
-            if (imaging.length !== 0) {
+        const renderImaging = () => {
+            //if patient not in database
+            if (!data.onePatient) {
                 return (
-                    <div className={classes.cardImaging}>
-                       <h1>Imaging Results</h1>
-                       {imaging.map((result) => (
-                        <div>
-                            <li>{`Date: ${result.date}`}</li>
-                            <li>{`Test: ${result.type} of ${result.site}`}</li>
-                            <li>{`Results: ${result.report}`}</li>
-                        </div>
-                      
-                       )
-                       )}
-        
-                    </div>
+                    <p>Email not on file with a provider, contact your provider for details!</p>
                 )
             }
             else {
-                //if no imaging results for the patient
-                return (
-                    <p>No imaging results on file!</p>
-                )
+                const imaging = data.onePatient.imaging
+                if (imaging.length !== 0) {
+                    return (
+                        imaging.map((result) => (
+                            <div>
+                                <li>{`Date: ${result.date}`}</li>
+                                <li>{`Test: ${result.type} of ${result.site}`}</li>
+                                <li>{`Results: ${result.report}`}</li>
+                            </div>
+                        
+                        )
+                        )
+                    )
+                }
+                else {
+                    //if no imaging results for the patient
+                    return (
+                        <p>No imaging results on file!</p>
+                    )
+                }
             }
         }
+        return (
+            <div className={classes.cardImaging}>
+                <h1>Imaging Results</h1>
+                {renderImaging()}
+            </div>
+        )
     }
 }
 
