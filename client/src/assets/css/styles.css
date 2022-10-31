@@ -1,0 +1,95 @@
+/* website theme palette hex codes:
+    • light shades - snowdrift: #FAFBF9 || pampas: #F5F2EF
+        --Use this color as the background for your dark-on-light designs; or the text color of an inverted design
+    • light accent - gull gray: #9CA6B5 || indian khaki: #C5A284
+        --Accent colors can be used to bring attention to design elements by contrasting with the rest of the palette.
+    • main brand color / primary - sunglo: #DE7171 || pharlap: #AA858E
+        --This color should be eye-catching but not harsh. It can be liberally applied to your layout as its main identity.
+    • dark accent - santa fe: #B5765C || fountain blue: #55C4BA
+        --Another accent color to consider. Not all colors have to be used - sometimes a simple color scheme works best.
+    • dark shades / info - fiord: #3F4868 || butterfly bush: #5F5088
+        --Use as the text color for dark-on-light designs; or as the background for inverted designs.
+    • success - asparagus: #67a35b
+    • warning - carrot-orange: #f58c22
+    • danger - pomegranate: #f44336
+
+-- collapse this to hide -claire <3 --*/
+
+:root {
+    /* light shades */
+    --snowdrift:#FAFBF9;
+    --pampas: #F5F2EF;
+    /* light accent */
+    --gull-gray: #9CA6B5;
+    --indian-khaki: #C5A284;
+    /* main brand colors */
+    --sunglo: #DE7171;
+    --pharlap: #AA858E;
+    /* dark accent */
+    --santa-fe: #B5765C;
+    --fountain-blue: #55C4BA;
+    /* dark shades */
+    --fiord: #3F4868;
+    --butterfly-bush: #5F5088;
+    /* success */
+    --asparagus: #67A35B;
+    /* warning */
+    --carrot-orange: #F58C22;
+    /* danger */
+    --pomegranate: #F44336;
+    /* box shadow */
+    --box-shadow: '0 16px 38px -12px rgb(0 0 0 / 56%)', '0 4px 25px 0px rgb(0 0 0 / 12%)', '0 8px 10px -5px rgb(0 0 0 / 20%)';
+}
+
+.root {
+    min-height: 100vh;
+    background-image: url(../images/site-design-images/plain-animal-bg.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.loader {
+    display: none;
+}
+
+.wrapper {
+    min-height: 100vh;
+    width: 65%;
+    margin: 0 auto;    
+    text-align: center;
+}
+
+.loginWrapper {
+    background-color: #f4f6fc;
+    box-shadow: var(--box-shadow);
+}
+
+.bigSpace {
+    margin-top: 5rem;
+}
+
+.littleSpace {
+    margin-top: 2.5rem;
+}
+
+.grid {
+    display: flex;
+    justify-content: center;
+}
+
+/* about us  */
+.aboutUsWrapper {
+    background-color: "#f4f6fc"
+}
+
+.aboutUs {
+    display: "flex";
+    flex-direction: "row";
+    align-items: "center";
+    margin: "5rem";
+}
+
+.textInfo {
+    color: "#3F4868";
+    text-align: "justify";
+}

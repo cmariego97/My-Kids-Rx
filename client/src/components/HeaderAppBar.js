@@ -2,68 +2,21 @@ import React from 'react'
 import Auth from '../utils/auth';
 
 // import MUI styles
-import { createTheme, ThemeProvider, makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import { CssBaseline, AppBar, Toolbar } from '@material-ui/core';
-
+import { Box } from '@mui/material'
 // import components
 import NavBurger from './NavBurger';
 
-const theme = createTheme({
-    palette: {
-        primary: {
-        // Sunglo
-            main: "#de7171",
-        },
-        secondary: {
-        // sandrift
-            main: "#a68674",
-        },
-        error: {
-        // pomegranate
-            main: "#f44336",
-        },
-        warning: {
-        // carrot-orange
-            main: "#f58c22"
-        },
-        info: {
-        // fiord
-            main: "#3f4868"
-        },
-        success: {
-        // asparagus
-            main: "#67a35b"
-        },
-        neutral: {
-        // gull gray
-            main: "#9CA6B5"
-        }
-    },
-    typography: {
-        fontFamily: [
-            'Nunito', 'sans-serif', 'Nunito Sans', 'Atma', 'cursive', 'Londrina Solid'
-        ],
-        h4: {
-            fontWeight: 600,
-            fontSize: 28,
-            lineHeight: '2rem',
-        },
-        h5: {
-            fontWeight: 100,
-            lineHeight: '2rem',
-        },
-    },
-});
-
 const useStyles = makeStyles((theme) => ({
-    root: {
+    navbarWrapper: {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
         fontFamily: 'Nunito',
     },
     appbar: {
-        background: 'none',
+        backgroundColor: '#f4f6fc',
     },
     appbarWrapper: {
         width: '80%',
@@ -81,7 +34,7 @@ const HeaderAppBar = (props) => {
     //this needs to be in place because sometimes the program tries to read props before the page finishes loading
     if (!props.changePage) {
         return (
-            <h1></h1>
+            <h1 className="loader"></h1>
         )
     }
     else {
@@ -96,24 +49,22 @@ const HeaderAppBar = (props) => {
             }
         }
         return (
-            <ThemeProvider theme={theme}>
-                <div className={classes.root}>
-                    <CssBaseline />
-                    <AppBar className={classes.appbar} elevation={0}>
-                        <Toolbar className={classes.appbarWrapper}>
-                            <h1 className={classes.appbarTitle}>
-                                My Kids-Rx
-                                {/* <img src={`${KidsRxLogo}`} className={classes.icon}/> */}
-                            </h1>
-                            {status()}
-                            <NavBurger page={props.page} changePage={props.changePage}/>
-                            {/* <IconButton>
-                                <SortIcon className={classes.icon} />
-                            </IconButton> */}
-                        </Toolbar>
-                    </AppBar>
-                </div>
-            </ThemeProvider>
+            <Box className={classes.navbarWrapper}>
+                <CssBaseline />
+                <AppBar className={classes.appbar} elevation={0}>
+                    <Toolbar className={classes.appbarWrapper}>
+                        <h1 className={classes.appbarTitle}>
+                            My Kids-Rx
+                            {/* <img src={`${KidsRxLogo}`} className={classes.icon}/> */}
+                        </h1>
+                        {status()}
+                        <NavBurger page={props.page} changePage={props.changePage}/>
+                        {/* <IconButton>
+                            <SortIcon className={classes.icon} />
+                        </IconButton> */}
+                    </Toolbar>
+                </AppBar>
+            </Box>
         )
     }
 }

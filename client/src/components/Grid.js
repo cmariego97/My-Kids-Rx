@@ -5,6 +5,9 @@ import CustomBtn from './CustomBtn'
 
 const styles = makeStyles({
     wrapper: {
+        margin: "4rem",
+        width: "80%",
+        height: "70%",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
