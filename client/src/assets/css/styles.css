@@ -99,6 +99,40 @@
     align-items: center;
 }
 
+/* navburger */
+.navBarWrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navBarBtn {
+    color: var(--fiord);
+}
+
+.appBarContainer {
+    height: 4.3rem;
+    background-color: var(--indian-khaki);
+}
+
+.appBarLogo {
+    margin-right: 2rem;
+}
+
+.appBarWrap {
+    padding: 0 5rem;
+    width: 80%;
+    margin: 0 auto;
+    justify-content: space-between;
+}
+
+.loginTitle {
+    color: var(--fiord);
+    text-transform: uppercase;
+    cursor: default;
+    text-shadow: 2px 2px 8px #9CA6B5;
+}
+
 /* header */
 .headerContainer {
     padding-top: 10rem;
@@ -119,7 +153,7 @@
 .textWelcome {
     color: var(--sunglo);
     letter-spacing: 0.5rem;
-    text-shadow: 2px 2px 8px #9CA6B5;
+    text-shadow: 2px 2px 8px #3F4868;
 }
 
 .headerTitle {

@@ -3,19 +3,18 @@ import Auth from '../utils/auth';
 
 // import MUI styles
 import { makeStyles } from '@material-ui/core/styles';
-import { CssBaseline, AppBar, Toolbar } from '@material-ui/core';
+import { CssBaseline, AppBar, Toolbar, Avatar } from '@material-ui/core';
 import { Box, Typography } from '@mui/material'
+
 // import components
 import NavBurger from './NavBurger';
+
+// import logo
+import KidsRxLogo from '../assets/images/site-design-images/kidsrx-logo.svg';
+
 //TODO: fix display of header, fix display of grid
 
 const useStyles = makeStyles((theme) => ({
-    navbarWrapper: {
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontFamily: 'Nunito',
-    },
     appbar: {
         backgroundColor: '#f4f6fc',
     },
@@ -23,10 +22,6 @@ const useStyles = makeStyles((theme) => ({
         width: '80%',
         margin: '0 auto',
         justifyContent: 'between',
-    },
-    appbarTitle: {
-        color: '#3F4868',
-        flexGrow: '1',
     },
 }));
 
@@ -45,19 +40,16 @@ const HeaderAppBar = (props) => {
                 const acctData = Auth.getProfile();
                 const email = acctData.data.email;
                 return (
-                    <Typography variant="h2" className={classes.appbarTitle}>Logged in as {email}</Typography>
+                    <Typography variant="p" className="loginTitle">Logged in as {email}</Typography>
                 )
             }
         }
         return (
-            <Box className={classes.navbarWrapper}>
+            <Box className="navBarWrapper">
                 <CssBaseline />
-                <AppBar className={classes.appbar} elevation={0}>
-                    <Toolbar className={classes.appbarWrapper}>
-                        <h1 className={classes.appbarTitle}>
-                            My Kids-Rx
-                            {/* <img src={`${KidsRxLogo}`} className={classes.icon}/> */}
-                        </h1>
+                <AppBar className="appBarContainer" elevation={0}>
+                    <Toolbar className="appBarWrap">
+                        <Avatar className="appBarLogo" variant="square" src={`${KidsRxLogo}`} sx={{ width:100, height:100 }}/>
                         {status()}
                         <NavBurger page={props.page} changePage={props.changePage}/>
                     </Toolbar>

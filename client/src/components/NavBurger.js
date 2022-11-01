@@ -11,7 +11,7 @@ import Auth from '../utils/auth';
 
 const useStyles = makeStyles((theme) => ({
     icon: {
-        color: '#DE7171',
+        color: '#3F4868',
         fontSize: '2rem',
     },
 }));
