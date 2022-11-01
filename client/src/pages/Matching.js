@@ -20,7 +20,7 @@ import background from '../assets/images/site-design-images/plain-animal-bg.svg'
 import '../assets/css/match.css';
 //import arrow icon
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { faArrowLeft, faCheck } from '@fortawesome/free-solid-svg-icons';
 
 const Matching = ({changeGame}) => {
   //styling for grid items
@@ -146,7 +146,9 @@ const Matching = ({changeGame}) => {
           Matching Game!
             </Typography>
           </CardContent>
-          <p style={visable6 === 'matched' ? matched3 : unmatched}>Matched</p>
+          <p style={visable6 === 'matched' ? matched3 : unmatched}>Matched
+          <FontAwesomeIcon icon={faCheck} style={{paddingLeft: '5px'}}></FontAwesomeIcon>
+          </p>
             </Item>
           </Grid>
           {/* card 2 */}
@@ -160,7 +162,9 @@ const Matching = ({changeGame}) => {
           Matching Game!
             </Typography>
           </CardContent>
-          <p style={visable2 === 'matched' ? matched1 : unmatched}>Matched</p>
+          <p style={visable2 === 'matched' ? matched1 : unmatched}>Matched
+          <FontAwesomeIcon icon={faCheck} style={{paddingLeft: '5px'}}></FontAwesomeIcon>
+          </p>
             </Item>
           </Grid>
             {/* card 8 */}
@@ -174,7 +178,9 @@ const Matching = ({changeGame}) => {
           Matching Game!
             </Typography>
           </CardContent>
-          <p style={visable8 === 'matched' ? matched4 : unmatched}>Matched</p>
+          <p style={visable8 === 'matched' ? matched4 : unmatched}>Matched
+          <FontAwesomeIcon icon={faCheck} style={{paddingLeft: '5px'}}></FontAwesomeIcon>
+          </p>
             </Item>
           </Grid>
         {/* card 3 */}
@@ -192,7 +198,9 @@ const Matching = ({changeGame}) => {
               Matching Game!
               </Typography>
             </CardContent>
-            <p style={visable3 === 'matched' ? matched2 : unmatched}>Matched</p>
+            <p style={visable3 === 'matched' ? matched2 : unmatched}>Matched
+            <FontAwesomeIcon icon={faCheck} style={{paddingLeft: '5px'}}></FontAwesomeIcon>
+            </p>
             </Item>
           </Grid>
             {/* card 10 */}
@@ -206,7 +214,9 @@ const Matching = ({changeGame}) => {
           Matching Game!
             </Typography>
           </CardContent>
-          <p style={visable10 === 'matched' ? matched5 : unmatched}>Matched</p>
+          <p style={visable10 === 'matched' ? matched5 : unmatched}>Matched
+          <FontAwesomeIcon icon={faCheck} style={{paddingLeft: '5px'}}></FontAwesomeIcon>
+          </p>
             </Item>
           </Grid>
             {/* card 11 */}
@@ -224,7 +234,9 @@ const Matching = ({changeGame}) => {
             Matching Game!
             </Typography>
           </CardContent>
-          <p style={visable11 === 'matched' ? matched6 : unmatched}>Matched</p>
+          <p style={visable11 === 'matched' ? matched6 : unmatched}>Matched
+          <FontAwesomeIcon icon={faCheck} style={{paddingLeft: '5px'}}></FontAwesomeIcon>
+          </p>
             </Item>
           </Grid>
           {/* card 4 */}
@@ -238,7 +250,9 @@ const Matching = ({changeGame}) => {
           Matching Game!
             </Typography>
           </CardContent>
-          <p style={visable4 === 'matched' ? matched2 : unmatched}>Matched</p>
+          <p style={visable4 === 'matched' ? matched2 : unmatched}>Matched
+          <FontAwesomeIcon icon={faCheck} style={{paddingLeft: '5px'}}></FontAwesomeIcon>
+          </p>
             </Item>
           </Grid>
             {/* card 1 */}
@@ -256,7 +270,9 @@ const Matching = ({changeGame}) => {
               Matching Game!
               </Typography>
             </CardContent>
-            <p style={visable1 === 'matched' ? matched1 : unmatched}>Matched</p>
+            <p style={visable1 === 'matched' ? matched1 : unmatched}>Matched
+            <FontAwesomeIcon icon={faCheck} style={{paddingLeft: '5px'}}></FontAwesomeIcon>
+            </p>
             </Item>
           </Grid>
           {/* card 5 */}
@@ -274,7 +290,9 @@ const Matching = ({changeGame}) => {
             Matching Game!
             </Typography>
           </CardContent>
-          <p style={visable5 === 'matched' ? matched3 : unmatched}>Matched</p>
+          <p style={visable5 === 'matched' ? matched3 : unmatched}>Matched
+          <FontAwesomeIcon icon={faCheck} style={{paddingLeft: '5px'}}></FontAwesomeIcon>
+          </p>
             </Item>
           </Grid>
             {/* card 9 */}
@@ -292,7 +310,9 @@ const Matching = ({changeGame}) => {
             Matching Game!
             </Typography>
           </CardContent>
-          <p style={visable9 === 'matched' ? matched5 : unmatched}>Matched</p>
+          <p style={visable9 === 'matched' ? matched5 : unmatched}>Matched
+          <FontAwesomeIcon icon={faCheck} style={{paddingLeft: '5px'}}></FontAwesomeIcon>
+          </p>
             </Item>
           </Grid>
           {/* card 7 */}
@@ -310,7 +330,9 @@ const Matching = ({changeGame}) => {
             Matching Game!
             </Typography>
           </CardContent>
-          <p style={visable7 === 'matched' ? matched4 : unmatched}>Matched</p>
+          <p style={visable7 === 'matched' ? matched4 : unmatched}>Matched
+          <FontAwesomeIcon icon={faCheck} style={{paddingLeft: '5px'}}></FontAwesomeIcon>
+          </p>
             </Item>
           </Grid>
           {/* card 12 */}
@@ -324,7 +346,9 @@ const Matching = ({changeGame}) => {
           Matching Game!
             </Typography>
           </CardContent>
-          <p style={visable12 === 'matched' ? matched6 : unmatched}>Matched</p>
+          <p style={visable12 === 'matched' ? matched6 : unmatched}>Matched
+          <FontAwesomeIcon icon={faCheck} style={{paddingLeft: '5px'}}></FontAwesomeIcon>
+          </p>
             </Item>
           </Grid>
         </Grid>

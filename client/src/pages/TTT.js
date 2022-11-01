@@ -208,17 +208,20 @@ function TTT({ changeGame }) {
                             alt='game piece'
                             style={!click1 ? hidden : visible}
                             src={player1 === 'X' ? X : O}
+                            class='ttt-img'
                         ></img>
                     </Item>
                     <Item onClick={() => square2()}>
                         <img
                             alt='game piece' src={player2 === 'X' ? X : O}
                             style={!click2 ? hidden : visible}
+                            class='ttt-img'
                         ></img>
                     </Item>
                     <Item onClick={() => square3()}>
                         <img alt='game piece' src={player3 === 'X' ? X : O}
                             style={!click3 ? hidden : visible}
+                            class='ttt-img'
                         ></img>
                     </Item>
                 </Grid>
@@ -227,16 +230,19 @@ function TTT({ changeGame }) {
                     <Item onClick={() => square4()}>
                         <img alt='game piece' src={player4 === 'X' ? X : O}
                             style={!click4 ? hidden : visible}
+                            class='ttt-img'
                         ></img>
                     </Item>
                     <Item onClick={() => square5()}>
                         <img alt='game piece' src={player5 === 'X' ? X : O}
                             style={!click5 ? hidden : visible}
+                            class='ttt-img'
                         ></img>
                     </Item>
                     <Item onClick={() => square6()}>
                         <img alt='game piece' src={player6 === 'X' ? X : O}
                             style={!click6 ? hidden : visible}
+                            class='ttt-img'
                         ></img>
                     </Item>
                 </Grid>
@@ -245,16 +251,19 @@ function TTT({ changeGame }) {
                     <Item onClick={() => square7()}>
                         <img alt='game piece' src={player7 === 'X' ? X : O}
                             style={!click7 ? hidden : visible}
+                            class='ttt-img'
                         ></img>
                     </Item>
                     <Item onClick={() => square8()}>
                         <img alt='game piece' src={player8 === 'X' ? X : O}
                             style={!click8 ? hidden : visible}
+                            class='ttt-img'
                         ></img>
                     </Item>
                     <Item onClick={() => square9()}>
                         <img alt='game piece' src={player9 === 'X' ? X : O}
                             style={!click9 ? hidden : visible}
+                            class='ttt-img'
                         ></img>
                     </Item>
                 </Grid>
