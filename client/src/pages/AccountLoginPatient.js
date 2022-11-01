@@ -160,7 +160,7 @@ function AccountLoginPatient({changePage}) {
               <Button type='submit' color='primary' variant="contained" style={btnstyle} fullWidth onClick={handleFormSubmit}>
                 Sign in
               </Button>
-              <p id='err-message'></p>
+              <p id='err-message' style={{fontSize: '110%'}}></p>
               <Typography> 
                 Don't have an Account? 
                 {/* DO NOT add href attribute it will not work correctly, but can change the element type if you want */}

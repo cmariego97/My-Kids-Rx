@@ -214,7 +214,7 @@ function AccountCreate({changePage}) {
     if (!firstName || !lastName || !gender || !provider || !email || !password || !confPassword) {
       document.querySelector('#err-message').textContent = 'Please fill out all required fields!';
     }
-    //checks to make sure passwords match
+    //if passwords do not match
     if(password !== confPassword) {
       document.querySelector('#err-message').textContent = 'Error creating account: passwords must match';
     }
@@ -321,7 +321,7 @@ function AccountCreate({changePage}) {
                       helperText="e-mail required"
                       onChange={handleChange}
                     />
-                    <p >
+                    <p style={{fontSize: '110%'}}>
                         {checkEmail}
                     </p>
   
@@ -337,7 +337,7 @@ function AccountCreate({changePage}) {
                       onChange={handleChange}
                     />
 
-                      <p >
+                      <p style={{fontSize: '110%'}}>
                         {checkPass}
                     </p>
   
@@ -359,7 +359,7 @@ function AccountCreate({changePage}) {
                   <Button type='submit' color='primary' variant="contained" style={btnstyle} fullWidth onClick={handleFormSubmit}>
                     Create Account
                   </Button>
-                  <p id='err-message'></p>
+                  <p id='err-message' style={{fontSize: '110%'}}></p>
   
                   <Typography> 
                     Already have an Account? 
