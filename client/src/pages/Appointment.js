@@ -4,7 +4,7 @@ import Appt from '../components/Appt'
 import Note from '../components/Note'
 
 // import MUI styles
-import { Box, Typography } from '@mui/material';
+import { Box, Typography } from '@material-ui/core';
 
 const Appointment = () => {
     return(
