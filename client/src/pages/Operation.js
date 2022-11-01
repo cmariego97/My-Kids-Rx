@@ -108,7 +108,7 @@ const Operation = ({changeGame}) => {
         document.querySelector('#warning').textContent = 'Oh no! You touched the patient! -1 point!'
       }
     return (
-        <div id='screen'>
+        <div id='screen' style={{marginTop: '70px'}}>
             <h1 id='title'>Operation</h1>
         <Container id='cont' maxWidth="lg">
             {/* column 1 */}

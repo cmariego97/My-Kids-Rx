@@ -120,7 +120,7 @@ const Matching = ({changeGame}) => {
     document.querySelector('#message').textContent = '';
    }
     return (
-      <Box sx={{ flexGrow: 1, background: "#a68674", padding: "1%" }}>
+      <Box sx={{ flexGrow: 1, background: "#a68674", padding: "1%", marginTop: '70px' }}>
          {matches()}
         <h1 style={{textAlign: 'center'}}>Human Body Matching Game</h1>
         <Button id='back-btn' sx={{margin: '0 auto', backgroundColor: '#3f4868', display: 'flex', justifyContent: 'center', my:'15px'}}variant="contained" onClick={() => changeGame('Home')}>

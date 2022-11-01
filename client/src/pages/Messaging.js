@@ -262,7 +262,7 @@ const Messaging = () => {
                     <CardActions>
                         <Button id='send' sx={{backgroundColor: '#de7171'}} variant="contained" onClick={handleFormSubmit}>Send</Button>
                     </CardActions>
-                    <p id="conf-message"></p>
+                    <p id="conf-message" style={{fontSize: '110%'}}></p>
                 </div>
                 )
             }

@@ -51,7 +51,7 @@ const Game = () => {
     }
     //if not a specific game then render game homepage
     return (
-        <div style={{background: "#a68674", padding: "1%"}}>
+        <div style={{background: "#a68674", padding: "1%", marginTop: '70px'}}>
             <h1 style={{textAlign: 'center'}}>Choose a game to play!</h1>
             <Box sx={{ flexGrow: 1}}>
             <Grid container spacing={2} id='grid'>
