@@ -37,15 +37,20 @@
     height: 50vh;
 }
 #again,
-#start {
+#start,
+#back {
     padding: 2%;
     background: #3f4868;
     border-radius: 10px;
     border: none;
     color: white;
 }
+#back {
+    margin: 0 auto;
+}
 #again:hover,
-#start:hover {
+#start:hover,
+#back:hover {
     background: #9CA6B5;
     cursor: pointer;
 }
