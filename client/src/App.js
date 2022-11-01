@@ -89,7 +89,6 @@ function App() {
     <ApolloProvider client={client}>
         <HeaderAppBar page={page} changePage={changePage}/>
         {renderPage()}
-        <Footer />
     </ApolloProvider> 
     
   );

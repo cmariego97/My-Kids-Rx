@@ -1,136 +1,44 @@
 import React, {useState} from 'react'
 import { useQuery } from '@apollo/client';
 import { QUERY_PROVIDERS } from '../utils/queries';
+
 //import mutation to create new acct
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../utils/mutations';
 import Auth from '../utils/auth';
+
 // import MUI styles
-import { createTheme, ThemeProvider, makeStyles } from '@material-ui/core/styles';
-import { CssBaseline, Typography, Link, Button } from '@material-ui/core';
 import { styled } from '@mui/material/styles';
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
+import { Avatar, Box, Button, FormControl, InputLabel, Link, MenuItem, Select, TextField, Typography } from '@mui/material';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 
-//import images
-import background from '../assets/images/site-design-images/plain-animal-bg.svg';
+// import components
+import Footer from '../components/Footer';
+
+// import images
 import HeartPtCreate from '../assets/images/site-design-images/HeartPtCreate.gif';
+import { style } from '@mui/system';
 
-//import components
-import HeaderAppBar from '../components/HeaderAppBar';
-
-/* website theme palette hex codes:
-    • light shades - snowdrift: #FAFBF9
-        --Use this color as the background for your dark-on-light designs, or the text color of an inverted design
-    • light accent - gull gray: #9CA6B5
-        --Accent colors can be used to bring attention to design elements by contrasting with the rest of the palette.
-    • main brand color / primary - sunglo: #DE7171
-        --This color should be eye-catching but not harsh. It can be liberally applied to your layout as its main identity.
-    • dark accent - santa fe: #B5765C
-        --Another accent color to consider. Not all colors have to be used - sometimes a simple color scheme works best.
-    • dark shades / info - fiord: #3F4868
-        --Use as the text color for dark-on-light designs, or as the background for inverted designs.
-    • success - asparagus: #67a35b
-    • warning - carrot-orange: #f58c22
-    • danger - pomegranate: #f44336
-    • kidsrxblue: #f4f6fc;
-    • kidsrxgreen: #F5FCFF;
-    
--- collapse this to hide -claire <3 --*/
-
-const theme = createTheme({
-  palette: {
-      primary: {
-      // Sunglo
-        main: "#de7171",
-      },
-      secondary: {
-      // sandrift
-        main: "#a68674",
-      },
-      error: {
-      // pomegranate
-        main: "#f44336",
-      },
-      warning: {
-      // carrot-orange
-        main: "#f58c22"
-      },
-      info: {
-      // fiord
-        main: "#3f4868"
-      },
-      success: {
-      // asparagus
-        main: "#67a35b"
-      },
-      neutral: {
-      // gull gray
-        main: "#9CA6B5"
-      }
+const CssFormControl = styled(FormControl)({
+  '& label.Mui-focused': {
+    color: '#de7171',
   },
-  typography: {
-      fontFamily: [
-          'Nunito', 'sans-serif', 'Nunito Sans', 'Atma', 'cursive', 'Londrina Solid'
-      ],
-      h4: {
-          fontWeight: 600,
-          fontSize: 28,
-          lineHeight: '2rem',
-      },
-      h5: {
-          fontWeight: 100,
-          lineHeight: '2rem',
-      },
+  '& .MuiInput-underline:after': {
+    borderBottomColor: 'green',
   },
-});
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    minHeight: '100vh',
-    backgroundImage: `url(${background})`,
-    backgroundRepeat: 'no-repeat',
-    backgroundSize: 'cover',
+  '& .MuiOutlinedInput-root': {
+    '& fieldset': {
+      borderColor: '#a68674',
+    },
+    '&:hover fieldset': {
+      borderColor: '#f58c22',
+    },
+    '&.Mui-focused fieldset': {
+      borderColor: '#de7171',
+    },
   },
-  wrapper: {
-    margin: "0 auto",
-    minHeight: "70vh",
-    maxWidth: "70%",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "space-evenly",
-    alignItems: "center",
-    alignSelf: "center",
-    borderRadius: "24px",
-    boxShadow: "0px 1px 3px rgba(44, 42, 72, 0.9)",
-    backgroundColor: "#f4f6fc" 
-    // add media query @780px
-  },
-  container: {
-    margin: "100px"
-  },
-  containerImage: {
-    margin: "4px",
-  },
-  containerLogin: {
-    margin: "4px",
-    padding: "4px",
-    width: "80%",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  textFieldRow: {
-    display: "flex",
-    flexDirection: "row",
-  },
-  textFieldColumn: {
-    display: 'flex',
-    flexDirection: 'column',
-    width: '100%'
-  }
-}))
+})
 
 const CssTextField = styled(TextField)({
   '& label.Mui-focused': {
@@ -153,6 +61,14 @@ const CssTextField = styled(TextField)({
 });
 
 function AccountCreate({changePage}) {
+  //TODO: make sure this isn't needed - check with Rita
+  // set gender
+  // const [gender, setGender] = React.useState('');
+
+  // const handleGender = (event) => {
+  //   setGender(event.target.value);
+  // };
+
   //finds all providers
   const {loading, data} = useQuery(QUERY_PROVIDERS);
   //state variables for create acct input fields
@@ -176,7 +92,7 @@ function AccountCreate({changePage}) {
       setLastName(value);
     }
     else if (id === 'gender') {
-      setGender(value);
+      setGender(event.target.value);
     }
     else if (id === 'recipient-provider') {
       setProvider(value);
@@ -221,7 +137,6 @@ function AccountCreate({changePage}) {
     }
   };
 
-  const classes = useStyles();
   const btnstyle={margin:'8px 0'}
   
   if(loading) {
@@ -233,111 +148,128 @@ function AccountCreate({changePage}) {
   else {
     //when done loading data from query
     return (
-      <ThemeProvider theme={theme}>
-        <div className={classes.root}>
-          <CssBaseline />
-          <HeaderAppBar />
-  
-          <div className={classes.wrapper}>
-            <div className={classes.container}>
+        <Box className="wrap siteWrap">
+          <Box className="loginWrap">
+            <Box className="loginContainer">
               {/* <!-- left-side: image --> */}
-              <div className={classes.containerImage}>
-                <img src={`${HeartPtCreate}`} />
-              </div>
+              <Avatar variant="square" src={`${HeartPtCreate}`} sx={{ width: 300, height: 300 }} />
   
               {/* <!-- right-side: login --> */}
-              <div className={classes.containerLogin}>
+              <Box className="textFieldContainer">
                 <Box component="form" sx={{'& .MuiTextField-root': { m: 1, width: '25ch' },}} noValidate autoComplete="off" >
-                  <div className={classes.textFieldRow}>
+
+                  {/* Row - Name */}
                   <CssTextField
-                      required
-                      id="user-firstName"
-                      label="First Name"
-                      placeholder="(ゝз○`)"
-                      margin="normal"
-                      helperText="first name required"
+                    required
+                    fullWidth
+                    id="user-firstName"
+                    label="First Name"
+                    placeholder="(ゝз○`)"
+                    margin="normal"
+                    onChange={handleChange}
+                  />
+                  <CssTextField
+                    required
+                    fullWidth
+                    id="user-lastName"
+                    label="Last Name"
+                    placeholder="(´ε｀ )♡"
+                    margin="normal"
+                    onChange={handleChange}
+                  />
+
+                  {/* Select Gender */}
+                  <CssFormControl required fullWidth id="gender" margin="normal">
+                    <InputLabel>Gender</InputLabel>
+                    <Select
+                      labelId="select-gender"
+                      id="gender"
+                      value={gender}
+                      label="Gender"
                       onChange={handleChange}
-                    />
-                    <CssTextField
-                      required
-                      id="user-lastName"
-                      label="Last Name"
-                      placeholder="(´ε｀ )♡"
-                      margin="normal"
-                      helperText="last name required"
+                    >
+                      <MenuItem value={10}>Male</MenuItem>
+                      <MenuItem value={20}>Female</MenuItem>
+                      <MenuItem value={30}>Other</MenuItem>
+                    </Select>
+                  </CssFormControl>
+
+                  {/* Select Provider */}
+                  <CssFormControl required fullWidth margin="normal">
+                    <InputLabel>Provider</InputLabel>
+                    <Select
+                      id="provider"
+                      label="provider"
+                      placeholder="select provider"
                       onChange={handleChange}
-                    />
-                  </div>
-                  
-                  <div className={classes.textFieldColumn}>
-                  {/* <CssTextField
-                      fullWidth
-                      required
-                      id="recipient-provider"
-                      label="Provider"
-                      placeholder="♫꒰･‿･๑꒱"
-                      margin="normal"
-                      helperText="provider required"
-                      onChange={handleChange}
-                    /> */}
-                    {/* {//TODO: not sure how to make these look like the other text fields} */}
-                    <select
+                    >
+                      {data.providers.map((provider) => (
+                        <MenuItem>{`${provider.firstName} ${provider.lastName} - ${provider.suffix}`}</MenuItem>
+                      ))}
+                    </Select>
+                  </CssFormControl>
+
+                  <CssFormControl fullWidth>
+                    <Select
                       id='gender'
                       onChange={handleChange}
                     >
-                      <option selected>Select a gender</option>
-                      <option>Female</option>
-                      <option>Male</option>
-                      <option>Other</option>
-                    </select>
-                    <select
-                      id="recipient-provider"
-                      onChange={handleChange}
-                    >
-                      <option selected>Select a provider</option>
-                      {data.providers.map((provider) => (
-                        <option>{`${provider.firstName} ${provider.lastName} ${provider.suffix}`}</option>
-                      ))}
-                    </select>
-  
-                    <CssTextField
-                      fullWidth
-                      required
-                      id="recipient-user"
-                      label="E-mail"
-                      placeholder="♫꒰･‿･๑꒱"
-                      margin="normal"
-                      helperText="e-mail required"
-                      onChange={handleChange}
-                    />
-                    <p >
-                        {checkEmail}
-                    </p>
-  
-                    <CssTextField
-                      fullWidth
-                      required
-                      id="recipient-password"
-                      type="password"
-                      label="Password"
-                      placeholder="ᕙ(‾̀◡‾́)ᕗ"
-                      margin="normal"
-                      helperText="password required"
-                      onChange={handleChange}
-                    />
-  
-                    <CssTextField
-                      fullWidth
-                      required
-                      id="conf-password"
-                      type="password"
-                      label="Confirm Password"
-                      placeholder="ᕙ(‾̀◡‾́)ᕗ"
-                      margin="normal"
-                      helperText="confirm password required"
-                      onChange={handleChange}
-                    />
-                  </div>
+                      <MenuItem selected>Select a gender</MenuItem>
+                      <MenuItem>Female</MenuItem>
+                      <MenuItem>Male</MenuItem>
+                      <MenuItem>Other</MenuItem>
+                    </Select>
+                  </CssFormControl>
+                  
+                  {/* <Select
+                    required
+                    fullWidth
+                    id="recipient-provider"
+                    label="Provider"
+                    placeholder="(´ε｀ )♡"
+                    margin="normal"
+                    onChange={handleChange}
+                  >
+                    <option selected>Select a provider</option>
+                    {data.providers.map((provider) => (
+                      <option>{`${provider.firstName} ${provider.lastName} ${provider.suffix}`}</option>
+                    ))}
+                  </Select> */}
+                    
+                  <CssTextField
+                    fullWidth
+                    required
+                    id="recipient-user"
+                    label="E-mail"
+                    placeholder="♫꒰･‿･๑꒱"
+                    margin="normal"
+                    helperText="e-mail required"
+                    onChange={handleChange}
+                  />
+                  <p >{checkEmail}</p>
+                  
+                  <CssTextField
+                    fullWidth
+                    required
+                    id="recipient-password"
+                    type="password"
+                    label="Password"
+                    placeholder="ᕙ(‾̀◡‾́)ᕗ"
+                    margin="normal"
+                    helperText="password required"
+                    onChange={handleChange}
+                  />
+                  <CssTextField
+                    fullWidth
+                    required
+                    id="conf-password"
+                    type="password"
+                    label="Confirm Password"
+                    placeholder="ᕙ(‾̀◡‾́)ᕗ"
+                    margin="normal"
+                    helperText="confirm password required"
+                    onChange={handleChange}
+                  />
   
                   <FormControlLabel control={<Checkbox name="checkedB" color="primary"/>} label="Remember me"/>
   
@@ -355,11 +287,11 @@ function AccountCreate({changePage}) {
                   </Typography>
   
                 </Box>
-              </div>
-            </div>
-          </div>
-        </div>
-      </ThemeProvider>
+              </Box>
+            </Box>
+          </Box>
+          <Footer />
+        </Box>
     )
   }
 }

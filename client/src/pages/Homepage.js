@@ -98,11 +98,6 @@ export default function Homepage({changePage}) {
                     </Typography>
                 </Box>  
             </Box>
-
-                {/* Footer */}
-                {/* <div className={classes.bigSpace}>
-                    <Footer/>
-                </div> */}
         </Box>
     );
 }
