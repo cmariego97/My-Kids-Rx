@@ -184,9 +184,9 @@ function TTT({ changeGame }) {
         <Box sx={{ flexGrow: 1, background: "#a68674", padding: "1%"}}>
             {chooseWinner()}
             <h1 style={{ textAlign: 'center', fontSize: "250%" }}>Tic Tac Toe</h1>
-            <Button variant="outlined" onClick={() => changeGame('Home')}>Back to gaming homepage
+            <Button sx={{margin: '0 auto', backgroundColor: '#3f4868', display: 'flex', justifyContent: 'center', my:'15px'}}variant="contained" onClick={() => changeGame('Home')}>Back to gaming homepage
             </Button>
-            <Button variant="outlined" onClick={() => changeTurn()}>Change Player
+            <Button sx={{margin: '0 auto', backgroundColor: '#3f4868', display: 'flex', justifyContent: 'center'}}variant="contained" onClick={() => changeTurn()}>Change Player
             </Button>
             <h2>{`It is player ${turn}'s turn`}</h2>
             <p id={'test'}></p>

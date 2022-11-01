@@ -480,15 +480,24 @@ const Profile = () => {
                                         }}
                                     >
                                         {/* popover content here */}
-                                        {/* //TODO: style buttons prettier and maybe throw some padding in there */}
-                                        <Typography sx={{ p: 2 }}>User Settings</Typography>
+                                    
+                                        <Typography align='center' sx={{ p: 2 }}>User Settings</Typography>
                                         <div>
-                                            <Button variant="outlined" onClick={handleOpen}>
+
+
+                                        {/* <Button type='submit' color='primary' variant="contained" style={btnstyle} fullWidth onClick={handleOpen}>
+                                            Create Account
+                                        </Button> */}
+
+
+                                            <Button 
+                                            sx={{backgroundColor: '#3f4868'}} type='submit' color='primary' variant="contained" onClick={handleOpen} style={btnstyle} fullWidth>
                                                 <Typography variant="p" className={classes.settingsOption}>
                                                     Change Password
                                                 </Typography> 
                                             </Button>
-                                            <Button variant="outlined" onClick={initDelete}>
+                                            <Button 
+                                            sx={{backgroundColor: '#3f4868'}}type='submit' color='primary' variant="contained" onClick={initDelete} fullWidth>
                                                 <Typography variant="p" className={classes.settingsOption}>
                                                     Delete Account
                                                 </Typography> 
