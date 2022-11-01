@@ -169,6 +169,11 @@ function TTT({ changeGame }) {
             //give option to play again
             btnDisplay = { display: 'block', marginBottom: '2%' };
         }
+        else if (click1 && click2 && click3 && click4 && click5 && click6 && click7 && click8 && click9) {
+            document.querySelector('#test').textContent = `Game over! It's a tie.`;
+            //give option to play again
+            btnDisplay = { display: 'block', marginBottom: '2%' };
+        }
     };
     //resets game
     const resetGame = () => {
