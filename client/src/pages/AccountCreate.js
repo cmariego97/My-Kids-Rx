@@ -13,6 +13,7 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
+import MenuItem from '@mui/material/MenuItem';
 
 //import images
 import background from '../assets/images/site-design-images/plain-animal-bg.svg';
@@ -168,37 +169,39 @@ function AccountCreate({changePage}) {
   const [addProfile, { error }] = useMutation(ADD_USER);
   //sets value of state variable that corresponds to input field that was edited
   const handleChange = (event) => {
-    const { id, value } = event.target;
-    if (id === 'user-firstName') {
-      setFirstName(value);
-    }
-    else if (id === 'user-lastName') {
-      setLastName(value);
-    }
-    else if (id === 'gender') {
-      setGender(value);
-    }
-    else if (id === 'recipient-provider') {
-      setProvider(value);
-    }
-    else if (id === 'recipient-user') {
-      setEmail(value);
-      if (!email.match(/^([a-z0-9_.-]+)@([\da-z.-]+)\.([a-z.]{2,6})$/)) {
-        setCheckEmail('Invalid email format!')
-    } else {
-      setCheckEmail('');
-    }
-    }
-    else if (id === 'conf-password') {
-      setConf(value);
-    }
-    else {
-      setPassword(value);
-    }
+    // const { id, name, value} = event.target;
+    console.log(event.target.parentElement);
+    // if (id === 'user-firstName') {
+    //   setFirstName(value);
+    // }
+    // else if (id === 'user-lastName') {
+    //   setLastName(value);
+    // }
+    // else if (id === 'gender') {
+    //   setGender(value);
+    // }
+    // else if (id === 'recipient-provider') {
+    //   setProvider(value);
+    // }
+    // else if (id === 'recipient-user') {
+    //   setEmail(value);
+    //   if (!email.match(/^([a-z0-9_.-]+)@([\da-z.-]+)\.([a-z.]{2,6})$/)) {
+    //     setCheckEmail('Invalid email format!')
+    // } else {
+    //   setCheckEmail('');
+    // }
+    // }
+    // else if (id === 'conf-password') {
+    //   setConf(value);
+    // }
+    // else {
+    //   setPassword(value);
+    // }
   };
   
   const handleFormSubmit = async (event) => {
     event.preventDefault();
+    console.log(gender, provider);
     //checks to make sure all input fields were filled out
     if (!firstName || !lastName || !gender || !provider || !email || !password || !confPassword) {
       document.querySelector('#err-message').textContent = 'Please fill out all required fields!';
@@ -270,8 +273,23 @@ function AccountCreate({changePage}) {
                   </div>
                   
                   <div className={classes.textFieldColumn}>
-                  {/* <CssTextField
+                  <CssTextField
+                    fullWidth
+                    select
+                    required
+                    id='gender'
+                    label='Gender'
+                    margin='normal'
+                    helperText='gender required'
+                    onChange={handleChange}
+                  >
+                    <MenuItem name='gender' value='Female'>Female</MenuItem>
+                    <MenuItem name='gender' value='Male'>Male</MenuItem>
+                    <MenuItem name='gender' value='Other'>Other</MenuItem>
+                  </CssTextField>
+                  <CssTextField
                       fullWidth
+                      select
                       required
                       id="recipient-provider"
                       label="Provider"
@@ -279,26 +297,11 @@ function AccountCreate({changePage}) {
                       margin="normal"
                       helperText="provider required"
                       onChange={handleChange}
-                    /> */}
-                    {/* {//TODO: not sure how to make these look like the other text fields} */}
-                    <select
-                      id='gender'
-                      onChange={handleChange}
                     >
-                      <option selected>Select a gender</option>
-                      <option>Female</option>
-                      <option>Male</option>
-                      <option>Other</option>
-                    </select>
-                    <select
-                      id="recipient-provider"
-                      onChange={handleChange}
-                    >
-                      <option selected>Select a provider</option>
                       {data.providers.map((provider) => (
-                        <option>{`${provider.firstName} ${provider.lastName} ${provider.suffix}`}</option>
+                        <MenuItem value={`${provider.firstName} ${provider.lastName} ${provider.suffix}`} >{`${provider.firstName} ${provider.lastName} ${provider.suffix}`}</MenuItem>
                       ))}
-                    </select>
+                    </CssTextField>
   
                     <CssTextField
                       fullWidth
