@@ -161,7 +161,7 @@ function TTT({ changeGame }) {
             (player7 === 'O' && click7 && player5 === 'O' && click5 && player3 === 'O' && click3)) {
             document.querySelector('#test').textContent = `Game over! The winner is player ${turn}`;
             //give option to play again
-            btnDisplay = { display: 'block' };
+            btnDisplay = { display: 'block', marginBottom: '2%' };
         }
     };
     //resets game
@@ -187,9 +187,9 @@ function TTT({ changeGame }) {
             </Button>
             <Button id='change-btn' sx={{margin: '0 auto', backgroundColor: '#3f4868', display: 'flex', justifyContent: 'center'}}variant="contained" onClick={() => changeTurn()}>Change Player
             </Button>
-            <h2>{`It is player ${turn}'s turn`}</h2>
-            <p id={'test'}></p>
-            <Button variant="outlined" sx={btnDisplay} onClick={() => resetGame()}>Play Again
+            <h2 style={{textAlign: 'center'}}>{`It is player ${turn}'s turn`}</h2>
+            <h3 id='test'></h3>
+            <Button id='again-btn' variant="contained" sx={btnDisplay} onClick={() => resetGame()}>Play Again
             </Button>
 
             <Grid container spacing={2}>

@@ -1,8 +1,13 @@
 img {
     margin-top: 10%;
 }
+#again-btn {
+    background: #3f4868;
+}
+
 #back-btn:hover,
-#change-btn:hover {
+#change-btn:hover,
+#again-btn:hover {
     background: grey;
 }
 
