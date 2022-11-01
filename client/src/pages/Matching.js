@@ -15,6 +15,7 @@ import Heart from '../assets/images/heart.jpg'
 import Lungs from '../assets/images/lungs.jpg'
 import Stomach from '../assets/images/stomach.jpg'
 import Toes from '../assets/images/toes.jpg'
+import background from '../assets/images/site-design-images/plain-animal-bg.svg';
 //import custom css
 import '../assets/css/match.css';
 //import arrow icon
@@ -30,7 +31,9 @@ const Matching = ({changeGame}) => {
     textAlign: 'center',
     color: theme.palette.text.secondary,
     height: '250px',
-    border: '1px solid black'
+    border: '1px solid black',
+    backgroundImage: `url(${background})`,
+    backgroundPosition: 'center'
   }));
     //control visibility of individual cards
    const [visable1,changeVisable1] = useState('invisible')

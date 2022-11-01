@@ -4,9 +4,10 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
-//import x and o images 
+//import images 
 import X from '../assets/images/x.jpg';
 import O from '../assets/images/cell.jpeg';
+import background from '../assets/images/site-design-images/plain-animal-bg.svg';
 //import custom css
 import '../assets/css/ttt.css';
 //import arrow icon
@@ -22,7 +23,9 @@ function TTT({ changeGame }) {
         textAlign: 'center',
         color: theme.palette.text.secondary,
         height: '300px',
-        border: '1px solid black'
+        border: '1px solid black',
+        backgroundImage: `url(${background})`,
+        backgroundPosition: 'center'
     }));
     //alternate between player X's turn and player O's turn
     const [turn, setTurn] = useState('X');

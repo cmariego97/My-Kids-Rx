@@ -58,15 +58,15 @@
 #drag1 {
     width: 100px;
     position: absolute;
-    bottom: 500px;
-    left: 250px;
+    bottom: 460px;
+    left: 280px;
     border: 1px solid brown;
 } 
 #drag2 {
     width: 50px;
     position: absolute;
     bottom: 370px;
-    left: 230px;
+    left: 270px;
     border: 1px solid brown;
 }
 #drag3 {
@@ -93,7 +93,7 @@
 #drag6 {
     width: 30px;
     position: absolute;
-    bottom: 580px;
+    bottom: 500px;
     left: 260px; 
     border: 1px solid brown;
 }

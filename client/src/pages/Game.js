@@ -9,10 +9,11 @@ import Button from '@mui/material/Button';
 import Matching from './Matching';
 import TTT from './TTT';
 import Operation from './Operation';
-//import game images
+//import images
 import OpImg from '../assets/images/game-operation.jpeg';
 import TttImg from '../assets/images/game-ttt.png';
 import MatchImg from '../assets/images/game-match.jpeg';
+import background from '../assets/images/site-design-images/plain-animal-bg.svg';
 //import custom css
 import '../assets/css/game.css';
 
@@ -27,7 +28,9 @@ const Game = () => {
         height: '75vh',
         border: '1px solid black',
         display: 'flex',
-        flexDirection: 'column'
+        flexDirection: 'column',
+        backgroundImage: `url(${background})`,
+        backgroundPosition: 'center'
     }));
     //game state variable to control which game screen is rendered
     const [game, setGame] = useState('Home');
