@@ -14,7 +14,7 @@
 ![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
 ![JWT](https://img.shields.io/badge/JWT-black?style=for-the-badge&logo=JSON%20web%20tokens)
 
-INCLUDE MOCK IMAGE OF HOMEPAGE HERE
+![home page](./client/src/assets/images/readme/home.png)
 
 ## Description
 The purpose of this application is to provide an electronic system for patients to keep track of their health records. Like other electronic health record (EHR) systems, features include viewing upcoming and past appointments, medications, vaccines, and vital signs. Patients can also send and recive messages from their physician. What makes Kids-RX different is that it is specifically designed for use in pediatrics and includes features that were implemented with children in mind, including games for them to play while in a waiting room. This application currently only has a patient login, as it was built in one week, but future development will include linking it with our Kids-Rx provider application. 
@@ -37,31 +37,46 @@ N/A
 To access this application, visit the following URL: [https://my-kids-rx-emr.herokuapp.com/](https://my-kids-rx-emr.herokuapp.com/). Browse the homepage for business information, or select one of the options in the navigation bar at the top of the page.
 
 Select "Patient Login" to login as a patient, or the user may create a new account.
-[insert screen shot]
+
+![login page](./client/src/assets/images/readme/login.png)
+
+![create account page](./client/src/assets/images/readme/create.png)
 
 Once the user is logged in they may choose from the following options: view profile, view medical information, view appointments, view imaging results, view lab results, play games, view resources, and send/view messages.
-[insert screen shots]
 
 The profile page will show account information and basic medical information, along with the options to change password and delete account. In order to carry out either of these options, the user must enter their current password correctly.
-[insert screen shot]
+
+![profile page](./client/src/assets/images/readme/profile.png)
 
 The appointments page shows upcoming appointments as well as reports from previous appointments.
-[insert screen shot]
+
+![appointments page](./client/src/assets/images/readme/appt.png)
 
 The imaging results page shows imaging results that are on file with their physician.
-[insert screen shot]
+
+![imaging results page](./client/src/assets/images/readme/imaging.png)
 
 The lab results page shows lab results that are on file with their physician.
-[insert screen shot]
+
+![lab results page](./client/src/assets/images/readme/lab.png)
 
 The games page has a few of options for the user to choose from: Matching, Tic-Tac-Toe, and Operation. Click on the corresponding button to be directed to a specific game.
-[insert 4 screen shots]
+
+![game options page](./client/src/assets/images/readme/games.png)
+
+![operation page](./client/src/assets/images/readme/op.png)
+
+![tic tac toe page](./client/src/assets/images/readme/ttt.png)
+
+![matching game page](./client/src/assets/images/readme/match.png)
 
 The resources page will show a randomly generated childhood illness from our database, as well as a randomly generated fun fact.
-[insert screen shot]
+
+![resources page](./client/src/assets/images/readme/resources.png)
 
 The messages page will display messages that the user previously sent to their physician. They can also send out a new message by filling out the form.
-[insert screen shot]
+
+![messaging page](./client/src/assets/images/readme/message.png)
 
 The user may log out at any time by visiting the navigation bar.
 
