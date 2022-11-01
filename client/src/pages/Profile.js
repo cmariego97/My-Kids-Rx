@@ -260,6 +260,8 @@ const style = {
     border: '2px solid #000',
     boxShadow: 24,
     p: 4,
+    display: 'flex',
+    flexDirection: 'column'
 };
 
 const Profile = () => {
@@ -533,7 +535,6 @@ const Profile = () => {
                             <Button style={visible ? show : hidden} onClick={cxDelete}>Cancel</Button>
                             <p id='user-del'></p>
                         </div>
-                        {/* //TODO:make this look prettier */}
                         {/* MODAL - change password */}
                         <Modal
                             open={open}
@@ -546,11 +547,12 @@ const Profile = () => {
                                 Enter Current Password
                             </Typography>
                             <input type='password' name='currentPass'value={currentPass} onChange={handleChange}></input>
-                            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                            <Typography id="modal-modal-description" variant="h6" component="h2" sx={{ mt: 2 }}>
                                 Enter New Password
                             </Typography>
                             <input type='password' name='newPass' value={newPass} onChange={handleChange}></input>
-                            <button onClick={changePassword}>Change Password</button>
+
+                            <Button id='change-pass' sx={{backgroundColor: '#de7171', marginTop: '20px'}} variant="contained" onClick={changePassword}>Update Password</Button>
                             <p id='message-el'></p>
                             </Box>
                         </Modal>
