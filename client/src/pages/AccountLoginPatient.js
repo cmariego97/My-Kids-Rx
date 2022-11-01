@@ -5,19 +5,13 @@ import Auth from '../utils/auth';
 
 // import MUI styles
 import { makeStyles } from '@material-ui/core/styles';
-import { CssBaseline, Typography, Link, Button } from '@material-ui/core';
 import { styled } from '@mui/material/styles';
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
+import { Avatar, Box, Button, FormControl, InputLabel, Link, MenuItem, Select, TextField, Typography } from '@mui/material';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 
 //import images
-import background from '../assets/images/site-design-images/plain-animal-bg.svg';
 import HeartPtLogin from '../assets/images/site-design-images/HeartPtLogin.gif';
-
-//import components
-import HeaderAppBar from '../components/HeaderAppBar';
 
 const useStyles = makeStyles((theme) => ({
   wrapper: {
@@ -111,65 +105,56 @@ function AccountLoginPatient({changePage}) {
   const btnstyle={margin:'8px 0'}
 
   return (
-    <Box className="root">
-      <HeaderAppBar className="appBarPage"/>
-      
-      <Box className="loginWrapper">
-        <Box className={classes.container}>
-          {/* <!-- left-side: image --> */}
-          <Box className={classes.containerImage}>
-            <img src={`${HeartPtLogin}`} />
-          </Box>
+    <Box className="wrap siteWrap">
+      <Box className="loginWrap">
+        <Box className="loginContainer">
+          {/* <!-- image --> */}
+          <Avatar variant="square" src={`${HeartPtLogin}`} sx={{ width: 300, height: 300 }}/>
 
           {/* <!-- right-side: login --> */}
-          <Box className={classes.containerLogin}>
-            <Box component="form" sx={{'& .MuiTextField-root': { m: 1, width: '25ch' },}} noValidate autoComplete="off" >
-              <Box>
-                <CssTextField
-                  fullWidth
-                  required
-                  id="recipient-user"
-                  label="E-mail or Username"
-                  placeholder="♫꒰･‿･๑꒱"
-                  margin="normal"
-                  helperText="e-mail required"
-                  onChange={handleChange}
-                />
-                <CssTextField
-                  fullWidth
-                  required
-                  id="recipient-password"
-                  type="password"
-                  label="Password"
-                  placeholder="ᕙ(‾̀◡‾́)ᕗ"
-                  margin="normal"
-                  helperText="password required"
-                  onChange={handleChange}
-                />
-              </Box>
+          <Box className="textFieldRow" component="form" sx={{'& .MuiTextField-root': { m: 1, width: '25ch' },}} noValidate autoComplete="off" >
+              <CssTextField
+                fullWidth
+                required
+                id="recipient-user"
+                label="E-mail or Username"
+                placeholder="♫꒰･‿･๑꒱"
+                margin="normal"
+                helperText="e-mail required"
+                onChange={handleChange}
+              />
+              <CssTextField
+                fullWidth
+                required
+                id="recipient-password"
+                type="password"
+                label="Password"
+                placeholder="ᕙ(‾̀◡‾́)ᕗ"
+                margin="normal"
+                helperText="password required"
+                onChange={handleChange}
+              />
+            <FormControlLabel control={<Checkbox name="checkedB" color="primary"/>} label="Remember me"/>
 
-              <FormControlLabel control={<Checkbox name="checkedB" color="primary"/>} label="Remember me"/>
+            <Button type='submit' color='primary' variant="contained" style={btnstyle} fullWidth onClick={handleFormSubmit}>
+              Sign in
+            </Button>
+            <p id='err-message'></p>
 
-              <Button type='submit' color='primary' variant="contained" style={btnstyle} fullWidth onClick={handleFormSubmit}>
-                Sign in
-              </Button>
-              <p id='err-message'></p>
+            <Typography >
+              <Link href="#" >
+                Forgot password?
+              </Link>
+            </Typography>
+            {/* TODO: fix this */}
+            <Typography> 
+              Don't have an Account? 
+              {/* DO NOT add href attribute it will not work correctly, but can change the element type if you want */}
+              <Link onClick={() => changePage('Create')}>
+                Sign Up 
+              </Link>
+            </Typography>
 
-              <Typography >
-                <Link href="#" >
-                  Forgot password?
-                </Link>
-              </Typography>
-              {/* TODO: fix this */}
-              <Typography> 
-                Don't have an Account? 
-                {/* DO NOT add href attribute it will not work correctly, but can change the element type if you want */}
-                <Link onClick={() => changePage('Create')}>
-                  Sign Up 
-                </Link>
-              </Typography>
-
-            </Box>
           </Box>
         </Box>
       </Box>
