@@ -16,16 +16,16 @@ import Grid from '../components/Grid';
 
 //import FontAwesome Icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStethoscope, faSyringe, faGamepad, faMicroscope, faXRay, faFilePrescription, faComments } from '@fortawesome/free-solid-svg-icons';
+import { faStethoscope, faGamepad, faMicroscope, faXRay, faFilePrescription, faComments } from '@fortawesome/free-solid-svg-icons';
 
 export default function Homepage({changePage}) {
     return (
         <Box>
             {/* Header */}
-            <Box className="root">
+            {/* <Box className="root">
                 <CssBaseline />
                 <Header/>\
-            </Box>
+            </Box> */}
 
             {/* Features and Services */}
             <Box className="wrapper">

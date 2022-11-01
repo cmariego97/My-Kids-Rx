@@ -4,7 +4,7 @@ import Auth from '../utils/auth';
 // import MUI styles
 import { makeStyles } from '@material-ui/core/styles';
 import { CssBaseline, AppBar, Toolbar } from '@material-ui/core';
-import { Box } from '@mui/material'
+import { Box, Typography } from '@mui/material'
 // import components
 import NavBurger from './NavBurger';
 //TODO: fix display of header, fix display of grid
@@ -45,7 +45,7 @@ const HeaderAppBar = (props) => {
                 const acctData = Auth.getProfile();
                 const email = acctData.data.email;
                 return (
-                    <h2 className={classes.appbarTitle}>Logged in as {email}</h2>
+                    <Typography variant="h2" className={classes.appbarTitle}>Logged in as {email}</Typography>
                 )
             }
         }
@@ -60,9 +60,6 @@ const HeaderAppBar = (props) => {
                         </h1>
                         {status()}
                         <NavBurger page={props.page} changePage={props.changePage}/>
-                        {/* <IconButton>
-                            <SortIcon className={classes.icon} />
-                        </IconButton> */}
                     </Toolbar>
                 </AppBar>
             </Box>
