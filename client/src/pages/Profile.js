@@ -397,9 +397,10 @@ const Profile = () => {
     return (
         <ThemeProvider theme={theme}>
             <div className={classes.root}>
-                <div className={classes.wrapContainer}>
+                <div  
+                className={classes.wrapContainer}>
 
-                    {/* ROW 1 */}
+                    {/* Column 1 */}
                     <div className={classes.rowContainer}>
                         {/* Profile Card - avatar + name */}
                         <div className={classes.cardProfile}>
