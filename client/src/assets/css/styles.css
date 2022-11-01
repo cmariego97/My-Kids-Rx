@@ -243,6 +243,7 @@
     flex-direction: column;
     flex-wrap: nowrap;
     border-radius: 10px;
+    justify-content: center;
     align-content: center;
     background-color: var(--snowdrift);
     box-shadow: var(--box-shadow);

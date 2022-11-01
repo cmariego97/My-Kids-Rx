@@ -102,7 +102,7 @@ const useStyles = makeStyles((theme) => ({
     width: '800px',
     minHeight: '500px',
     backgroundColor: '#F5F2EF',
-    borderRadius: '5px',
+    borderRadius: '10px',
     boxShadow: [ '0 16px 38px -12px rgb(0 0 0 / 56%)', '0 4px 25px 0px rgb(0 0 0 / 12%)', '0 8px 10px -5px rgb(0 0 0 / 20%)' ],
   },
   cardFunFact: {
@@ -114,7 +114,7 @@ const useStyles = makeStyles((theme) => ({
     width: '800px',
     minHeight: '500px',
     backgroundColor: '#F5F2EF',
-    borderRadius: '5px',
+    borderRadius: '10px',
     boxShadow: [ '0 16px 38px -12px rgb(0 0 0 / 56%)', '0 4px 25px 0px rgb(0 0 0 / 12%)', '0 8px 10px -5px rgb(0 0 0 / 20%)' ],
   },
   cardContent: {},
