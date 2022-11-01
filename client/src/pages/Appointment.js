@@ -1,5 +1,6 @@
 import { ClassNames } from '@emotion/react';
 import React from 'react';
+import { ExternalLink } from 'react-external-link';
 //import components
 import Appt from '../components/Appt'
 import Note from '../components/Note'
@@ -106,6 +107,9 @@ const useStyles = makeStyles((theme) => ({
        backgroundColor: '#F5F2EF',
        borderRadius: '5px',
        boxShadow: [ '0 16px 38px -12px rgb(0 0 0 / 56%)', '0 4px 25px 0px rgb(0 0 0 / 12%)', '0 8px 10px -5px rgb(0 0 0 / 20%)' ],
+       fontSize: '110%',
+       marginTop: '50px',
+       listStyleType: 'square'
    },
    avatarImage: {
        margin: '-30px auto 0',
@@ -150,12 +154,21 @@ const style = {
 const Appointment = () => {
    const classes = useStyles();
    return(
-   <div className={classes.cardAppointments}>
-    <h1>Upcoming Appointments</h1>
-    <Appt/>
-    <h1>Past Appointments</h1>
-    <Note/>
-   </div>
+    <div className={classes.root}>
+        <div className={classes.wrapContainer}>
+            <div className={classes.cardAppointments}>
+                <h1>Upcoming Appointments</h1>
+                <Appt/>
+                <p style={{paddingLeft: '10px'}}>
+                        <ExternalLink id='appt-link' href='https://www.mottchildren.org/conditions-treatments/general-peds/well-child-visits'>
+                        Recommended Check-Up Schedule
+                        </ExternalLink>
+                </p>
+                <h1>Past Appointments</h1>
+                <Note/>
+            </div>
+        </div>
+    </div>
 
    );
 }

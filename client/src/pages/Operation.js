@@ -8,7 +8,10 @@ import Wishbone from '../assets/images/wishbone.jpeg';
 import Apple from '../assets/images/apple.jpeg';
 import Hammer from '../assets/images/hammer.jpeg';
 import Light from '../assets/images/light.png'
-//TODO: add timer
+//import arrow icon
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+
 const Operation = ({changeGame}) => {
     //keeps track of current score
     let score = 0;
@@ -105,8 +108,8 @@ const Operation = ({changeGame}) => {
         document.querySelector('#warning').textContent = 'Oh no! You touched the patient! -1 point!'
       }
     return (
-        <div id='screen'>
-                    <h1 id='title'>Operation</h1>
+        <div id='screen' style={{marginTop: '70px'}}>
+            <h1 id='title'>Operation</h1>
         <Container id='cont' maxWidth="lg">
             {/* column 1 */}
         <div id='col-1'>
@@ -130,6 +133,9 @@ const Operation = ({changeGame}) => {
             id='info' style={{background: '#a68674'}}
             >
                 <h2 id='timer'></h2>
+                <button id='back' onClick={() => changeGame('Home')}>
+                  <FontAwesomeIcon icon={faArrowLeft}style={{marginRight:'10px'}}></FontAwesomeIcon>
+                  Back to Gaming Homepage</button>
                 <h2>Score: <span id='score'>0</span></h2>
                 <p id='warning'>Remove the objects that do not belong! Do not touch the patient!</p>
                 <p id='game-over'></p>

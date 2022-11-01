@@ -10,14 +10,14 @@
         {
           "to": "Joseph Smith MD",
           "date": "2021-09-27",
-          "time": "10:00:00",
+          "time": "10:00:00 AM",
           "content": "Hi doc, could you please call me sometime soon to discuss Olivia's test results?"
         },
 
         {
           "to": "Joseph Smith MD",
           "date": "2022-10-27",
-          "time": "9:00:00",
+          "time": "9:00:00 AM",
           "content": "Hi doc, when should i make Olivia's next appointment ?"
         }
       ],
@@ -30,13 +30,13 @@
       "appointments": [
         {
           "date": "2022-11-03",
-          "time": "08:00:00",
+          "time": "08:00:00 AM",
           "reason": "Sick"
         },
 
         {
           "date": "2023-01-03",
-          "time": "08:00:00",
+          "time": "08:00:00 AM",
           "reason": "Routine"
         }
       ],
@@ -135,13 +135,13 @@
           {
             "to": "Joseph Smith MD",
             "date": "2022-02-18",
-            "time": "10:00:00",
+            "time": "10:00:00 AM",
             "content": "Hi doc, could you please call me sometime soon to discuss John's test results?"
           },
           {
             "to": "Joseph Smith MD",
             "date": "2022-10-27",
-            "time": "10:00:00",
+            "time": "10:00:00 AM",
             "content": "Hi doc, could you please call me sometime soon to discuss John's medication?"
           }
         ],
@@ -154,12 +154,12 @@
         "appointments": [
           {
             "date": "2022-11-03",
-            "time": "09:00:00",
+            "time": "09:00:00 AM",
             "reason": "Sick"
           },
           {
             "date": "2023-01-03",
-            "time": "09:00:00",
+            "time": "09:00:00 AM",
             "reason": "Routine"
           }
         ],
@@ -277,13 +277,13 @@
         {
           "to": "Joseph Smith MD",
           "date": "2021-09-27",
-          "time": "10:00:00",
+          "time": "10:00:00 AM",
           "content": "Hi doc, could you please call me sometime soon to discuss Jane's test results?"
         },
         {
           "to": "Joseph Smith MD",
           "date": "2022-10-27",
-          "time": "10:00:00",
+          "time": "10:00:00 AM",
           "content": "Hi doc, does Jane have any new test results?"
         }
       ],
@@ -296,12 +296,12 @@
       "appointments": [
         {
           "date": "2022-11-03",
-          "time": "10:00:00",
+          "time": "10:00:00 AM",
           "reason": "Sick"
         },
         {
           "date": "2023-01-03",
-          "time": "08:00:00",
+          "time": "08:00:00 AM",
           "reason": "Routine"
         }
       ],
@@ -406,12 +406,12 @@
         {
           "to": "Joseph Smith MD",
           "date": "2021-09-27",
-          "time": "10:00:00",
+          "time": "10:00:00 AM",
           "content": "Hi doc, could you please call me sometime soon to discuss Jake's test results?"
         },
         {
           "to": "Joseph Smith MD",
-          "date": "2022-10-27",
+          "date": "2022-10-27 AM",
           "time": "10:00:00",
           "content": "Hi doc, can i bring Jake in tomorrow ?"
         }
@@ -419,18 +419,18 @@
       "gender": "Male",
       "allergies": "None",
       "medicalHistory": "Asthma",
-      "guardianName": "Anna Jones",
+      "guardianName": "Anna Wallace",
       "guardianPhone": "123-456-0009",
-      "guardianEmail": "ajones@test.com",
+      "guardianEmail": "awallace@test.com",
       "appointments": [
         {
           "date": "2022-11-03",
-          "time": "11:00:00",
+          "time": "11:00:00 AM",
           "reason": "Sick"
         },
         {
           "date": "2023-01-03",
-          "time": "11:00:00",
+          "time": "11:00:00 AM",
           "reason": "Routine"
         }
       ],
@@ -548,13 +548,13 @@
         {
           "to": "Joseph Smith MD",
           "date": "2021-09-27",
-          "time": "10:00:00",
+          "time": "10:00:00 AM",
           "content": "Hi doc, could you please call me sometime soon to discuss Ed's test results?"
         },
         {
           "to": "Joseph Smith MD",
           "date": "2022-10-27",
-          "time": "10:00:00",
+          "time": "10:00:00 AM",
           "content": "Hi doc, Ed is doing better. Thank you!"
         }
       ],
@@ -567,12 +567,12 @@
       "appointments": [
         {
           "date": "2022-10-03",
-          "time": "12:00:00",
+          "time": "12:00:00 PM",
           "reason": "Urgent"
        },
        {
         "date": "2023-01-03",
-        "time": "12:00:00",
+        "time": "12:00:00 PM",
         "reason": "Routine"
      }
       ],

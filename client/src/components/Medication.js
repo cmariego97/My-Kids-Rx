@@ -5,13 +5,13 @@ const Medication = ({meds}) => {
     if (meds.length === 0) {
         //if no medications for this patient
         return (
-            <p>No medications on file!</p>
+            <p style={{fontSize: '110%'}}>No medications on file!</p>
         )
     }
     else {
         return (
             meds.map((med) => (
-                <li>{`${med.name} ${med.dose}: ${med.directions}`}</li>
+                <li style={{fontSize: '110%', listStyleType: 'square'}}>{`${med.name} ${med.dose}: ${med.directions}`}</li>
             ))
         )
     }

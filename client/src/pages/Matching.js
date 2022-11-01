@@ -15,9 +15,13 @@ import Heart from '../assets/images/heart.jpg'
 import Lungs from '../assets/images/lungs.jpg'
 import Stomach from '../assets/images/stomach.jpg'
 import Toes from '../assets/images/toes.jpg'
+import background from '../assets/images/site-design-images/plain-animal-bg.svg';
 //import custom css
 import '../assets/css/match.css';
-// TODO: style buttons
+//import arrow icon
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowLeft, faCheck } from '@fortawesome/free-solid-svg-icons';
+
 const Matching = ({changeGame}) => {
   //styling for grid items
   const Item = styled(Paper)(({ theme }) => ({
@@ -27,7 +31,9 @@ const Matching = ({changeGame}) => {
     textAlign: 'center',
     color: theme.palette.text.secondary,
     height: '250px',
-    border: '1px solid black'
+    border: '1px solid black',
+    backgroundImage: `url(${background})`,
+    backgroundPosition: 'center'
   }));
     //control visibility of individual cards
    const [visable1,changeVisable1] = useState('invisible')
@@ -47,11 +53,10 @@ const Matching = ({changeGame}) => {
    const cardFront = {display:'block', margin: '0 auto', width: '75%'};
    const unmatched = {display:'none'};
    //color code each matched set
-   //TODO: make the colors better for the eyes
    const matched1 = {display:'inline', color: 'black', border: '1px solid black', padding: '1%', borderRadius: '5px'}
    const matched2 = {display:'inline', color: 'red', border: '1px solid red', padding: '1%', borderRadius: '5px'};
    const matched3 = {display:'inline', color: 'blue', border: '1px solid blue', padding: '1%', borderRadius: '5px'}
-   const matched4 = {display:'inline', color: 'orange', border: '1px solid orange', padding: '1%', borderRadius: '5px', background: 'grey'}
+   const matched4 = {display:'inline', color: 'white', border: '1px solid black', padding: '1%', borderRadius: '5px', background: 'grey'}
    const matched5 = {display:'inline', color: 'green', border: '1px solid green', padding: '1%', borderRadius: '5px'}
    const matched6 = {display:'inline', color: 'pink', border: '1px solid pink', padding: '1%', borderRadius: '5px', background: 'grey'}
   //state variable for click count
@@ -117,17 +122,18 @@ const Matching = ({changeGame}) => {
     changeVisable12('invisible');
     document.querySelector('#message').textContent = '';
    }
-//TODO: fix buttons design
     return (
-      <Box sx={{ flexGrow: 1, background: "#a68674", padding: "1%" }}>
+      <Box sx={{ flexGrow: 1, background: "#a68674", padding: "1%", marginTop: '70px' }}>
          {matches()}
         <h1 style={{textAlign: 'center'}}>Human Body Matching Game</h1>
-        <p id='flip-message'></p>
-        <Button sx={{margin: '0 auto', backgroundColor: '#3f4868', display: 'flex', justifyContent: 'center', my:'15px'}}variant="contained" onClick={() => changeGame('Home')}>Back to gaming homepage
+        <Button id='back-btn' sx={{margin: '0 auto', backgroundColor: '#3f4868', display: 'flex', justifyContent: 'center', my:'15px'}}variant="contained" onClick={() => changeGame('Home')}>
+          <FontAwesomeIcon icon={faArrowLeft} style={{marginRight:'10px'}}></FontAwesomeIcon>
+          Back to gaming homepage
             </Button>
-        <Button sx={{margin: '0 auto', backgroundColor: '#3f4868', display: 'flex', justifyContent: 'center'}}variant="contained" onClick={() => resetGame()}>Play Again
+        <Button id='again-btn' sx={{margin: '0 auto', backgroundColor: '#3f4868', display: 'flex', justifyContent: 'center'}}variant="contained" onClick={() => resetGame()}>Play Again
             </Button>
-        <p id={'message'}></p>
+        <Typography id='flip-message' sx={{textAlign: 'center', marginTop: '2%', marginBottom: '2%'}}></Typography>
+        <Typography id='message' sx={{textAlign: 'center', marginTop: '2%', marginBottom: '2%'}}></Typography>
         <Grid container spacing={2} onClick={() => incrementClick()} id='grid'>
             {/* card 6 */}
             <Grid item xs={8} sm={8} md={4} sx={{margin: '0 auto', width: '75%'}}>
@@ -140,7 +146,9 @@ const Matching = ({changeGame}) => {
           Matching Game!
             </Typography>
           </CardContent>
-          <p style={visable6 === 'matched' ? matched3 : unmatched}>Matched</p>
+          <p style={visable6 === 'matched' ? matched3 : unmatched}>Matched
+          <FontAwesomeIcon icon={faCheck} style={{paddingLeft: '5px'}}></FontAwesomeIcon>
+          </p>
             </Item>
           </Grid>
           {/* card 2 */}
@@ -154,7 +162,9 @@ const Matching = ({changeGame}) => {
           Matching Game!
             </Typography>
           </CardContent>
-          <p style={visable2 === 'matched' ? matched1 : unmatched}>Matched</p>
+          <p style={visable2 === 'matched' ? matched1 : unmatched}>Matched
+          <FontAwesomeIcon icon={faCheck} style={{paddingLeft: '5px'}}></FontAwesomeIcon>
+          </p>
             </Item>
           </Grid>
             {/* card 8 */}
@@ -168,7 +178,9 @@ const Matching = ({changeGame}) => {
           Matching Game!
             </Typography>
           </CardContent>
-          <p style={visable8 === 'matched' ? matched4 : unmatched}>Matched</p>
+          <p style={visable8 === 'matched' ? matched4 : unmatched}>Matched
+          <FontAwesomeIcon icon={faCheck} style={{paddingLeft: '5px'}}></FontAwesomeIcon>
+          </p>
             </Item>
           </Grid>
         {/* card 3 */}
@@ -186,7 +198,9 @@ const Matching = ({changeGame}) => {
               Matching Game!
               </Typography>
             </CardContent>
-            <p style={visable3 === 'matched' ? matched2 : unmatched}>Matched</p>
+            <p style={visable3 === 'matched' ? matched2 : unmatched}>Matched
+            <FontAwesomeIcon icon={faCheck} style={{paddingLeft: '5px'}}></FontAwesomeIcon>
+            </p>
             </Item>
           </Grid>
             {/* card 10 */}
@@ -200,7 +214,9 @@ const Matching = ({changeGame}) => {
           Matching Game!
             </Typography>
           </CardContent>
-          <p style={visable10 === 'matched' ? matched5 : unmatched}>Matched</p>
+          <p style={visable10 === 'matched' ? matched5 : unmatched}>Matched
+          <FontAwesomeIcon icon={faCheck} style={{paddingLeft: '5px'}}></FontAwesomeIcon>
+          </p>
             </Item>
           </Grid>
             {/* card 11 */}
@@ -218,7 +234,9 @@ const Matching = ({changeGame}) => {
             Matching Game!
             </Typography>
           </CardContent>
-          <p style={visable11 === 'matched' ? matched6 : unmatched}>Matched</p>
+          <p style={visable11 === 'matched' ? matched6 : unmatched}>Matched
+          <FontAwesomeIcon icon={faCheck} style={{paddingLeft: '5px'}}></FontAwesomeIcon>
+          </p>
             </Item>
           </Grid>
           {/* card 4 */}
@@ -232,7 +250,9 @@ const Matching = ({changeGame}) => {
           Matching Game!
             </Typography>
           </CardContent>
-          <p style={visable4 === 'matched' ? matched2 : unmatched}>Matched</p>
+          <p style={visable4 === 'matched' ? matched2 : unmatched}>Matched
+          <FontAwesomeIcon icon={faCheck} style={{paddingLeft: '5px'}}></FontAwesomeIcon>
+          </p>
             </Item>
           </Grid>
             {/* card 1 */}
@@ -250,7 +270,9 @@ const Matching = ({changeGame}) => {
               Matching Game!
               </Typography>
             </CardContent>
-            <p style={visable1 === 'matched' ? matched1 : unmatched}>Matched</p>
+            <p style={visable1 === 'matched' ? matched1 : unmatched}>Matched
+            <FontAwesomeIcon icon={faCheck} style={{paddingLeft: '5px'}}></FontAwesomeIcon>
+            </p>
             </Item>
           </Grid>
           {/* card 5 */}
@@ -268,7 +290,9 @@ const Matching = ({changeGame}) => {
             Matching Game!
             </Typography>
           </CardContent>
-          <p style={visable5 === 'matched' ? matched3 : unmatched}>Matched</p>
+          <p style={visable5 === 'matched' ? matched3 : unmatched}>Matched
+          <FontAwesomeIcon icon={faCheck} style={{paddingLeft: '5px'}}></FontAwesomeIcon>
+          </p>
             </Item>
           </Grid>
             {/* card 9 */}
@@ -286,7 +310,9 @@ const Matching = ({changeGame}) => {
             Matching Game!
             </Typography>
           </CardContent>
-          <p style={visable9 === 'matched' ? matched5 : unmatched}>Matched</p>
+          <p style={visable9 === 'matched' ? matched5 : unmatched}>Matched
+          <FontAwesomeIcon icon={faCheck} style={{paddingLeft: '5px'}}></FontAwesomeIcon>
+          </p>
             </Item>
           </Grid>
           {/* card 7 */}
@@ -304,7 +330,9 @@ const Matching = ({changeGame}) => {
             Matching Game!
             </Typography>
           </CardContent>
-          <p style={visable7 === 'matched' ? matched4 : unmatched}>Matched</p>
+          <p style={visable7 === 'matched' ? matched4 : unmatched}>Matched
+          <FontAwesomeIcon icon={faCheck} style={{paddingLeft: '5px'}}></FontAwesomeIcon>
+          </p>
             </Item>
           </Grid>
           {/* card 12 */}
@@ -318,7 +346,9 @@ const Matching = ({changeGame}) => {
           Matching Game!
             </Typography>
           </CardContent>
-          <p style={visable12 === 'matched' ? matched6 : unmatched}>Matched</p>
+          <p style={visable12 === 'matched' ? matched6 : unmatched}>Matched
+          <FontAwesomeIcon icon={faCheck} style={{paddingLeft: '5px'}}></FontAwesomeIcon>
+          </p>
             </Item>
           </Grid>
         </Grid>

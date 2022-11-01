@@ -5,6 +5,11 @@
 .cust-col {
     width: 30%;
 }
+#op:hover,
+#ttt:hover,
+#match:hover {
+    background: grey;
+}
 
 @media screen and (max-width: 992px) {
     #grid {

@@ -20,6 +20,13 @@ import HeartPtLogin from '../assets/images/site-design-images/HeartPtLogin.gif';
 import HeaderAppBar from '../components/HeaderAppBar';
 
 const useStyles = makeStyles((theme) => ({
+  //new
+  root: {
+    minHeight: '100vh',
+    backgroundImage: `url(${background})`,
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover',
+  },
   wrapper: {
     margin: "0 auto",
     height: "60%",
@@ -31,8 +38,9 @@ const useStyles = makeStyles((theme) => ({
     alignSelf: "center",
     borderRadius: "24px",
     boxShadow: "0px 1px 3px rgba(44, 42, 72, 0.9)",
-    backgroundColor: "#f4f6fc" 
-    // add media query @780px
+    backgroundColor: "#f4f6fc",
+    marginTop: '30px'
+    //TODO: add media query @780px
   },
   container: {
     margin: "100px"
@@ -111,10 +119,9 @@ function AccountLoginPatient({changePage}) {
   const btnstyle={margin:'8px 0'}
 
   return (
-    <Box className="root">
-      <HeaderAppBar className="appBarPage"/>
+    <Box className={classes.root}>
       
-      <Box className="loginWrapper">
+      <Box className={classes.wrapper}>
         <Box className={classes.container}>
           {/* <!-- left-side: image --> */}
           <Box className={classes.containerImage}>
@@ -153,19 +160,12 @@ function AccountLoginPatient({changePage}) {
               <Button type='submit' color='primary' variant="contained" style={btnstyle} fullWidth onClick={handleFormSubmit}>
                 Sign in
               </Button>
-              <p id='err-message'></p>
-
-              <Typography >
-                <Link href="#" >
-                  Forgot password?
-                </Link>
-              </Typography>
-              {/* TODO: fix this */}
+              <p id='err-message' style={{fontSize: '110%'}}></p>
               <Typography> 
                 Don't have an Account? 
                 {/* DO NOT add href attribute it will not work correctly, but can change the element type if you want */}
                 <Link onClick={() => changePage('Create')}>
-                  Sign Up 
+                 {` Sign Up`} 
                 </Link>
               </Typography>
 

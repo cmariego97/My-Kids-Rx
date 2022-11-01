@@ -13,6 +13,7 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
+import MenuItem from '@mui/material/MenuItem';
 
 //import images
 import background from '../assets/images/site-design-images/plain-animal-bg.svg';
@@ -92,7 +93,7 @@ const useStyles = makeStyles((theme) => ({
     minHeight: '100vh',
     backgroundImage: `url(${background})`,
     backgroundRepeat: 'no-repeat',
-    backgroundSize: 'cover',
+    backgroundSize: 'cover'
   },
   wrapper: {
     margin: "0 auto",
@@ -105,11 +106,12 @@ const useStyles = makeStyles((theme) => ({
     alignSelf: "center",
     borderRadius: "24px",
     boxShadow: "0px 1px 3px rgba(44, 42, 72, 0.9)",
-    backgroundColor: "#f4f6fc" 
-    // add media query @780px
+    backgroundColor: "#f4f6fc",
+    marginTop: '30px'
+    //TODO add media query @780px
   },
   container: {
-    margin: "100px"
+    margin: "100px",
   },
   containerImage: {
     margin: "4px",
@@ -164,25 +166,34 @@ function AccountCreate({changePage}) {
   const [password, setPassword] = useState('');
   const [confPassword, setConf] = useState('');
   const [checkEmail, setCheckEmail] = useState('');
+  const [checkPass, setCheckPass] = useState('');
   //mutation to add new user
   const [addProfile, { error }] = useMutation(ADD_USER);
   //sets value of state variable that corresponds to input field that was edited
   const handleChange = (event) => {
-    const { id, value } = event.target;
+    const { id, value} = event.target;
     if (id === 'user-firstName') {
       setFirstName(value);
     }
     else if (id === 'user-lastName') {
       setLastName(value);
     }
-    else if (id === 'gender') {
+    else if (value === 'Female' || value === 'Male' || value === 'Other') {
       setGender(value);
     }
-    else if (id === 'recipient-provider') {
-      setProvider(value);
+    else if (id === 'recipient-password') {
+      setPassword(value);
+      //checks length of password
+      if (password.length < 8) {
+        setCheckPass('Password must be at least 8 characters!')
+      }
+      else {
+        setCheckPass('');
+      }
     }
     else if (id === 'recipient-user') {
       setEmail(value);
+      //checks email format
       if (!email.match(/^([a-z0-9_.-]+)@([\da-z.-]+)\.([a-z.]{2,6})$/)) {
         setCheckEmail('Invalid email format!')
     } else {
@@ -193,17 +204,18 @@ function AccountCreate({changePage}) {
       setConf(value);
     }
     else {
-      setPassword(value);
+      setProvider(value);
     }
   };
   
   const handleFormSubmit = async (event) => {
     event.preventDefault();
+    console.log(gender, provider);
     //checks to make sure all input fields were filled out
     if (!firstName || !lastName || !gender || !provider || !email || !password || !confPassword) {
       document.querySelector('#err-message').textContent = 'Please fill out all required fields!';
     }
-    //checks to make sure passwords match
+    //if passwords do not match
     if(password !== confPassword) {
       document.querySelector('#err-message').textContent = 'Error creating account: passwords must match';
     }
@@ -236,7 +248,6 @@ function AccountCreate({changePage}) {
       <ThemeProvider theme={theme}>
         <div className={classes.root}>
           <CssBaseline />
-          <HeaderAppBar />
   
           <div className={classes.wrapper}>
             <div className={classes.container}>
@@ -270,8 +281,23 @@ function AccountCreate({changePage}) {
                   </div>
                   
                   <div className={classes.textFieldColumn}>
-                  {/* <CssTextField
+                  <CssTextField
+                    fullWidth
+                    select
+                    required
+                    id='gender'
+                    label='Gender'
+                    margin='normal'
+                    helperText='gender required'
+                    onChange={handleChange}
+                  >
+                    <MenuItem value='Female'>Female</MenuItem>
+                    <MenuItem value='Male'>Male</MenuItem>
+                    <MenuItem value='Other'>Other</MenuItem>
+                  </CssTextField>
+                  <CssTextField
                       fullWidth
+                      select
                       required
                       id="recipient-provider"
                       label="Provider"
@@ -279,26 +305,11 @@ function AccountCreate({changePage}) {
                       margin="normal"
                       helperText="provider required"
                       onChange={handleChange}
-                    /> */}
-                    {/* {//TODO: not sure how to make these look like the other text fields} */}
-                    <select
-                      id='gender'
-                      onChange={handleChange}
                     >
-                      <option selected>Select a gender</option>
-                      <option>Female</option>
-                      <option>Male</option>
-                      <option>Other</option>
-                    </select>
-                    <select
-                      id="recipient-provider"
-                      onChange={handleChange}
-                    >
-                      <option selected>Select a provider</option>
                       {data.providers.map((provider) => (
-                        <option>{`${provider.firstName} ${provider.lastName} ${provider.suffix}`}</option>
+                        <MenuItem value={`${provider.firstName} ${provider.lastName} ${provider.suffix}`} >{`${provider.firstName} ${provider.lastName} ${provider.suffix}`}</MenuItem>
                       ))}
-                    </select>
+                    </CssTextField>
   
                     <CssTextField
                       fullWidth
@@ -310,7 +321,7 @@ function AccountCreate({changePage}) {
                       helperText="e-mail required"
                       onChange={handleChange}
                     />
-                    <p >
+                    <p style={{fontSize: '110%'}}>
                         {checkEmail}
                     </p>
   
@@ -325,6 +336,10 @@ function AccountCreate({changePage}) {
                       helperText="password required"
                       onChange={handleChange}
                     />
+
+                      <p style={{fontSize: '110%'}}>
+                        {checkPass}
+                    </p>
   
                     <CssTextField
                       fullWidth
@@ -344,13 +359,13 @@ function AccountCreate({changePage}) {
                   <Button type='submit' color='primary' variant="contained" style={btnstyle} fullWidth onClick={handleFormSubmit}>
                     Create Account
                   </Button>
-                  <p id='err-message'></p>
+                  <p id='err-message' style={{fontSize: '110%'}}></p>
   
                   <Typography> 
                     Already have an Account? 
                     {/* DO NOT add href attribute it will not work correctly, but can change the element type if you want */}
                     <Link onClick={() =>changePage('Login')}>
-                      Login 
+                     {` Login`} 
                     </Link>
                   </Typography>
   

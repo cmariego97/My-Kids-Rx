@@ -104,6 +104,8 @@ const theme = createTheme({
         backgroundColor: '#F5F2EF',
         borderRadius: '5px',
         boxShadow: [ '0 16px 38px -12px rgb(0 0 0 / 56%)', '0 4px 25px 0px rgb(0 0 0 / 12%)', '0 8px 10px -5px rgb(0 0 0 / 20%)' ],
+        marginTop: '50px',
+        listStyleType: 'square'
     },
     avatarImage: {
         margin: '-30px auto 0',
@@ -165,7 +167,7 @@ const Imaging= () => {
             //if patient not in database
             if (!data.onePatient) {
                 return (
-                    <p>Email not on file with a provider, contact your provider for details!</p>
+                    <p style={{fontSize: '110%'}}>Email not on file with a provider, contact your provider for details!</p>
                 )
             }
             else {
@@ -174,9 +176,9 @@ const Imaging= () => {
                     return (
                         imaging.map((result) => (
                             <div>
-                                <li>{`Date: ${result.date}`}</li>
-                                <li>{`Test: ${result.type} of ${result.site}`}</li>
-                                <li>{`Results: ${result.report}`}</li>
+                                <p>{result.date}</p>
+                                <li style={{marginBottom: '5px'}}>{`Test: ${result.type} of ${result.site}`}</li>
+                                <li style={{marginBottom: '10px'}}>{`Results: ${result.report}`}</li>
                             </div>
                         
                         )
@@ -186,15 +188,19 @@ const Imaging= () => {
                 else {
                     //if no imaging results for the patient
                     return (
-                        <p>No imaging results on file!</p>
+                        <p style={{fontSize: '110%'}}>No imaging results on file!</p>
                     )
                 }
             }
         }
         return (
-            <div className={classes.cardImaging}>
-                <h1>Imaging Results</h1>
-                {renderImaging()}
+            <div className={classes.root}>
+                <div className={classes.wrapContainer}>
+                    <div className={classes.cardImaging}>
+                    <h1 style={{textAlign: 'center'}}>Imaging Results</h1>
+                    {renderImaging()}
+                    </div>
+                </div>
             </div>
         )
     }

@@ -1,5 +1,15 @@
-img {
+.ttt-img {
     margin-top: 10%;
+    border: 2px solid #a68674
+}
+#again-btn {
+    background: #3f4868;
+}
+
+#back-btn:hover,
+#change-btn:hover,
+#again-btn:hover {
+    background: grey;
 }
 
 /* accomodate smartphones */

@@ -104,6 +104,9 @@ const theme = createTheme({
         backgroundColor: '#F5F2EF',
         borderRadius: '5px',
         boxShadow: [ '0 16px 38px -12px rgb(0 0 0 / 56%)', '0 4px 25px 0px rgb(0 0 0 / 12%)', '0 8px 10px -5px rgb(0 0 0 / 20%)' ],
+        fontSize: '110%',
+        marginTop: '50px',
+        listStyleType: 'square'
     },
     avatarImage: {
         margin: '-30px auto 0',
@@ -178,13 +181,14 @@ const Lab = () => {
                 }
                 else {
                     //styles lab results differently if outside of normal range
-                    //TODO: make element with date stand out
                     const abnormal = {color: 'red'};
                     const normal = {color: 'black'}
                     return (
-                            labs.map((lab) => (
+                        <div>
+                            <h3>Abnormal results are shown in red, contact your provider with any questions!</h3>
+                            {labs.map((lab) => (
                             <div>
-                            <p>{`Results from ${lab.date}`}</p>
+                            <h3>{`Results from ${lab.date}`}</h3>
                             <p>Complete Blood Count</p>
                             <li style={lab.cbc.rbc < 4000000 || lab.cbc.rbc > 5400000 ? abnormal : normal}>
                                 {`RBC: ${lab.cbc.rbc} cells/mcL`}
@@ -250,15 +254,20 @@ const Lab = () => {
                             
                             
                         </div>
-                        ))
+                        ))}
+                        </div>
                     )
                 }
             }
         }
         return (
-            <div className={classes.cardLabResults}>
-                <h1>Lab Results</h1>
-                {renderLabs()}
+            <div className={classes.root}>
+                <div className={classes.wrapContainer}>
+                    <div className={classes.cardLabResults}>
+                    <h1>Lab Results</h1>
+                    {renderLabs()}
+                    </div>
+                </div>
             </div>
         )
     }

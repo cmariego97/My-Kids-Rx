@@ -4,13 +4,16 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
-//import x and o images 
+//import images 
 import X from '../assets/images/x.jpg';
 import O from '../assets/images/cell.jpeg';
+import background from '../assets/images/site-design-images/plain-animal-bg.svg';
 //import custom css
 import '../assets/css/ttt.css';
+//import arrow icon
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
-// TODO: style buttons
 function TTT({ changeGame }) {
     //styling for grid items
     const Item = styled(Paper)(({ theme }) => ({
@@ -20,7 +23,9 @@ function TTT({ changeGame }) {
         textAlign: 'center',
         color: theme.palette.text.secondary,
         height: '300px',
-        border: '1px solid black'
+        border: '1px solid black',
+        backgroundImage: `url(${background})`,
+        backgroundPosition: 'center'
     }));
     //alternate between player X's turn and player O's turn
     const [turn, setTurn] = useState('X');
@@ -162,7 +167,7 @@ function TTT({ changeGame }) {
             (player7 === 'O' && click7 && player5 === 'O' && click5 && player3 === 'O' && click3)) {
             document.querySelector('#test').textContent = `Game over! The winner is player ${turn}`;
             //give option to play again
-            btnDisplay = { display: 'block' };
+            btnDisplay = { display: 'block', marginBottom: '2%' };
         }
     };
     //resets game
@@ -181,16 +186,18 @@ function TTT({ changeGame }) {
     };
     
     return (
-        <Box sx={{ flexGrow: 1, background: "#a68674", padding: "1%"}}>
+        <Box sx={{ flexGrow: 1, background: "#a68674", padding: "1%", marginTop: '70px'}}>
             {chooseWinner()}
             <h1 style={{ textAlign: 'center', fontSize: "250%" }}>Tic Tac Toe</h1>
-            <Button sx={{margin: '0 auto', backgroundColor: '#3f4868', display: 'flex', justifyContent: 'center', my:'15px'}}variant="contained" onClick={() => changeGame('Home')}>Back to gaming homepage
+            <Button id='back-btn' sx={{margin: '0 auto', backgroundColor: '#3f4868', display: 'flex', justifyContent: 'center', my:'15px'}}variant="contained" onClick={() => changeGame('Home')}>
+                <FontAwesomeIcon icon={faArrowLeft} style={{marginRight:'10px'}}></FontAwesomeIcon>
+                Back to gaming homepage
             </Button>
-            <Button sx={{margin: '0 auto', backgroundColor: '#3f4868', display: 'flex', justifyContent: 'center'}}variant="contained" onClick={() => changeTurn()}>Change Player
+            <Button id='change-btn' sx={{margin: '0 auto', backgroundColor: '#3f4868', display: 'flex', justifyContent: 'center'}}variant="contained" onClick={() => changeTurn()}>Change Player
             </Button>
-            <h2>{`It is player ${turn}'s turn`}</h2>
-            <p id={'test'}></p>
-            <Button variant="outlined" sx={btnDisplay} onClick={() => resetGame()}>Play Again
+            <h2 style={{textAlign: 'center'}}>{`It is player ${turn}'s turn`}</h2>
+            <h3 id='test'></h3>
+            <Button id='again-btn' variant="contained" sx={btnDisplay} onClick={() => resetGame()}>Play Again
             </Button>
 
             <Grid container spacing={2}>
@@ -201,17 +208,20 @@ function TTT({ changeGame }) {
                             alt='game piece'
                             style={!click1 ? hidden : visible}
                             src={player1 === 'X' ? X : O}
+                            class='ttt-img'
                         ></img>
                     </Item>
                     <Item onClick={() => square2()}>
                         <img
                             alt='game piece' src={player2 === 'X' ? X : O}
                             style={!click2 ? hidden : visible}
+                            class='ttt-img'
                         ></img>
                     </Item>
                     <Item onClick={() => square3()}>
                         <img alt='game piece' src={player3 === 'X' ? X : O}
                             style={!click3 ? hidden : visible}
+                            class='ttt-img'
                         ></img>
                     </Item>
                 </Grid>
@@ -220,16 +230,19 @@ function TTT({ changeGame }) {
                     <Item onClick={() => square4()}>
                         <img alt='game piece' src={player4 === 'X' ? X : O}
                             style={!click4 ? hidden : visible}
+                            class='ttt-img'
                         ></img>
                     </Item>
                     <Item onClick={() => square5()}>
                         <img alt='game piece' src={player5 === 'X' ? X : O}
                             style={!click5 ? hidden : visible}
+                            class='ttt-img'
                         ></img>
                     </Item>
                     <Item onClick={() => square6()}>
                         <img alt='game piece' src={player6 === 'X' ? X : O}
                             style={!click6 ? hidden : visible}
+                            class='ttt-img'
                         ></img>
                     </Item>
                 </Grid>
@@ -238,16 +251,19 @@ function TTT({ changeGame }) {
                     <Item onClick={() => square7()}>
                         <img alt='game piece' src={player7 === 'X' ? X : O}
                             style={!click7 ? hidden : visible}
+                            class='ttt-img'
                         ></img>
                     </Item>
                     <Item onClick={() => square8()}>
                         <img alt='game piece' src={player8 === 'X' ? X : O}
                             style={!click8 ? hidden : visible}
+                            class='ttt-img'
                         ></img>
                     </Item>
                     <Item onClick={() => square9()}>
                         <img alt='game piece' src={player9 === 'X' ? X : O}
                             style={!click9 ? hidden : visible}
+                            class='ttt-img'
                         ></img>
                     </Item>
                 </Grid>

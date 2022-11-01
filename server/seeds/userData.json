@@ -22,5 +22,21 @@
         "gender": "Female",
         "email": "jdoe@test.com",
         "password": "password12345"
+    },
+    {
+        "firstName": "jake",
+        "lastName": "wallace",
+        "provider": "Joseph Smith MD",
+        "gender": "Male",
+        "email": "awallace@test.com",
+        "password": "password12345"
+    },
+    {
+        "firstName": "edward",
+        "lastName": "wattson",
+        "provider": "Joseph Smith MD",
+        "gender": "Male",
+        "email": "wwatson@test.com",
+        "password": "password12345"
     }
 ]

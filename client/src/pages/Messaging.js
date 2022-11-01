@@ -18,6 +18,8 @@ import Auth from '../utils/auth';
 // import MUI styles
 import { createTheme, ThemeProvider, makeStyles } from '@material-ui/core/styles';
 import { CssBaseline } from '@material-ui/core';
+//import custom css
+import '../assets/css/message.css';
 //import image
 import background from '../assets/images/site-design-images/plain-animal-bg.svg';
 
@@ -117,6 +119,7 @@ const theme = createTheme({
         backgroundColor: '#F5F2EF',
         borderRadius: '5px',
         boxShadow: [ '0 16px 38px -12px rgb(0 0 0 / 56%)', '0 4px 25px 0px rgb(0 0 0 / 12%)', '0 8px 10px -5px rgb(0 0 0 / 20%)' ],
+        marginTop: '50px'
     },
     avatarImage: {
         margin: '-30px auto 0',
@@ -182,7 +185,7 @@ const Messaging = () => {
             //if patient not in database
             if (!data.onePatient) {
                 return (
-                    <p>Email not on file with a provider, contact your provider for details!</p>
+                    <p style={{fontSize: '110%'}}>Email not on file with a provider, contact your provider for details!</p>
                 )
             }
             else {
@@ -194,7 +197,7 @@ const Messaging = () => {
                                 <div>
                                     <h2>{`Message to ${message.to}`}</h2>
                                     <h3>{`Sent on ${message.date} at ${message.time}`}</h3>
-                                    <p>{message.content}</p>
+                                    <p style={{fontSize: '110%'}}>{message.content}</p>
                                 </div>
                             ))}
                         </Typography>
@@ -226,7 +229,7 @@ const Messaging = () => {
                         <Typography gutterBottom variant="h5" component="div">
                         Send a Message
                         </Typography>
-                        <p>Messaging will not be enabled until you contact your provider!</p>
+                        <p style={{fontSize: '110%'}}>Messaging will not be enabled until you contact your provider!</p>
                     </div>
                 )
             }
@@ -247,7 +250,7 @@ const Messaging = () => {
                             />
                             <TextField
                             id="standard-multiline-static"
-                            label="Multiline"
+                            label="Type your message:"
                             multiline
                             rows={4}
                             value={content}
@@ -257,10 +260,9 @@ const Messaging = () => {
                         </Typography>
                     </CardContent>
                     <CardActions>
-                    {/* //TODO: make it prettier */}
-                        <Button sx={{backgroundColor: '#3f4868'}} variant="contained" onClick={handleFormSubmit}>Send</Button>
+                        <Button id='send' sx={{backgroundColor: '#de7171'}} variant="contained" onClick={handleFormSubmit}>Send</Button>
                     </CardActions>
-                    <p id="conf-message"></p>
+                    <p id="conf-message" style={{fontSize: '110%'}}></p>
                 </div>
                 )
             }
@@ -276,30 +278,36 @@ const Messaging = () => {
 
     const handleFormSubmit = async(e) => {
         e.preventDefault();
-        try {
-            const { data } = await addMessage({
-                variables: {email, to, date, time, content}
-            })
-            //reset content field
-            setContent('');
-            
-            const success = data.addMessage.messages
-            const index = success.length - 1
-            //confirmation message
-            document.querySelector('#conf-message').textContent = `Message delivered at to ${success[index].to} at ${success[index].time}`;
-            //add new message to messages list
-            const recipient = document.createElement('h2');
-            recipient.textContent = `Message to ${success[index].to}`;
-            const when = document.createElement('h3');
-            when.textContent = `Sent on ${success[index].date} at ${success[index].time}`;
-            const text = document.createElement('p');
-            text.textContent = success[index].content;
-            document.querySelector('#new-container').append(recipient, when, text)
-            document.querySelector('#new-header').textContent = 'New Messages';
+        //make sure content field is filled out (provider is autofilled)
+        if(!to || !content) {
+            document.querySelector('#conf-message').textContent = 'Message cannot be blank!'
         }
-        catch (err) {
-            console.error(err);
-            document.querySelector('#conf-message').textContent = `Message unable to be sent to ${to}`
+        else {
+            try {
+                const { data } = await addMessage({
+                    variables: {email, to, date, time, content}
+                })
+                //reset content field
+                setContent('');
+                
+                const success = data.addMessage.messages
+                const index = success.length - 1
+                //confirmation message
+                document.querySelector('#conf-message').textContent = `Message delivered to ${success[index].to} at ${success[index].time}`;
+                //add new message to messages list
+                const recipient = document.createElement('h2');
+                recipient.textContent = `Message to ${success[index].to}`;
+                const when = document.createElement('h3');
+                when.textContent = `Sent on ${success[index].date} at ${success[index].time}`;
+                const text = document.createElement('p');
+                text.textContent = success[index].content;
+                document.querySelector('#new-container').append(recipient, when, text)
+                document.querySelector('#new-header').textContent = 'New Messages';
+            }
+            catch (err) {
+                console.error(err);
+                document.querySelector('#conf-message').textContent = `Message unable to be sent to ${to}`
+            }
         }
     }
     //set value of content state variable from input field
@@ -310,7 +318,9 @@ const Messaging = () => {
     }
     //if not sent message screen render messaging homepage
     return (
-        <div className={classes.cardMessages}>
+        <div className={classes.root}>
+            <div className={classes.wrapContainer}>
+            <div className={classes.cardMessages}>
             {/* load sent messages */}
             <div sx={{ maxWidth: 345 }}>
                 <CardContent>
@@ -330,7 +340,9 @@ const Messaging = () => {
             </div>
             {/* form to send a message */}
             {renderForm()}
-    </div>
+            </div>
+            </div>
+        </div>
     )
 }
 

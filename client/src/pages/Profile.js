@@ -33,6 +33,8 @@ import { textTransform } from '@mui/system';
 // import FontAwesome Icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; 
 import { faUserPen, faTrashCan, faEnvelope, faUserDoctor } from '@fortawesome/free-solid-svg-icons';
+//import custom css
+import '../assets/css/profile.css'
 
 const theme = createTheme({
     palette: {
@@ -144,62 +146,6 @@ const useStyles = makeStyles((theme) => ({
         borderRadius: '5px',
         boxShadow: [ '0 16px 38px -12px rgb(0 0 0 / 56%)', '0 4px 25px 0px rgb(0 0 0 / 12%)', '0 8px 10px -5px rgb(0 0 0 / 20%)' ],
     },
-    cardMessages: {
-        display: 'flex',
-        position: 'relative',
-        flexDirection: 'column',
-        flexWrap: 'nowrap',
-        margin: '0.25rem auto',
-        padding: '2rem 2.5rem',
-        width: '40%',
-        minWidth: '550px',
-        minHeight: '500px',
-        backgroundColor: '#F5F2EF',
-        borderRadius: '5px',
-        boxShadow: [ '0 16px 38px -12px rgb(0 0 0 / 56%)', '0 4px 25px 0px rgb(0 0 0 / 12%)', '0 8px 10px -5px rgb(0 0 0 / 20%)' ],
-    },
-    cardAppointments: {
-        display: 'flex',
-        position: 'relative',
-        flexDirection: 'column',
-        flexWrap: 'nowrap',
-        margin: '0.25rem auto',
-        padding: '2rem 2.5rem',
-        width: '55%',
-        minWidth: '550px',
-        minHeight: '500px',
-        backgroundColor: '#F5F2EF',
-        borderRadius: '5px',
-        boxShadow: [ '0 16px 38px -12px rgb(0 0 0 / 56%)', '0 4px 25px 0px rgb(0 0 0 / 12%)', '0 8px 10px -5px rgb(0 0 0 / 20%)' ],
-    },
-    cardLabResults: {
-        display: 'flex',
-        position: 'relative',
-        flexDirection: 'column',
-        flexWrap: 'nowrap',
-        margin: '0.25rem auto',
-        padding: '2rem 2.5rem',
-        width: '20%',
-        minWidth: '550px',
-        minHeight: '500px',
-        backgroundColor: '#F5F2EF',
-        borderRadius: '5px',
-        boxShadow: [ '0 16px 38px -12px rgb(0 0 0 / 56%)', '0 4px 25px 0px rgb(0 0 0 / 12%)', '0 8px 10px -5px rgb(0 0 0 / 20%)' ],
-    },
-    cardImaging: {
-        display: 'flex',
-        position: 'relative',
-        flexDirection: 'column',
-        flexWrap: 'nowrap',
-        margin: '0.25rem auto',
-        padding: '2rem 2.5rem',
-        width: '70%',
-        minWidth: '550px',
-        minHeight: '500px',
-        backgroundColor: '#F5F2EF',
-        borderRadius: '5px',
-        boxShadow: [ '0 16px 38px -12px rgb(0 0 0 / 56%)', '0 4px 25px 0px rgb(0 0 0 / 12%)', '0 8px 10px -5px rgb(0 0 0 / 20%)' ],
-    },
     avatarImage: {
         margin: '-30px auto 0',
         position: 'relative',
@@ -225,6 +171,13 @@ const useStyles = makeStyles((theme) => ({
     userInfo: {
         margin: '0 auto',
         padding: '0.25rem',
+    },
+    confirmDel: {
+        color: 'black',
+        fontSize: '110%',
+        marginTop: '30%',
+        padding: '2%',
+        width: '500px'
     }
 }))
 
@@ -258,6 +211,8 @@ const style = {
     border: '2px solid #000',
     boxShadow: 24,
     p: 4,
+    display: 'flex',
+    flexDirection: 'column'
 };
 
 const Profile = () => {
@@ -407,6 +362,8 @@ const Profile = () => {
     const cxDelete = () => {
         document.querySelector('#conf-delete').textContent = '';
         setVisible(false);
+        setInputVis(false);
+        document.querySelector('#user-del').textContent = ''
     }
     //if user confirms wanting to delete acct
     const confDelete = async(e) => {
@@ -440,9 +397,10 @@ const Profile = () => {
     return (
         <ThemeProvider theme={theme}>
             <div className={classes.root}>
-                <div className={classes.wrapContainer}>
+                <div  
+                className={classes.wrapContainer}>
 
-                    {/* ROW 1 */}
+                    {/* Column 1 */}
                     <div className={classes.rowContainer}>
                         {/* Profile Card - avatar + name */}
                         <div className={classes.cardProfile}>
@@ -463,7 +421,7 @@ const Profile = () => {
                             <Divider variant="middle" textAlign="right">
                                 <div>
                                     <Typography variant="p">
-                                        patient info 
+                                        Account Information 
                                     </Typography>
                                     <IconButton aria-describedby={id} onClick={handleClickPopper}>
                                         <FontAwesomeIcon icon={faUserPen} style={{color: "#3f4868", height: "18", width: "18"}} />
@@ -481,22 +439,15 @@ const Profile = () => {
                                     >
                                         {/* popover content here */}
                                     
-                                        <Typography align='center' sx={{ p: 2 }}>User Settings</Typography>
-                                        <div>
-
-
-                                        {/* <Button type='submit' color='primary' variant="contained" style={btnstyle} fullWidth onClick={handleOpen}>
-                                            Create Account
-                                        </Button> */}
-
-
-                                            <Button 
+                                        <Typography align='center' sx={{ p: 2, paddingTop: '1%'}}>User Settings</Typography>
+                                        <div style={{padding: '2%'}}>
+                                            <Button id='change-btn'
                                             sx={{backgroundColor: '#3f4868'}} type='submit' color='primary' variant="contained" onClick={handleOpen} style={btnstyle} fullWidth>
                                                 <Typography variant="p" className={classes.settingsOption}>
                                                     Change Password
                                                 </Typography> 
                                             </Button>
-                                            <Button 
+                                            <Button id='del-btn'
                                             sx={{backgroundColor: '#3f4868'}}type='submit' color='primary' variant="contained" onClick={initDelete} fullWidth>
                                                 <Typography variant="p" className={classes.settingsOption}>
                                                     Delete Account
@@ -512,33 +463,32 @@ const Profile = () => {
                                 <div className={classes.boxUserInfo}>
                                     <Typography variant="h5" className={classes.userInfo}>
                                         <FontAwesomeIcon icon={faEnvelope} />
-                                        <span>{`${user.email}`}</span>
+                                        <span style={{marginLeft: '5px'}}>{`${user.email}`}</span>
                                     </Typography>
                                 </div>
                                 <div className={classes.boxUserInfo}>
                                     <Typography variant="h5" className={classes.userInfo}>
                                         <FontAwesomeIcon icon={faUserDoctor}/>
-                                        <span>{`${user.provider}`}</span>
+                                        <span style={{marginLeft: '5px'}}>{`${user.provider}`}</span>
                                     </Typography>
                                 </div>
                             </div>
                         </div>
 
                         {/* confirm msg to delete */}
-                        {/* // TODO: make this into a popover, it is showing up weird */}
                         <div className={classes.confirmDel}>
                             <p id='conf-delete'></p>
 
-                            <Button style={visible ? show : hidden} onClick={confDelete}>Yes</Button>
+                            <Button id='yes' style={visible ? show : hidden} onClick={confDelete}>Yes</Button>
 
                             <label style={inputVis ? show : hidden}>Enter password:</label>
                             <input value={delPass} onChange={handleDelChange} style={inputVis ? show : hidden} type='password'></input>
 
-                            <Button style={inputVis ? show : hidden} onClick={delAcct}>Delete Account</Button>
-                            <Button style={visible ? show : hidden} onClick={cxDelete}>Cancel</Button>
+                            <Button id='yes-del' style={inputVis ? show : hidden} onClick={delAcct}>Delete Account</Button>
+
+                            <Button id='no' style={visible ? show : hidden} onClick={cxDelete}>Cancel</Button>
                             <p id='user-del'></p>
                         </div>
-                        {/* //TODO:make this look prettier */}
                         {/* MODAL - change password */}
                         <Modal
                             open={open}
@@ -551,11 +501,12 @@ const Profile = () => {
                                 Enter Current Password
                             </Typography>
                             <input type='password' name='currentPass'value={currentPass} onChange={handleChange}></input>
-                            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                            <Typography id="modal-modal-description" variant="h6" component="h2" sx={{ mt: 2 }}>
                                 Enter New Password
                             </Typography>
                             <input type='password' name='newPass' value={newPass} onChange={handleChange}></input>
-                            <button onClick={changePassword}>Change Password</button>
+
+                            <Button id='change-pass' sx={{backgroundColor: '#de7171', marginTop: '20px'}} variant="contained" onClick={changePassword}>Update Password</Button>
                             <p id='message-el'></p>
                             </Box>
                         </Modal>
