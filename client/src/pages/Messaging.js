@@ -18,6 +18,8 @@ import Auth from '../utils/auth';
 // import MUI styles
 import { createTheme, ThemeProvider, makeStyles } from '@material-ui/core/styles';
 import { CssBaseline } from '@material-ui/core';
+//import custom css
+import '../assets/css/message.css';
 //import image
 import background from '../assets/images/site-design-images/plain-animal-bg.svg';
 
@@ -257,8 +259,7 @@ const Messaging = () => {
                         </Typography>
                     </CardContent>
                     <CardActions>
-                    {/* //TODO: make it prettier */}
-                        <Button sx={{backgroundColor: '#3f4868'}} variant="contained" onClick={handleFormSubmit}>Send</Button>
+                        <Button id='send' sx={{backgroundColor: '#de7171'}} variant="contained" onClick={handleFormSubmit}>Send</Button>
                     </CardActions>
                     <p id="conf-message"></p>
                 </div>
