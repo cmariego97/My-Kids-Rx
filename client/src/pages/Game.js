@@ -15,7 +15,7 @@ import TttImg from '../assets/images/game-ttt.png';
 import MatchImg from '../assets/images/game-match.jpeg';
 //import custom css
 import '../assets/css/game.css';
-//TODO: style buttons
+
 const Game = () => {
     //styling for grid items
     const Item = styled(Paper)(({ theme }) => ({
@@ -58,25 +58,22 @@ const Game = () => {
                 <Grid class='cust-col'>
                     <Item>
                         <img src={OpImg} alt='operation' style={{width: '250px', margin: '0 auto'}}></img>
-                        {/* <Button type='submit' color='primary' variant="contained" style={btnstyle} fullWidth onClick={handleOpen}>
-                        Create Account
-                        </Button> */}
 
-                        <Button sx={{margin: '0 auto', backgroundColor: '#3f4868'}}variant="contained"  onClick={() => changeGame('Operation')}>Play Operation
+                        <Button id='op' sx={{margin: '0 auto', backgroundColor: '#3f4868'}}variant="contained"  onClick={() => changeGame('Operation')}>Play Operation
                          </Button>
                     </Item>
                 </Grid>
                 <Grid class='cust-col'>
                     <Item>
                         <img src={TttImg} alt='tic tac toe' style={{width: '250px', margin: '0 auto'}}></img>
-                        <Button sx={{margin: '0 auto', backgroundColor: '#3f4868'}}variant="contained" onClick={() => changeGame('TTT')}>Play Tic Tac Toe
+                        <Button id='ttt' sx={{margin: '0 auto', backgroundColor: '#3f4868'}}variant="contained" onClick={() => changeGame('TTT')}>Play Tic Tac Toe
                         </Button>
                     </Item>
                 </Grid>
                 <Grid class='cust-col'>
                     <Item>
                         <img src={MatchImg} alt='matching game' style={{width: '250px', margin: '0 auto'}}></img>
-                        <Button sx={{margin: '0 auto', backgroundColor: '#3f4868'}}variant="contained" onClick={() => changeGame('Matching')}>Play Matching
+                        <Button id='match' sx={{margin: '0 auto', backgroundColor: '#3f4868'}}variant="contained" onClick={() => changeGame('Matching')}>Play Matching
                         </Button>
                     </Item>
                 </Grid>
