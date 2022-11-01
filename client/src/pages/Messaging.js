@@ -249,7 +249,7 @@ const Messaging = () => {
                             />
                             <TextField
                             id="standard-multiline-static"
-                            label="Multiline"
+                            label="Type your message:"
                             multiline
                             rows={4}
                             value={content}
