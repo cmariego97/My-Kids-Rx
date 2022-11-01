@@ -169,34 +169,33 @@ function AccountCreate({changePage}) {
   const [addProfile, { error }] = useMutation(ADD_USER);
   //sets value of state variable that corresponds to input field that was edited
   const handleChange = (event) => {
-    // const { id, name, value} = event.target;
-    console.log(event.target.parentElement);
-    // if (id === 'user-firstName') {
-    //   setFirstName(value);
-    // }
-    // else if (id === 'user-lastName') {
-    //   setLastName(value);
-    // }
-    // else if (id === 'gender') {
-    //   setGender(value);
-    // }
-    // else if (id === 'recipient-provider') {
-    //   setProvider(value);
-    // }
-    // else if (id === 'recipient-user') {
-    //   setEmail(value);
-    //   if (!email.match(/^([a-z0-9_.-]+)@([\da-z.-]+)\.([a-z.]{2,6})$/)) {
-    //     setCheckEmail('Invalid email format!')
-    // } else {
-    //   setCheckEmail('');
-    // }
-    // }
-    // else if (id === 'conf-password') {
-    //   setConf(value);
-    // }
-    // else {
-    //   setPassword(value);
-    // }
+    const { id, value} = event.target;
+    if (id === 'user-firstName') {
+      setFirstName(value);
+    }
+    else if (id === 'user-lastName') {
+      setLastName(value);
+    }
+    else if (value === 'Female' || value === 'Male' || value === 'Other') {
+      setGender(value);
+    }
+    else if (id === 'recipient-password') {
+      setPassword(value);
+    }
+    else if (id === 'recipient-user') {
+      setEmail(value);
+      if (!email.match(/^([a-z0-9_.-]+)@([\da-z.-]+)\.([a-z.]{2,6})$/)) {
+        setCheckEmail('Invalid email format!')
+    } else {
+      setCheckEmail('');
+    }
+    }
+    else if (id === 'conf-password') {
+      setConf(value);
+    }
+    else {
+      setProvider(value);
+    }
   };
   
   const handleFormSubmit = async (event) => {
@@ -283,9 +282,9 @@ function AccountCreate({changePage}) {
                     helperText='gender required'
                     onChange={handleChange}
                   >
-                    <MenuItem name='gender' value='Female'>Female</MenuItem>
-                    <MenuItem name='gender' value='Male'>Male</MenuItem>
-                    <MenuItem name='gender' value='Other'>Other</MenuItem>
+                    <MenuItem value='Female'>Female</MenuItem>
+                    <MenuItem value='Male'>Male</MenuItem>
+                    <MenuItem value='Other'>Other</MenuItem>
                   </CssTextField>
                   <CssTextField
                       fullWidth
