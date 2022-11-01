@@ -463,13 +463,13 @@ const Profile = () => {
                                 <div className={classes.boxUserInfo}>
                                     <Typography variant="h5" className={classes.userInfo}>
                                         <FontAwesomeIcon icon={faEnvelope} />
-                                        <span>{`${user.email}`}</span>
+                                        <span style={{marginLeft: '5px'}}>{`${user.email}`}</span>
                                     </Typography>
                                 </div>
                                 <div className={classes.boxUserInfo}>
                                     <Typography variant="h5" className={classes.userInfo}>
                                         <FontAwesomeIcon icon={faUserDoctor}/>
-                                        <span>{`${user.provider}`}</span>
+                                        <span style={{marginLeft: '5px'}}>{`${user.provider}`}</span>
                                     </Typography>
                                 </div>
                             </div>

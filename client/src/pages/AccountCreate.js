@@ -248,7 +248,6 @@ function AccountCreate({changePage}) {
       <ThemeProvider theme={theme}>
         <div className={classes.root}>
           <CssBaseline />
-          {/* <HeaderAppBar /> */}
   
           <div className={classes.wrapper}>
             <div className={classes.container}>

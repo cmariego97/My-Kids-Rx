@@ -120,7 +120,6 @@ function AccountLoginPatient({changePage}) {
 
   return (
     <Box className={classes.root}>
-      {/* <HeaderAppBar className="appBarPage"/> */}
       
       <Box className={classes.wrapper}>
         <Box className={classes.container}>
