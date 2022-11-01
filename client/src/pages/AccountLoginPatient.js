@@ -38,8 +38,9 @@ const useStyles = makeStyles((theme) => ({
     alignSelf: "center",
     borderRadius: "24px",
     boxShadow: "0px 1px 3px rgba(44, 42, 72, 0.9)",
-    backgroundColor: "#f4f6fc" 
-    // add media query @780px
+    backgroundColor: "#f4f6fc",
+    marginTop: '30px'
+    //TODO: add media query @780px
   },
   container: {
     margin: "100px"
@@ -119,7 +120,7 @@ function AccountLoginPatient({changePage}) {
 
   return (
     <Box className={classes.root}>
-      <HeaderAppBar className="appBarPage"/>
+      {/* <HeaderAppBar className="appBarPage"/> */}
       
       <Box className={classes.wrapper}>
         <Box className={classes.container}>

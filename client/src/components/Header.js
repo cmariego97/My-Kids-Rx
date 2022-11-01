@@ -12,6 +12,8 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 // import react scroll
 import { Link as Scroll } from 'react-scroll';
+//import image
+import background from '../assets/images/site-design-images/plain-animal-bg.svg';
 
 /* website theme palette hex codes:
     • light shades - snowdrift: #FAFBF9
@@ -58,6 +60,7 @@ const useStyles = makeStyles((theme) => ({
     },
     container: {
         textAlign: 'center',
+        marginTop: '700px'
     },
     containerInfo: {
         display: 'flex',
@@ -107,7 +110,6 @@ export default function Header() {
 
     return (
         <div className={classes.root} id="header">
-            <HeaderAppBar />
 
             <Collapse
                 in={checked}

@@ -21,14 +21,13 @@ import { faStethoscope, faSyringe, faGamepad, faMicroscope, faXRay, faFilePrescr
 export default function Homepage({changePage}) {
     return (
         <Box>
-            {/* Header */}
             <Box className="root">
                 <CssBaseline />
-                <Header/>\
+                <Header/>
             </Box>
 
             {/* Features and Services */}
-            <Box className="wrapper">
+            <Box className="wrapper" sx={{border: '2px solid black'}}>
                 <Typography variant="h4" className="bigSpace" color="#DE7171">
                     Our Services + Features
                 </Typography>

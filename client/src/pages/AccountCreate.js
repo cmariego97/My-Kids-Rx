@@ -93,7 +93,7 @@ const useStyles = makeStyles((theme) => ({
     minHeight: '100vh',
     backgroundImage: `url(${background})`,
     backgroundRepeat: 'no-repeat',
-    backgroundSize: 'cover',
+    backgroundSize: 'cover'
   },
   wrapper: {
     margin: "0 auto",
@@ -106,11 +106,12 @@ const useStyles = makeStyles((theme) => ({
     alignSelf: "center",
     borderRadius: "24px",
     boxShadow: "0px 1px 3px rgba(44, 42, 72, 0.9)",
-    backgroundColor: "#f4f6fc" 
-    // add media query @780px
+    backgroundColor: "#f4f6fc",
+    marginTop: '30px'
+    //TODO add media query @780px
   },
   container: {
-    margin: "100px"
+    margin: "100px",
   },
   containerImage: {
     margin: "4px",
@@ -247,7 +248,7 @@ function AccountCreate({changePage}) {
       <ThemeProvider theme={theme}>
         <div className={classes.root}>
           <CssBaseline />
-          <HeaderAppBar />
+          {/* <HeaderAppBar /> */}
   
           <div className={classes.wrapper}>
             <div className={classes.container}>
