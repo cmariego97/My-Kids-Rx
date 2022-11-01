@@ -192,9 +192,13 @@ const Imaging= () => {
             }
         }
         return (
-            <div className={classes.cardImaging}>
-                <h1 style={{textAlign: 'center'}}>Imaging Results</h1>
-                {renderImaging()}
+            <div className={classes.root}>
+                <div className={classes.wrapContainer}>
+                    <div className={classes.cardImaging}>
+                    <h1 style={{textAlign: 'center'}}>Imaging Results</h1>
+                    {renderImaging()}
+                    </div>
+                </div>
             </div>
         )
     }

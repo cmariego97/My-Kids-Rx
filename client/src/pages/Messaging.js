@@ -311,7 +311,9 @@ const Messaging = () => {
     }
     //if not sent message screen render messaging homepage
     return (
-        <div className={classes.cardMessages}>
+        <div className={classes.root}>
+            <div className={classes.wrapContainer}>
+            <div className={classes.cardMessages}>
             {/* load sent messages */}
             <div sx={{ maxWidth: 345 }}>
                 <CardContent>
@@ -331,7 +333,9 @@ const Messaging = () => {
             </div>
             {/* form to send a message */}
             {renderForm()}
-    </div>
+            </div>
+            </div>
+        </div>
     )
 }
 

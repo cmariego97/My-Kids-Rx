@@ -150,12 +150,16 @@ const style = {
 const Appointment = () => {
    const classes = useStyles();
    return(
-   <div className={classes.cardAppointments}>
-    <h1>Upcoming Appointments</h1>
-    <Appt/>
-    <h1>Past Appointments</h1>
-    <Note/>
-   </div>
+    <div className={classes.root}>
+        <div className={classes.wrapContainer}>
+            <div className={classes.cardAppointments}>
+                <h1>Upcoming Appointments</h1>
+                <Appt/>
+                <h1>Past Appointments</h1>
+                <Note/>
+            </div>
+        </div>
+    </div>
 
    );
 }
