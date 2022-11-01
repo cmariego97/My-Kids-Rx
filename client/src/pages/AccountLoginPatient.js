@@ -20,6 +20,13 @@ import HeartPtLogin from '../assets/images/site-design-images/HeartPtLogin.gif';
 import HeaderAppBar from '../components/HeaderAppBar';
 
 const useStyles = makeStyles((theme) => ({
+  //new
+  root: {
+    minHeight: '100vh',
+    backgroundImage: `url(${background})`,
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover',
+  },
   wrapper: {
     margin: "0 auto",
     height: "60%",
@@ -111,10 +118,10 @@ function AccountLoginPatient({changePage}) {
   const btnstyle={margin:'8px 0'}
 
   return (
-    <Box className="root">
+    <Box className={classes.root}>
       <HeaderAppBar className="appBarPage"/>
       
-      <Box className="loginWrapper">
+      <Box className={classes.wrapper}>
         <Box className={classes.container}>
           {/* <!-- left-side: image --> */}
           <Box className={classes.containerImage}>
