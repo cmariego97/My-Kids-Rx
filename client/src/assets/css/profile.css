@@ -21,14 +21,17 @@
 #no:hover {
     background: #3f4868;
 }
-/* for vitals component */
-#link {
+#vax-link,
+#vit-link,
+#appt-link{
     text-decoration: none;
     background: #de7171;
     color: white;
     padding: 1%;
     border-radius: 10px;
 }
-#link:hover {
+#vax-link:hover,
+#vit-link:hover,
+#appt-link:hover {
     background: #3f4868;
 }

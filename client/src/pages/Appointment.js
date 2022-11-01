@@ -1,5 +1,6 @@
 import { ClassNames } from '@emotion/react';
 import React from 'react';
+import { ExternalLink } from 'react-external-link';
 //import components
 import Appt from '../components/Appt'
 import Note from '../components/Note'
@@ -158,6 +159,11 @@ const Appointment = () => {
             <div className={classes.cardAppointments}>
                 <h1>Upcoming Appointments</h1>
                 <Appt/>
+                <p style={{paddingLeft: '10px'}}>
+                        <ExternalLink id='appt-link' href='https://www.mottchildren.org/conditions-treatments/general-peds/well-child-visits'>
+                        Recommended Check-Up Schedule
+                        </ExternalLink>
+                </p>
                 <h1>Past Appointments</h1>
                 <Note/>
             </div>

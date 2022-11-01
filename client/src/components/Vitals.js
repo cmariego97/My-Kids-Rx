@@ -1,7 +1,4 @@
 import React from 'react';
-import { ExternalLink } from 'react-external-link';
-//import custom css
-import '../assets/css/profile.css';
 
 const Vitals = ({vitals}) => {
     //converts ht and wt to bmi
@@ -31,11 +28,6 @@ const Vitals = ({vitals}) => {
                     <li>{ `Weight: ${result.weight} pounds`}</li>
                     <li>{`BMI: ${getBMI(result.height, result.weight)}`}
                     </li>
-                    <p style={{paddingLeft: '10px'}}>
-                        <ExternalLink id='link' href='https://www.cdc.gov/healthyweight/assessing/bmi/index.html'>
-                        What is BMI?
-                        </ExternalLink>
-                        </p>
                     <li>{`Blood Pressure: ${result.systolicBP}/${result.diastolicBP}`}</li>
                     <li>{`Heart Rate: ${result.hr} bpm`}</li>
                     <li>{`SpO2: ${result.o2} %`}</li>

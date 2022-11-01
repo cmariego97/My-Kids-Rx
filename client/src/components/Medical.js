@@ -1,4 +1,5 @@
 import React from 'react';
+import { ExternalLink } from 'react-external-link';
 import { useQuery } from '@apollo/client';
 import { QUERY_INFO } from '../utils/queries';
 import Auth from '../utils/auth';
@@ -146,9 +147,19 @@ const Medical = () => {
 
                 <Typography variant="h5" className={classes.infoLabel}>Vaccines:</Typography>
                 <div className={classes.infoContent}><Vaccine vaccines={vaccines}/></div>
+                <p style={{paddingLeft: '10px'}}>
+                        <ExternalLink id='vax-link' href='https://www.cdc.gov/vaccines/schedules/hcp/imz/child-adolescent.html'>
+                        Recommended Vaccination Schedule
+                        </ExternalLink>
+                        </p>
 
                 <Typography variant="h5" className={classes.infoLabel}>Vital Signs:</Typography>
                 <div className={classes.infoContent}><Vitals vitals={vitals}/></div>
+                <p style={{paddingLeft: '10px'}}>
+                        <ExternalLink id='vit-link' href='https://health.clevelandclinic.org/pediatric-vital-signs/'>
+                        Normal Vital Signs
+                        </ExternalLink>
+                        </p>
             </div>
         )
         }
