@@ -58,7 +58,7 @@ const Game = () => {
                 <Grid class='cust-col'>
                     <Item>
                         <img src={OpImg} alt='operation' style={{width: '250px', margin: '0 auto'}}></img>
-
+                        <p style={{fontSize: '120%'}}>A classic!</p>
                         <Button id='op' sx={{margin: '0 auto', backgroundColor: '#3f4868'}}variant="contained"  onClick={() => changeGame('Operation')}>Play Operation
                          </Button>
                     </Item>
@@ -66,6 +66,7 @@ const Game = () => {
                 <Grid class='cust-col'>
                     <Item>
                         <img src={TttImg} alt='tic tac toe' style={{width: '250px', margin: '0 auto'}}></img>
+                        <p style={{fontSize: '120%'}}>Just like you play at school...but check out our game pieces!</p>
                         <Button id='ttt' sx={{margin: '0 auto', backgroundColor: '#3f4868'}}variant="contained" onClick={() => changeGame('TTT')}>Play Tic Tac Toe
                         </Button>
                     </Item>
@@ -73,6 +74,7 @@ const Game = () => {
                 <Grid class='cust-col'>
                     <Item>
                         <img src={MatchImg} alt='matching game' style={{width: '250px', margin: '0 auto'}}></img>
+                        <p style={{fontSize: '120%'}}>Play this memory matching game to learn about the human body!</p>
                         <Button id='match' sx={{margin: '0 auto', backgroundColor: '#3f4868'}}variant="contained" onClick={() => changeGame('Matching')}>Play Matching
                         </Button>
                     </Item>
