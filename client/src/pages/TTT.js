@@ -9,6 +9,9 @@ import X from '../assets/images/x.jpg';
 import O from '../assets/images/cell.jpeg';
 //import custom css
 import '../assets/css/ttt.css';
+//import arrow icon
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 function TTT({ changeGame }) {
     //styling for grid items
@@ -183,7 +186,9 @@ function TTT({ changeGame }) {
         <Box sx={{ flexGrow: 1, background: "#a68674", padding: "1%"}}>
             {chooseWinner()}
             <h1 style={{ textAlign: 'center', fontSize: "250%" }}>Tic Tac Toe</h1>
-            <Button id='back-btn' sx={{margin: '0 auto', backgroundColor: '#3f4868', display: 'flex', justifyContent: 'center', my:'15px'}}variant="contained" onClick={() => changeGame('Home')}>Back to gaming homepage
+            <Button id='back-btn' sx={{margin: '0 auto', backgroundColor: '#3f4868', display: 'flex', justifyContent: 'center', my:'15px'}}variant="contained" onClick={() => changeGame('Home')}>
+                <FontAwesomeIcon icon={faArrowLeft} style={{marginRight:'10px'}}></FontAwesomeIcon>
+                Back to gaming homepage
             </Button>
             <Button id='change-btn' sx={{margin: '0 auto', backgroundColor: '#3f4868', display: 'flex', justifyContent: 'center'}}variant="contained" onClick={() => changeTurn()}>Change Player
             </Button>

@@ -8,6 +8,9 @@ import Wishbone from '../assets/images/wishbone.jpeg';
 import Apple from '../assets/images/apple.jpeg';
 import Hammer from '../assets/images/hammer.jpeg';
 import Light from '../assets/images/light.png'
+//import arrow icon
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 const Operation = ({changeGame}) => {
     //keeps track of current score
@@ -130,7 +133,9 @@ const Operation = ({changeGame}) => {
             id='info' style={{background: '#a68674'}}
             >
                 <h2 id='timer'></h2>
-                <button id='back' onClick={() => changeGame('Home')}>Back to Gaming Homepage</button>
+                <button id='back' onClick={() => changeGame('Home')}>
+                  <FontAwesomeIcon icon={faArrowLeft}style={{marginRight:'10px'}}></FontAwesomeIcon>
+                  Back to Gaming Homepage</button>
                 <h2>Score: <span id='score'>0</span></h2>
                 <p id='warning'>Remove the objects that do not belong! Do not touch the patient!</p>
                 <p id='game-over'></p>

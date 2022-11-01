@@ -17,6 +17,9 @@ import Stomach from '../assets/images/stomach.jpg'
 import Toes from '../assets/images/toes.jpg'
 //import custom css
 import '../assets/css/match.css';
+//import arrow icon
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 const Matching = ({changeGame}) => {
   //styling for grid items
@@ -120,7 +123,9 @@ const Matching = ({changeGame}) => {
       <Box sx={{ flexGrow: 1, background: "#a68674", padding: "1%" }}>
          {matches()}
         <h1 style={{textAlign: 'center'}}>Human Body Matching Game</h1>
-        <Button id='back-btn' sx={{margin: '0 auto', backgroundColor: '#3f4868', display: 'flex', justifyContent: 'center', my:'15px'}}variant="contained" onClick={() => changeGame('Home')}>Back to gaming homepage
+        <Button id='back-btn' sx={{margin: '0 auto', backgroundColor: '#3f4868', display: 'flex', justifyContent: 'center', my:'15px'}}variant="contained" onClick={() => changeGame('Home')}>
+          <FontAwesomeIcon icon={faArrowLeft} style={{marginRight:'10px'}}></FontAwesomeIcon>
+          Back to gaming homepage
             </Button>
         <Button id='again-btn' sx={{margin: '0 auto', backgroundColor: '#3f4868', display: 'flex', justifyContent: 'center'}}variant="contained" onClick={() => resetGame()}>Play Again
             </Button>
