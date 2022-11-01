@@ -33,6 +33,8 @@ import { textTransform } from '@mui/system';
 // import FontAwesome Icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; 
 import { faUserPen, faTrashCan, faEnvelope, faUserDoctor } from '@fortawesome/free-solid-svg-icons';
+//import custom css
+import '../assets/css/profile.css'
 
 const theme = createTheme({
     palette: {
@@ -463,7 +465,7 @@ const Profile = () => {
                             <Divider variant="middle" textAlign="right">
                                 <div>
                                     <Typography variant="p">
-                                        patient info 
+                                        Account Information 
                                     </Typography>
                                     <IconButton aria-describedby={id} onClick={handleClickPopper}>
                                         <FontAwesomeIcon icon={faUserPen} style={{color: "#3f4868", height: "18", width: "18"}} />
@@ -481,22 +483,15 @@ const Profile = () => {
                                     >
                                         {/* popover content here */}
                                     
-                                        <Typography align='center' sx={{ p: 2 }}>User Settings</Typography>
-                                        <div>
-
-
-                                        {/* <Button type='submit' color='primary' variant="contained" style={btnstyle} fullWidth onClick={handleOpen}>
-                                            Create Account
-                                        </Button> */}
-
-
-                                            <Button 
+                                        <Typography align='center' sx={{ p: 2, paddingTop: '1%'}}>User Settings</Typography>
+                                        <div style={{padding: '2%'}}>
+                                            <Button id='change-btn'
                                             sx={{backgroundColor: '#3f4868'}} type='submit' color='primary' variant="contained" onClick={handleOpen} style={btnstyle} fullWidth>
                                                 <Typography variant="p" className={classes.settingsOption}>
                                                     Change Password
                                                 </Typography> 
                                             </Button>
-                                            <Button 
+                                            <Button id='del-btn'
                                             sx={{backgroundColor: '#3f4868'}}type='submit' color='primary' variant="contained" onClick={initDelete} fullWidth>
                                                 <Typography variant="p" className={classes.settingsOption}>
                                                     Delete Account
