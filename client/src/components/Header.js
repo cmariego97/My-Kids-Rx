@@ -41,6 +41,7 @@ const useStyles = makeStyles((theme) => ({
         alignItems: 'center',
         height: '100vh',
         fontFamily: 'Nunito',
+        marginBottom: '400px'
     },
     appbar: {
         background: 'none',
@@ -60,7 +61,7 @@ const useStyles = makeStyles((theme) => ({
     },
     container: {
         textAlign: 'center',
-        marginTop: '700px'
+        marginTop: '750px'
     },
     containerInfo: {
         display: 'flex',
@@ -149,6 +150,9 @@ export default function Header() {
                     </div>
 
                     {/* a button that will scroll down to the about us section */}
+                    <Typography variant="h4" className={classes.textInfo} sx={{textAlign: 'center'}}>
+                    View Our Services + Features
+                </Typography>
                     <Scroll to="our-services" smooth={true}>
                         <IconButton>
                             <ExpandMoreIcon className={classes.goDown} />
