@@ -24,9 +24,6 @@ import Messaging from './pages/Messaging';
 import HeaderAppBar from './components/HeaderAppBar';
 import Footer from './components/Footer'; 
 
-//import images
-import background from './assets/images/site-design-images/plain-animal-bg.svg';
-
 const httpLink = createHttpLink({
   uri: '/graphql',
 });

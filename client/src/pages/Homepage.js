@@ -22,39 +22,37 @@ export default function Homepage({changePage}) {
     return (
         <Box>
             {/* Header */}
-            {/* <Box className="root">
-                <CssBaseline />
-                <Header/>\
-            </Box> */}
-
-            {/* Features and Services */}
-            <Box className="wrapper">
-                <Typography variant="h4" className="bigSpace" color="#DE7171">
-                    Our Services + Features
-                </Typography>
-            </Box>
+            <Header/>
             
-            {/* Services Grid */}
+            {/* Features & Services */}
+            <Box className="bigSpace" id="our-services">
+                <Box>
+                    <Typography variant="h4" color="#DE7171">
+                        Our Services + Features
+                    </Typography>
+                </Box>
 
-            <Box className="grid bigSpace" id="our-services">
-                {/* <!-- service #1 - physical exams --> */}
-                <Grid icon={<FontAwesomeIcon icon={faStethoscope} style={{color: "#a68674", height: "125", width: "125"}}></FontAwesomeIcon>} title="Appointments" btnTitle="View Appointments" changePage={changePage} newPage='Appt'id='appt'/>
+                <Box className="grid">
+                    {/* <!-- service #1 - physical exams --> */}
+                    <Grid icon={<FontAwesomeIcon icon={faStethoscope} style={{color: "#a68674", height: "125", width: "125"}}></FontAwesomeIcon>} title="Appointments" btnTitle="View Appointments" changePage={changePage} newPage='Appt'id='appt'/>
 
-                {/* <!-- service #2  - messaging --> */}
-                <Grid icon={<FontAwesomeIcon icon={faComments} style={{color: "#a68674", height: "125", width: "125"}}></FontAwesomeIcon>} title="Messaging" btnTitle="Learn More" changePage={changePage} newPage='Messaging'id='messaging'/>
+                    {/* <!-- service #2  - messaging --> */}
+                    <Grid icon={<FontAwesomeIcon icon={faComments} style={{color: "#a68674", height: "125", width: "125"}}></FontAwesomeIcon>} title="Messaging" btnTitle="Learn More" changePage={changePage} newPage='Messaging'id='messaging'/>
 
-                {/* <!-- service #3 - games --> */}
+                    {/* <!-- service #3 - games --> */}
+                    <Grid icon={<FontAwesomeIcon icon={faGamepad} style={{color: "#a68674", height: "125", width: "125"}}></FontAwesomeIcon>} title="Games" btnTitle="Play" changePage={changePage} newPage='Game'id='game'/>
+                </Box>
+                <Box className="grid">
+                    {/* <!-- service #4 - Lab Works --> */}
+                    <Grid icon={<FontAwesomeIcon icon={faMicroscope} style={{color: "#a68674", height: "125", width: "125"}}></FontAwesomeIcon>} title="Lab Work" btnTitle="View Results" changePage={changePage} newPage='Lab' id='lab'/>
+
+                    {/* <!-- service #5 - radiology --> */}
+                    <Grid icon={<FontAwesomeIcon icon={faXRay} style={{color: "#a68674", height: "125", width: "125"}}></FontAwesomeIcon>} title="Radiology" btnTitle="View Results" changePage={changePage} newPage='Imaging' id='image'/>
+
+                    {/* <!-- service #6 - prescription --> */}
+                    <Grid icon={<FontAwesomeIcon icon={faFilePrescription} style={{color: "#a68674", height: "125", width: "125"}}></FontAwesomeIcon>} title="Medications" btnTitle="Check Orders" />
+                </Box>
                 
-                <Grid icon={<FontAwesomeIcon icon={faGamepad} style={{color: "#a68674", height: "125", width: "125"}}></FontAwesomeIcon>} title="Games" btnTitle="Play" changePage={changePage} newPage='Game'id='game'/>
-
-                {/* <!-- service #4 - Lab Works --> */}
-                <Grid icon={<FontAwesomeIcon icon={faMicroscope} style={{color: "#a68674", height: "125", width: "125"}}></FontAwesomeIcon>} title="Lab Work" btnTitle="View Results" changePage={changePage} newPage='Lab' id='lab'/>
-
-                {/* <!-- service #5 - radiology --> */}
-                <Grid icon={<FontAwesomeIcon icon={faXRay} style={{color: "#a68674", height: "125", width: "125"}}></FontAwesomeIcon>} title="Radiology" btnTitle="View Results" changePage={changePage} newPage='Imaging' id='image'/>
-
-                {/* <!-- service #6 - prescription --> */}
-                <Grid icon={<FontAwesomeIcon icon={faFilePrescription} style={{color: "#a68674", height: "125", width: "125"}}></FontAwesomeIcon>} title="Medications" btnTitle="Check Orders" />
             </Box>
 
             {/* About Us */}

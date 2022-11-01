@@ -37,12 +37,15 @@
     --carrot-orange: #F58C22;
     /* danger */
     --pomegranate: #F44336;
+    /* kids-rx theme colors */
+    --kidsrxblue: #F4F6FC;
+    --kidsrxgreen: #F5FCFF;
     /* box shadow */
     --box-shadow: '0 16px 38px -12px rgb(0 0 0 / 56%)', '0 4px 25px 0px rgb(0 0 0 / 12%)', '0 8px 10px -5px rgb(0 0 0 / 20%)';
 }
 
-.root {
-    min-height: 100vh;
+.wrap {
+    height: 100vh;
     background-image: url(../images/site-design-images/plain-animal-bg.svg);
     background-repeat: no-repeat;
     background-size: cover;
@@ -72,9 +75,51 @@
     margin-top: 2.5rem;
 }
 
+/* header */
+.headerContainer {
+    padding-top: 10rem;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+}
+
+.headerInfoContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.textWelcome {
+    color: var(--sunglo);
+    letter-spacing: 0.5rem;
+    text-shadow: 2px 2px 8px #9CA6B5;
+}
+
+.headerTitle {
+    padding: 2.5rem 0;
+    color: var(--fiord);
+    text-shadow: 0 0 5px #FF0000, 0 0 8px #0000FF;
+}
+
+.headerInfoText {
+    padding: 2rem;
+    color: var(--santa-fe);
+    text-shadow: 1px 1px 5px #9CA6B5;
+}
+
+.goDown {
+    color: var(--fiord);
+    font-size: 4rem;
+}
+
+/* grid */
 .grid {
     display: flex;
+    flex-direction: row;
     justify-content: center;
+    align-items: center;
 }
 
 /* about us  */

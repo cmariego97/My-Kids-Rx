@@ -6,7 +6,7 @@ import Auth from '../utils/auth';
 
 // import MUI styles
 import { createTheme, ThemeProvider, makeStyles } from '@material-ui/core/styles';
-import { CssBaseline, Typography } from '@material-ui/core';
+import {  Typography } from '@material-ui/core';
 
 // import MUI components
 import Avatar from '@mui/material/Avatar';
@@ -18,7 +18,6 @@ import Modal from '@mui/material/Modal';
 import Popover from '@mui/material/Popover';
 import { styled } from '@mui/material/styles';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 // import component
 import MedicalInfo from '../components/Medical';
@@ -28,11 +27,10 @@ import background from '../assets/images/site-design-images/plain-animal-bg.svg'
 import femaleAv from '../assets/images/avatars/avatar1-pink.png';
 import otherAv from '../assets/images/avatars/avatar2-purple.png';
 import maleAv from '../assets/images/avatars/avatar3-boy.png';
-import { textTransform } from '@mui/system';
 
 // import FontAwesome Icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; 
-import { faUserPen, faTrashCan, faEnvelope, faUserDoctor } from '@fortawesome/free-solid-svg-icons';
+import { faUserPen, faEnvelope, faUserDoctor } from '@fortawesome/free-solid-svg-icons';
 
 const theme = createTheme({
     palette: {

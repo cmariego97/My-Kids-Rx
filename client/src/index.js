@@ -42,6 +42,11 @@ const theme = createTheme({
     fontFamily: [
       'Nunito', 'sans-serif', 'Nunito Sans', 'Atma', 'cursive', 'Londrina Solid', 'Josefin Sans'
     ],
+    h1: {
+      fontFamily: ['Atma', 'cursive',],
+      fontWeight: '700',
+      fontSize: '15rem',
+    },
     h4: {
       fontWeight: 600,
       fontSize: 28,
@@ -49,8 +54,10 @@ const theme = createTheme({
       color: '#DE7171',
     },
     h5: {
-      fontWeight: 100,
+      FontFamily: ['Josefin Sans', 'sans-serif'],
+      fontWeight: 400,
       lineHeight: '2rem',
+      textTransform: 'uppercase',
     },
     p: {
       fontSize: 18,
