@@ -11,7 +11,7 @@
    margin-top: 10px
 }
 #change-btn:hover,
-#del-btn:hover
+#del-btn:hover,
 #yes-del:hover {
     background: grey;
 }

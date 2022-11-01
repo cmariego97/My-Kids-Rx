@@ -362,6 +362,8 @@ const Profile = () => {
     const cxDelete = () => {
         document.querySelector('#conf-delete').textContent = '';
         setVisible(false);
+        setInputVis(false);
+        document.querySelector('#user-del').textContent = ''
     }
     //if user confirms wanting to delete acct
     const confDelete = async(e) => {
@@ -482,7 +484,7 @@ const Profile = () => {
                             <input value={delPass} onChange={handleDelChange} style={inputVis ? show : hidden} type='password'></input>
 
                             <Button id='yes-del' style={inputVis ? show : hidden} onClick={delAcct}>Delete Account</Button>
-                            
+
                             <Button id='no' style={visible ? show : hidden} onClick={cxDelete}>Cancel</Button>
                             <p id='user-del'></p>
                         </div>
