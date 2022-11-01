@@ -20,7 +20,7 @@ const Disease = () => {
         //pick random disease
         var disease = data.diseases[randomNum]
         return (
-            <div style={{fontSize: '110%'}}>
+            <div style={{fontSize: '110%', listStyleType: 'square'}}>
                 <h3>{disease.name}</h3>
                 <li style={{marginBottom: '5px'}}>{`Affected ages: ${disease.ageGroup}`}</li>
                 <li style={{marginBottom: '5px'}}>{`Symptoms include: ${disease.symptoms}`}</li>

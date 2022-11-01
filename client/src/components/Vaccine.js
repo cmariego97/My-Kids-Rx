@@ -10,7 +10,7 @@ const Vaccine = ({vaccines}) => {
     else {
         return (
             vaccines.map((vax) => (
-                <li style={{fontSize: '110%'}}>{`${vax.name} given on ${vax.date}`}</li>
+                <li style={{fontSize: '110%', listStyleType: 'square'}}>{`${vax.name} given on ${vax.date}`}</li>
             ))
         )
     }

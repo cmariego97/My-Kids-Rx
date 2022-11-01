@@ -11,7 +11,7 @@ const Medication = ({meds}) => {
     else {
         return (
             meds.map((med) => (
-                <li style={{fontSize: '110%'}}>{`${med.name} ${med.dose}: ${med.directions}`}</li>
+                <li style={{fontSize: '110%', listStyleType: 'square'}}>{`${med.name} ${med.dose}: ${med.directions}`}</li>
             ))
         )
     }

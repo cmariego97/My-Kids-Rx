@@ -25,7 +25,7 @@ const Vitals = ({vitals}) => {
     else {
         return (
             vitals.map((result) => (
-                <div style={{fontSize: '110%'}}>
+                <div style={{fontSize: '110%', listStyleType: 'square'}}>
                     <p>{result.date}</p>
                     <li>{` Height: ${result.height} inches`}</li>
                     <li>{ `Weight: ${result.weight} pounds`}</li>
