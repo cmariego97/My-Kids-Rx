@@ -88,6 +88,7 @@ const useStyles = makeStyles((theme) => ({
   wrapContainer: {
     margin: '0 auto',
     width: '80%',
+    fontSize: '110%'
   },
   contentContainer: {
     display: 'flex',

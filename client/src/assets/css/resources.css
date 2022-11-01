@@ -1,0 +1,10 @@
+#link {
+    text-decoration: none;
+    background: #de7171;
+    color: white;
+    padding: 1%;
+    border-radius: 10px;
+}
+#link:hover {
+    background: #3f4868;
+}

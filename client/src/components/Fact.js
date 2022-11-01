@@ -18,7 +18,7 @@ const Fact = () => {
         var fact = data.facts[randomNum]
         console.log(fact)
         return (
-            <p>{fact.fact}</p>
+            <h3>{fact.fact}</h3>
         )
     }
 }
