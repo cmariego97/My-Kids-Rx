@@ -174,9 +174,9 @@ const Imaging= () => {
                     return (
                         imaging.map((result) => (
                             <div>
-                                <li>{`Date: ${result.date}`}</li>
-                                <li>{`Test: ${result.type} of ${result.site}`}</li>
-                                <li>{`Results: ${result.report}`}</li>
+                                <p>{result.date}</p>
+                                <li style={{marginBottom: '5px'}}>{`Test: ${result.type} of ${result.site}`}</li>
+                                <li style={{marginBottom: '10px'}}>{`Results: ${result.report}`}</li>
                             </div>
                         
                         )
@@ -193,7 +193,7 @@ const Imaging= () => {
         }
         return (
             <div className={classes.cardImaging}>
-                <h1>Imaging Results</h1>
+                <h1 style={{textAlign: 'center'}}>Imaging Results</h1>
                 {renderImaging()}
             </div>
         )

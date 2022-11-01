@@ -257,6 +257,7 @@ const Lab = () => {
         return (
             <div className={classes.cardLabResults}>
                 <h1>Lab Results</h1>
+                <h3>Abnormal values are in red, contact your provider with any questions!</h3>
                 {renderLabs()}
             </div>
         )
