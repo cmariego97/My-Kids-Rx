@@ -4,7 +4,7 @@ import { QUERY_IMAGING } from '../utils/queries';
 import Auth from '../utils/auth';
 // import MUI styles
 import { createTheme, ThemeProvider, makeStyles } from '@material-ui/core/styles';
-import { CssBaseline, Typography } from '@material-ui/core';
+import { Box, CssBaseline, Typography } from '@material-ui/core';
 //import image
 import background from '../assets/images/site-design-images/plain-animal-bg.svg';
 
@@ -72,25 +72,6 @@ const theme = createTheme({
  });
  
  const useStyles = makeStyles((theme) => ({
-    root: {
-        minHeight: '100vh',
-        backgroundImage: `url(${background})`,
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover',
-    },
-    bigSpace: {
-        margin: '5rem 1rem 2rem',     
-    },
-    littleSpace: {
-        margin: '2.5rem 1rem 2rem',
-    },
-    wrapContainer: {
-        margin: '0 auto',
-        width: '70%',
-    },
-    rowContainer: {
-        display: 'flex',
-    },
     cardImaging: {
         display: 'flex',
         position: 'relative',
@@ -105,45 +86,7 @@ const theme = createTheme({
         borderRadius: '5px',
         boxShadow: [ '0 16px 38px -12px rgb(0 0 0 / 56%)', '0 4px 25px 0px rgb(0 0 0 / 12%)', '0 8px 10px -5px rgb(0 0 0 / 20%)' ],
     },
-    avatarImage: {
-        margin: '-30px auto 0',
-        position: 'relative',
-        overflow: 'hidden',
-        boxShadow: [ '0 16px 38px -12px rgb(0 0 0 / 56%)', '0 4px 25px 0px rgb(0 0 0 / 12%)', '0 8px 10px -5px rgb(0 0 0 / 20%)' ],
-    },
-    greeting: {
-        fontFamily: [ 'Nunito Sans', 'sans-serif' ],
-        textTransform: 'uppercase',
-    },
-    boxUserName: {
-        display: 'flex',
-        overflow: 'hidden',
-    },
-    boxUserInfo: {
-        display: 'flex',
-        justifyContent: 'space-between',
-    },
-    userName: {
-        margin: '0 auto',
-        textAlign: 'space-between',
-    },
-    userInfo: {
-        margin: '0 auto',
-        padding: '0.25rem',
-    }
  }))
- 
- const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 400,
-    bgcolor: 'background.paper',
-    border: '2px solid #000',
-    boxShadow: 24,
-    p: 4,
- };
 
 const Imaging= () => {
     const classes = useStyles();
@@ -192,10 +135,12 @@ const Imaging= () => {
             }
         }
         return (
-            <div className={classes.cardImaging}>
-                <h1>Imaging Results</h1>
-                {renderImaging()}
-            </div>
+            <Box className="wrap siteWrap">
+                <Box className={classes.cardImaging}>
+                    <Typography variant="h5">Imaging Results</Typography>
+                    {renderImaging()}
+                </Box>
+            </Box>
         )
     }
 }
