@@ -106,7 +106,8 @@ const useStyles = makeStyles((theme) => ({
        backgroundColor: '#F5F2EF',
        borderRadius: '5px',
        boxShadow: [ '0 16px 38px -12px rgb(0 0 0 / 56%)', '0 4px 25px 0px rgb(0 0 0 / 12%)', '0 8px 10px -5px rgb(0 0 0 / 20%)' ],
-       fontSize: '110%'
+       fontSize: '110%',
+       marginTop: '50px'
    },
    avatarImage: {
        margin: '-30px auto 0',

@@ -118,7 +118,8 @@ const theme = createTheme({
         minHeight: '500px',
         backgroundColor: '#F5F2EF',
         borderRadius: '5px',
-        boxShadow: [ '0 16px 38px -12px rgb(0 0 0 / 56%)', '0 4px 25px 0px rgb(0 0 0 / 12%)', '0 8px 10px -5px rgb(0 0 0 / 20%)' ]
+        boxShadow: [ '0 16px 38px -12px rgb(0 0 0 / 56%)', '0 4px 25px 0px rgb(0 0 0 / 12%)', '0 8px 10px -5px rgb(0 0 0 / 20%)' ],
+        marginTop: '50px'
     },
     avatarImage: {
         margin: '-30px auto 0',
@@ -184,7 +185,7 @@ const Messaging = () => {
             //if patient not in database
             if (!data.onePatient) {
                 return (
-                    <p>Email not on file with a provider, contact your provider for details!</p>
+                    <p style={{fontSize: '110%'}}>Email not on file with a provider, contact your provider for details!</p>
                 )
             }
             else {
@@ -196,7 +197,7 @@ const Messaging = () => {
                                 <div>
                                     <h2>{`Message to ${message.to}`}</h2>
                                     <h3>{`Sent on ${message.date} at ${message.time}`}</h3>
-                                    <p>{message.content}</p>
+                                    <p style={{fontSize: '110%'}}>{message.content}</p>
                                 </div>
                             ))}
                         </Typography>
@@ -277,30 +278,36 @@ const Messaging = () => {
 
     const handleFormSubmit = async(e) => {
         e.preventDefault();
-        try {
-            const { data } = await addMessage({
-                variables: {email, to, date, time, content}
-            })
-            //reset content field
-            setContent('');
-            
-            const success = data.addMessage.messages
-            const index = success.length - 1
-            //confirmation message
-            document.querySelector('#conf-message').textContent = `Message delivered at to ${success[index].to} at ${success[index].time}`;
-            //add new message to messages list
-            const recipient = document.createElement('h2');
-            recipient.textContent = `Message to ${success[index].to}`;
-            const when = document.createElement('h3');
-            when.textContent = `Sent on ${success[index].date} at ${success[index].time}`;
-            const text = document.createElement('p');
-            text.textContent = success[index].content;
-            document.querySelector('#new-container').append(recipient, when, text)
-            document.querySelector('#new-header').textContent = 'New Messages';
+        //make sure content field is filled out (provider is autofilled)
+        if(!to || !content) {
+            document.querySelector('#conf-message').textContent = 'Message cannot be blank!'
         }
-        catch (err) {
-            console.error(err);
-            document.querySelector('#conf-message').textContent = `Message unable to be sent to ${to}`
+        else {
+            try {
+                const { data } = await addMessage({
+                    variables: {email, to, date, time, content}
+                })
+                //reset content field
+                setContent('');
+                
+                const success = data.addMessage.messages
+                const index = success.length - 1
+                //confirmation message
+                document.querySelector('#conf-message').textContent = `Message delivered to ${success[index].to} at ${success[index].time}`;
+                //add new message to messages list
+                const recipient = document.createElement('h2');
+                recipient.textContent = `Message to ${success[index].to}`;
+                const when = document.createElement('h3');
+                when.textContent = `Sent on ${success[index].date} at ${success[index].time}`;
+                const text = document.createElement('p');
+                text.textContent = success[index].content;
+                document.querySelector('#new-container').append(recipient, when, text)
+                document.querySelector('#new-header').textContent = 'New Messages';
+            }
+            catch (err) {
+                console.error(err);
+                document.querySelector('#conf-message').textContent = `Message unable to be sent to ${to}`
+            }
         }
     }
     //set value of content state variable from input field
