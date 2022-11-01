@@ -1,6 +1,10 @@
 img {
     margin-top: 10%;
 }
+#back-btn:hover,
+#change-btn:hover {
+    background: grey;
+}
 
 /* accomodate smartphones */
 @media screen and (max-width: 800px) {

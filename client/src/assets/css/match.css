@@ -1,6 +1,4 @@
-
-/* @media screen and (max-width: 900px) {
-    img {
-        border: 2px solid red
-    }
-}  */
+#back-btn:hover,
+#again-btn:hover {
+    background: grey;
+}

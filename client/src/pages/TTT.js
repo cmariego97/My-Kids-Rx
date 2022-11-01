@@ -10,7 +10,6 @@ import O from '../assets/images/cell.jpeg';
 //import custom css
 import '../assets/css/ttt.css';
 
-// TODO: style buttons
 function TTT({ changeGame }) {
     //styling for grid items
     const Item = styled(Paper)(({ theme }) => ({
@@ -184,9 +183,9 @@ function TTT({ changeGame }) {
         <Box sx={{ flexGrow: 1, background: "#a68674", padding: "1%"}}>
             {chooseWinner()}
             <h1 style={{ textAlign: 'center', fontSize: "250%" }}>Tic Tac Toe</h1>
-            <Button sx={{margin: '0 auto', backgroundColor: '#3f4868', display: 'flex', justifyContent: 'center', my:'15px'}}variant="contained" onClick={() => changeGame('Home')}>Back to gaming homepage
+            <Button id='back-btn' sx={{margin: '0 auto', backgroundColor: '#3f4868', display: 'flex', justifyContent: 'center', my:'15px'}}variant="contained" onClick={() => changeGame('Home')}>Back to gaming homepage
             </Button>
-            <Button sx={{margin: '0 auto', backgroundColor: '#3f4868', display: 'flex', justifyContent: 'center'}}variant="contained" onClick={() => changeTurn()}>Change Player
+            <Button id='change-btn' sx={{margin: '0 auto', backgroundColor: '#3f4868', display: 'flex', justifyContent: 'center'}}variant="contained" onClick={() => changeTurn()}>Change Player
             </Button>
             <h2>{`It is player ${turn}'s turn`}</h2>
             <p id={'test'}></p>

@@ -50,7 +50,7 @@ const Matching = ({changeGame}) => {
    const matched1 = {display:'inline', color: 'black', border: '1px solid black', padding: '1%', borderRadius: '5px'}
    const matched2 = {display:'inline', color: 'red', border: '1px solid red', padding: '1%', borderRadius: '5px'};
    const matched3 = {display:'inline', color: 'blue', border: '1px solid blue', padding: '1%', borderRadius: '5px'}
-   const matched4 = {display:'inline', color: 'orange', border: '1px solid orange', padding: '1%', borderRadius: '5px', background: 'grey'}
+   const matched4 = {display:'inline', color: 'white', border: '1px solid black', padding: '1%', borderRadius: '5px', background: 'grey'}
    const matched5 = {display:'inline', color: 'green', border: '1px solid green', padding: '1%', borderRadius: '5px'}
    const matched6 = {display:'inline', color: 'pink', border: '1px solid pink', padding: '1%', borderRadius: '5px', background: 'grey'}
   //state variable for click count
@@ -116,14 +116,13 @@ const Matching = ({changeGame}) => {
     changeVisable12('invisible');
     document.querySelector('#message').textContent = '';
    }
-//TODO: fix buttons design
     return (
       <Box sx={{ flexGrow: 1, background: "#a68674", padding: "1%" }}>
          {matches()}
         <h1 style={{textAlign: 'center'}}>Human Body Matching Game</h1>
-        <Button sx={{margin: '0 auto', backgroundColor: '#3f4868', display: 'flex', justifyContent: 'center', my:'15px'}}variant="contained" onClick={() => changeGame('Home')}>Back to gaming homepage
+        <Button id='back-btn' sx={{margin: '0 auto', backgroundColor: '#3f4868', display: 'flex', justifyContent: 'center', my:'15px'}}variant="contained" onClick={() => changeGame('Home')}>Back to gaming homepage
             </Button>
-        <Button sx={{margin: '0 auto', backgroundColor: '#3f4868', display: 'flex', justifyContent: 'center'}}variant="contained" onClick={() => resetGame()}>Play Again
+        <Button id='again-btn' sx={{margin: '0 auto', backgroundColor: '#3f4868', display: 'flex', justifyContent: 'center'}}variant="contained" onClick={() => resetGame()}>Play Again
             </Button>
         <Typography id='flip-message' sx={{textAlign: 'center', marginTop: '2%', marginBottom: '2%'}}></Typography>
         <Typography id='message' sx={{textAlign: 'center', marginTop: '2%', marginBottom: '2%'}}></Typography>
