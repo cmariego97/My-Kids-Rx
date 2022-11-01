@@ -154,18 +154,11 @@ function AccountLoginPatient({changePage}) {
                 Sign in
               </Button>
               <p id='err-message'></p>
-
-              <Typography >
-                <Link href="#" >
-                  Forgot password?
-                </Link>
-              </Typography>
-              {/* TODO: fix this */}
               <Typography> 
                 Don't have an Account? 
                 {/* DO NOT add href attribute it will not work correctly, but can change the element type if you want */}
                 <Link onClick={() => changePage('Create')}>
-                  Sign Up 
+                 {` Sign Up`} 
                 </Link>
               </Typography>
 

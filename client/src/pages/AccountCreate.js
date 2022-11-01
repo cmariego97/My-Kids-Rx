@@ -350,7 +350,7 @@ function AccountCreate({changePage}) {
                     Already have an Account? 
                     {/* DO NOT add href attribute it will not work correctly, but can change the element type if you want */}
                     <Link onClick={() =>changePage('Login')}>
-                      Login 
+                     {` Login`} 
                     </Link>
                   </Typography>
   
