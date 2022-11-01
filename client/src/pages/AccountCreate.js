@@ -165,6 +165,7 @@ function AccountCreate({changePage}) {
   const [password, setPassword] = useState('');
   const [confPassword, setConf] = useState('');
   const [checkEmail, setCheckEmail] = useState('');
+  const [checkPass, setCheckPass] = useState('');
   //mutation to add new user
   const [addProfile, { error }] = useMutation(ADD_USER);
   //sets value of state variable that corresponds to input field that was edited
@@ -181,9 +182,17 @@ function AccountCreate({changePage}) {
     }
     else if (id === 'recipient-password') {
       setPassword(value);
+      //checks length of password
+      if (password.length < 8) {
+        setCheckPass('Password must be at least 8 characters!')
+      }
+      else {
+        setCheckPass('');
+      }
     }
     else if (id === 'recipient-user') {
       setEmail(value);
+      //checks email format
       if (!email.match(/^([a-z0-9_.-]+)@([\da-z.-]+)\.([a-z.]{2,6})$/)) {
         setCheckEmail('Invalid email format!')
     } else {
@@ -327,6 +336,10 @@ function AccountCreate({changePage}) {
                       helperText="password required"
                       onChange={handleChange}
                     />
+
+                      <p >
+                        {checkPass}
+                    </p>
   
                     <CssTextField
                       fullWidth
