@@ -248,3 +248,30 @@
     background-color: var(--snowdrift);
     box-shadow: var(--box-shadow);
 }
+
+.gameContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.cardGame {
+    margin: 0 auto;
+    padding: 2.5rem;
+    width: 30%;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    align-content: center;
+    background-color: var(--snowdrift);
+    box-shadow: var(--box-shadow);
+}
+
+@media screen and (max-width: 992px) {
+    .gameContainer {
+        width: 100%;
+        height: auto;
+        flex-direction: column;
+    }
+}

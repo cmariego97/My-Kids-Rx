@@ -2,9 +2,6 @@
     display: flex;
     justify-content: space-evenly;
 }
-.cust-col {
-    width: 30%;
-}
 
 @media screen and (max-width: 992px) {
     #grid {

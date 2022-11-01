@@ -15,6 +15,7 @@ import TttImg from '../assets/images/game-ttt.png';
 import MatchImg from '../assets/images/game-match.jpeg';
 //import custom css
 import '../assets/css/game.css';
+import { Typography } from '@material-ui/core';
 //TODO: style buttons
 const Game = () => {
     //styling for grid items
@@ -51,38 +52,28 @@ const Game = () => {
     }
     //if not a specific game then render game homepage
     return (
-        <div style={{background: "#a68674", padding: "1%"}}>
-            <h1 style={{textAlign: 'center'}}>Choose a game to play!</h1>
-            <Box sx={{ flexGrow: 1}}>
-            <Grid container spacing={2} id='grid'>
-                <Grid class='cust-col'>
-                    <Item>
-                        <img src={OpImg} alt='operation' style={{width: '250px', margin: '0 auto'}}></img>
-                        {/* <Button type='submit' color='primary' variant="contained" style={btnstyle} fullWidth onClick={handleOpen}>
-                        Create Account
-                        </Button> */}
-
+        <Box className="wrap siteWrap">
+            <Typography variant="h5" style={{textAlign: 'center'}}>Choose a game to play!</Typography>
+            <Box className="bigSpace">
+                <Grid className="gameContainer" spacing={2} id='grid'>
+                    <Grid class="cardGame">
+                        <img src={OpImg} alt='operation' style={{width: '60%', margin: '0 auto'}}></img>
                         <Button sx={{margin: '0 auto', backgroundColor: '#3f4868'}}variant="contained"  onClick={() => changeGame('Operation')}>Play Operation
-                         </Button>
-                    </Item>
-                </Grid>
-                <Grid class='cust-col'>
-                    <Item>
-                        <img src={TttImg} alt='tic tac toe' style={{width: '250px', margin: '0 auto'}}></img>
+                        </Button>
+                    </Grid>
+                    <Grid class="cardGame">
+                        <img src={TttImg} alt='tic tac toe' style={{width: '90%', margin: '0 auto'}}></img>
                         <Button sx={{margin: '0 auto', backgroundColor: '#3f4868'}}variant="contained" onClick={() => changeGame('TTT')}>Play Tic Tac Toe
                         </Button>
-                    </Item>
-                </Grid>
-                <Grid class='cust-col'>
-                    <Item>
-                        <img src={MatchImg} alt='matching game' style={{width: '250px', margin: '0 auto'}}></img>
+                    </Grid>
+                    <Grid class="cardGame">
+                        <img src={MatchImg} alt='matching game' style={{width: '80%', margin: '0 auto'}}></img>
                         <Button sx={{margin: '0 auto', backgroundColor: '#3f4868'}}variant="contained" onClick={() => changeGame('Matching')}>Play Matching
                         </Button>
-                    </Item>
+                    </Grid>
                 </Grid>
-            </Grid>
+            </Box>
         </Box>
-        </div>
     )
 
 }
