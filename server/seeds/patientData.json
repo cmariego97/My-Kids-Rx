@@ -419,9 +419,9 @@
       "gender": "Male",
       "allergies": "None",
       "medicalHistory": "Asthma",
-      "guardianName": "Anna Jones",
+      "guardianName": "Anna Wallace",
       "guardianPhone": "123-456-0009",
-      "guardianEmail": "ajones@test.com",
+      "guardianEmail": "awallace@test.com",
       "appointments": [
         {
           "date": "2022-11-03",
