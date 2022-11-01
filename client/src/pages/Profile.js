@@ -146,62 +146,6 @@ const useStyles = makeStyles((theme) => ({
         borderRadius: '5px',
         boxShadow: [ '0 16px 38px -12px rgb(0 0 0 / 56%)', '0 4px 25px 0px rgb(0 0 0 / 12%)', '0 8px 10px -5px rgb(0 0 0 / 20%)' ],
     },
-    cardMessages: {
-        display: 'flex',
-        position: 'relative',
-        flexDirection: 'column',
-        flexWrap: 'nowrap',
-        margin: '0.25rem auto',
-        padding: '2rem 2.5rem',
-        width: '40%',
-        minWidth: '550px',
-        minHeight: '500px',
-        backgroundColor: '#F5F2EF',
-        borderRadius: '5px',
-        boxShadow: [ '0 16px 38px -12px rgb(0 0 0 / 56%)', '0 4px 25px 0px rgb(0 0 0 / 12%)', '0 8px 10px -5px rgb(0 0 0 / 20%)' ],
-    },
-    cardAppointments: {
-        display: 'flex',
-        position: 'relative',
-        flexDirection: 'column',
-        flexWrap: 'nowrap',
-        margin: '0.25rem auto',
-        padding: '2rem 2.5rem',
-        width: '55%',
-        minWidth: '550px',
-        minHeight: '500px',
-        backgroundColor: '#F5F2EF',
-        borderRadius: '5px',
-        boxShadow: [ '0 16px 38px -12px rgb(0 0 0 / 56%)', '0 4px 25px 0px rgb(0 0 0 / 12%)', '0 8px 10px -5px rgb(0 0 0 / 20%)' ],
-    },
-    cardLabResults: {
-        display: 'flex',
-        position: 'relative',
-        flexDirection: 'column',
-        flexWrap: 'nowrap',
-        margin: '0.25rem auto',
-        padding: '2rem 2.5rem',
-        width: '20%',
-        minWidth: '550px',
-        minHeight: '500px',
-        backgroundColor: '#F5F2EF',
-        borderRadius: '5px',
-        boxShadow: [ '0 16px 38px -12px rgb(0 0 0 / 56%)', '0 4px 25px 0px rgb(0 0 0 / 12%)', '0 8px 10px -5px rgb(0 0 0 / 20%)' ],
-    },
-    cardImaging: {
-        display: 'flex',
-        position: 'relative',
-        flexDirection: 'column',
-        flexWrap: 'nowrap',
-        margin: '0.25rem auto',
-        padding: '2rem 2.5rem',
-        width: '70%',
-        minWidth: '550px',
-        minHeight: '500px',
-        backgroundColor: '#F5F2EF',
-        borderRadius: '5px',
-        boxShadow: [ '0 16px 38px -12px rgb(0 0 0 / 56%)', '0 4px 25px 0px rgb(0 0 0 / 12%)', '0 8px 10px -5px rgb(0 0 0 / 20%)' ],
-    },
     avatarImage: {
         margin: '-30px auto 0',
         position: 'relative',
@@ -227,6 +171,13 @@ const useStyles = makeStyles((theme) => ({
     userInfo: {
         margin: '0 auto',
         padding: '0.25rem',
+    },
+    confirmDel: {
+        color: 'black',
+        fontSize: '110%',
+        marginTop: '30%',
+        padding: '2%',
+        width: '500px'
     }
 }))
 
@@ -522,17 +473,17 @@ const Profile = () => {
                         </div>
 
                         {/* confirm msg to delete */}
-                        {/* // TODO: make this into a popover, it is showing up weird */}
                         <div className={classes.confirmDel}>
                             <p id='conf-delete'></p>
 
-                            <Button style={visible ? show : hidden} onClick={confDelete}>Yes</Button>
+                            <Button id='yes' style={visible ? show : hidden} onClick={confDelete}>Yes</Button>
 
                             <label style={inputVis ? show : hidden}>Enter password:</label>
                             <input value={delPass} onChange={handleDelChange} style={inputVis ? show : hidden} type='password'></input>
 
-                            <Button style={inputVis ? show : hidden} onClick={delAcct}>Delete Account</Button>
-                            <Button style={visible ? show : hidden} onClick={cxDelete}>Cancel</Button>
+                            <Button id='yes-del' style={inputVis ? show : hidden} onClick={delAcct}>Delete Account</Button>
+                            
+                            <Button id='no' style={visible ? show : hidden} onClick={cxDelete}>Cancel</Button>
                             <p id='user-del'></p>
                         </div>
                         {/* MODAL - change password */}

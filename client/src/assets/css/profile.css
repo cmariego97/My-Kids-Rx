@@ -1,7 +1,22 @@
+#yes,
+#no {
+    background: #de7171;
+    color: white;
+    margin-bottom: 10px
+}
+#yes-del {
+   background: #3f4868;
+   color: white; 
+   margin-bottom: 10px;
+   margin-top: 10px
+}
 #change-btn:hover,
-#del-btn:hover {
+#del-btn:hover
+#yes-del:hover {
     background: grey;
 }
-#change-pass:hover {
+#change-pass:hover,
+#yes:hover,
+#no:hover {
     background: #3f4868;
 }
