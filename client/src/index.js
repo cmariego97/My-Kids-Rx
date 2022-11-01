@@ -47,20 +47,24 @@ const theme = createTheme({
       fontWeight: '700',
       fontSize: '15rem',
     },
+    h3: {
+      fontFamily: 'Londrina Solid',
+      fontWeight: '400',
+    },
     h4: {
       fontWeight: 600,
       fontSize: 28,
+      textTransform: 'uppercase',
       lineHeight: '2rem',
       color: '#DE7171',
     },
     h5: {
-      FontFamily: ['Josefin Sans', 'sans-serif'],
+      fontFamily: ['Josefin Sans', 'sans-serif'],
       fontWeight: 400,
-      lineHeight: '2rem',
-      textTransform: 'uppercase',
     },
     p: {
-      fontSize: 18,
+      fontFamily: 'Londrina Solid',
+      lineHeight: '2rem'
     }
   },
 });

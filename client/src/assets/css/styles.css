@@ -62,6 +62,14 @@
     text-align: center;
 }
 
+.sectionContainer {
+    padding: 5rem;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .loginWrapper {
     background-color: #f4f6fc;
     box-shadow: var(--box-shadow);
@@ -75,6 +83,18 @@
     margin-top: 2.5rem;
 }
 
+.sectionTitle {
+    text-align: center;
+    text-shadow: var(--box-shadow);
+}
+
+.sectionInfo {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
 /* header */
 .headerContainer {
     padding-top: 10rem;
@@ -85,10 +105,11 @@
 }
 
 .headerInfoContainer {
+    height: 600px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
-    align-items: center;
+    background-color: var(--snowdrift);
 }
 
 .textWelcome {
@@ -107,6 +128,7 @@
     padding: 2rem;
     color: var(--santa-fe);
     text-shadow: 1px 1px 5px #9CA6B5;
+    line-height: 1.5;
 }
 
 .goDown {
@@ -114,7 +136,11 @@
     font-size: 4rem;
 }
 
-/* grid */
+/* services */
+.sectionContainer {
+    background-color: var(--kidsrxgreen);
+}
+
 .grid {
     display: flex;
     flex-direction: row;
@@ -123,18 +149,23 @@
 }
 
 /* about us  */
-.aboutUsWrapper {
-    background-color: "#f4f6fc"
+.aboutContainer {
+    display: flex;
+    justify-content: center;
+    background-color: var(--kidsrxblue);
 }
 
-.aboutUs {
-    display: "flex";
-    flex-direction: "row";
-    align-items: "center";
-    margin: "5rem";
+.aboutWrap {
+    width: 70%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
 }
 
 .textInfo {
-    color: "#3F4868";
-    text-align: "justify";
+    color: var(--fiord);
+    text-align: center;
+    font-size: 22px;
 }
