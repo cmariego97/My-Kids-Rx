@@ -167,7 +167,7 @@ const Imaging= () => {
             //if patient not in database
             if (!data.onePatient) {
                 return (
-                    <p>Email not on file with a provider, contact your provider for details!</p>
+                    <p style={{fontSize: '110%'}}>Email not on file with a provider, contact your provider for details!</p>
                 )
             }
             else {
@@ -188,7 +188,7 @@ const Imaging= () => {
                 else {
                     //if no imaging results for the patient
                     return (
-                        <p>No imaging results on file!</p>
+                        <p style={{fontSize: '110%'}}>No imaging results on file!</p>
                     )
                 }
             }

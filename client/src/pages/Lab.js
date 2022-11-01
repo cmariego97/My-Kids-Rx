@@ -184,7 +184,9 @@ const Lab = () => {
                     const abnormal = {color: 'red'};
                     const normal = {color: 'black'}
                     return (
-                            labs.map((lab) => (
+                        <div>
+                            <h3>Abnormal results are shown in red, contact your provider with any questions!</h3>
+                            {labs.map((lab) => (
                             <div>
                             <h3>{`Results from ${lab.date}`}</h3>
                             <p>Complete Blood Count</p>
@@ -252,7 +254,8 @@ const Lab = () => {
                             
                             
                         </div>
-                        ))
+                        ))}
+                        </div>
                     )
                 }
             }
@@ -262,7 +265,6 @@ const Lab = () => {
                 <div className={classes.wrapContainer}>
                     <div className={classes.cardLabResults}>
                     <h1>Lab Results</h1>
-                    <h3>Abnormal values are in red, contact your provider with any questions!</h3>
                     {renderLabs()}
                     </div>
                 </div>

@@ -229,7 +229,7 @@ const Messaging = () => {
                         <Typography gutterBottom variant="h5" component="div">
                         Send a Message
                         </Typography>
-                        <p>Messaging will not be enabled until you contact your provider!</p>
+                        <p style={{fontSize: '110%'}}>Messaging will not be enabled until you contact your provider!</p>
                     </div>
                 )
             }
