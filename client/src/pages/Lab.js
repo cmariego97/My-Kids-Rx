@@ -178,13 +178,12 @@ const Lab = () => {
                 }
                 else {
                     //styles lab results differently if outside of normal range
-                    //TODO: make element with date stand out
                     const abnormal = {color: 'red'};
                     const normal = {color: 'black'}
                     return (
                             labs.map((lab) => (
                             <div>
-                            <p>{`Results from ${lab.date}`}</p>
+                            <h3>{`Results from ${lab.date}`}</h3>
                             <p>Complete Blood Count</p>
                             <li style={lab.cbc.rbc < 4000000 || lab.cbc.rbc > 5400000 ? abnormal : normal}>
                                 {`RBC: ${lab.cbc.rbc} cells/mcL`}

@@ -17,7 +17,7 @@ import Stomach from '../assets/images/stomach.jpg'
 import Toes from '../assets/images/toes.jpg'
 //import custom css
 import '../assets/css/match.css';
-// TODO: style buttons
+
 const Matching = ({changeGame}) => {
   //styling for grid items
   const Item = styled(Paper)(({ theme }) => ({
@@ -47,7 +47,6 @@ const Matching = ({changeGame}) => {
    const cardFront = {display:'block', margin: '0 auto', width: '75%'};
    const unmatched = {display:'none'};
    //color code each matched set
-   //TODO: make the colors better for the eyes
    const matched1 = {display:'inline', color: 'black', border: '1px solid black', padding: '1%', borderRadius: '5px'}
    const matched2 = {display:'inline', color: 'red', border: '1px solid red', padding: '1%', borderRadius: '5px'};
    const matched3 = {display:'inline', color: 'blue', border: '1px solid blue', padding: '1%', borderRadius: '5px'}
@@ -122,12 +121,12 @@ const Matching = ({changeGame}) => {
       <Box sx={{ flexGrow: 1, background: "#a68674", padding: "1%" }}>
          {matches()}
         <h1 style={{textAlign: 'center'}}>Human Body Matching Game</h1>
-        <p id='flip-message'></p>
         <Button sx={{margin: '0 auto', backgroundColor: '#3f4868', display: 'flex', justifyContent: 'center', my:'15px'}}variant="contained" onClick={() => changeGame('Home')}>Back to gaming homepage
             </Button>
         <Button sx={{margin: '0 auto', backgroundColor: '#3f4868', display: 'flex', justifyContent: 'center'}}variant="contained" onClick={() => resetGame()}>Play Again
             </Button>
-        <p id={'message'}></p>
+        <Typography id='flip-message' sx={{textAlign: 'center', marginTop: '2%', marginBottom: '2%'}}></Typography>
+        <Typography id='message' sx={{textAlign: 'center', marginTop: '2%', marginBottom: '2%'}}></Typography>
         <Grid container spacing={2} onClick={() => incrementClick()} id='grid'>
             {/* card 6 */}
             <Grid item xs={8} sm={8} md={4} sx={{margin: '0 auto', width: '75%'}}>
